@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
 import { END_POINT } from './api-registry';
 import { ApiService } from './api.service';
 import { map } from 'rxjs/operators';
