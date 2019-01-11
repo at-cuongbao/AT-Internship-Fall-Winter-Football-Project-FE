@@ -24,8 +24,7 @@ import { HeaderComponent } from './shared/components/header/header.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
-    FontAwesomeModule
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
@@ -37,3 +36,4 @@ export class AppModule {
   }
 }
  
+export class AppModule { }
