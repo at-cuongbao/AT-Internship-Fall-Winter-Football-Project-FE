@@ -1,3 +1,15 @@
-<p>
-  header works!
-</p>
+<header id="header" class="header clearfix">
+  <div class="logo pull-left">
+    <a href="">LOGO</a>
+  </div>
+  <div class="search-box pull-right">
+    <a class="link-menu" href=""><fa-icon [icon]="['fas', 'sign-in-alt']"></fa-icon> Login</a>
+    <a class="link-menu" href=""><fa-icon [icon]="['fas', 'envelope']"></fa-icon> Contact</a>
+    <form class="search-form" action="">
+      <input class="search-input" type="text" placeholder="Search" name="search">
+      <button class="search-button" type="submit">
+        <fa-icon [icon]="['fas', 'search']"></fa-icon>
+      </button>
+    </form>
+  </div>
+</header>

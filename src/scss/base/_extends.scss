@@ -5,23 +5,3 @@
     clear: both;
   }
 }
-
-%clr {
-  &::after {
-    display: block;
-    content: '';
-    clear: both;
-  }
-}
-
-%pull-left {
-  float: left;
-}
-
-%pull-right {
-  float: right;
-}
-
-%txt-center {
-  text-align: center;
-}
