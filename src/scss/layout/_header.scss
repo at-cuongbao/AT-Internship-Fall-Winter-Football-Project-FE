@@ -1,0 +1,45 @@
+.header {
+  background-color: rgba(45,45,45,0.98);
+  color: #fff;
+  .logo {
+    a {
+      color: #fff;
+      float: left;
+      display: block;
+      text-align: center;
+      padding: 20px 22px;
+      font-size: 16px;
+      &:hover {
+        background-color: #ddd;
+      }
+    }
+  }
+  .search-form {
+    float: right;
+    .search-input {
+      padding: 8px;
+      margin-top: 11px;
+      font-size: 16px;
+      border: none;
+    }
+    .search-button {
+      padding: 8px 12px;
+      font-size: 16px;
+      margin-top: 11px;
+      margin-right: 16px;
+      background-color: #ddd;
+      border: none;
+    }
+  }
+  .link-menu {
+    color: #fff;
+    float: right;
+    display: block;
+    text-align: center;
+    padding: 20px;
+    font-size: 16px;
+    &:hover {
+      background-color: #ddd;
+    }
+  }
+}
