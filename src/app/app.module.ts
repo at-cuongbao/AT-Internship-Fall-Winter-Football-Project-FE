@@ -35,5 +35,3 @@ export class AppModule {
     library.add(faSearch, faSignInAlt, faEnvelope, faFacebook, faTwitter, faGooglePlus);
   }
 }
- 
-export class AppModule { }
