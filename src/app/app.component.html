@@ -1,8 +1,9 @@
-<!--The content below is only a placeholder and can be replaced.-->
 <app-header></app-header>
-<app-banner></app-banner>
+<main class="main-page">
+  <app-banner></app-banner>
+  <app-sidebar></app-sidebar>
+  <section class="main-content">
+    <router-outlet></router-outlet>
+  </section>
+</main>
 <app-footer></app-footer>
-<app-sidebar></app-sidebar>
-<app-footer></app-footer>
-
-<router-outlet></router-outlet>
