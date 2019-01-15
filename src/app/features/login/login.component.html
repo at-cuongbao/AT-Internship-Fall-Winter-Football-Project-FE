@@ -1,0 +1,18 @@
+<div class="card-signin">
+  <form class="form-sinin" #f="ngForm" (ngSubmit)="signIn(f.value)">
+    <h2 class="form-signin-heading">Please sign in</h2>
+    <div class="form-group">
+      <label for="inputEmail" class="">Email address</label>
+      <input type="email" id="inputEmail" name="email" ngModel class="form-control">
+    </div>
+    <div *ngIf="invalidLogin" class="alert alert-danger">
+      <p>Invalid username and/or password.</p>
+    </div>
+    <div class="form-group">
+      <label for="inputPassword" class="">Password</label>
+      <input type="password" id="inputPassword" name="password" ngModel class="form-control">
+    </div>
+    <button class="btn btn-primary btn-block">Sign in</button>
+    <a href="" class="forgot-password">Forgot the password?</a>
+  </form>
+</div>

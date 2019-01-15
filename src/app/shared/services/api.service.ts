@@ -27,13 +27,12 @@ export class ApiService {
   }
 
   post(endpoint: string[], body: any): Observable<any> {
-    console.log(endpoint);
     const url = this.convertUrl(endpoint);
     return this.http.post(url, body, this.httpOptions).pipe(
       catchError(this.handleError)
     );
   }
-  
+
   put(endpoint: string[], body: any): Observable<any> {
     const url = this.convertUrl(endpoint);
     return this.http.put(url, body, this.httpOptions).pipe(
