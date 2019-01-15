@@ -3,5 +3,6 @@ export const END_POINT = {
   users: 'users',
   tournaments: 'tournaments',
   matchs: 'matchs',
-  teams: 'teams'
+  teams: 'teams',
+  schedule: 'schedules'
 }
