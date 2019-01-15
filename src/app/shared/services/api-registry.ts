@@ -4,5 +4,5 @@ export const END_POINT = {
   tournaments: 'tournaments',
   matchs: 'matchs',
   teams: 'teams',
-  schedule: 'schedules'
+  schedules: 'schedules'
 }
