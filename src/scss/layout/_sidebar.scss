@@ -5,11 +5,17 @@
       height: 44px;
       line-height: 44px;
       @extend %txt-center;
-      background: $color-primary;
-      color: $color-second;
+      background: #088a08;
+      border-top: solid 1px #fff;
+      a {
+        color: #fff;
+      }
       &:hover {
-        background: $color-second;
-        color: $color-primary;
+        background: #fff;
+        a {
+          color: #088a08;
+        }
+        border-top: solid 1px #088a08;
         cursor: pointer;
       }
     }
