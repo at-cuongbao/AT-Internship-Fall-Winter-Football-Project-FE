@@ -29,11 +29,11 @@ export class AuthService {
   }
 
   isLoggedIn() {
-    return this.jwtHelperService.isTokenExpired();
+    return !this.jwtHelperService.isTokenExpired();
   }
 
   logout() {
-    localStorage.remove('token');
+    localStorage.removeItem('token');
   }
 
   get currentUser() {
