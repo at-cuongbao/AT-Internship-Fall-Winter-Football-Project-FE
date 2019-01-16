@@ -9,6 +9,17 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./tournament-registration.component.scss']
 })
 export class TournamentRegistrationComponent implements OnInit {
+  // chau event show component add team
+
+  toggle = false;
+  showAddTeam() {
+    this.toggle = !this.toggle;
+  }
+
+
+
+  //
+
   name = '';
   number = '';
   a = [];
