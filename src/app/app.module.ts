@@ -18,9 +18,13 @@ import { HomeComponent } from '../app/features/home/home.component';
 import { LoginComponent } from '../app/features/login/login.component';
 import { BracketComponent } from './features/bracket/bracket.component';
 import { FeaturesComponent } from './features/features.component';
+import { TournamentRegistrationComponent } from './features/tournament-registration/tournament-registration.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
 
 export function tokenGetter() {
-  return localStorage.getItem('access_token');
+  return localStorage.getItem('token');
 }
 
 @NgModule({
@@ -33,7 +37,8 @@ export function tokenGetter() {
     HomeComponent,
     LoginComponent,
     BracketComponent,
-    FeaturesComponent
+    FeaturesComponent,
+    TournamentRegistrationComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +52,10 @@ export function tokenGetter() {
         whitelistedDomains: ['http://localhost:3000'],
         blacklistedRoutes: ['http://localhost:3000/api/authenticate']
       }
-    })
+    }),
+    MatMenuModule,
+    MatIconModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

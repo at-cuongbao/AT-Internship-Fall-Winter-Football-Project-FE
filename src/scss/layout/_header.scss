@@ -31,7 +31,7 @@
       border: none;
     }
   }
-  .link-menu {
+  .menu-link {
     color: #fff;
     float: right;
     display: block;
@@ -41,5 +41,11 @@
     &:hover {
       background-color: #ddd;
     }
+  }
+  .menu-link-dropdown {
+    background-color: rgba(45,45,45,0.98);
+    padding-bottom: 14px;
+    padding-top: 15px;
+    border: 0;
   }
 }
