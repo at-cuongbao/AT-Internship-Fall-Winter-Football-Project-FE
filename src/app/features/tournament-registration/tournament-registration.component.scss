@@ -1,0 +1,128 @@
+.register {
+  width: 70%;
+  margin: auto;
+  font-weight: 700;
+  padding: 64px;
+  .heading {
+    font-size: 32px;
+    padding-bottom: 32px;
+  }
+  .register-form {
+    .form-group {
+     font-size: 18px;
+     padding: 8px;
+     .tb-league {
+       padding: 1px;
+       margin: 16px;
+       display: inline-block;
+       width: 45%;
+       border-collapse: initial;
+       height: auto;
+       border: 1px solid black;
+       .row {
+         background-color: rgb(0, 255, 0);
+       }
+       .row th {
+        padding: 10px;
+        width: 500px;
+       }
+       .row th p, .row th a {
+        display: inline;
+        
+       }
+       .row th a {
+         float: right;
+         padding-right: 8px;
+       }
+       .member-team td{
+         border-bottom: 1px solid rgb(185, 175, 175);
+         padding: 4px;
+       }
+     }
+     .alert {
+       color: red;
+       font-size: 14px;
+     }
+    .content {
+      padding-top: 16px;
+     }
+    }
+    .image-team {
+      font-size: 18px;
+      display: block;
+      .form-inline {
+        display: inline;
+      }
+    }
+    .btn-form {
+      margin-top: 32px;
+      position: relative;
+      line-height: 30px;
+      left: 50%;
+      transform: translate(-50%, 0);
+      font-family: inherit;
+      color: white;
+      background: #185ac1;
+      outline: none;
+      border: none;
+      padding: 5px 15px;
+      font-size: 1em;
+      font-weight: 400;
+      border-radius: 8px;
+    }
+  }
+}
+@media screen and (max-width: 1023px) {
+  .register {
+    padding: 64px;
+    .register-form {
+      .form-group {
+       font-size: 16px;
+       .tb-league {
+         margin: 8px;
+       }
+      }
+    }
+  }
+}
+@media screen and (max-width: 767px) {
+  .register {
+    padding: 64px;
+    .register-form {
+      .form-group {
+        padding: 0px;
+        font-size: 16px;
+       .tb-league {
+         width: 100%;
+         margin: 0px;
+       }
+      }
+    }
+  }
+}
+@media screen and (max-width: 479px) {
+  .register {
+    padding: 64px;
+    .heading {
+      font-size: 24px;
+      padding-bottom: 28px;
+    }
+    .register-form {
+      .form-group {
+        padding: 0px;
+        font-size: 16px;
+        .form-inline {
+          padding: 0px;
+        }
+        .tb-league {
+          width: 100%;
+          margin: 0px;
+       }
+        .alert {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
+
