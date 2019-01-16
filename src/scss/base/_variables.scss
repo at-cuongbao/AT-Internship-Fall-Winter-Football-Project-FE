@@ -1,3 +1,12 @@
+// === Space base ===
+$xxs: 2px;
+$xs: $xxs * 2;
+$s: $xs * 2;
+$m: $s * 2;
+$l: $m * 2;
+$xl: $l * 2;
+$xxl: $xl * 2;
+
 $breakpoints: (
   small: 480px,
   medium: 768px,
