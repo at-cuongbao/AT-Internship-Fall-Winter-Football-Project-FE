@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm, NgModel } from '@angular/forms';
-import { Team } from './../../../shared/models/team';
+import { Team } from './../../shared/models/team';
 
 @Component({
   selector: 'app-team-registration',

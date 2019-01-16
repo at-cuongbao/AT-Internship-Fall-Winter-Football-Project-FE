@@ -18,7 +18,7 @@ import { HomeComponent } from '../app/features/home/home.component';
 import { LoginComponent } from '../app/features/login/login.component';
 import { BracketComponent } from './features/bracket/bracket.component';
 import { FeaturesComponent } from './features/features.component';
-import { TeamRegistrationComponent } from './features/tournament-registration/team-registration/team-registration.component';
+import { TeamRegistrationComponent } from './features/team-registration/team-registration.component';
 import { TournamentRegistrationComponent } from './features/tournament-registration/tournament-registration.component';
 
 export function tokenGetter() {

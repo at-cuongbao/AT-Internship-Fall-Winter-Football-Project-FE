@@ -1,4 +1,16 @@
-<!-- <div class="container"> -->
+<!-- <div>
+  <h4>Add Team</h4>
+  <div class="form" *ngFor="let item of items">
+    <h5>Team {{ item }}</h5>
+    <label for="">Name: </label><input type="text" placeholder="Name">
+    <label for="">Start: </label><input type="date" placeholder="Start">
+    <label for="">End: </label><input type="date" placeholder="End">
+    <label for="">Logo: </label><input type="file">
+    <label for="">Cover: </label><input type="file">
+  </div>
+  <input type="button" value="Submit">
+</div> -->
+<div class="container">
   <form #eleForm="ngForm" (ngSubmit)="submit(eleForm)">
     <div class="row">
       <div class="col-md-12 overwirte">
@@ -28,4 +40,4 @@
     </div>
     <button>Add Team</button>
   </form>
-<!-- </div> -->
+</div>

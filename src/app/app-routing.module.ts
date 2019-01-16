@@ -4,6 +4,7 @@ import { LoginComponent } from './features/login/login.component';
 import { BracketComponent } from './features/bracket/bracket.component';
 import { FeaturesComponent } from './features/features.component';
 import { TournamentRegistrationComponent } from './features/tournament-registration/tournament-registration.component';
+import { TeamRegistrationComponent } from './features/team-registration/team-registration.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,10 @@ const routes: Routes = [
       {
         path: 'tounament-registration',
         component: TournamentRegistrationComponent
+      },
+      {
+        path: 'team-registration',
+        component: TeamRegistrationComponent
       }
     ]
   },
