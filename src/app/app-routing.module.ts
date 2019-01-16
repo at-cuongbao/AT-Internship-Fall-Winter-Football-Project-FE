@@ -16,7 +16,7 @@ const routes: Routes = [
         component: TournamentRegistrationComponent
       },
       {
-        path: 'team-registration',
+        path: 'tounament-registration/team-registration',
         component: TeamRegistrationComponent
       }
     ]
