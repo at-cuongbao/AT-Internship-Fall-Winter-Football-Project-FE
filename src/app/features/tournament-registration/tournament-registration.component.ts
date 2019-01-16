@@ -16,7 +16,7 @@ export class TournamentRegistrationComponent implements OnInit {
   phone = '';
   information = '';
   isShowForm = false;
-  bang = ["Bảng A", "Bảng B", "Bảng C", "Bảng D", "Bảng E", "Bảng F", "Bảng H", "Bảng G"];
+  bang = ["A", "B", "C", "D", "E", "F", "H", "G"];
 
   constructor() { }
 
