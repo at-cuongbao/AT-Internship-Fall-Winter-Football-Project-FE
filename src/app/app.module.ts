@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faSearch, faSignInAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faSignInAlt, faEnvelope, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook, faTwitter, faGooglePlus } from '@fortawesome/free-brands-svg-icons';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -22,6 +22,7 @@ import { TournamentRegistrationComponent } from './features/tournament-registrat
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
+import { GuessComponent } from './features/guess/guess.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -38,7 +39,8 @@ export function tokenGetter() {
     LoginComponent,
     BracketComponent,
     FeaturesComponent,
-    TournamentRegistrationComponent
+    TournamentRegistrationComponent,
+    GuessComponent
   ],
   imports: [
     BrowserModule,
@@ -63,6 +65,6 @@ export function tokenGetter() {
 export class AppModule { 
   constructor() {
     // Add an icon to the library for convenient access in other components.
-    library.add(faSearch, faSignInAlt, faEnvelope, faFacebook, faTwitter, faGooglePlus);
+    library.add(faSearch, faSignInAlt, faEnvelope, faFacebook, faTwitter, faGooglePlus, faPlusCircle);
   }
 }
