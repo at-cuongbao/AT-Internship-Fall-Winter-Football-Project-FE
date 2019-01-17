@@ -4,9 +4,10 @@ import { END_POINT } from './../../shared/services/api-registry';
 import { map } from 'rxjs/operators';
 import { TransfereService } from './../../shared/services/transfere.service';
 import { Router } from '@angular/router';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { TeamRegistrationComponent } from './../team-registration/team-registration.component';
 import { Team } from 'src/app/shared/models/team';
+import { Schedule } from 'src/app/shared/models/schedule';
 
 export interface DialogData {
   animal: 'panda' | 'unicorn' | 'lion';
@@ -24,6 +25,9 @@ export class TournamentRegistrationComponent implements OnInit {
 
   //
   teams: Team[] = [];
+  teamGroup = [[]];
+
+  imageLogo = [];
   name = '';
   number = '';
   a = [];
@@ -36,18 +40,29 @@ export class TournamentRegistrationComponent implements OnInit {
   constructor(private transfere: TransfereService, public dialog: MatDialog) { }
 
   ngOnInit() {
-
+    for (let i = 0; i < 16; i++) {
+      this.teams.push(null);
+      this.imageLogo.push(null);
+    }
   }
 
   // open diablog
-  openDialog() {
+  openDialog(index) {
     const dialogRef = this.dialog.open(TeamRegistrationComponent, {
-  
+
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.phone = result;
-      this.teams = result;
+      this.teams[index] = result.team;
+      this.imageLogo[index] = result.urlLogo;
+      
+      var reader = new FileReader();
+      reader.onload = (event: any) => {
+        this.imageLogo[index] = event.target.result;
+      }
+
+      reader.readAsDataURL(this.imageLogo[index]);
+
       console.log('The dialog was closed', this.teams);
     });
   }

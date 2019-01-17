@@ -10,6 +10,9 @@ const DOMAIN_API = environment.api;
   providedIn: 'root'
 })
 export class ApiService {
+
+  local = environment.api;
+
   httpOptions = {
     headers: new HttpHeaders({
       "Content-Type": "application/json",
