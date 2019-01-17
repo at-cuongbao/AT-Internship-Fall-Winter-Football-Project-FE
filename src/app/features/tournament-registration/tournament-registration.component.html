@@ -2,7 +2,7 @@
   <div class="heading">
     <p><b>Đăng ký giải đấu</b></p>
   </div>
-  <form class="register-form" #elmForm="ngForm" (ngSubmit)="submit(elmForm)">
+  <form class="register-form" #elemForm="ngForm" (ngSubmit)="onSubmit(elemForm)">
     <div class="form-group">
       <label class="content">Tên giải đấu</label>
       <input class="form-inline" type="text" name="name" ngModel #name="ngModel" required minlength="5" />
