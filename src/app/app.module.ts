@@ -24,6 +24,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ScheduleComponent } from './features/schedule/schedule.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -42,6 +43,7 @@ export function tokenGetter() {
     FeaturesComponent,
     TeamRegistrationComponent,
     TournamentRegistrationComponent,
+    ScheduleComponent,
   ],
   imports: [
     BrowserModule,
