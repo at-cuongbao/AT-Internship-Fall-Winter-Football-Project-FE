@@ -3,9 +3,10 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faSearch, faSignInAlt, faEnvelope, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faSignInAlt, faEnvelope, faPlusCircle, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook, faTwitter, faGooglePlus } from '@fortawesome/free-brands-svg-icons';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -25,6 +26,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ScheduleComponent } from './features/schedule/schedule.component';
+
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -61,7 +63,8 @@ export function tokenGetter() {
     MatMenuModule,
     MatIconModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent],
@@ -72,6 +75,6 @@ export function tokenGetter() {
 export class AppModule { 
   constructor() {
     // Add an icon to the library for convenient access in other components.
-    library.add(faSearch, faSignInAlt, faEnvelope, faFacebook, faTwitter, faGooglePlus, faPlusCircle);
+    library.add(faSearch, faSignInAlt, faCaretDown, faEnvelope, faFacebook, faTwitter, faGooglePlus, faPlusCircle);
   }
 }
