@@ -1,7 +1,8 @@
-<header class="feature-title">
-    <h4>Bảng A</h4>
-  </header>
-  <main>
+<div class="schedule">
+  <section *ngFor="let item of schedules">
+    <header class="feature-title">
+      <h4>Group {{item.group}}</h4>
+    </header>
     <table>
       <thead>
         <tr>
@@ -12,16 +13,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of schedules" >
-          <!-- <td>{{ item.group }}</td> -->
-          <td>{{ item.time }}</td>
-          <td>{{ item.team1 }}</td>
-          <td>{{ item.team2 }}</td>
+        <tr>
+          <td>{{ item.matchDate }}</td>
+          <td>{{ item.firstTeam.name }}</td>
+          <td>{{ item.secondTeam.name }}</td>
         </tr>
       </tbody>
     </table>
-  </main>
-  <footer>
-  
-  </footer>
-  
+  </section>
+</div>

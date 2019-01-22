@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from 'src/app/shared/services/api.service';
+import { ScheduleService } from 'src/app/shared/services/schedule.service';
 
 @Component({
   selector: 'app-schedule',
@@ -8,23 +8,16 @@ import { ApiService } from 'src/app/shared/services/api.service';
 })
 export class ScheduleComponent implements OnInit {
 
-  schedules = [];
+  schedules: any;
 
-  constructor(private api: ApiService) {
-  }
+  constructor(private scheduleService: ScheduleService) { }
 
   ngOnInit() {
-    this.getServices();
-    setTimeout(() => {
-      console.log(this.schedules);
-    }, 3000);
+    this.getSchedule();
   }
 
-  getServices(): void {
-    const url = "assets/data.json";
-    this.api.get([url])
+  getSchedule(): void {
+    this.scheduleService.get("5c40509df48d6c304ca351c8")
       .subscribe(schedules => this.schedules = schedules);
   }
-
 }
-
