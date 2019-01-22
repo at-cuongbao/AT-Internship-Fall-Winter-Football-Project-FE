@@ -1,0 +1,17 @@
+table {
+  width: 100%;
+}
+.B {
+  width: 20px;
+}
+th, td {
+  border: 1px solid black;
+  text-align: center;
+  padding: 10px;
+}
+
+thead {color:green;}
+
+tbody {color:blue;}
+
+tfoot {color:red;}

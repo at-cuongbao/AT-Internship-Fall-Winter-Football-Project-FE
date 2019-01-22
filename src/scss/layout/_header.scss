@@ -1,4 +1,4 @@
-.header {
+/* .header {
   background-color: rgba(45,45,45,0.98);
   color: #fff;
   .logo {
@@ -31,7 +31,7 @@
       border: none;
     }
   }
-  .link-menu {
+  .menu-link {
     color: #fff;
     float: right;
     display: block;
@@ -42,4 +42,182 @@
       background-color: #ddd;
     }
   }
+  .menu-link-dropdown {
+    background-color: rgba(45,45,45,0.98);
+    padding-bottom: 14px;
+    padding-top: 15px;
+    border: 0;
+  }
+}*/
+.top-nav {
+  background-color: #f1f1f1;
 }
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+// .sticky + .content {
+//   padding-top: 102px;
+// }
+.header-nav {
+  z-index: 1;
+  background-color: rgba(45, 37, 37, 0.5);
+}
+.bottom-nav {
+  a {
+    &:hover {
+      color: #00afd8;
+    }
+    // .active {
+    //   border-bottom-color: #00afd8;
+    //   border-bottom-width: 3px;
+    // }
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 24px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    
+  }
+  .bottom-nav-left {
+    padding: 0;
+    padding-right: 120px;
+    height: 70px;
+    position: relative;
+    &::after {
+      content: '';
+      transform: skewX(-33deg);
+      background-color: #00afd8;
+      position: absolute;
+      right: 70px;
+      top: 0;
+      bottom: 0;
+      left: -1000%;
+    }
+    img, span {
+      position: relative;
+      z-index: 1;
+    }
+    img {
+      padding: 15px;
+    }
+    span {
+      float: right;
+      font-size: 38px;
+      line-height: 70px;
+      text-transform: uppercase;
+      font-family: fantasy;
+    }
+  }
+  /* Hide the link that should open and close the bottom-nav on small screens */
+  .icon {
+    display: none;
+  }
+  /* Dropdown container - needed to position the dropdown content */
+  .dropdown {
+    float: left;
+    &:hover {
+      /* Show the dropdown menu when the user moves the mouse over the dropdown button */
+      .dropdown-content {
+        display: block;
+      }
+      .dropbtn {
+        color: #00afd8;
+      }
+    }
+    /* Style the dropdown button to fit inside the bottom-nav */
+    .dropbtn {
+      font-size: 20px;
+      border: none;
+      outline: none;
+      color: white;
+      padding: 24px 16px;
+      background-color: inherit;
+      font-family: inherit;
+      margin: 0;
+    }
+    /* Style the dropdown content (hidden by default) */
+    &-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      /* Style the links inside the dropdown */
+      a {
+        /* Add a grey background to dropdown links on hover */
+        &:hover {
+          color: #00afd8;
+        }
+        float: none;
+        color: #f9f9f9;
+        background-color: #2d2525;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: center;
+      }
+    }
+  }
+}
+/* Add an active class to highlight the current page */
+.active {
+  color: #00afd8 !important;
+}
+/* When the screen is less than 600 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the bottom-nav (.icon) */
+@media screen and (max-width: 768px) {
+  /* .bottom-nav a:not(:first-child), */
+  .bottom-nav a,
+  .dropdown .dropbtn {
+    display: none;
+  }
+  .bottom-nav a.icon {
+    float: right;
+    display: block;
+  }
+}
+/* The "responsive" class is added to the bottom-nav with JavaScript when the user clicks on the icon. This class makes the bottom-nav look good on small screens (display the links vertically instead of horizontally) */
+@media screen and (max-width: 768px) {
+  .bottom-nav-right.responsive {
+    position: relative;
+  }
+  .bottom-nav-right.responsive a.icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .bottom-nav-right.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .bottom-nav-right.responsive .dropdown {
+    float: none;
+  }
+  .bottom-nav-right.responsive .dropdown-content {
+    position: relative;
+  }
+  .bottom-nav-right.responsive .dropdown .dropbtn {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+}
+
+.top-nav {
+  .social-item {
+    float: right;
+    a {
+      margin: 0 10px;
+      text-align: center;
+      display: inline-block;
+      line-height: 30px;
+    }
+  } 
+}
+
+
