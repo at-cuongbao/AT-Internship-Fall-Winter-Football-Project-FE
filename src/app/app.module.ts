@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSearch, faSignInAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import { faFacebook, faTwitter, faGooglePlus } from '@fortawesome/free-brands-svg-icons';
+import { faFacebook, faTwitter, faGooglePlus, faYoutube , faInstagram } from '@fortawesome/free-brands-svg-icons';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -33,7 +33,7 @@ import { HeaderComponent } from './shared/components/header/header.component';
 export class AppModule { 
   constructor() {
     // Add an icon to the library for convenient access in other components.
-    library.add(faSearch, faSignInAlt, faEnvelope, faFacebook, faTwitter, faGooglePlus);
+    library.add(faSearch, faSignInAlt, faEnvelope, faFacebook, faTwitter, faGooglePlus, faYoutube, faInstagram);
   }
 }
  

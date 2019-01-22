@@ -1,17 +1,17 @@
-.sidebar {
-  .menu {
-    &-item {
-      width: 200px;
-      height: 44px;
-      line-height: 44px;
-      @extend %txt-center;
-      background: $color-primary;
-      color: $color-second;
-      &:hover {
-        background: $color-second;
-        color: $color-primary;
-        cursor: pointer;
-      }
-    }
-  }
-}
+// .sidebar {
+//   .menu {
+//     &-item {
+//       width: 200px;
+//       height: 44px;
+//       line-height: 44px;
+//       @extend %txt-center;
+//       background: $color-primary;
+//       color: $color-second;
+//       &:hover {
+//         background: $color-second;
+//         color: $color-primary;
+//         cursor: pointer;
+//       }
+//     }
+//   }
+// }
