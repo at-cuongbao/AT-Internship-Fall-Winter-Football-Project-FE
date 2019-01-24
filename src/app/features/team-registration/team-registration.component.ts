@@ -3,7 +3,7 @@ import { NgForm, NgModel } from '@angular/forms';
 import { Team } from './../../shared/models/team';
 import { TransfereService } from './../../shared/services/transfere.service';
 import { Router } from '@angular/router';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+// import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 
 export interface DialogData {
@@ -26,8 +26,8 @@ export class TeamRegistrationComponent implements OnInit {
   // constructor(private transfere: TransfereService, private router: Router) { }
   constructor(
     private transfere: TransfereService,
-    public dialogRef: MatDialogRef<TeamRegistrationComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData
+    // public dialogRef: MatDialogRef<TeamRegistrationComponent>,
+    // @Inject(MAT_DIALOG_DATA) public data: DialogData
     ) {}
 
   ngOnInit() {
@@ -71,7 +71,7 @@ export class TeamRegistrationComponent implements OnInit {
     console.log(this.team);
     this.transfere.setData(this.team);
     // this.router.navigateByUrl('/tounament-registration');
-    this.dialogRef.close();
+    // this.dialogRef.close();
   }
 
 }

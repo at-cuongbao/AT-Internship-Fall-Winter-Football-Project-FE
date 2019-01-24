@@ -23,16 +23,17 @@ const routes: Routes = [
       {
         path: 'schedules',
         component: ScheduleComponent
+      },
+      
+      {
+        path: 'bracket',
+        component: BracketComponent
       }
     ]
   },
   {
     path: 'login',
     component: LoginComponent
-  },
-  {
-    path: 'bracket',
-    component: BracketComponent
   },
 ];
 

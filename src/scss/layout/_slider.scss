@@ -24,10 +24,10 @@
       display: inline-block;
       transition: background-color 0.6s ease;
     }
+    .active-dot {
+      background-color: #00afd8;
+    }
   }
-}
-.active-dot {
-  background-color: #00afd8;
 }
 @keyframes fade {
   from {opacity: .4} 
