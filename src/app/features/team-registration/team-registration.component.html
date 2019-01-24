@@ -3,29 +3,29 @@
     <div class="row">
       <div class="col-md-12 overwirte">
         <label for="">Name: </label>
-        <input type="text" placeholder="Name" name="name" [(ngModel)]="name">
+        <input type="text" placeholder="Name" name="name" [(ngModel)]="team.name">
       </div>
     </div>
     <div class="row">
       <div class="col-md-12 overwirte">
         <label for="">Nick Name: </label>
-        <input type="text" placeholder="Nick Name" name="nickName" [(ngModel)]="nickName">
+        <input type="text" placeholder="Nick Name" name="nickName" [(ngModel)]="team.nickName">
       </div>
     </div>
     <div class="row">
       <div class="col-md-12 overwirte logo">
         <label for="">Logo: </label>
         <img [src]="imageLogo" alt="">
-        <input type="file" class="file" name="logo"[(ngModel)]="logo" (change)="handleFileInput($event.target.files)">
+        <input type="file" class="file" name="logo"[(ngModel)]="logo" (change)="handleFileInput($event.target.files, eleForm)">
       </div>
     </div>
     <div class="row">
       <div class="col-md-12 overwirte cover">
         <label for="">Cover: </label>
         <img class="cover" [src]="imageCover" alt="">
-        <input type="file" name="cover" [(ngModel)]="cover" (change)="handleFileInput2($event.target.files)">
+        <input type="file" name="cover" [(ngModel)]="cover" (change)="handleFileInput2($event.target.files, eleForm)">
       </div>
     </div>
-    <button>Add Team</button>
+    <button [mat-dialog-close]="team">Add Team</button>
   </form>
 </div>

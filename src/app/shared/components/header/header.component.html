@@ -1,4 +1,4 @@
-<header id="header" class="header clearfix">
+<!-- <header id="header" class="header clearfix">
   <div class="logo pull-left">
     <a routerLink="/">LOGO</a>
   </div>
@@ -6,7 +6,6 @@
     <a *ngIf="!auth.isLoggedIn()" class="menu-link" routerLink="/login">
       <fa-icon [icon]="['fas', 'sign-in-alt']"></fa-icon> Login
     </a>
-
     <button *ngIf="auth.isLoggedIn()" class="menu-link menu-link-dropdown" mat-icon-button [matMenuTriggerFor]="menu">
       <mat-icon>more_vert</mat-icon>
     </button>
@@ -35,5 +34,65 @@
         <fa-icon [icon]="['fas', 'search']"></fa-icon>
       </button>
     </form>
+  </div>
+</header> -->
+
+<header class="header-nav sticky">
+  <div class="header-wrap container">
+    <!-- <ul class="top-nav clearfix">
+      <li class="social-item">
+        <a class="" href="">
+          <fa-icon [icon]="['fab', 'facebook']"></fa-icon>
+        </a>
+      </li>
+      <li class="social-item">
+        <a class="" href="">
+          <fa-icon [icon]="['fab', 'facebook']"></fa-icon>
+        </a>
+      </li>
+      <li class="social-item">
+        <a class="" href="">
+          <fa-icon [icon]="['fab', 'facebook']"></fa-icon>
+        </a>
+      </li>
+      <li class="social-item">
+        <a class="" href="">
+          <fa-icon [icon]="['fab', 'facebook']"></fa-icon>
+        </a>
+      </li>
+      <li class="social-item">
+        <a class="" href="">
+          <fa-icon [icon]="['fab', 'facebook']"></fa-icon>
+        </a>
+      </li>
+      <li class="social-item">
+        <a class="" href="">
+          <fa-icon [icon]="['fab', 'facebook']"></fa-icon>
+        </a>
+      </li>
+    </ul> -->
+    <div id="bottom-nav" class="bottom-nav clearfix">
+      <a class="bottom-nav-left pull-left">
+        <img src="../../../../assets/images/logo-img.png">
+        <span>Sport<em>.ak</em></span>
+      </a>
+      <div [ngClass]="{'responsive': isClick}" class="bottom-nav-right pull-right">
+        <a href="#home" class="active">Home</a>
+        <a href="#news">News</a>
+        <a href="#contact">Contact</a>
+        <div class="dropdown clearfix">
+          <button class="dropbtn">Dropdown
+            <fa-icon [icon]="['fas', 'caret-down']"></fa-icon>
+          </button>
+          <div class="dropdown-content">
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+          </div>
+        </div>
+        <a href="#about">About</a>
+        <a class="icon" (click)="createResponsive()">&#9776;</a>
+      </div>
+    </div>
   </div>
 </header>

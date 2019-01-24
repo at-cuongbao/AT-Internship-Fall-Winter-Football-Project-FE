@@ -6,6 +6,7 @@ import { BracketComponent } from './features/bracket/bracket.component';
 import { FeaturesComponent } from './features/features.component';
 import { TournamentRegistrationComponent } from './features/tournament-registration/tournament-registration.component';
 import { GuessComponent } from './features/guess/guess.component';
+import { PredictionComponent} from './features/prediction/prediction.component';
 
 const routes: Routes = [
   {
@@ -17,8 +18,8 @@ const routes: Routes = [
         component: TournamentRegistrationComponent
       },
       {
-        path: 'guess',
-        component: GuessComponent
+        path: 'prediction',
+        component: PredictionComponent
       },
     ]
   },

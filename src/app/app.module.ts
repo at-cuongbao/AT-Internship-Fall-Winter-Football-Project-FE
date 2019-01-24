@@ -5,12 +5,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faSearch, faSignInAlt, faEnvelope, faPlusCircle } from '@fortawesome/free-solid-svg-icons';
-import { faFacebook, faTwitter, faGooglePlus } from '@fortawesome/free-brands-svg-icons';
+import { faSearch, faSignInAlt, faEnvelope, faPlusCircle, faCaretDown } from '@fortawesome/free-solid-svg-icons';
+import { faFacebook, faTwitter, faGooglePlus, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { BannerComponent } from './shared/components/banner/banner.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 import { HeaderComponent } from './shared/components/header/header.component';
@@ -22,7 +21,8 @@ import { TournamentRegistrationComponent } from './features/tournament-registrat
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
-import { GuessComponent } from './features/guess/guess.component';
+import { PredictionComponent } from './features/prediction/prediction.component';
+import { SliderComponent } from './shared/components/slider/slider.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -31,7 +31,6 @@ export function tokenGetter() {
 @NgModule({
   declarations: [
     AppComponent,
-    BannerComponent,
     FooterComponent,
     SidebarComponent,
     HeaderComponent,
@@ -40,7 +39,8 @@ export function tokenGetter() {
     BracketComponent,
     FeaturesComponent,
     TournamentRegistrationComponent,
-    GuessComponent
+    PredictionComponent,
+    SliderComponent
   ],
   imports: [
     BrowserModule,
@@ -65,6 +65,6 @@ export function tokenGetter() {
 export class AppModule { 
   constructor() {
     // Add an icon to the library for convenient access in other components.
-    library.add(faSearch, faSignInAlt, faEnvelope, faFacebook, faTwitter, faGooglePlus, faPlusCircle);
+    library.add(faSearch, faSignInAlt, faEnvelope, faFacebook, faTwitter, faGooglePlus, faPlusCircle, faInstagram, faCaretDown);
   }
 }

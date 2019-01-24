@@ -1,0 +1,24 @@
+<div class="schedule">
+  <section *ngFor="let item of schedules">
+    <header class="feature-title">
+      <h4>Group {{item.group}}</h4>
+    </header>
+    <table>
+      <thead>
+        <tr>
+          <!-- <th>Bảng</th> -->
+          <th>Ngày thi đấu</th>
+          <th>Team 1</th>
+          <th>Team 2</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ item.matchDate }}</td>
+          <td>{{ item.firstTeam.name }}</td>
+          <td>{{ item.secondTeam.name }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>
