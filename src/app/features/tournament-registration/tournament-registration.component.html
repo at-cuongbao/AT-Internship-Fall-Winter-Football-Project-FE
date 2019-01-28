@@ -1,71 +1,84 @@
-<div class="register">
-  <div class="heading">
-    <p><b>Đăng ký giải đấu</b></p>
-  </div>
-  <form class="register-form" #elmForm="ngForm" (ngSubmit)="submit(elmForm)">
-    <div class="form-group">
-      <label class="content">Tên giải đấu</label>
-      <input class="form-inline" type="text" name="name" ngModel #name="ngModel"  required minlength="5" />
-      <div *ngIf="name.invalid && (name.dirty || name.touched)"
-      class="alert form-inline">
-        <p *ngIf="name.errors.required">
-          (*)Name is required
-        </p>
-        <p *ngIf="name.errors.minlength">
-          (*)Name must be at least 5 characters long
-        </p>
-      </div>
+<div class="tournament-register" [style.backgroundImage]="'url('+ imageSource +')'">
+  <div class="register">
+    <div class="heading">
+      <p><b> Create Tournament Register</b></p>
     </div>
-    <div class="form-group">
-      <label class="content">Ngày bắt đầu</label> 
-      <input class="form-inline" type="datetime" name="start" ngModel #start="ngModel" required>
-      <p class="alert form-inline" *ngIf="start.errors?.required">(*)Start day is required</p>
-    </div>
-    <div class="form-group">
-      <label class="content">Ngày kết thúc</label> 
-      <input class="form-inline" type="datetime" name="finish" ngModel #finish="ngModel" required>
-      <p class="alert form-inline" *ngIf="finish.errors?.required">(*)Finish day is required</p>
-    </div>
-    <div class="form-group">
-      <label class="content">Số bảng đấu</label> 
-      <input class="form-inline" type="number" name="number" ngModel #number="ngModel" required (ngModelChange)="convert(number);">
-      <p class="alert form-inline" *ngIf="number.errors?.required">(*)Number is required</p>
-    </div>
-    <div class="form-group" *ngIf="number.value > 0">
-      <table class="tb-league" *ngFor="let item of a, let i of index, let team of teams">
-        <tr class="row">
-          <th>
-            <p>Bảng {{ bang[i] }}</p>
-            <!-- <a routerLink="team-registration"><fa-icon [icon]="['fas', 'plus-circle']"></fa-icon></a> -->
-            <a mat-button (click)="openDialog()"><fa-icon [icon]="['fas', 'plus-circle']"></fa-icon></a>
-          </th>
-        </tr>
-        <tr class="member-team">
-          <td>
-            1
-            <label *ngIf="teams">{{ team }}</label>
-            <p *ngIf="team">
-            <label  type="text" placeholder="Name" name="name" [(ngModel)]="team.name"></label>
+    <form class="register-form" #elmForm="ngForm" (ngSubmit)="submit(elmForm)">
+      <div class="form-group">
+        <input class="form-inline" type="text" name="tournamentName" ngModel #tournamentName="ngModel"  required minlength="5" placeholder="Tournament Name"/>
+        <div *ngIf="tournamentName.invalid && (tournamentName.dirty || tournamentName.touched)"
+        class="alert">
+          <p *ngIf="tournamentName.errors.required">
+            (*)Tournament name is required
           </p>
-            <img *ngIf="teams.logo" [src]="team.logo" alt="" [(ngModel)]="team.logo">
-          </td>
-        </tr>
-        <tr class="member-team">
-          <td>2</td>
-        </tr>
-        <tr class="member-team">
-          <td>3</td>
-        </tr>
-        <tr class="member-team">
-          <td>4</td>
-        </tr>
-      </table>
-    </div>
-    <div class="form-group">
-      <label class="content">Mô tả</label> 
-      <textarea class="form-inline" type="text" name="infor" ngModel #infor="ngModel" required></textarea>
-      <p class="alert form-inline" *ngIf="infor.errors?.required">(*)Informarion is required</p>
-    </div>
-    <button class="btn-form">Send Application</button>
-  </form>
+          <p *ngIf="tournamentName.errors.minlength">
+            (*)Tournament name must be at least 5 characters long
+          </p>
+        </div>
+      </div>
+      <div class="form-group">
+        <input class="form-inline" type="datetime" name="start" ngModel #start="ngModel" required placeholder="Start Day">
+        <div *ngIf="start.invalid && (start.dirty || start.touched)"
+        class="alert">
+          <p *ngIf="start.errors.required">
+            (*)Start day is required
+          </p>
+        </div>
+      </div>
+      <div class="form-group">
+        <input class="form-inline" type="datetime" name="finish" ngModel #finish="ngModel" required placeholder="Finish Day">
+        <div *ngIf="finish.invalid && (finish.dirty || finish.touched)"
+        class="alert">
+          <p *ngIf="finish.errors.required">
+            (*)Finish day is required
+          </p>
+        </div>
+      </div>
+      <div class="form-group"> 
+        <input class="form-inline" type="number" name="number" ngModel #number="ngModel" required (ngModelChange)="convert(number);" placeholder="Group Number" min="1">
+        <div *ngIf="number.invalid && (number.dirty || number.touched)"
+        class="alert">
+          <p *ngIf="number.errors.required">
+            (*)Number team is required
+          </p>
+          <p *ngIf="number.errors.min">
+            (*)Number team should bigger 0  {{number.errors | json}}
+          </p>
+        </div>
+      </div>
+      <div class="form-group" *ngIf="number.value > 0">
+        <table class="tb-league" *ngFor="let item of a, let i of index, let team of teams">
+          <tr class="row">
+            <th>
+              <p>Bảng {{ bang[i] }}</p>
+              <!-- <a routerLink="team-registration"><fa-icon [icon]="['fas', 'plus-circle']"></fa-icon></a> -->
+              <a href="#"><fa-icon [icon]="['fas', 'plus-circle']"></fa-icon></a>
+            </th>
+          </tr>
+          <tr class="member-team">
+            <td>1</td>
+          </tr>
+          <tr class="member-team">
+            <td>2</td>
+          </tr>
+          <tr class="member-team">
+            <td>3</td>
+          </tr>
+          <tr class="member-team">
+            <td>4</td>
+          </tr>
+        </table>
+      </div>
+      <div class="form-group"> 
+        <textarea class="form-inline" type="text" name="infor" ngModel #infor="ngModel" required placeholder="Short Description Of Team"></textarea>
+        <div *ngIf="infor.invalid && (infor.dirty || infor.touched)"
+        class="alert">
+          <p *ngIf="infor.errors.required">
+            (*)Informarion is required
+          </p>
+        </div>
+      </div>
+      <button class="btn-form">Send Application</button>
+    </form>
+  </div>
 </div>

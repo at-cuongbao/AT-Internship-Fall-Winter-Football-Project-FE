@@ -16,7 +16,6 @@ export interface DialogData {
   styleUrls: ['./team-registration.component.scss']
 })
 export class TeamRegistrationComponent implements OnInit {
-
   imageUrl ='assets/images/default-image.png';
   imageLogo = this.imageUrl;
   imageCover = this.imageUrl;
