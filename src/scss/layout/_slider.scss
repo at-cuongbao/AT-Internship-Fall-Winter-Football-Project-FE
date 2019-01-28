@@ -7,8 +7,7 @@
     }
   }
   .fade {
-    animation-name: fade;
-    animation-duration: 1.5s;
+    animation: fade 1.5s;
   }
   .dot-wrap {
     position: absolute;
@@ -25,7 +24,7 @@
       transition: background-color 0.6s ease;
     }
     .active-dot {
-      background-color: #00afd8;
+      background-color: $active-dot;
     }
   }
 }

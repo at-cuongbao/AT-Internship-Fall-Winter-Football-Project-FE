@@ -11,7 +11,8 @@
             <span>{{ match.firstTeam.score }}</span>
           </div>
           <div class="panel-heading clearfix">
-            <img *ngIf="match.secondTeam.logo" [src]="match.secondTeam.logo" alt="" width="60" height="60">
+            <img *ngIf="match.secondTeam.logo" [src]="match.secondTeam.logo || '../../../assets/images/logo-img.png'" alt="" width="60"
+              height="60">
             <span>{{ match.secondTeam.code || '?' }}</span>
             <span>{{ match.secondTeam.score || '?' }}</span>
           </div>
@@ -75,7 +76,8 @@
             <span>{{ match.firstTeam.score }}</span>
           </div>
           <div class="panel-heading right-postion clearfix">
-            <img *ngIf="match.secondTeam.logo" [src]="match.secondTeam.logo" alt="" width="60" height="60">
+            <img *ngIf="match.secondTeam.logo" [src]="match.secondTeam.logo || '../../../assets/images/logo-img.png'" alt="" width="60"
+              height="60">
             <span>{{ match.secondTeam.code || '?' }}</span>
             <span>{{ match.secondTeam.score || '?' }}</span>
           </div>
@@ -104,7 +106,8 @@
             <span>{{ match.firstTeam.score }}</span>
           </div>
           <div class="panel-heading right-postion clearfix">
-            <img *ngIf="match.secondTeam.logo" [src]="match.secondTeam.logo" alt="" width="60" height="60">
+            <img *ngIf="match.secondTeam.logo" [src]="match.secondTeam.logo || '../../../assets/images/logo-img.png'" alt="" width="60"
+              height="60">
             <span>{{ match.secondTeam.code || '?' }}</span>
             <span>{{ match.secondTeam.score || '?' }}</span>
           </div>
@@ -135,7 +138,8 @@
             <span>{{ match.firstTeam.score }}</span>
           </div>
           <div class="panel-heading clearfix">
-            <img *ngIf="match.secondTeam.logo" [src]="match.secondTeam.logo" alt="" width="60" height="60">
+            <img *ngIf="match.secondTeam.logo" [src]="match.secondTeam.logo || '../../../assets/images/logo-img.png'" alt="" width="60"
+              height="60">
             <span>{{ match.secondTeam.code || '?' }}</span>
             <span>{{ match.secondTeam.score || '?' }}</span>
           </div>
@@ -164,7 +168,8 @@
             <span>{{ match.firstTeam.score }}</span>
           </div>
           <div class="panel-heading clearfix">
-            <img *ngIf="match.secondTeam.logo" [src]="match.secondTeam.logo" alt="" width="60" height="60">
+            <img *ngIf="match.secondTeam.logo" [src]="match.secondTeam.logo || '../../../assets/images/logo-img.png'" alt="" width="60"
+              height="60">
             <span>{{ match.secondTeam.code || '?' }}</span>
             <span>{{ match.secondTeam.score || '?' }}</span>
           </div>
@@ -193,7 +198,8 @@
             <span>{{ match.firstTeam.score }}</span>
           </div>
           <div class="panel-heading right-postion clearfix">
-            <img *ngIf="match.secondTeam.logo" [src]="match.secondTeam.logo" alt="" width="60" height="60">
+            <img *ngIf="match.secondTeam.logo" [src]="match.secondTeam.logo || '../../../assets/images/logo-img.png'" alt="" width="60"
+              height="60">
             <span>{{ match.secondTeam.code || '?' }}</span>
             <span>{{ match.secondTeam.score || '?' }}</span>
           </div>
@@ -214,17 +220,19 @@
         </div>
       </div>
     </div>
-    <div class="row">
-      <div *ngIf="winner" class="col-3 col-offset-7">
-        <div class="panel panel-default panel-winner">
-          <img *ngIf="winner.logo" [src]="winner.logo" alt="">
-          <P>{{winner.code}}</P>
-        </div>
-      </div>
+    <div *ngIf="!isEmpty(winner)" class="row">
       <div class="col-3 col-offset-7">
         <div class="panel panel-default panel-winner">
-          <img [src]="winner.logo || '../../../assets/images/logo-img.png'" alt="">
-          <P>WINNER</P>
+          <img *ngIf="winner.logo" [src]="winner.logo || '../../../assets/images/logo-img.png'" alt="">
+          <P>{{winner.code || '?'}}</P>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="isEmpty(winner)" class="row">
+      <div class="col-3 col-offset-7">
+        <div class="panel panel-default panel-winner">
+          <img src="../../../assets/images/logo-img.png" alt="">
+          <P>WINNER ?</P>
         </div>
       </div>
     </div>

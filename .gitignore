@@ -4,7 +4,30 @@
 /dist
 /tmp
 /out-tsc
+
+/src/app/features/features.component.spec.ts
+/src/app/features/bracket/bracket.component.spec.ts
+/src/app/features/home/home.component.spec.ts
+/src/app/features/login/login.component.spec.ts
+/src/app/features/register/register.component.spec.ts
+/src/app/features/schedule/schedule.component.spec.ts
+/src/app/features/team-registration/team-registration.component.spec.ts
+/src/app/features/tournament-registration/tournament-registration.component.spec.ts
+
+/src/app/shared/components/footer/footer.component.spec.ts
+/src/app/shared/components/header/header.component.spec.ts
+/src/app/shared/components/sidebar/sidebar.component.spec.ts
+/src/app/shared/components/slider/slider.component.spec.ts
+
+/src/app/shared/services/api.service.spec.ts
+/src/app/shared/services/auth.service.spec.ts
+/src/app/shared/services/dialog.service.spec.ts
+/src/app/shared/services/interaction.service.spec.ts
 /src/app/shared/services/match.service.spec.ts
+/src/app/shared/services/schedule.service.spec.ts
+/src/app/shared/services/transfere.service.spec.ts
+
+/src/app/app.component.spec.ts
 
 # dependencies
 /node_modules
