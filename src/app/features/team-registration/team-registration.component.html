@@ -1,26 +1,26 @@
 <div class="container">
   <form #eleForm="ngForm" (ngSubmit)="submit(eleForm)">
     <div class="row">
-      <div class="col-md-12 overwirte">
+      <div class="col-md-12 unfloat">
         <label for="">Name: </label>
         <input type="text" placeholder="Name" name="name" [(ngModel)]="team.name">
       </div>
     </div>
     <div class="row">
-      <div class="col-md-12 overwirte">
+      <div class="col-md-12 unfloat">
         <label for="">Nick Name: </label>
         <input type="text" placeholder="Nick Name" name="nickName" [(ngModel)]="team.nickName">
       </div>
     </div>
     <div class="row">
-      <div class="col-md-12 overwirte logo">
+      <div class="col-md-12 unfloat logo">
         <label for="">Logo: </label>
         <img [src]="imageLogo" alt="">
         <input type="file" class="file" name="logo"[(ngModel)]="logo" (change)="handleFileInput($event.target.files, eleForm)">
       </div>
     </div>
     <div class="row">
-      <div class="col-md-12 overwirte cover">
+      <div class="col-md-12 unfloat cover">
         <label for="">Cover: </label>
         <img class="cover" [src]="imageCover" alt="">
         <input type="file" name="cover" [(ngModel)]="cover" (change)="handleFileInput2($event.target.files, eleForm)">
