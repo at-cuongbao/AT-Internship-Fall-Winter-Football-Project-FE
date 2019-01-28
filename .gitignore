@@ -4,6 +4,7 @@
 /dist
 /tmp
 /out-tsc
+/src/app/shared/services/match.service.spec.ts
 
 # dependencies
 /node_modules
