@@ -3,6 +3,7 @@ import { NgForm, NgModel } from '@angular/forms';
 import { Team } from './../../shared/models/team';
 import { TransfereService } from './../../shared/services/transfere.service';
 import { Router } from '@angular/router';
+
 // import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 
@@ -19,11 +20,13 @@ export class TeamRegistrationComponent implements OnInit {
   imageUrl ='assets/images/default-image.png';
   imageLogo = this.imageUrl;
   imageCover = this.imageUrl;
-  fileToUpload: File = null;
+  fileToUploadLogo: File = null;
+  fileToUploadCover: File = null;
   team: Team = new Team();
 
   // constructor(private transfere: TransfereService, private router: Router) { }
   constructor(
+    // private api: ApiService,
     private transfere: TransfereService,
     // public dialogRef: MatDialogRef<TeamRegistrationComponent>,
     // @Inject(MAT_DIALOG_DATA) public data: DialogData
@@ -33,40 +36,33 @@ export class TeamRegistrationComponent implements OnInit {
     
   }
 
-  handleFileInput(file: FileList, f: NgForm) {
-    this.fileToUpload = file.item(0);
+  handleFileInput(file: FileList) {
+    this.fileToUploadLogo = file.item(0);
 
     var reader = new FileReader();
     reader.onload = (event: any) => {
       this.imageLogo = event.target.result;
     }
 
-    this.team.logo = f.control.value.logo;
-
-    reader.readAsDataURL(this.fileToUpload);
+    reader.readAsDataURL(this.fileToUploadLogo);
   }
 
-  handleFileInput2(file: FileList, f: NgForm) {
-    this.fileToUpload = file.item(0);
+  handleFileInput2(file: FileList) {
+    this.fileToUploadCover = file.item(0);
 
     var reader = new FileReader();
     reader.onload = (event: any) => {
       this.imageCover = event.target.result;
     }
     
-    this.team.cover = f.control.value.cover;
-
-    reader.readAsDataURL(this.fileToUpload);
+    reader.readAsDataURL(this.fileToUploadCover);
   }
 
   onSubmit(f: NgForm) {
-  }
-
-  submit(f: NgForm) {
     this.team.name = f.control.value.name;
     this.team.nickName = f.control.value.nickName;
-    this.team.logo = f.control.value.logo;
-    this.team.cover = f.control.value.cover;
+    this.team.logo = this.fileToUploadLogo ? this.fileToUploadLogo.name : '';
+    this.team.cover = this.fileToUploadCover ? this.fileToUploadCover.name : '';
     console.log(this.team);
     this.transfere.setData(this.team);
     // this.router.navigateByUrl('/tounament-registration');

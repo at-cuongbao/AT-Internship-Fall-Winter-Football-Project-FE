@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { NgModel, NgForm } from '@angular/forms';
 import { Team } from 'src/app/shared/models/team';
+import { TournamentService } from 'src/app/shared/services/tournament.service';
 
 @Component({
   selector: 'app-tournament-registration',
@@ -10,6 +11,8 @@ import { Team } from 'src/app/shared/models/team';
 export class TournamentRegistrationComponent implements OnInit {
   imageSource = '../../../assets/images/anhbongda.jpg';
   teams: Team[] = [];
+  imageLogo = [];
+
   name = '';
   number = '';
   a = [];
