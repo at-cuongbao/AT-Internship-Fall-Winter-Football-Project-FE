@@ -1,11 +1,11 @@
-<div class="container">
+<div class="prediction-page">
   <form class="prediction-form" #elmForm="ngForm" (ngSubmit)="submit(elmForm)">
     <div class="prediction-heading">
-      <p><b>DỰ ĐOÁN TRẬN ĐẤU: Liverpool - Leicester City</b></p>
+      <p><b>Predict The Match: Liverpool - Leicester City</b></p>
     </div>
     <div class="score-avatar" [style.backgroundImage]="'url('+ imageSource +')'">
       <div class="info-match">
-        <div class="info-match-tour">GIẢI Premier League</div>
+        <div class="info-match-tour">Premier League Tournament</div>
         <div class="info-match-time">03:00, 31/01/2019</div>
       </div>
       <div class="score-prediction">
@@ -22,7 +22,7 @@
           <img src="../../../assets/images/leicester-city.png" alt="logo Leicester-city" class="logo_team-2">
           <p>Leicester City</p>
         </div>
-        <button class="btn-prediction">Dự đoán</button>
+        <button class="btn-prediction">Submit</button>
       </div>
     </div>
   </form>

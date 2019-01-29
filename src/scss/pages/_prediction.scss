@@ -1,6 +1,5 @@
-.container {
+.prediction-page {
   font-weight: 700;
-  padding: 64px;
   .prediction-heading {
     padding: 10px 0 32px 0;
     font-size: 32px;
@@ -8,7 +7,7 @@
   }
   .score-avatar {
     background-size: 100% 100%;
-    color: #fff;
+    color: $color-white;
     height: 230px;
     padding-bottom: 10px;
     width: 100%;
@@ -71,7 +70,7 @@
     .btn-prediction {
       line-height: 30px;
       font-family: inherit;
-      color: white;
+      color: $color-white;
       background: #0e7925;
       outline: none;
       border: none;
