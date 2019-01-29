@@ -17,20 +17,17 @@ export class TournamentRegistrationComponent implements OnInit {
   phone = '';
   information = '';
   isShowForm = false;
-  bang = ["A", "B", "C", "D", "E", "F", "H", "G"];
+  table = ["A", "B", "C", "D", "E", "F", "H", "G"];
 
   constructor() { }
 
-  ngOnInit() {
-
-  }
-
+  ngOnInit() {}
+  
   convert(number) {
     this.a = [];
     for (let i = 0; i < number.value; i++) {
       this.a.push(i);
     }
   }
-
   submit(f: NgForm) {}
 }
