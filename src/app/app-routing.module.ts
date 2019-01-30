@@ -25,7 +25,6 @@ const routes: Routes = [
         path: 'schedules',
         component: ScheduleComponent
       },
-      
       {
         path: 'bracket',
         component: BracketComponent

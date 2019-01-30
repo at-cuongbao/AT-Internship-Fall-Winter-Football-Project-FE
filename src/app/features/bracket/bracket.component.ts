@@ -2,18 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { MatchService } from 'src/app/shared/services/match.service';
 
 const POSITION = {
-  ck: {
-    label: 'ck',
-    length: 2
-  },
-  bk: {
-    label: 'bk',
-    length: 4
-  },
-  tk: {
-    label: 'tk',
-    length: 8
-  },
+  ck: 2,
+  bk: 4,
+  tk: 8
 }
 
 @Component({
@@ -53,14 +44,13 @@ export class BracketComponent implements OnInit {
             code: team ? team.code : '?',
             score: team && team.score ? team.score : '?'
           });
-        } else {
-          this.bracketView.push({
-            label: POSITION[key].label,
-            position: i,
-            code: '?',
-            score: '?'
-          });
         }
+        this.bracketView.push({
+          label: POSITION[key].label,
+          position: i,
+          code: '?',
+          score: '?'
+        });
       }
     });
   }
@@ -74,8 +64,9 @@ export class BracketComponent implements OnInit {
 
   isEmpty(obj) {
     for (var key in obj) {
-      if (obj.hasOwnProperty(key))
+      if (obj.hasOwnProperty(key)) {
         return false;
+      }
     }
     return true;
   }

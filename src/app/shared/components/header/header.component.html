@@ -6,20 +6,20 @@
         <span class="bottom-nav-brand">Sport<em>.clc</em></span>
       </a>
       <div [ngClass]="{'responsive': isClick}" class="bottom-nav-right pull-right">
-        <a routerLink="/news" class="main-link" href="#news">News</a>
-        <a routerLink="/match" class="main-link" href="#contact">Match</a>
-        <a routerLink="/bracket" class="main-link" href="#home" class="active">Bracket</a>
+        <a routerLink="/news" class="main-link">News</a>
+        <a routerLink="/match" class="main-link">Match</a>
+        <a routerLink="/bracket" class="main-link" class="active">Bracket</a>
         <div *ngIf="auth.isLoggedIn()" class="dropdown clearfix">
           <button class="dropbtn">{{ auth.currentUser.name || 'Username' }}
             <span class="fa fa-caret-down"></span>
           </button>
           <div class="dropdown-content">
-            <a class="sub-link" href="#">Link 2</a>
-            <a class="sub-link" href="#">Link 3</a>
-            <a (click)="logout()" class="sub-link" href="#">Log out</a>
+            <a class="sub-link">Link 2</a>
+            <a class="sub-link">Link 3</a>
+            <a (click)="logout()" class="sub-link">Log out</a>
           </div>
         </div>
-        <a routerLink="/login" *ngIf="!auth.isLoggedIn()" class="main-link" href="#about">Log in</a>
+        <a routerLink="/login" *ngIf="!auth.isLoggedIn()" class="main-link">Log in</a>
         <a class="icon" (click)="createResponsive()">&#9776;</a>
       </div>
     </div>
