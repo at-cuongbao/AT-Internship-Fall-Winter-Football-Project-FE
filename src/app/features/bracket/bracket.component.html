@@ -1,176 +1,140 @@
-<div class="bracket-page">
-  <div class="row row-relative">
-    <div class="col-3">
-      <div class="panel panel-default">
-        <div class="panel-top">
-          Panel content
-        </div>
-        <div class="panel-bottom">
-          Panel content
+<div class="row bracket-wrapper">
+  <p>Knockout stage: {{ tournamentName }}</p>
+  <div class="col-12 auto-justify">
+    <div class="row">
+      <div class="col-3 col-child-position col-offset-5">
+        <div class="panel panel-default panel-center">
+          <img src="../../../assets/images/50823683_389556591806206_1449730283363368960_n.png" alt="" width="250" height="250">
         </div>
       </div>
     </div>
-    <div class="col-3">
-      <div class="panel panel-default content-child">
-        <div class="panel-top">
-          Panel content
+    <div class="row">
+      <ng-container *ngFor="let team of bracketView">
+        <div class="col-1">
+          <div class="panel panel-default ">
+            <div class="panel-heading clearfix">
+              <img src="../../../assets/images/logo-img.png" alt="" width="60" height="60">
+              <span>{{ team.code }}</span>
+              <span>{{ team.score }}</span>
+            </div>
+          </div>
         </div>
-        <div class="panel-bottom">
-          Panel content
+      </ng-container>
+    </div>
+    <!-- <div class="row">
+      <div class="col-1">
+        <div class="panel panel-default ">
+          <div class="panel-heading clearfix">
+            <img [src]="'../../../assets/images/logo-img.png'" alt="" width="60" height="60">
+            <span>{{ '?' }}</span>
+            <span>{{ '?' }}</span>
+          </div>
+          <div class="panel-heading clearfix">
+            <img [src]="'../../../assets/images/logo-img.png'" alt="" width="60" height="60">
+            <span>{{ '?' }}</span>
+            <span>{{ '?' }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-1 col-child-position">
+        <div class="panel panel-default ">
+          <div class="panel-heading clearfix">
+            <img [src]="'../../../assets/images/logo-img.png'" alt="" width="60" height="60">
+            <span>{{ '?' }}</span>
+            <span>{{ '?' }}</span>
+          </div>
+          <div class="panel-heading clearfix">
+            <img [src]="'../../../assets/images/logo-img.png'" alt="" width="60" height="60">
+            <span>{{ '?' }}</span>
+            <span>{{ '?' }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-3 col-child-position col-offset-1">
+        <div class="panel panel-default panel-center">
+          <img src="../../../assets/images/50823683_389556591806206_1449730283363368960_n.png" alt="" width="250" height="250">
+        </div>
+      </div>
+      <div class="col-1 col-child-position col-offset-1">
+        <div class="panel panel-default ">
+          <div class="panel-heading right-postion clearfix">
+            <img [src]="'../../../assets/images/logo-img.png'" alt="" width="60" height="60">
+            <span>{{ '?' }}</span>
+            <span>{{ '?' }}</span>
+          </div>
+          <div class="panel-heading right-postion clearfix">
+            <img [src]="'../../../assets/images/logo-img.png'" alt="" width="60" height="60">
+            <span>{{ '?' }}</span>
+            <span>{{ '?' }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-1">
+        <div class="panel panel-default ">
+          <div class="panel-heading right-postion clearfix">
+            <img [src]="'../../../assets/images/logo-img.png'" alt="" width="60" height="60">
+            <span>{{ '?' }}</span>
+            <span>{{ '?' }}</span>
+          </div>
+          <div class="panel-heading right-postion clearfix">
+            <img [src]="'../../../assets/images/logo-img.png'" alt="" width="60" height="60">
+            <span>{{ '?' }}</span>
+            <span>{{ '?' }}</span>
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-3 bracket-line bracket-line-1"></div>
-  </div>
-  <div class="row row-relative">
-    <div class="col-3">
-      <div class="panel panel-default">
-        <div class="panel-top">
-          Panel content
+    <div class="row">
+      <div class="col-1">
+        <div class="panel panel-default ">
+          <div class="panel-heading clearfix">
+            <img [src]="'../../../assets/images/logo-img.png'" alt="" width="60" height="60">
+            <span>{{ '?' }}</span>
+            <span>{{ '?' }}</span>
+          </div>
+          <div class="panel-heading clearfix">
+            <img [src]="'../../../assets/images/logo-img.png'" alt="" width="60" height="60">
+            <span>{{ '?' }}</span>
+            <span>{{ '?' }}</span>
+          </div>
         </div>
-        <div class="panel-bottom">
-          Panel content
+      </div>
+      <div class="col-1 col-offset-3 col-offset-6">
+        <div class="panel panel-default">
+          <div class="panel-heading clearfix">
+            <img [src]="'../../../assets/images/logo-img.png'" alt="" width="60" height="60">
+            <span>{{ '?' }}</span>
+            <span>{{ '?' }}</span>
+          </div>
+          <div class="panel-heading clearfix">
+            <img [src]="'../../../assets/images/logo-img.png'" alt="" width="60" height="60">
+            <span>{{ '?' }}</span>
+            <span>{{ '?' }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-1 col-offset-5">
+        <div class="panel panel-default ">
+          <div class="panel-heading right-postion clearfix">
+            <img [src]="'../../../assets/images/logo-img.png'" alt="" width="60" height="60">
+            <span>{{ '?' }}</span>
+            <span>{{ '?' }}</span>
+          </div>
+          <div class="panel-heading right-postion clearfix">
+            <img [src]="'../../../assets/images/logo-img.png'" alt="" width="60" height="60">
+            <span>{{ '?' }}</span>
+            <span>{{ '?' }}</span>
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-3 col-unset-3">
-      <div class="panel panel-default content-child">
-        <div class="panel-top">
-          Panel content
-        </div>
-        <div class="panel-bottom">
-          Panel content
+    <div class="row">
+      <div class="col-3 col-offset-7">
+        <div class="panel panel-default panel-winner">
+          <img [src]="'../../../assets/images/logo-img.png'" alt="">
+          <P>{{ winner.code || '?' }}</P>
         </div>
       </div>
-    </div>
-    <div class="bracket-line bracket-line-2"></div>
-  </div>
-  <div class="row row-relative">
-    <div class="col-3">
-      <div class="panel panel-default">
-        <div class="panel-top">
-          Panel content
-        </div>
-        <div class="panel-bottom">
-          Panel content
-        </div>
-      </div>
-    </div>
-    <div class="col-3">
-      <div class="panel panel-default content-child">
-        <div class="panel-top">
-          Panel content
-        </div>
-        <div class="panel-bottom">
-          Panel content
-        </div>
-      </div>
-    </div>
-    <div class="col-3 bracket-line bracket-line-1"></div>
-  </div>
-  <div class="row row-relative">
-    <div class="col-3">
-      <div class="panel panel-default">
-        <div class="panel-top">
-          <span class="panel-team">Panel content</span>
-          <span class="panel-score">?</span>
-        </div>
-        <div class="panel-bottom">
-          Panel content
-        </div>
-      </div>
-    </div>
-    <div class="col-3 col-unset-6">
-      <div class="panel panel-default content-child">
-        <div class="panel-top">
-          Panel content
-        </div>
-        <div class="panel-bottom">
-          Panel content
-        </div>
-      </div>
-    </div>
-    <div class="bracket-line bracket-line-3"></div>
-  </div>
-  <div class="row row-relative">
-    <div class="col-3">
-      <div class="panel panel-default">
-        <div class="panel-top">
-          Panel content
-        </div>
-        <div class="panel-bottom">
-          Panel content
-        </div>
-      </div>
-    </div>
-    <div class="col-3">
-      <div class="panel panel-default content-child">
-        <div class="panel-top">
-          Panel content
-        </div>
-        <div class="panel-bottom">
-          Panel content
-        </div>
-      </div>
-    </div>
-    <div class="col-3 bracket-line bracket-line-1"></div>
-  </div>
-  <div class="row row-relative">
-    <div class="col-3">
-      <div class="panel panel-default">
-        <div class="panel-top">
-          Panel content
-        </div>
-        <div class="panel-bottom">
-          Panel content
-        </div>
-      </div>
-    </div>
-    <div class="col-3 col-unset-3">
-      <div class="panel panel-default content-child">
-        <div class="panel-top">
-          Panel content
-        </div>
-        <div class="panel-bottom">
-          Panel content
-        </div>
-      </div>
-    </div>
-    <div class="bracket-line bracket-line-2"></div>
-  </div>
-  <div class="row row-relative">
-    <div class="col-3">
-      <div class="panel panel-default">
-        <div class="panel-top">
-          Panel content
-        </div>
-        <div class="panel-bottom">
-          Panel content
-        </div>
-      </div>
-    </div>
-    <div class="col-3">
-      <div class="panel panel-default content-child">
-        <div class="panel-top">
-          Panel content
-        </div>
-        <div class="panel-bottom">
-          Panel content
-        </div>
-      </div>
-    </div>
-    <div class="col-3 bracket-line bracket-line-1"></div>
-  </div>
-  <div class="row row-relative">
-    <div class="col-3">
-      <div class="panel panel-default">
-        <div class="panel-top">
-          Panel content
-        </div>
-        <div class="panel-bottom">
-          Panel content
-        </div>
-      </div>
-    </div>
+    </div> -->
   </div>
 </div>

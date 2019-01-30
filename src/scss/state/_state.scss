@@ -4,6 +4,9 @@
 .pull-right {
   float: right;
 }
+.unfloat {
+  float: none;
+}
 .clearfix {
   @extend %clearfix;
 }

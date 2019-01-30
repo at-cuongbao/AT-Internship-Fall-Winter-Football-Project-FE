@@ -5,6 +5,8 @@
 /tmp
 /out-tsc
 
+*.spec.ts
+
 # dependencies
 /node_modules
 
