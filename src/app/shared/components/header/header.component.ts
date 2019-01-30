@@ -5,9 +5,16 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  isClick = false;
+
+  images = [
+    '../../../../assets/images/main-slider-img.jpg',
+    '../../../../assets/images/main-slider-img1.jpg',
+    '../../../../assets/images/main-slider-img2.jpg'
+  ];
 
   constructor(
     private auth: AuthService,
@@ -15,6 +22,10 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+  }
+
+  createResponsive() {
+    this.isClick = !this.isClick;
   }
 
   logout() {

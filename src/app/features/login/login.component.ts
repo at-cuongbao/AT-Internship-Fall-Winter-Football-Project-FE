@@ -9,7 +9,6 @@ import { AuthService } from '../../shared/services/auth.service';
 })
 export class LoginComponent implements OnInit {
   invalidLogin: boolean;
-
   constructor(
     private router: Router,
     private route: ActivatedRoute,

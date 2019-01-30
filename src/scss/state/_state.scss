@@ -4,6 +4,23 @@
 .pull-right {
   float: right;
 }
+.unfloat {
+  float: none;
+}
 .clearfix {
   @extend %clearfix;
+}
+.alert {
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 0  0 4px 4px;
+  border: 1px solid transparent;
+}
+.alert-danger {
+  color: $color-light-red;
+  background-color: $color-white;
+  border-color: $color-grey;
+}
+.active {
+  color: $color-blue !important;
 }

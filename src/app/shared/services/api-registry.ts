@@ -2,7 +2,8 @@ export const END_POINT = {
   authenticate: 'authenticate',
   users: 'users',
   tournaments: 'tournaments',
-  matchs: 'matchs',
+  matches: 'matches',
   teams: 'teams',
-  schedules: 'schedules'
+  schedules: 'schedules',
+  register: 'register'
 }

@@ -1,0 +1,33 @@
+<div class="card-register">
+  <form class="form-register" #f="ngForm" (ngSubmit)="register(f.value)">
+    <h2 class="form-register-heading">Please insert</h2>
+    <div class="form-group">
+      <label for="inputEmail" class="">Email address</label>
+      <input type="email" id="inputEmail" name="email" #email="ngModel" email minlength="8" ngModel required class="form-control">
+      <div *ngIf="email.invalid && (email.dirty || email.touched)">
+        <p *ngIf="email.errors.required" class="alert alert-danger">Email is required!</p>
+        <p *ngIf="email.errors.email" class="alert alert-danger">Email address in invalid format!</p>
+      </div>
+      <div *ngIf="invalidRegister" class="alert alert-danger">
+        <p>Email already exists!</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputPassword" class="">Password</label>
+      <input type="password" id="inputPassword" name="password" #password="ngModel" minlength="8" required ngModel class="form-control">
+      <div *ngIf="password.invalid && (password.dirty || password.touched)">
+        <p *ngIf="password.errors.required" class="alert alert-danger">Password is required!</p>
+        <p *ngIf="password.errors.minlength" class="alert alert-danger">Password must be at least 8 characters long!</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputPassword" class="">Confirm Password</label>
+      <input type="password" id="inputConfirmPassword" name="confirmPassword" #confirmPassword="ngModel" required
+        ngModel class="form-control">
+      <div *ngIf="password.value !== confirmPassword.value && (confirmPassword.dirty || confirmPassword.touched)">
+        <p class="alert alert-danger">Password does not match the confirmed password!</p>
+      </div>
+    </div>
+    <button class="btn btn-primary btn-block" [disabled]="f.invalid">Register</button>
+  </form>
+</div>

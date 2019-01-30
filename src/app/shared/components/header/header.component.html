@@ -1,39 +1,27 @@
-<header id="header" class="header clearfix">
-  <div class="logo pull-left">
-    <a routerLink="/">LOGO</a>
-  </div>
-  <div class="search-box pull-right">
-    <a *ngIf="!auth.isLoggedIn()" class="menu-link" routerLink="/login">
-      <fa-icon [icon]="['fas', 'sign-in-alt']"></fa-icon> Login
-    </a>
-
-    <button *ngIf="auth.isLoggedIn()" class="menu-link menu-link-dropdown" mat-icon-button [matMenuTriggerFor]="menu">
-      <mat-icon>more_vert</mat-icon>
-    </button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item>
-        <mat-icon>dialpad</mat-icon>
-        <span>Redial</span>
-      </button>
-      <button mat-menu-item disabled>
-        <mat-icon>voicemail</mat-icon>
-        <span>Check voicemail</span>
-      </button>
-      <button (click)="logout()" mat-menu-item>
-        <mat-icon>notifications_off</mat-icon>
-        <span>Log out</span>
-      </button>
-    </mat-menu>
-
-    <ng-container *ngIf="auth.isLoggedIn()">
-      <a class="menu-link">{{ auth.currentUser.name }}</a>
-    </ng-container>
-
-    <form class="search-form" action="">
-      <input class="search-input" type="text" placeholder="Search" name="search">
-      <button class="search-button" type="submit">
-        <fa-icon [icon]="['fas', 'search']"></fa-icon>
-      </button>
-    </form>
+<header class="header sticky">
+  <div class="container">
+    <div class="bottom-nav clearfix">
+      <a routerLink="/" class="bottom-nav-left pull-left">
+        <img class="bottom-nav-logo" src="../../../../assets/images/logo-img.png">
+        <span class="bottom-nav-brand">Sport<em>.clc</em></span>
+      </a>
+      <div [ngClass]="{'responsive': isClick}" class="bottom-nav-right pull-right">
+        <a routerLink="/news" class="main-link">News</a>
+        <a routerLink="/match" class="main-link">Match</a>
+        <a routerLink="/bracket" class="main-link" class="active">Bracket</a>
+        <div *ngIf="auth.isLoggedIn()" class="dropdown clearfix">
+          <button class="dropbtn">{{ auth.currentUser.name || 'Username' }}
+            <span class="fa fa-caret-down"></span>
+          </button>
+          <div class="dropdown-content">
+            <a class="sub-link">Link 2</a>
+            <a class="sub-link">Link 3</a>
+            <a (click)="logout()" class="sub-link">Log out</a>
+          </div>
+        </div>
+        <a routerLink="/login" *ngIf="!auth.isLoggedIn()" class="main-link">Log in</a>
+        <a class="icon" (click)="createResponsive()">&#9776;</a>
+      </div>
+    </div>
   </div>
 </header>
