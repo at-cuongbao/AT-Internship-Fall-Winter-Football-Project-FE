@@ -3,10 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faSearch, faSignInAlt, faEnvelope, faPlusCircle, faCaretDown } from '@fortawesome/free-solid-svg-icons';
-import { faFacebook, faTwitter, faGooglePlus, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
@@ -49,7 +45,6 @@ export function tokenGetter() {
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    FontAwesomeModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
@@ -65,9 +60,4 @@ export function tokenGetter() {
     TeamRegistrationComponent
   ]
 })
-export class AppModule { 
-  constructor() {
-    // Add an icon to the library for convenient access in other components.
-    library.add(faSearch, faSignInAlt, faCaretDown, faEnvelope, faFacebook, faTwitter, faInstagram, faGooglePlus, faPlusCircle);
-  }
-}
+export class AppModule { }

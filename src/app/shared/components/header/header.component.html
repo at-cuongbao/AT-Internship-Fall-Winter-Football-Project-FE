@@ -11,7 +11,7 @@
         <a routerLink="/bracket" class="main-link" href="#home" class="active">Bracket</a>
         <div *ngIf="auth.isLoggedIn()" class="dropdown clearfix">
           <button class="dropbtn">{{ auth.currentUser.name || 'Username' }}
-            <fa-icon [icon]="['fas', 'caret-down']"></fa-icon>
+            <span class="fa fa-caret-down"></span>
           </button>
           <div class="dropdown-content">
             <a class="sub-link" href="#">Link 2</a>

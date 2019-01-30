@@ -24,7 +24,6 @@ const POSITION = {
 export class BracketComponent implements OnInit {
   tournamentName: string;
   bracketView = [];
-  winner = {};
   api = [
     {
       label: 'tk',
@@ -69,9 +68,7 @@ export class BracketComponent implements OnInit {
   getMatches() {
     this.matchService.get("5c4fbbaa0b614f0a24019243")
       .subscribe(data => {
-        // this.matches = data.matches;
         this.tournamentName = data.tournamentName
-        this.winner = data.winner;
       });
   }
 

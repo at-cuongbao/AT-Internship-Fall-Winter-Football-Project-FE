@@ -4,7 +4,6 @@ import { END_POINT } from './../../shared/services/api-registry';
 import { map } from 'rxjs/operators';
 import { TransfereService } from './../../shared/services/transfere.service';
 import { Router } from '@angular/router';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { TeamRegistrationComponent } from './../team-registration/team-registration.component';
 import { Team } from 'src/app/shared/models/team';
 
@@ -18,11 +17,6 @@ export interface DialogData {
   styleUrls: ['./tournament-registration.component.scss']
 })
 export class TournamentRegistrationComponent implements OnInit {
-  // chau event show component add team
-
-
-
-  //
   teams: Team[] = [];
   name = '';
   number = '';
@@ -33,7 +27,10 @@ export class TournamentRegistrationComponent implements OnInit {
   isShowForm = false;
   bang = ["A", "B", "C", "D", "E", "F", "H", "G"];
 
-  constructor(private transfere: TransfereService, public dialog: MatDialog) { }
+  constructor(
+    private transfere: TransfereService, 
+    // public dialog: MatDialog
+  ) { }
 
   ngOnInit() {
 
@@ -41,9 +38,7 @@ export class TournamentRegistrationComponent implements OnInit {
 
   // open diablog
   openDialog() {
-    const dialogRef = this.dialog.open(TeamRegistrationComponent, {
-  
-    });
+    const dialogRef = this.dialog.open(TeamRegistrationComponent, {});
 
     dialogRef.afterClosed().subscribe(result => {
       this.phone = result;
