@@ -1,10 +1,10 @@
 .card-signin {
-  min-height: 614px;
+  min-height: 700px;
   background-repeat: no-repeat;
   background-repeat: no-repeat;
   background-image: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));
   .form-sinin {
-    max-width: 350px;
+    max-width: 380px;
     border-radius: 10px;
     padding: 40px;
     margin: 0 auto;
@@ -17,6 +17,7 @@
       margin-top: 10px;
       display: inline-block;
       color: rgb(104, 145, 162);
+      text-align: center;
     }
   }
 }

@@ -1,42 +1,3 @@
-<!-- <header id="header" class="header clearfix">
-  <div class="logo pull-left">
-    <a routerLink="/">LOGO</a>
-  </div>
-  <div class="search-box pull-right">
-    <a *ngIf="!auth.isLoggedIn()" class="menu-link" routerLink="/login">
-      <fa-icon [icon]="['fas', 'sign-in-alt']"></fa-icon> Login
-    </a>
-    <button *ngIf="auth.isLoggedIn()" class="menu-link menu-link-dropdown" mat-icon-button [matMenuTriggerFor]="menu">
-      <mat-icon>more_vert</mat-icon>
-    </button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item>
-        <mat-icon>dialpad</mat-icon>
-        <span>Redial</span>
-      </button>
-      <button mat-menu-item disabled>
-        <mat-icon>voicemail</mat-icon>
-        <span>Check voicemail</span>
-      </button>
-      <button (click)="logout()" mat-menu-item>
-        <mat-icon>notifications_off</mat-icon>
-        <span>Log out</span>
-      </button>
-    </mat-menu>
-
-    <ng-container *ngIf="auth.isLoggedIn()">
-      <a class="menu-link">{{ auth.currentUser.name }}</a>
-    </ng-container>
-
-    <form class="search-form" action="">
-      <input class="search-input" type="text" placeholder="Search" name="search">
-      <button class="search-button" type="submit">
-        <fa-icon [icon]="['fas', 'search']"></fa-icon>
-      </button>
-    </form>
-  </div>
-</header> -->
-
 <header class="header sticky">
   <div class="container">
     <div class="bottom-nav clearfix">
@@ -49,7 +10,7 @@
         <a routerLink="/match" class="main-link" href="#contact">Match</a>
         <a routerLink="/bracket" class="main-link" href="#home" class="active">Bracket</a>
         <div *ngIf="auth.isLoggedIn()" class="dropdown clearfix">
-          <button class="dropbtn">{{ auth.currentUser.name }}
+          <button class="dropbtn">{{ auth.currentUser.name || 'Username' }}
             <fa-icon [icon]="['fas', 'caret-down']"></fa-icon>
           </button>
           <div class="dropdown-content">
