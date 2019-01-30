@@ -22,7 +22,6 @@ import { TournamentRegistrationComponent } from './features/tournament-registrat
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ScheduleComponent } from './features/schedule/schedule.component';
 import { SliderComponent } from './shared/components/slider/slider.component';
-import { RegisterComponent } from './features/register/register.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -42,7 +41,6 @@ export function tokenGetter() {
     TournamentRegistrationComponent,
     ScheduleComponent,
     SliderComponent,
-    RegisterComponent
   ],
   imports: [
     BrowserModule,
