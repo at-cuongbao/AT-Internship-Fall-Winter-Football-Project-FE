@@ -7,8 +7,7 @@
     }
   }
   .fade {
-    animation-name: fade;
-    animation-duration: 1.5s;
+    animation: fade 1.5s;
   }
   .dot-wrap {
     position: absolute;
@@ -19,15 +18,15 @@
       height: 15px;
       width: 15px;
       margin: 0 2px;
-      background-color: #bbb;
+      background-color: $color-grey;
       border-radius: 50%;
       display: inline-block;
       transition: background-color 0.6s ease;
     }
+    .active-dot {
+      background-color: $active-dot;
+    }
   }
-}
-.active-dot {
-  background-color: #00afd8;
 }
 @keyframes fade {
   from {opacity: .4} 

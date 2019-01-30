@@ -30,6 +30,22 @@ export class AuthService {
     )
   }
 
+  register(credentials) {
+    let url = [END_POINT.register];
+    return this.apiService.post(url, {
+      email: credentials.email,
+      password: credentials.password
+    }).pipe(
+      map(response => {
+        if (response && response.token) {
+          localStorage.setItem('token', response.token);
+          return true;
+        }
+        return false
+      })
+    )
+  }
+
   isLoggedIn() {
     return !this.jwtHelperService.isTokenExpired();
   }

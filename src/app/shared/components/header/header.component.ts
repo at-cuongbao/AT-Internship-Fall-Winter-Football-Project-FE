@@ -6,7 +6,6 @@ import { Router } from '@angular/router';
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  providers: []
 })
 export class HeaderComponent implements OnInit {
   isClick = false;
@@ -17,16 +16,6 @@ export class HeaderComponent implements OnInit {
     '../../../../assets/images/main-slider-img2.jpg'
   ];
 
-  // public config: ICarouselConfig = {
-  //   verifyBeforeLoad: true,
-  //   log: false,
-  //   animation: true,
-  //   animationType: AnimationConfig.SLIDE,
-  //   autoplay: true,
-  //   autoplayDelay: 2000,
-  //   stopAutoplayMinWidth: 768
-  // };
-
   constructor(
     private auth: AuthService,
     private router: Router
@@ -35,7 +24,6 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
-  /* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
   createResponsive() {
     this.isClick = !this.isClick;
   }

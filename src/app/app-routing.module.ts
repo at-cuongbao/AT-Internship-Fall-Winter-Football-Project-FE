@@ -5,8 +5,9 @@ import { LoginComponent } from './features/login/login.component';
 import { BracketComponent } from './features/bracket/bracket.component';
 import { FeaturesComponent } from './features/features.component';
 import { TournamentRegistrationComponent } from './features/tournament-registration/tournament-registration.component';
-import { GuessComponent } from './features/guess/guess.component';
-import { PredictionComponent} from './features/prediction/prediction.component';
+import { TeamRegistrationComponent } from './features/team-registration/team-registration.component';
+import { ScheduleComponent } from './features/schedule/schedule.component';
+import { RegisterComponent } from 'src/app/features/register/register.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,14 @@ const routes: Routes = [
         path: 'prediction',
         component: PredictionComponent
       },
+      {
+        path: 'schedules',
+        component: ScheduleComponent
+      },
+      {
+        path: 'bracket',
+        component: BracketComponent
+      }
     ]
   },
   {
@@ -28,8 +37,8 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path: 'bracket',
-    component: BracketComponent
+    path: 'register',
+    component: RegisterComponent
   },
 ];
 

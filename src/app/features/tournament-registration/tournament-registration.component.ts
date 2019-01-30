@@ -2,11 +2,9 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { NgModel, NgForm } from '@angular/forms';
 import { END_POINT } from './../../shared/services/api-registry';
 import { map } from 'rxjs/operators';
-import { TransfereService } from './../../shared/services/transfere.service';
-import { Router } from '@angular/router';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { TeamRegistrationComponent } from './../team-registration/team-registration.component';
 import { Team } from 'src/app/shared/models/team';
+import { TournamentService } from 'src/app/shared/services/tournament.service';
 
 export interface DialogData {
   animal: 'panda' | 'unicorn' | 'lion';
@@ -18,12 +16,8 @@ export interface DialogData {
   styleUrls: ['./tournament-registration.component.scss']
 })
 export class TournamentRegistrationComponent implements OnInit {
-  // chau event show component add team
-
-
-
-  //
   teams: Team[] = [];
+  imageLogo = [];
   name = '';
   number = '';
   a = [];
@@ -33,23 +27,13 @@ export class TournamentRegistrationComponent implements OnInit {
   isShowForm = false;
   bang = ["A", "B", "C", "D", "E", "F", "H", "G"];
 
-  constructor(private transfere: TransfereService, public dialog: MatDialog) { }
+  constructor(private tournament: TournamentService) { }
 
   ngOnInit() {
-
-  }
-
-  // open diablog
-  openDialog() {
-    const dialogRef = this.dialog.open(TeamRegistrationComponent, {
-  
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      this.phone = result;
-      this.teams = result;
-      console.log('The dialog was closed', this.teams);
-    });
+    for (let i = 0; i < 16; i++) {
+      this.teams.push(null);
+      this.imageLogo.push(null);
+    }
   }
 
   convert(number) {
@@ -59,18 +43,16 @@ export class TournamentRegistrationComponent implements OnInit {
     }
   }
 
-  submit(f: NgForm) {
-    // console.log(f.value)
-    // let url = [END_POINT.teams]
-    // this.registerTeamService.post(url  ,f.value).pipe(
-    //   map(response => {
-    //     if (response) {
-    //       console.log(response);
-    //       return true;
-    //     }
-    //     return false
-    //   })
-    // );
+  onSubmit(f: NgForm) {
+    let data = {
+      tournament: {
+        name: f.control.value.name,
+        start: f.control.value.start,
+        end: f.control.value.finish,
+        des: f.control.value.des
+      },
+      teams: this.teams
+    };
+    this.tournament.tournamentRegistration(data);
   }
-
 }

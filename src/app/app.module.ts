@@ -3,10 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faSearch, faSignInAlt, faEnvelope, faPlusCircle, faCaretDown } from '@fortawesome/free-solid-svg-icons';
-import { faFacebook, faTwitter, faGooglePlus, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
@@ -23,6 +19,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { PredictionComponent } from './features/prediction/prediction.component';
 import { SliderComponent } from './shared/components/slider/slider.component';
+import { RegisterComponent } from './features/register/register.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -39,15 +36,15 @@ export function tokenGetter() {
     BracketComponent,
     FeaturesComponent,
     TournamentRegistrationComponent,
-    PredictionComponent,
-    SliderComponent
+    ScheduleComponent,
+    SliderComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    FontAwesomeModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
@@ -62,9 +59,4 @@ export function tokenGetter() {
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { 
-  constructor() {
-    // Add an icon to the library for convenient access in other components.
-    library.add(faSearch, faSignInAlt, faEnvelope, faFacebook, faTwitter, faGooglePlus, faPlusCircle, faInstagram, faCaretDown);
-  }
-}
+export class AppModule { }
