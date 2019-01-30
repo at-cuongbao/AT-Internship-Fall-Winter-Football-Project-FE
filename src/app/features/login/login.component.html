@@ -3,16 +3,24 @@
     <h2 class="form-signin-heading">Please sign in</h2>
     <div class="form-group">
       <label for="inputEmail" class="">Email address</label>
-      <input type="email" id="inputEmail" name="email" ngModel class="form-control">
-    </div>
-    <div *ngIf="invalidLogin" class="alert alert-danger">
-      <p>Invalid username and/or password.</p>
+      <input type="email" id="inputEmail" name="email" email #email="ngModel" minlength="8" ngModel class="form-control">
+      <div *ngIf="email.invalid && (email.dirty || email.touched)">
+        <p *ngIf="email.errors.required" class="alert alert-danger">Email is required!</p>
+        <p *ngIf="email.errors.email" class="alert alert-danger">Email address in invalid format!</p>
+      </div>
+      <div *ngIf="invalidLogin" class="alert alert-danger">
+        <p>Invalid username and/or password.</p>
+      </div>
     </div>
     <div class="form-group">
       <label for="inputPassword" class="">Password</label>
-      <input type="password" id="inputPassword" name="password" ngModel class="form-control">
+      <input type="password" id="inputPassword" name="password" #password="ngModel" minlength="8" ngModel class="form-control">
+      <div *ngIf="password.invalid && (password.dirty || password.touched)">
+        <p *ngIf="password.errors.required" class="alert alert-danger">Password is required!</p>
+        <p *ngIf="password.errors.minlength" class="alert alert-danger">Password must be at least 8 characters long!</p>
+      </div>
     </div>
-    <button class="btn btn-primary btn-block">Sign in</button>
-    <a href="" class="forgot-password">Forgot the password?</a>
+    <button class="btn btn-primary btn-block" [disabled]="f.invalid">Sign in</button>
+    <a routerLink="/register" class="forgot-password">Haven't had account yet? Go Register</a>
   </form>
 </div>

@@ -1,3 +1,12 @@
+// === Space base ===
+$xxs: 2px;
+$xs: $xxs * 2;
+$s: $xs * 2;
+$m: $s * 2;
+$l: $m * 2;
+$xl: $l * 2;
+$xxl: $xl * 2;
+
 $breakpoints: (
   small: 480px,
   medium: 768px,
@@ -6,11 +15,11 @@ $breakpoints: (
   largest: 1280px
 );
 $color-black: #000;
+$color-light-black: #2d2525;
 $color-white: #fff;
 $color-grey: #808080;
+$color-light-grey: #F7F7F7;
+$color-blue: #00afd8;
+$color-light-red: #a94442;
 $color-primary: #62c6f8;
-$color-primary: #fff;
-$color-second: #000;
-$color-header-bg: $color-white;
-$color-footer-bg: $color-primary;
-$color-footer-hr: $color-white;
+$active-dot: #00afd8;

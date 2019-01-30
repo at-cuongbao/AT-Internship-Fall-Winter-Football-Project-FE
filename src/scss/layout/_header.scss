@@ -1,51 +1,164 @@
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
 .header {
-  background-color: rgba(45,45,45,0.98);
-  color: #fff;
-  .logo {
-    a {
-      color: #fff;
-      float: left;
-      display: block;
-      text-align: center;
-      padding: 20px 22px;
-      font-size: 16px;
+  z-index: 1;
+  background-color: rgba(45, 37, 37, 0.5);
+  .bottom-nav-left {
+    float: left;
+    padding: 0;
+    height: 71px;
+    padding-right: 85px;
+    position: relative;
+    &:hover {
+      span {
+        color: $color-white;
+        em {
+          color: $color-light-black;
+        }
+      }
+    }
+    &::after {
+      content: '';
+      transform: skewX(-33deg);
+      background-color: $color-blue;
+      position: absolute;
+      right: 70px;
+      top: 0;
+      bottom: 0;
+      left: -1000%;
+    }
+    .bottom-nav-logo, .bottom-nav-brand {
+      position: relative;
+      z-index: 1;
+    }
+    .bottom-nav-logo {
+      padding: 15px;
+      transition: transform .8s ease-in-out;
       &:hover {
-        background-color: #ddd;
+        transform:rotate(150deg);
+      }
+    }
+    .bottom-nav-brand {
+      float: right;
+      color: $color-light-black;
+      font-size: 38px;
+      line-height: 70px;
+      text-transform: uppercase;
+      font-family: fantasy;
+      em {
+        color: $color-white;
       }
     }
   }
-  .search-form {
-    float: right;
-    .search-input {
-      padding: 8px;
-      margin-top: 11px;
-      font-size: 16px;
-      border: none;
+  .bottom-nav-right {
+    a {
+      float: left;
+      color: $color-white;
+      text-align: center;
+      padding: 24px 16px;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 20px;
+      &:hover {
+        color: $color-blue;
+      }
     }
-    .search-button {
-      padding: 8px 12px;
-      font-size: 16px;
-      margin-top: 11px;
-      margin-right: 16px;
-      background-color: #ddd;
-      border: none;
+    .dropdown {
+      float: left;
+      &:hover {
+        .dropbtn {
+          color: $color-blue;
+        }
+        .dropdown-content {
+          display: block;
+        }
+      }
+      .dropbtn {
+        font-size: 20px;
+        text-transform: uppercase;
+        border: none;
+        outline: none;
+        color: $color-white;
+        padding: 24px 16px;
+        background-color: inherit;
+        font-family: inherit;
+        margin: 0;
+      }
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: $color-white;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      .sub-link {
+        &:hover {
+          color: $color-blue;
+        }
+        float: none;
+        color: $color-white;
+        background-color: $color-black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: center;
+      }
+    }
+    .icon {
+      display: none;
     }
   }
-  .menu-link {
-    color: #fff;
-    float: right;
-    display: block;
-    text-align: center;
-    padding: 20px;
-    font-size: 16px;
-    &:hover {
-      background-color: #ddd;
+}
+
+@media screen and (max-width: 1023px) {
+  .header {
+    background-color: $color-light-black;
+    .bottom-nav-right {
+      a, .dropbtn {
+        display: none;
+      }
+      .icon {
+        float: right;
+        display: block;
+      }
     }
   }
-  .menu-link-dropdown {
-    background-color: rgba(45,45,45,0.98);
-    padding-bottom: 14px;
-    padding-top: 15px;
-    border: 0;
+}
+@media screen and (max-width: 767px) {
+  .header {
+    position: static;
+    .container {
+      padding: 0;
+    }
+    .bottom-nav-right.responsive {
+      position: relative;
+      display: block;
+      width: 100%;
+      a.icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+        top: -73px;
+      }
+      .main-link, .dropdown {
+        float: none;
+        display: block;
+        text-align: center;
+      }
+      .dropdown {
+        .dropbtn {
+          display: block;
+          width: 100%;
+          text-align: center;
+        }
+      }
+      .dropdown-content {
+        position: relative;
+      }
+    }
   }
 }
