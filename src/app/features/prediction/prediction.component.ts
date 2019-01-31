@@ -28,7 +28,7 @@ export class PredictionComponent implements OnInit {
       scorePrediction: [f.value.firstPrediction, f.value.secondPrediction],
       tournament_team_id: ['5c4050326559ab1da4fb58f0', '5c4050326559ab1da4fb58f0']
     };
-    let url = [END_POINT.prediction+'/new']
+    let url = [END_POINT.prediction +'/new']
     
     this.apiService.post(url, data).pipe(
       map(response => {

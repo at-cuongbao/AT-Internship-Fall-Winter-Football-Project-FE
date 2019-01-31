@@ -8,6 +8,7 @@ import { TournamentRegistrationComponent } from './features/tournament-registrat
 import { TeamRegistrationComponent } from './features/team-registration/team-registration.component';
 import { ScheduleComponent } from './features/schedule/schedule.component';
 import { RegisterComponent } from 'src/app/features/register/register.component';
+import { PredictionComponent } from 'src/app/features/prediction/prediction.component';
 
 const routes: Routes = [
   {
@@ -19,7 +20,7 @@ const routes: Routes = [
         component: TournamentRegistrationComponent
       },
       {
-        path: 'prediction',
+        path: 'prediction/:id',
         component: PredictionComponent
       },
       {

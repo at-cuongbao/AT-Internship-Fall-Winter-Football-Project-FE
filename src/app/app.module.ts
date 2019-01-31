@@ -15,11 +15,10 @@ import { BracketComponent } from './features/bracket/bracket.component';
 import { FeaturesComponent } from './features/features.component';
 import { TournamentRegistrationComponent } from './features/tournament-registration/tournament-registration.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatIconModule } from '@angular/material/icon';
 import { PredictionComponent } from './features/prediction/prediction.component';
 import { SliderComponent } from './shared/components/slider/slider.component';
 import { RegisterComponent } from './features/register/register.component';
+import { ScheduleComponent } from 'src/app/features/schedule/schedule.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -38,7 +37,8 @@ export function tokenGetter() {
     TournamentRegistrationComponent,
     ScheduleComponent,
     SliderComponent,
-    RegisterComponent
+    RegisterComponent,
+    PredictionComponent
   ],
   imports: [
     BrowserModule,
@@ -52,8 +52,6 @@ export function tokenGetter() {
         blacklistedRoutes: ['http://localhost:3000/api/authenticate']
       }
     }),
-    MatMenuModule,
-    MatIconModule,
     BrowserAnimationsModule
   ],
   providers: [],
