@@ -20,11 +20,9 @@ export class PredictionComponent implements OnInit {
 
   submit(f: NgForm) {
     const data = {
-      // epoch time
       date: new Date().getTime(),   
       match_id: '5c4050326559ab1da4fb58f0',
       user_id: '5c4050326559ab1da4fb58f0', 
-      // user_id: localStorage.getItem('user_id'),
       scorePrediction: [f.value.firstPrediction, f.value.secondPrediction],
       tournament_team_id: ['5c4050326559ab1da4fb58f0', '5c4050326559ab1da4fb58f0']
     };
