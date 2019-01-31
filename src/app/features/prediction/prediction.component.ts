@@ -33,9 +33,8 @@ export class PredictionComponent implements OnInit {
     this.apiService.post(url, data).pipe(
       map(response => {
         if (response) {
-          return true;
+          return response ? true : false;
         }
-        return false
       })
     ).subscribe(
       value => {value}
