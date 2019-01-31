@@ -44,7 +44,7 @@
         </div>
       </div>
       <div class="form-group" *ngIf="number.value > 0">
-        <table class="tb-league" *ngFor="let item of a, let i of index, let team of teams">
+        <table class="tb-league" *ngFor="let item of result, let i of index, let team of teams">
           <tr class="row">
             <th>
               <p>Table {{ table[i] }}</p>

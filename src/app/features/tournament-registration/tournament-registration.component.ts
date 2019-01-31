@@ -1,7 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { NgModel, NgForm } from '@angular/forms';
 import { Team } from 'src/app/shared/models/team';
-import { TournamentService } from 'src/app/shared/services/tournament.service';
 
 @Component({
   selector: 'app-tournament-registration',
@@ -12,10 +11,9 @@ export class TournamentRegistrationComponent implements OnInit {
   imageSource = '../../../assets/images/anhbongda.jpg';
   teams: Team[] = [];
   imageLogo = [];
-
   name = '';
   number = '';
-  a = [];
+  result = [];
   email = '';
   phone = '';
   information = '';
@@ -27,9 +25,9 @@ export class TournamentRegistrationComponent implements OnInit {
   ngOnInit() {}
   
   convert(number) {
-    this.a = [];
+    this.result = [];
     for (let i = 0; i < number.value; i++) {
-      this.a.push(i);
+      this.result.push(i);
     }
   }
   submit(f: NgForm) {}

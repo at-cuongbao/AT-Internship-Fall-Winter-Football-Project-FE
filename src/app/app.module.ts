@@ -12,16 +12,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
-import { HeaderComponent } from './shared/components/header/header.component';
-import { HomeComponent } from '../app/features/home/home.component';
-import { LoginComponent } from '../app/features/login/login.component';
-import { BracketComponent } from './features/bracket/bracket.component';
 import { FeaturesComponent } from './features/features.component';
-import { TeamRegistrationComponent } from './features/team-registration/team-registration.component';
 import { TournamentRegistrationComponent } from './features/tournament-registration/tournament-registration.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ScheduleComponent } from './features/schedule/schedule.component';
 import { SliderComponent } from './shared/components/slider/slider.component';
+import { LoginComponent } from './features/login/login.component'; 
+import { HeaderComponent } from './shared/components/header/header.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -32,15 +28,11 @@ export function tokenGetter() {
     AppComponent,
     FooterComponent,
     SidebarComponent,
-    HeaderComponent,
-    HomeComponent,
-    LoginComponent,
-    BracketComponent,
     FeaturesComponent,
-    TeamRegistrationComponent,
     TournamentRegistrationComponent,
-    ScheduleComponent,
     SliderComponent,
+    LoginComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -59,9 +51,7 @@ export function tokenGetter() {
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [
-    TeamRegistrationComponent
-  ]
+  entryComponents: []
 })
 export class AppModule { 
   constructor() {
