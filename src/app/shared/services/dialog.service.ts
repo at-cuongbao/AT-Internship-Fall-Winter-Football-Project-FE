@@ -10,11 +10,11 @@ export class DialogService {
   ) { }
 
   openDialog(component) {
-    const dialogRef = this.dialog.open(component, {
-      data: {
-        animal: 'panda'
-      }
-    });
+    // const dialogRef = this.dialog.open(component, {
+    //   data: {
+    //     animal: 'panda'
+    //   }
+    // });
   }
 
   closeDialog() {
