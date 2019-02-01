@@ -28,7 +28,7 @@ export class TournamentRegistrationComponent {
   ) { }
 
   handleFileInput(file: FileList, isForLogo = true) {
-    var reader = new FileReader();
+    const reader = new FileReader();
     reader.onload = (event: any) => {
       if (isForLogo) {
         this.imageLogo = event.target.result;
@@ -63,7 +63,7 @@ export class TournamentRegistrationComponent {
   onModalSubmit(modalForm: NgForm) {
     let index = +this.modal.nativeElement.getAttribute('id');
 
-    let team = new Team()
+    let team = new Team();
     team.name = modalForm.control.value.name;
     team.code = modalForm.control.value.code;
     team.cover = this.imageCover ? this.imageCover : this.imageUrl;

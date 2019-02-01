@@ -8,7 +8,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { HeaderComponent } from './shared/components/header/header.component';
-import { HomeComponent } from '../app/features/home/home.component';
 import { LoginComponent } from '../app/features/login/login.component';
 import { BracketComponent } from './features/bracket/bracket.component';
 import { FeaturesComponent } from './features/features.component';
@@ -28,15 +27,15 @@ export function tokenGetter() {
     AppComponent,
     FooterComponent,
     HeaderComponent,
-    HomeComponent,
     LoginComponent,
     BracketComponent,
     FeaturesComponent,
     TournamentRegistrationComponent,
-    ScheduleComponent,
     SliderComponent,
     RegisterComponent,
-    PredictionComponent
+    PredictionComponent,
+    LoginComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
