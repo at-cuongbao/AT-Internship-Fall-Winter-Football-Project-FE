@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
-import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { HomeComponent } from '../app/features/home/home.component';
 import { LoginComponent } from '../app/features/login/login.component';
@@ -28,7 +27,6 @@ export function tokenGetter() {
   declarations: [
     AppComponent,
     FooterComponent,
-    SidebarComponent,
     HeaderComponent,
     HomeComponent,
     LoginComponent,

@@ -1,14 +1,14 @@
 <div class="row bracket-wrapper">
   <p>Knockout stage: {{ tournamentName }}</p>
   <div class="col-12 auto-justify">
-    <div class="row">
+    <!-- <div class="row">
       <div class="col-3 col-child-position col-offset-5">
         <div class="panel panel-default panel-center">
           <img src="../../../assets/images/50823683_389556591806206_1449730283363368960_n.png" alt="" width="250" height="250">
         </div>
       </div>
-    </div>
-    <div class="row">
+    </div> -->
+    <!-- <div class="row">
       <ng-container *ngFor="let team of bracketView">
         <div class="col-1">
           <div class="panel panel-default ">
@@ -20,6 +20,131 @@
           </div>
         </div>
       </ng-container>
+    </div> -->
+    <!-- <div class="row">
+      <div class="col-1">
+        <div class="panel-default ">
+          <div class="panel-heading clearfix">
+            <img [src]="'../../../assets/images/logo-img.png'" alt="" width="60" height="60">
+            <span>{{ bracketView[8].code }}</span>
+            <span>{{ bracketView[8].score }}</span>
+          </div>
+          <div class="panel-heading clearfix">
+            <img [src]="'../../../assets/images/logo-img.png'" alt="" width="60" height="60">
+            <span>{{ bracketView[9].code }}</span>
+            <span>{{ bracketView[9].score }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-1 col-child-position">
+        <div class="panel-default ">
+          <div class="panel-heading clearfix">
+            <img [src]="'../../../assets/images/logo-img.png'" alt="" width="60" height="60">
+            <span>{{ bracketView[3].code }}</span>
+            <span>{{ bracketView[3].score }}</span>
+          </div>
+          <div class="panel-heading clearfix">
+            <img [src]="'../../../assets/images/logo-img.png'" alt="" width="60" height="60">
+            <span>{{ bracketView[2].code }}</span>
+            <span>{{ bracketView[2].score }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-3 col-child-position col-offset-1">
+        <div class="panel panel-default panel-center">
+          <img src="../../../assets/images/50823683_389556591806206_1449730283363368960_n.png" alt="" width="250" height="250">
+        </div>
+      </div>
+      <div class="col-1 col-child-position col-offset-1">
+        <div class="panel-default ">
+          <div class="panel-heading right-postion clearfix">
+            <img [src]="'../../../assets/images/logo-img.png'" alt="" width="60" height="60">
+            <span>{{ bracketView[5].code }}</span>
+            <span>{{ bracketView[5].score }}</span>
+          </div>
+          <div class="panel-heading right-postion clearfix">
+            <img [src]="'../../../assets/images/logo-img.png'" alt="" width="60" height="60">
+            <span>{{ bracketView[4].code }}</span>
+            <span>{{ bracketView[4].score }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-1">
+        <div class="panel-default ">
+          <div class="panel-heading right-postion clearfix">
+            <img [src]="'../../../assets/images/logo-img.png'" alt="" width="60" height="60">
+            <span>{{ bracketView[12].code }}</span>
+            <span>{{ bracketView[12].score }}</span>
+          </div>
+          <div class="panel-heading right-postion clearfix">
+            <img [src]="'../../../assets/images/logo-img.png'" alt="" width="60" height="60">
+            <span>{{ bracketView[13].code }}</span>
+            <span>{{ bracketView[13].score }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-1">
+        <div class="panel panel-default ">
+          <div class="panel-heading clearfix">
+            <img [src]="'../../../assets/images/logo-img.png'" alt="" width="60" height="60">
+            <span>{{ bracketView[6].code }}</span>
+            <span>{{ bracketView[6].score }}</span>
+          </div>
+          <div class="panel-heading clearfix">
+            <img [src]="'../../../assets/images/logo-img.png'" alt="" width="60" height="60">
+            <span>{{ bracketView[7].code }}</span>
+            <span>{{ bracketView[7].score }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-1 col-offset-3 col-offset-6">
+        <div class="panel-default">
+          <div class="panel-heading clearfix">
+            <img [src]="'../../../assets/images/logo-img.png'" alt="" width="60" height="60">
+            <span>{{ bracketView[0].code }}</span>
+            <span>{{ bracketView[0].score }}</span>
+          </div>
+          <div class="panel-heading clearfix">
+            <img [src]="'../../../assets/images/logo-img.png'" alt="" width="60" height="60">
+            <span>{{ bracketView[1].code }}</span>
+            <span>{{ bracketView[1].score }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-1 col-offset-5">
+        <div class="panel-default ">
+          <div class="panel-heading right-postion clearfix">
+            <img [src]="'../../../assets/images/logo-img.png'" alt="" width="60" height="60">
+            <span>{{ bracketView[10].code }}</span>
+            <span>{{ bracketView[10].score }}</span>
+          </div>
+          <div class="panel-heading right-postion clearfix">
+            <img [src]="'../../../assets/images/logo-img.png'" alt="" width="60" height="60">
+            <span>{{ bracketView[11].code }}</span>
+            <span>{{ bracketView[11].score }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-3 col-offset-7">
+        <div class="panel-default panel-winner">
+          <img [src]="'../../../assets/images/logo-img.png'" alt="">
+          <P>{{ winner.code || '?' }}</P>
+        </div>
+      </div>
+    </div> -->
+    <div class="panel-default panel-center">
+      <img src="../../../assets/images/50823683_389556591806206_1449730283363368960_n.png" alt="" width="250" height="250">
+    </div>
+    <div class="a" *ngFor='let team of bracketView'>
+      <div class="{{ team.label + team.position }}">
+        <img src="../../../assets/images/mai.png" alt="" width="60" height="60">
+        <span class="">{{ team.code }}</span>
+        <span>{{ team.score }}</span>
+      </div>
     </div>
   </div>
 </div>

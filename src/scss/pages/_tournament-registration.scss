@@ -1,154 +1,181 @@
-.register {
-  font-weight: 700;
+.tournament-register {
+  width: 100%;
+  background-size: cover;
   padding: 64px;
-  .heading {
-    font-size: 32px;
-    padding-bottom: 32px;
-  }
-  .register-form {
-    .form-group textarea {
-      min-height: 100px;
-      padding: 20px 20px 0 20px;
-    }
-    .form-group {
-     font-size: 20px;
-     padding: 8px;
-     margin-bottom: 48px;
-     .content {
-       position: relative;
-       top: 8px;
-     }
-     .tb-league {
-       padding: 1px;
-       margin: 16px;
-       display: inline-block;
-       width: 45%;
-       border-collapse: initial;
-       height: auto;
-       border: 1px solid black;
-       .row {
-         background-color: rgb(0, 255, 0);
-       }
-       .row th {
-        padding: 10px;
-        width: 500px;
-       }
-       .row th p, .row th a {
-        display: inline;
-        
-       }
-       .row th a {
-         float: right;
-         padding-right: 8px;
-       }
-       .member-team td{
-         border-bottom: 1px solid rgb(185, 175, 175);
-         padding: 4px;
-       }
-     }
-     .alert {
-       color: red;
-       font-size: 14px;
-     }
-    .content {
-      padding-top: 16px;
-     }
-    }
-    .image-team {
-      font-size: 18px;
-      display: block;
-      .form-inline {
-        display: inline;
-      }
-    }
-    .btn-form {
-      margin-top: 80px;
-      position: relative;
-      line-height: 30px;
-      left: 60%;
-      transform: translate(-50%, 0);
-      font-family: inherit;
-      color: white;
-      background: #185ac1;
-      outline: none;
-      border: none;
-      padding: 5px 15px;
-      font-size: 1em;
-      font-weight: 400;
-      border-radius: 8px;
-    }
-  }
-}
-@media screen and (max-width: 1023px) {
   .register {
-    padding: 64px;
+    margin: 0 auto;
+    width: 60%;
+    max-width: 1023px;
+    font-weight: 700;
+    background-color: $color-white;
+    border-radius: 16px;
+    .heading {
+      font-size: 28px;
+      padding: 64px 0 50px 0;
+      text-align: center;
+      text-transform: uppercase;
+      color: $color-primary;
+    }
     .register-form {
+      margin: 0 100px;
+      .form-group textarea {
+        min-height: 100px;
+        padding: 20px 20px 0 20px;
+      }
       .form-group {
-       font-size: 16px;
-       .tb-league {
-         margin: 8px;
+       font-size: 20px;
+       padding: 8px;
+       margin-bottom: 16px;
        }
+       .tb-league {
+         margin: 16px;
+         display: inline-block;
+         width:s 45%;
+         border: 1px solid $color-black;
+         .row {
+           background-color: $color-green;
+         }
+         .row th {
+          padding: 10px;
+          width: 500px;
+         }
+         .row th p, .row th a {
+          display: inline;
+         }
+         .row th a {
+           float: right;
+           padding-right: 8px;
+         }
+         .member-team td{
+           border-bottom: 1px solid $color-grey;
+           padding: 4px;
+         }
+      }
+       .alert {
+         color: $color-red;
+         font-size: 14px;
+       }
+      .content {
+        padding-top: 16px;
+       }
+      }
+      .image-team {
+        font-size: 18px;
+        display: block;
+        .form-inline {
+          display: inline;
+        }
       }
       .btn-form {
-        margin-top: 0px;
+        margin-bottom: 32px;
+        position: relative;
+        line-height: 30px;
+        left: 50%;
+        transform: translate(-50%, 0);
+        font-family: inherit;
+        color: $color-white;
+        background: $color-primary;
+        outline: none;
+        border: none;
+        padding: 5px 15px;
+        font-size: 1em;
+        font-weight: 400;
+        border-radius: 8px;
+      }
+    }
+  }
+@media screen and (max-width: 1023px) {
+  .tournament-register {
+    .register {
+      width: 70%;
+      .register-form {
+        margin: 0 50px;
       }
     }
   }
 }
 @media screen and (max-width: 767px) {
-  .register {
-    padding: 32px;
-    .register-form {
-      .form-group {
-        padding: 0px;
-        font-size: 14px;
-       .tb-league {
-         width: 100%;
-         margin: 0px;
-       }
-       .form-inline {
-        height: 30px;
-       }
-       .alert {
-         font-size: 12px;
-       }
+  .tournament-register {
+    .register {
+      width: 80%;
+      .heading {
+        font-size: 24px;
+        padding: 50px 0 32px 0;
+        text-align: center;
+        text-transform: uppercase;
+        color: $color-primary;
       }
-      .btn-form {
-        font-size: 0.8em;
-        padding: 5px 10px;
+      .register-form {
+        margin: 0 50px;
+        .form-group {
+          .form-inline {
+            font-size: 14px;
+          }
+        }
       }
     }
   }
 }
 @media screen and (max-width: 479px) {
-  .register {
-    padding: 32px;
-    .heading {
-      font-size: 24px;
-      padding-bottom: 28px;
-    }
-    .register-form {
-      .form-group {
-        padding: 0px;
-        font-size: 14px;
-        .content {
-          position: relative;
-          top: 0px;
-        }
-        .form-inline {
-          margin-top: 4px;
-          padding: 0px;
-          width: 100%;
-        }
-        .tb-league {
-          width: 100%;
-          margin: 0px;
-       }
-        .alert {
-          font-size: 12px;
-        }
+  .tournament-register {
+    .register {
+      width: 100%;
+      .heading {
+        font-size: 18px;
+      }
+      .register-form {
+        margin: 0 32px;
       }
     }
   }
 }
 
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    /* The Close Button */
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      &:hover, &:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.logo {
+  .logo-img {
+    vertical-align: bottom;
+    width: 40px;
+    height: 40px;
+  }
+}
+.cover {
+  margin-top: 4px;
+  .cover-img {
+    vertical-align: bottom;
+    width: 200px;
+    height: 150px;
+  }
+}
