@@ -17,6 +17,7 @@ import { PredictionComponent } from './features/prediction/prediction.component'
 import { SliderComponent } from './shared/components/slider/slider.component';
 import { RegisterComponent } from './features/register/register.component';
 import { ScheduleComponent } from 'src/app/features/schedule/schedule.component';
+import { HomeComponent } from './features/home/home.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -35,7 +36,9 @@ export function tokenGetter() {
     RegisterComponent,
     PredictionComponent,
     LoginComponent,
-    HeaderComponent
+    HeaderComponent,
+    ScheduleComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

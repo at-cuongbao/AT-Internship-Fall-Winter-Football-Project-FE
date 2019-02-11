@@ -7,12 +7,17 @@ import { ScheduleComponent } from './features/schedule/schedule.component';
 import { RegisterComponent } from 'src/app/features/register/register.component';
 import { PredictionComponent } from 'src/app/features/prediction/prediction.component';
 import { BracketComponent } from 'src/app/features/bracket/bracket.component';
+import { HomeComponent } from './features/home/home.component';
 
 const routes: Routes = [
   {
     path: '',
     component: FeaturesComponent,
     children: [
+      {
+        path: '',
+        component: HomeComponent
+      },
       {
         path: 'tounament-registration',
         component: TournamentRegistrationComponent
@@ -29,10 +34,6 @@ const routes: Routes = [
         path: 'bracket',
         component: BracketComponent
       },
-      // {
-      //   path: '**',
-      //   redirectTo: '404'
-      // }
     ]
   },
   {
