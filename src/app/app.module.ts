@@ -15,8 +15,6 @@ import { BracketComponent } from './features/bracket/bracket.component';
 import { FeaturesComponent } from './features/features.component';
 import { TournamentRegistrationComponent } from './features/tournament-registration/tournament-registration.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatIconModule } from '@angular/material/icon';
 import { PredictionComponent } from './features/prediction/prediction.component';
 import { SliderComponent } from './shared/components/slider/slider.component';
 import { RegisterComponent } from './features/register/register.component';
