@@ -1,8 +1,7 @@
 import { Component, ElementRef, ViewChild, Renderer } from '@angular/core';
-import { NgModel, NgForm } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { Team } from 'src/app/shared/models/team';
 import { TournamentService } from 'src/app/shared/services/tournament.service';
-import { FormControl } from '@angular/forms/src/model';
 
 @Component({
   selector: 'app-tournament-registration',

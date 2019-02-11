@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
-import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { HomeComponent } from '../app/features/home/home.component';
 import { LoginComponent } from '../app/features/login/login.component';
@@ -18,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PredictionComponent } from './features/prediction/prediction.component';
 import { SliderComponent } from './shared/components/slider/slider.component';
 import { RegisterComponent } from './features/register/register.component';
+import { ScheduleComponent } from './features/schedule/schedule.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -27,7 +27,6 @@ export function tokenGetter() {
   declarations: [
     AppComponent,
     FooterComponent,
-    SidebarComponent,
     HeaderComponent,
     HomeComponent,
     LoginComponent,
@@ -36,7 +35,8 @@ export function tokenGetter() {
     TournamentRegistrationComponent,
     ScheduleComponent,
     SliderComponent,
-    RegisterComponent
+    RegisterComponent,
+    PredictionComponent
   ],
   imports: [
     BrowserModule,
@@ -50,8 +50,6 @@ export function tokenGetter() {
         blacklistedRoutes: ['http://localhost:3000/api/authenticate']
       }
     }),
-    MatMenuModule,
-    MatIconModule,
     BrowserAnimationsModule
   ],
   providers: [],

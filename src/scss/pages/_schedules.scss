@@ -1,0 +1,30 @@
+.schedule-block {
+  margin: 50px auto;
+  .group-block {
+    margin: 20px 0;
+    .group-title {
+      text-align: center;
+      padding: 10px;
+      border: 1px solid $color-black;
+      border-bottom-width: 0;
+    }
+    .final-title {
+      text-transform: uppercase;
+      color: $color-black;
+      font-weight: bold;
+    }
+  }
+  .schedule-match {
+    width: 100%;
+    th, td {
+      border: 1px solid black;
+      text-align: center;
+      padding: 10px;
+    }
+    thead { color: $color-green; }
+    tbody { color: $color-bold-blue; }
+    tfoot { color: $color-red; }
+  }
+}
+  
+  
