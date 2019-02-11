@@ -9,8 +9,8 @@ export class ScheduleService {
 
   constructor(private apiService: ApiService) {}
 
-  get(schedule_id) {
-    let url = [`${END_POINT.schedules}/show/${schedule_id}`];
+  get(tournament_id) {
+    let url = [`${END_POINT.matches}/show/${tournament_id}`];
     return this.apiService.get(url);
   }
 }

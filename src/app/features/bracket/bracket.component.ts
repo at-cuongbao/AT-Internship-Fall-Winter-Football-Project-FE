@@ -17,11 +17,90 @@ export class BracketComponent implements OnInit {
   bracketView = [];
   api = [
     {
+      label: 'ck',
+      position: 1,
+      code: 'CHE',
+      score: 1
+    },
+    {
+      label: 'ck',
+      position: 2,
+      code: 'LIV',
+      score: 2
+    },
+    {
+      label: 'bk',
+      position: 1,
+      code: 'CHE',
+      score: 2
+    },
+    {
+      label: 'bk',
+      position: 2,
+      code: 'MU',
+      score: 2
+    },
+    {
+      label: 'bk',
+      position: 3,
+      code: 'LIV',
+      score: 2
+    },
+    {
+      label: 'bk',
+      position: 4,
+      code: 'REAL',
+      score: 2
+    },
+    {
       label: 'tk',
       position: 1,
       code: 'CHE',
-      score: null
-    }
+      score: 5
+    },
+    {
+      label: 'tk',
+      position: 2,
+      code: 'VN',
+      score: 5
+    },
+    {
+      label: 'tk',
+      position: 3,
+      code: 'MU',
+      score: 6
+    },
+    {
+      label: 'tk',
+      position: 4,
+      code: 'LAO',
+      score: 5
+    },
+    {
+      label: 'tk',
+      position: 5,
+      code: 'LiV',
+      score: 5
+    },
+    {
+      label: 'tk',
+      position: 6,
+      code: 'ARS',
+      score: 8
+    },
+    {
+      label: 'tk',
+      position: 7,
+      code: 'BARCA',
+      score: 5
+    },
+    {
+      label: 'tk',
+      position: 8,
+      code: 'REAL',
+      score: 5
+    },
+
   ];
 
   constructor(private matchService: MatchService) { }
@@ -29,6 +108,7 @@ export class BracketComponent implements OnInit {
   ngOnInit() {
     this.getMatches();
     this.generateMatches();
+    console.log(this.bracketView)
   }
 
   generateMatches() {
