@@ -1,76 +1,91 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, ElementRef, ViewChild, Renderer } from '@angular/core';
 import { NgModel, NgForm } from '@angular/forms';
-import { END_POINT } from './../../shared/services/api-registry';
-import { map } from 'rxjs/operators';
-import { TransfereService } from './../../shared/services/transfere.service';
-import { Router } from '@angular/router';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-import { TeamRegistrationComponent } from './../team-registration/team-registration.component';
 import { Team } from 'src/app/shared/models/team';
-
-export interface DialogData {
-  animal: 'panda' | 'unicorn' | 'lion';
-}
+import { TournamentService } from 'src/app/shared/services/tournament.service';
+import { FormControl } from '@angular/forms/src/model';
 
 @Component({
   selector: 'app-tournament-registration',
   templateUrl: './tournament-registration.component.html',
   styleUrls: ['./tournament-registration.component.scss']
 })
-export class TournamentRegistrationComponent implements OnInit {
-  // chau event show component add team
+export class TournamentRegistrationComponent {
+  @ViewChild("modal", { read: ElementRef }) modal: ElementRef;
+  @ViewChild("f", { read: ElementRef }) modalForm: ElementRef;
 
+  imageSource = '../../../assets/images/anhbongda.jpg';
+  imageUrl = '../../../assets/images/default-image.png';
+  imageLogo = '';
+  imageCover = '';
 
-
-  //
   teams: Team[] = [];
-  name = '';
-  number = '';
-  a = [];
-  email = '';
-  phone = '';
-  information = '';
-  isShowForm = false;
-  bang = ["A", "B", "C", "D", "E", "F", "H", "G"];
 
-  constructor(private transfere: TransfereService, public dialog: MatDialog) { }
+  groups = [];
+  tables = ["A", "B", "C", "D", "E", "F", "H", "G"];
 
-  ngOnInit() {
+  constructor(
+    private tournamentService: TournamentService,
+    private renderer: Renderer
+  ) { }
 
-  }
-
-  // open diablog
-  openDialog() {
-    const dialogRef = this.dialog.open(TeamRegistrationComponent, {
-  
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      this.phone = result;
-      this.teams = result;
-      console.log('The dialog was closed', this.teams);
-    });
+  handleFileInput(file: FileList, isForLogo = true) {
+    const reader = new FileReader();
+    reader.onload = (event: any) => {
+      if (isForLogo) {
+        this.imageLogo = event.target.result;
+      } else {
+        this.imageCover = event.target.result;
+      }
+    }
+    reader.readAsDataURL(file.item(0));
   }
 
   convert(number) {
-    this.a = [];
+    this.groups = [];
     for (let i = 0; i < number.value; i++) {
-      this.a.push(i);
+      this.groups.push(i);
     }
   }
 
-  submit(f: NgForm) {
-    // console.log(f.value)
-    // let url = [END_POINT.teams]
-    // this.registerTeamService.post(url  ,f.value).pipe(
-    //   map(response => {
-    //     if (response) {
-    //       console.log(response);
-    //       return true;
-    //     }
-    //     return false
-    //   })
-    // );
+  onSubmit(f: NgForm) {
+    let data = {
+      tournament: {
+        name: f.control.value.name,
+        start_at: f.control.value.start,
+        end_at: f.control.value.finish,
+        group_number: this.groups.length,
+        desc: f.control.value.des
+      },
+      teams: this.teams
+    };
+    this.tournamentService.tournamentRegistration(data);
   }
 
+  onModalSubmit(modalForm: NgForm) {
+    let index = +this.modal.nativeElement.getAttribute('id');
+
+    let team = new Team();
+    team.name = modalForm.control.value.name;
+    team.code = modalForm.control.value.code;
+    team.cover = this.imageCover ? this.imageCover : this.imageUrl;
+    team.logo = this.imageLogo ? this.imageLogo : this.imageUrl;
+    this.teams[index] = team;
+
+    this.resetForm();
+    this.closeModal();
+  }
+
+  openModal(index) {
+    this.renderer.setElementAttribute(this.modal.nativeElement, "style", "display: block");
+    this.renderer.setElementAttribute(this.modal.nativeElement, "id", `${index}`);
+  }
+
+  closeModal() {
+    this.renderer.setElementAttribute(this.modal.nativeElement, "style", "display: none");
+  }
+
+  resetForm() {
+    this.modalForm.nativeElement.reset()
+    this.imageCover = this.imageLogo = this.imageUrl;
+  }
 }

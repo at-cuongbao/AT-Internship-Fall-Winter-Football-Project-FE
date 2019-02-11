@@ -1,18 +1,18 @@
 .page-footer {
   width: 100%;
   height: auto;
-  background-color: #2d2525;
+  background-color: $color-black;
   font-size: 14px;
   .container{
     .footer-top {
       padding: 16px;
-      border-bottom: solid 1px #ffffff80; 
+      border-bottom: solid 1px $color-grey; 
       .footer-top-left {
         a {
           font-family: fantasy;
           font-size: 40px;
           text-transform: uppercase;
-          color: #fff;
+          color: $color-white;
           display: inline-block;
           .logo-footer {
             margin-right: 20px;
@@ -20,18 +20,18 @@
           }
           .logo-footer:hover {
             transform:rotate(150deg);
-            color: #00afd8;
+            color: $color-blue;
           }
           span {
-            color: #00afd8;
+            color: $color-blue;
           }
         }
       }
       .footer-top-left:hover {
         a { 
-          color: #00afd8;
+          color: $color-blue;
           span {
-            color: #fff;
+            color: $color-white;
           }
         }
       }
@@ -43,10 +43,10 @@
             a {
               font-size: 20px;
               line-height: 50px;
-              color: #fff;
+              color: $color-white;
             }
             a:hover {
-              color: #00afd8;
+              color: $color-blue;
             }
           }
         }
@@ -60,23 +60,23 @@
             padding-right: 40px;
             display: inline-block;
             a {
-              color: #fff;
+              color: $color-white;
             }
             a:hover {
-              color: #00afd8;
+              color: $color-blue;
             }
           }
         }
       }
       .footer-bottom-right {
         .address-name {
-          color: #787878;
+          color: $color-grey;
           .director-name {
             a {
-              color: #fff;
+              color: $color-white;
             }
             a:hover {
-              color: #00afd8;
+              color: $color-blue;
             }
           }
         }

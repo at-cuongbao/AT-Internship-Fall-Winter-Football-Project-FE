@@ -1,21 +1,35 @@
-<div class="schedule">
-  <section *ngFor="let item of schedules">
-    <h4 class="feature-title">Group {{item.group}}</h4>
-    <table>
-      <thead>
-        <tr>
-          <th>Ngày thi đấu</th>
-          <th>Team 1</th>
-          <th>Team 2</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>{{ item.matchDate }}</td>
-          <td>{{ item.firstTeam.name }}</td>
-          <td>{{ item.secondTeam.name }}</td>
-        </tr>
-      </tbody>
-    </table>
+<div class="schedule-block container">
+  <section class="group-block" *ngFor="let item of schedules">
+    <ng-container *ngIf="item.matches.length">
+      <h4 class="group-title">Group {{item.groupName}}</h4>
+      <table class="schedule-match">
+        <ng-container *ngFor="let match of item.matches">
+          <thead>
+            <tr *ngIf="match.round === 4.1">
+              <th *ngIf="!auth.isLoggedIn()" class="final-title" colspan="3">Final</th>
+              <th *ngIf="auth.isLoggedIn() && !auth.currentUser.admin" class="final-title" colspan="4">Final</th>
+            </tr>
+            <tr *ngIf="match.round === 4.2">
+              <th *ngIf="!auth.isLoggedIn()" colspan="3" class="final-title">Final</th>
+              <th *ngIf="auth.isLoggedIn() && !auth.currentUser.admin" colspan="4" class="final-title">Third and four</th>
+            </tr>
+            <tr>
+              <th>Ngày thi đấu</th>
+              <th>Team 1</th>
+              <th>Team 2</th>
+              <th *ngIf="auth.isLoggedIn() && !auth.currentUser.admin"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ match.start_at }}</td>
+              <td>{{ match?.firstTeam.code || '?'}}</td>
+              <td>{{ match?.secondTeam.code || '?'}}</td>
+              <td *ngIf="auth.isLoggedIn() && !auth.currentUser.admin"><a routerLink="/prediction/{{match.id}}">Prediction</a></td>
+            </tr>
+          </tbody>
+        </ng-container>
+      </table>
+    </ng-container>
   </section>
 </div>

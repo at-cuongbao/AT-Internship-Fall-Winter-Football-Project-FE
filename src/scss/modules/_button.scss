@@ -11,7 +11,7 @@
 }
 .btn-default {
   color: #333;
-  background-color: #fff;
+  background-color: $color-white;
   border-color: #ccc;
   &:hover {
     background-color: #e6e6e6;
@@ -19,7 +19,7 @@
   }
 }
 .btn-primary {
-  color: #fff;
+  color: $color-white;
   background-color: #337ab7;
   border-color: #2e6da4;
   &:hover {
@@ -28,7 +28,7 @@
   }
 }
 .btn-success {
-  color: #fff;
+  color: $color-white;
   background-color: #5cb85c;
   border-color: #4cae4c;
   &:hover {
@@ -37,7 +37,7 @@
   }
 }
 .btn-info {
-  color: #fff;
+  color: $color-white;
   background-color: #5bc0de;
   border-color: #46b8da;
   &:hover {
@@ -46,7 +46,7 @@
   }
 }
 .btn-warning {
-  color: #fff;
+  color: $color-white;
   background-color: #f0ad4e;
   border-color: #eea236;
   &:hover {
@@ -55,7 +55,7 @@
   }
 }
 .btn-danger {
-  color: #fff;
+  color: $color-white;
   background-color: #d9534f;
   border-color: #d43f3a;
   &:hover {
