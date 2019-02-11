@@ -17,7 +17,6 @@ export class AuthService {
 
   login(credentials) {
     let url = [END_POINT.authenticate];
-    
     return this.apiService.post(url, credentials).pipe(
       map(response => {
         if (response && response.token) {
