@@ -13,10 +13,11 @@ import { HomeComponent } from '../app/features/home/home.component';
 import { LoginComponent } from '../app/features/login/login.component';
 import { BracketComponent } from './features/bracket/bracket.component';
 import { FeaturesComponent } from './features/features.component';
-import { TeamRegistrationComponent } from './features/team-registration/team-registration.component';
 import { TournamentRegistrationComponent } from './features/tournament-registration/tournament-registration.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ScheduleComponent } from './features/schedule/schedule.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { PredictionComponent } from './features/prediction/prediction.component';
 import { SliderComponent } from './shared/components/slider/slider.component';
 import { RegisterComponent } from './features/register/register.component';
 
@@ -34,7 +35,6 @@ export function tokenGetter() {
     LoginComponent,
     BracketComponent,
     FeaturesComponent,
-    TeamRegistrationComponent,
     TournamentRegistrationComponent,
     ScheduleComponent,
     SliderComponent,
@@ -52,12 +52,11 @@ export function tokenGetter() {
         blacklistedRoutes: ['http://localhost:3000/api/authenticate']
       }
     }),
-    BrowserAnimationsModule,
+    MatMenuModule,
+    MatIconModule,
+    BrowserAnimationsModule
   ],
   providers: [],
-  bootstrap: [AppComponent],
-  entryComponents: [
-    TeamRegistrationComponent
-  ]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
