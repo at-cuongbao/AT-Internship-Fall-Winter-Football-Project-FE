@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { HeaderComponent } from './shared/components/header/header.component';
+import { HomeComponent } from '../app/features/home/home.component';
 import { LoginComponent } from '../app/features/login/login.component';
 import { BracketComponent } from './features/bracket/bracket.component';
 import { FeaturesComponent } from './features/features.component';
@@ -16,8 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PredictionComponent } from './features/prediction/prediction.component';
 import { SliderComponent } from './shared/components/slider/slider.component';
 import { RegisterComponent } from './features/register/register.component';
-import { ScheduleComponent } from 'src/app/features/schedule/schedule.component';
-import { HomeComponent } from './features/home/home.component';
+import { ScheduleComponent } from './features/schedule/schedule.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -28,17 +28,15 @@ export function tokenGetter() {
     AppComponent,
     FooterComponent,
     HeaderComponent,
+    HomeComponent,
     LoginComponent,
     BracketComponent,
     FeaturesComponent,
     TournamentRegistrationComponent,
+    ScheduleComponent,
     SliderComponent,
     RegisterComponent,
-    PredictionComponent,
-    LoginComponent,
-    HeaderComponent,
-    ScheduleComponent,
-    HomeComponent
+    PredictionComponent
   ],
   imports: [
     BrowserModule,
