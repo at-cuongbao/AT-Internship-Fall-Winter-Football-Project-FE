@@ -1,0 +1,22 @@
+.sidebar {
+  .menu {
+    &-item {
+      height: 44px;
+      line-height: 44px;
+      @extend %txt-center;
+      background: #088a08;
+      border-top: solid 1px #fff;
+      a {
+        color: #fff;
+      }
+      &:hover {
+        background: #fff;
+        a {
+          color: #088a08;
+        }
+        border-top: solid 1px #088a08;
+        cursor: pointer;
+      }
+    }
+  }
+}

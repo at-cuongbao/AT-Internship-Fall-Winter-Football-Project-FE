@@ -1,0 +1,27 @@
+<header class="header sticky">
+  <div class="container">
+    <div class="bottom-nav clearfix">
+      <a routerLink="/" class="bottom-nav-left pull-left">
+        <img class="bottom-nav-logo" src="../../../../assets/images/logo-img.png">
+        <span class="bottom-nav-brand">Sport<em>.clc</em></span>
+      </a>
+      <div [ngClass]="{'responsive': isClick}" class="bottom-nav-right pull-right">
+        <a routerLink="/news" class="main-link" href="#news">News</a>
+        <a routerLink="/match" class="main-link" href="#contact">Match</a>
+        <a routerLink="/bracket" class="main-link" href="#home" class="active">Bracket</a>
+        <div *ngIf="auth.isLoggedIn()" class="dropdown clearfix">
+          <button class="dropbtn">{{ auth.currentUser.name || 'Username' }}
+            <fa-icon [icon]="['fas', 'caret-down']"></fa-icon>
+          </button>
+          <div class="dropdown-content">
+            <a class="sub-link" href="#">Link 2</a>
+            <a class="sub-link" href="#">Link 3</a>
+            <a (click)="logout()" class="sub-link" href="#">Log out</a>
+          </div>
+        </div>
+        <a routerLink="/login" *ngIf="!auth.isLoggedIn()" class="main-link" href="#about">Log in</a>
+        <a class="icon" (click)="createResponsive()">&#9776;</a>
+      </div>
+    </div>
+  </div>
+</header>
