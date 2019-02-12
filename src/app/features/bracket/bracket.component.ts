@@ -29,8 +29,8 @@ export class BracketComponent implements OnInit {
     {
       label: 'ck',
       position: 1,
-      code: 'CHE',
-      score: 1
+      code: 'DVC',
+      score: '1'
     },
     {
       label: 'ck',
@@ -117,7 +117,6 @@ export class BracketComponent implements OnInit {
 
   ngOnInit() {
     this.getMatches();
-    this.generateMatches();
   }
 
   generateMatches() {
@@ -148,9 +147,17 @@ export class BracketComponent implements OnInit {
   getMatches() {
     this.matchService.get("5c4fbbaa0b614f0a24019243")
       .subscribe(data => {
-        // this.matches = data.matches;
-        this.tournamentName = data.tournamentName
-        this.winner = data.winner;
+        data.matches.sort((n1,n2) => n1.id - n2.id);
+        let i = 0;
+        this.api.map(
+          (team) => { 
+            team.code = data.matches[Math.floor(i/2)].code || 'code';
+            team.score = data.matches[Math.floor(i/2)].score || '?';
+            i++;
+          }
+        )
+        this.tournamentName = data.tournamentName;
+        this.generateMatches();
       });
   }
 
