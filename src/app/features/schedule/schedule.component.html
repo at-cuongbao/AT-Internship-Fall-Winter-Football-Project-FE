@@ -16,7 +16,7 @@
             </tr>
           </thead>
           <tr>
-            <td class="team w20">
+            <td class="team team1 w20">
               <img [src]="match?.firstTeam.logo || imgDefault" alt="">
               <span>
                 {{ match?.firstTeam.code || '?'}}
@@ -30,14 +30,14 @@
                 {{ match.start_at || 'date start'}}
               </p>
             </td>
-            <td class="team w20">
+            <td class="team team2 w20">
               <span>
                 {{ match?.secondTeam.code || '?'}}
               </span>
               <img [src]="match?.secondTeam.logo || imgDefault" alt="">
             </td>
-            <td class="center w20" >
-              <a *ngIf="auth.isLoggedIn() && !auth.currentUser.admin && !match.firstTeam.score" routerLink="/prediction/{{match.id}}">
+            <td class="center w20" *ngIf="auth.isLoggedIn() && !auth.currentUser.admin && !match.firstTeam.score">
+              <a routerLink="/prediction/{{match.id}}">
                 <img src="../../../assets/images/predict-icon.png" alt="">
               </a>
             </td>

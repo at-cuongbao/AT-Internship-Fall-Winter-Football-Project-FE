@@ -53,18 +53,36 @@ tr {
 .team {
   position: relative;
 
-  img {
-    position: absolute;
-    left: 20px;
+  &.team1 {
+    img {
+      position: absolute;
+      left: 20px;
+    }
+  
+    span {
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      transform: translate(0, -50%);
+      width: 20%;
+    }
   }
 
-  span {
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    transform: translate(0, -50%);
-    width: 20%;
+  &.team2 {
+    img {
+      position: absolute;
+      right: 20px;
+    }
+
+    span {
+      position: absolute;
+      top: 50%;
+      left: 20px;
+      transform: translate(0, -50%);
+      width: 20%;
+    }
   }
+
 }
 
 .middle > * {

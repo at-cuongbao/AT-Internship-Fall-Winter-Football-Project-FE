@@ -21,7 +21,6 @@ export class ScheduleComponent implements OnInit {
   ngOnInit() {
     this.init();
     this.getSchedule();
-    
   }
 
   init() {
