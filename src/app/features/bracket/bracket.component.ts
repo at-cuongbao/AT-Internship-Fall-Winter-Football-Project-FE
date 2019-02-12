@@ -124,13 +124,14 @@ export class BracketComponent implements OnInit {
             code: team ? team.code : '?',
             score: team && team.score ? team.score : '?'
           });
+        } else {
+          this.bracketView.push({
+            label: POSITION[key].label,
+            position: i,
+            code: '?',
+            score: '?'
+          });
         }
-        this.bracketView.push({
-          label: POSITION[key].label,
-          position: i,
-          code: '?',
-          score: '?'
-        });
       }
     });
   }
