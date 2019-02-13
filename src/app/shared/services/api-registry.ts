@@ -6,5 +6,5 @@ export const END_POINT = {
   teams: 'teams',
   schedules: 'schedules',
   register: 'register',
-  prediction: 'prediction',
+  prediction: 'predictions',
 }
