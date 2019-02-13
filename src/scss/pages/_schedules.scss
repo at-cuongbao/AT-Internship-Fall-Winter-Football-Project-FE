@@ -2,11 +2,12 @@
   margin: 50px auto;
   .group-block {
     margin: 20px 0;
+    margin-top: 71px;
     .group-title {
+      background: #76c100;
+      height: 48px;
+      line-height: 48px;
       text-align: center;
-      padding: 10px;
-      border: 1px solid $color-black;
-      border-bottom-width: 0;
     }
     .final-title {
       text-transform: uppercase;
@@ -16,15 +17,260 @@
   }
   .schedule-match {
     width: 100%;
-    th, td {
-      border: 1px solid black;
+    th,
+    td {
       text-align: center;
       padding: 10px;
     }
-    thead { color: $color-green; }
-    tbody { color: $color-bold-blue; }
-    tfoot { color: $color-red; }
+    thead {
+      color: $color-green;
+    }
+    tbody {
+      color: $color-bold-blue;
+    }
+    tfoot {
+      color: $color-red;
+    }
   }
 }
+tr {
+  &:hover {
+    background: #bcbcbc;
+  }
+  td {
+    height: 60px;
+    width: 25%;
+    border-bottom: 1px solid #bcbcbc;
+    img {
+      width: 40px;
+      height: 40px;
+    }
+  }
+}
+.team {
+  position: relative;
+  &.team1 {
+    img {
+      position: absolute;
+      left: 20px;
+    }
   
-  
+    span {
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      transform: translate(0, -50%);
+      width: 20%;
+    }
+  }
+  &.team2 {
+    img {
+      position: absolute;
+      right: 20px;
+    }
+    span {
+      position: absolute;
+      top: 50%;
+      left: 20px;
+      transform: translate(0, -50%);
+      width: 20%;
+    }
+  }
+}
+.middle > * {
+  vertical-align: middle;
+}
+.center {
+  position: relative;
+  p,
+  a {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+.w20 {
+  width: 20%;
+}
+.w40 {
+  width: 40%;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      &:hover, &:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    }
+  }
+}
+.prediction-page {
+  font-weight: 700;
+  .prediction-heading {
+    padding: 10px 0 32px 0;
+    font-size: 32px;
+    text-align: center;
+  }
+  .score-avatar {
+    background-size: 100% 100%;
+    color: $color-white;
+    height: 230px;
+    padding-bottom: 10px;
+    width: 100%;
+    .info-match {
+      font-size: 16px;
+      text-transform: uppercase;
+      font-weight: 600;
+      text-align: center;
+      padding-top: 8px;
+      .info-match-time {
+        font-size: 14px;
+        font-weight: 400;
+      }
+    }
+    .score-prediction {
+      display: inline-block;
+      position: relative;
+      width: 100%;
+      .name-team-1 {
+        position: absolute;
+        left: 18%;
+        .logo_team-1 {
+          height: 100px;
+          width: 100px;
+        } 
+      }
+      .prediction-middle {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%,0);
+        .prediction {
+          height: 50px;
+          width: 50px; 
+          margin: 30px;
+          text-align: center;
+          font-size: 18px;
+          padding-left: 12px;
+          font-weight: 700;
+        }
+        .cross {
+          font-size: 60px;
+          font-weight: 700;
+          display: inline;
+        }
+      }
+      .name-team-2 {
+        position: absolute;
+        right: 18%;
+        .logo_team-2 {
+          height: 100px;
+          width: 100px;
+        } 
+      }
+      .name-team-1 p, .name-team-2 p {
+        padding-top: 8px;
+        text-align: center;
+        font-size: 18px;
+      } 
+    }
+    .btn-prediction {
+      line-height: 30px;
+      font-family: inherit;
+      color: $color-white;
+      background: $color-light-red;
+      outline: none;
+      border: none;
+      padding: 4px 24px;
+      font-size: 1em;
+      font-weight: 700;
+      border-radius: 8px;
+      position: absolute;
+      top: 100px;
+      left: 50%;
+      margin-top: 28px;
+      transform: translateX(-50%);
+    }
+  }
+}
+@media screen and (max-width: 1023px) {
+  .container {
+    .score-avatar {
+      .score-prediction {
+        .name-team-1 {
+          left: 10%;
+        }
+        .name-team-2 {
+          right: 10%;
+        }
+        .name-team-1 p, .name-team-2 p {
+          font-size: 16px;
+        } 
+      }
+    }
+  }
+}
+@media screen and (max-width: 767px) {
+  .container {
+    font-weight: 600;
+    padding: 28px;
+    .prediction-heading {
+      font-size: 24px;
+    }
+    .score-avatar {
+      height: 500px;
+      .info-match {
+        font-size: 14px;
+        font-weight: 500;
+      }
+        .info-match-time {
+          font-size: 12px;
+          font-weight: 400;
+        }
+    }
+    .score-avatar {
+      .score-prediction {
+        padding-top: 10px;
+        text-align: center;
+        position: unset;
+        .name-team-1 , .name-team-2, .prediction-middle, .btn-prediction {
+          position: unset;
+        }
+        .name-team-1 p, .name-team-2 p {
+          font-size: 14px;
+        } 
+        .prediction-middle {
+          transform: none;
+        }
+        .btn-prediction {
+          transform: none;
+        }
+      }
+    }
+  }
+}
