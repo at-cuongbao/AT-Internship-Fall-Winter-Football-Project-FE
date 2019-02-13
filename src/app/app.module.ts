@@ -37,7 +37,8 @@ export function tokenGetter() {
     ScheduleComponent,
     SliderComponent,
     RegisterComponent,
-    PredictionComponent, PageNotFoundComponent 
+    PredictionComponent, 
+    PageNotFoundComponent 
   ],
   imports: [
     BrowserModule,
