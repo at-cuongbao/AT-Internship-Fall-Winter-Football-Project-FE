@@ -52,7 +52,6 @@ export class ScheduleComponent implements OnInit {
   }
 
   getSchedule(): void {
-    
     this.scheduleService.get("5c4fbbaa0b614f0a24019243")
       .subscribe(schedules => {
         this.schedules = [];
