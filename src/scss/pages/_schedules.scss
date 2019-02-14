@@ -1,15 +1,12 @@
 .schedule-block {
   margin: 50px auto;
-
   .group-block {
-    margin: 20px 0;
-    margin-top: 50px;
+    margin: 50px 0 20px;
     .group-title {
       font-size: 180%;
       background: $color-light-green;
       height: 50px;
       line-height: 50px;
-      @extend %txt-center;
     }
     .final-title {
       text-transform: uppercase;
@@ -21,7 +18,6 @@
     width: 100%;
     th,
     td {
-      @extend %txt-center;
       padding: 10px;
     }
 
@@ -83,26 +79,6 @@
     }
   }
 }
-.middle > * {
-  vertical-align: middle;
-}
-.center {
-  position: relative;
-  p,
-  a {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-}
-.w20 {
-  width: 20%;
-}
-.w40 {
-  width: 40%;
-}
 
 /* The Modal (background) */
 .modal {
@@ -127,7 +103,6 @@
       color: $color-light-grey;
       float: right;
       font-size: 28px;
-      @extend %txt-bold;
       &:hover,
       &:focus {
         color: $color-black;
@@ -138,7 +113,6 @@
   }
 }
 .prediction-page {
-  @extend %txt-bold;
   .prediction-heading {
     padding: 10px 0 32px 0;
     font-size: 32px;
@@ -154,7 +128,6 @@
       font-size: 16px;
       text-transform: uppercase;
       font-weight: 600;
-      text-align: center;
       padding-top: 8px;
       .info-match-time {
         font-size: 14px;
@@ -165,14 +138,6 @@
       display: inline-block;
       position: relative;
       width: 100%;
-      .name-team-1 {
-        position: absolute;
-        left: 18%;
-        .logo-team-1 {
-          height: 100px;
-          width: 100px;
-        }
-      }
       .prediction-middle {
         position: absolute;
         left: 50%;
@@ -192,13 +157,17 @@
           display: inline;
         }
       }
+      .name-team-1 {
+        position: absolute;
+        left: 18%;
+      }
       .name-team-2 {
         position: absolute;
         right: 18%;
-        .logo_team-2 {
-          height: 100px;
-          width: 100px;
-        }
+      }
+      .logo-size {
+        height: 100px;
+        width: 100px;
       }
       .code-team {
         padding-top: 8px;
@@ -214,7 +183,7 @@
       outline: none;
       border: 0;
       padding: 4px 24px;
-      font-size: 1em;
+      font-size: 16px;
       @extend %txt-bold;
       border-radius: 8px;
       position: absolute;
