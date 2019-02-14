@@ -45,7 +45,7 @@ export class BracketComponent implements OnInit {
   }
 
   getMatches() {
-    let tournamentId = this.route.snapshot.paramMap.get('id') || null;
+    let tournamentId = this.route.snapshot.paramMap.get('id') || '5c4fbbaa0b614f0a24019243';
     this.matchService.get(tournamentId)
       .subscribe(data => {
         data.matches.sort((n1, n2) => n1.id - n2.id);
