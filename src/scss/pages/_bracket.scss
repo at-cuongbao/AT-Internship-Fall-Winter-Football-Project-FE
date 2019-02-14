@@ -1,7 +1,6 @@
- .bracket-wrapper {
+.bracket-wrapper {
+  margin-top: 70px;
   width: 100%;
-  margin-right: 0;
-  margin-left: 0;
   text-align: center;
   p {
     padding: 20px;
@@ -12,10 +11,10 @@
   .auto-justify {
     padding-bottom: 32px;
     position: relative;
-    color: #fff;
+    color: $color-white;
     padding: 10%;
     &:after {
-      content : "";
+      content : '';
       display: block;
       position: absolute;
       top: 0;
@@ -33,69 +32,36 @@
         top: -120px;
       }
     }
-    .teamName {
+    .match-result {
       .tk1 {
-        position: absolute;
-        left: 100px;
         top: 100px;
       }
       .tk2 {
-        position: absolute;
-        left: 100px;
         top: 170px;
       }
       .tk3 {
-        position: absolute;
-        left: 100px;
         top: 300px;
       }
       .tk4 {
-        position: absolute;
-        left: 100px;
         top: 370px;
       }
       .tk5 {
-        position: absolute;
-        right: 100px;
         top: 100px;
       }
       .tk6 {
-        position: absolute;
-        right: 100px;
         top: 170px;
       }
       .tk7 {
-        position: absolute;
-        right: 100px;
         top: 300px;
       }
       .tk8 {
-        position: absolute;
-        right: 100px;
         top: 370px;
       }
       .tk1, .tk2, .tk3, .tk4 {
-        img {
-          float: left;
-        }
-        span {
-          float: left;
-          font-size: 26px;
-          font-weight: bold;
-          padding: 12px 0 12px 10px;
-          display: inline-block;
-        }
+        left: 100px;
       }
       .tk5, .tk6, .tk7, .tk8 {
-        img {
-          float: right;
-        }
-        span {
-          font-size: 26px;
-          font-weight: bold;
-          padding: 12px 0 12px 10px;
-          display: inline-block;
-        }
+        right: 100px;
         .code {
           float: right;
           padding-right: 12px;
@@ -105,79 +71,52 @@
         }
       }
       .bk1 {
-        position: absolute;
-        left: 300px;
         top: 200px;
       }
       .bk2 {
-        position: absolute;
-        left: 300px;
+        top: 270px;
+      }
+      .bk3 {
+        top: 200px;
+      }
+      .bk4 {
         top: 270px;
       }
       .bk1, .bk2 {
-        img {
-          float: left;
-        }
-        span {
-          float: left;
-          font-size: 26px;
-          font-weight: bold;
-          padding: 12px 0 12px 10px;
-          display: inline-block;
-        }
-      }
-      .bk3 {
-        position: absolute;
-        right: 300px;
-        top: 200px;
-        .code {
-          float: right;
-          padding-right: 12px;
-        }
-        .score {
-          float: left;
-        }
-      }
-      .bk4 {
-        position: absolute;
-        right: 300px;
-        top: 270px;
-        .code {
-          float: right;
-          padding-right: 12px;
-        }
-        .score {
-          float: left;
-        }
+        left: 300px;
       }
       .bk3, .bk4 {
-        img {
+        right: 300px;
+        .code {
           float: right;
+          padding-right: 12px;
         }
-        span {
+        .score {
           float: left;
-          font-size: 26px;
-          font-weight: bold;
-          padding: 12px 0 12px 10px;
-          display: inline-block;
         }
       }
       .ck1 {
-        position: absolute;
-        left: 50%;
-        transform: translate(-20%,0);
         top: 300px;
       }
       .ck2 {
-        position: absolute;
-        left: 50%;
-        transform: translate(-20%,0);
         top: 370px;
       }
       .ck1, .ck2 {
+        left: 50%;
+        transform: translate(-25%,0);
+      }
+      .tk1, .tk2, .tk3, .tk4, .bk1, .bk2, .ck1, .ck2 {
         img {
           float: left;
         }
+      }
+      .tk5, .tk6 , .tk7, .tk8, .bk3, .bk4 {
+        img {
+          float: right;
+        }
+      }
+      .team-name {
+        position: absolute;
         span {
           font-size: 26px;
           font-weight: bold;
@@ -199,23 +138,35 @@
           top: -100px;
         }
       }
-      .teamName {
+      .match-result {
         .bk1 {
-          left: 260px;
           top: 200px;
         }
         .bk2 {
-          left: 260px;
           top: 270px;
         }
         .bk3 {
-          right: 260px;
           top: 200px;
         }
         .bk4 {
-          right: 260px;
           top: 270px;
         }
+        .bk1, .bk2 {
+          left: 260px;
+        }
+        .bk3, .bk4 {
+          right: 260px;
+        }
+        .team-name {
+          img {
+            height: 50px;
+            width: 50px;
+          }
+          span {
+            font-size: 18px;
+            padding: 10px 0 10px 10px;
+          }
+        } 
       }
     }
   }
@@ -231,63 +182,62 @@
           top: -80px;
         }
       }
-      .teamName {
+      .match-result {
         .tk1 {
-          left: 60px;
           top: 50px;
         }
         .tk2 {
-          left: 60px;
           top: 110px;
         }
         .tk3 {
-          left: 60px;
           top: 200px;
         }
         .tk4 {
-          left: 60px;
           top: 260px;
         }
         .tk5 {
-          right: 60px;
           top: 50px;
         }
         .tk6 {
-          right: 60px;
           top: 110px;
         }
         .tk7 {
-          right: 60px;
           top: 200px;
         }
         .tk8 {
-          right: 60px;
           top: 260px;
         }
+        .tk1, .tk2, .tk3, .tk4 {
+          left: 60px;
+        }
+        .tk5, .tk6, .tk7, .tk8 {
+          right: 60px;
+        }
         .bk1 {
-          left: 200px;
           top: 130px;
         }
         .bk2 {
-          left: 200px;
           top: 190px;
         }
         .bk3 {
-          right: 200px;
           top: 130px;
         }
         .bk4 {
-          right: 200px;
           top: 190px;
+        }
+        .bk1, .bk2 {
+          left: 200px;
+        }
+        .bk3, .bk4 {
+          right: 200px;
         }
         .ck1 {
           top: 220px;
         }
         .ck2 {
           top: 280px;
-          
         }
-        .tk1, .tk2, .tk3, .tk4, .tk5, .tk6, .tk7, .tk8, .bk1, .bk2, .bk3, .bk4, .ck1, .ck2 {
+        .team-name {
           img {
             height: 50px;
             width: 50px;
