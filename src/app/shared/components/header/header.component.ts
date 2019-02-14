@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { TournamentService } from '../../services/tournament.service';
 
 @Component({
   selector: 'app-header',
@@ -9,19 +10,21 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   isClick = false;
-
-  images = [
-    '../../../../assets/images/main-slider-img.jpg',
-    '../../../../assets/images/main-slider-img1.jpg',
-    '../../../../assets/images/main-slider-img2.jpg'
-  ];
+  tournaments = [];
 
   constructor(
     private auth: AuthService,
+    private tournamentService: TournamentService,
     private router: Router
   ) { }
 
   ngOnInit() {
+    this.tournamentService.get().subscribe(data => {
+      data.map(tournament => {
+        this.tournaments.push({ id: tournament._id, name: tournament.name });
+      });
+    });
+    
   }
 
   createResponsive() {

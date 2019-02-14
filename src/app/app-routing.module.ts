@@ -27,7 +27,7 @@ const routes: Routes = [
         component: PredictionComponent
       },
       {
-        path: 'schedules',
+        path: 'schedules/:id',
         component: ScheduleComponent
       },
       {

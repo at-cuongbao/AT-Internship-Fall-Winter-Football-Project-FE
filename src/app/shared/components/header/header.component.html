@@ -9,7 +9,18 @@
       </a>
       <div [ngClass]="{'responsive': isClick}" class="bottom-nav-right pull-right">
         <a routerLink="/news" class="main-link">News</a>
-        <a routerLink="/schedules" class="main-link">Schedule</a>
+        <div class="dropdown clearfix">
+          <ng-container>
+            <button class="dropbtn">Schedule
+              <span class="fa fa-caret-down"></span>
+            </button>
+            <div class="dropdown-content">
+              <ng-container *ngFor="let tournament of tournaments">
+                <a routerLink="/schedules/{{ tournament.id }}" class="sub-link">{{ tournament.name || 'Undefined' }}</a>
+              </ng-container>
+            </div>
+          </ng-container>
+        </div>
         <a routerLink="/bracket" class="main-link" class="active">Bracket</a>
         <div *ngIf="auth.isLoggedIn()" class="dropdown clearfix">
           <ng-container *ngIf="auth.currentUser.admin">
