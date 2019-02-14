@@ -1,8 +1,7 @@
 import { Component, ElementRef, ViewChild, Renderer } from '@angular/core';
-import { NgModel, NgForm } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { Team } from 'src/app/shared/models/team';
 import { TournamentService } from 'src/app/shared/services/tournament.service';
-import { FormControl } from '@angular/forms/src/model';
 
 @Component({
   selector: 'app-tournament-registration',
@@ -63,19 +62,20 @@ export class TournamentRegistrationComponent {
 
   onModalSubmit(modalForm: NgForm) {
     let index = +this.modal.nativeElement.getAttribute('id');
-
+    
     let team = new Team();
     team.name = modalForm.control.value.name;
     team.code = modalForm.control.value.code;
     team.cover = this.imageCover ? this.imageCover : this.imageUrl;
     team.logo = this.imageLogo ? this.imageLogo : this.imageUrl;
     this.teams[index] = team;
-
+    
     this.resetForm();
     this.closeModal();
   }
 
   openModal(index) {
+    this.resetForm();
     this.renderer.setElementAttribute(this.modal.nativeElement, "style", "display: block");
     this.renderer.setElementAttribute(this.modal.nativeElement, "id", `${index}`);
   }

@@ -7,8 +7,8 @@
     </div>
     <form class="register-form" #elmForm="ngForm" (ngSubmit)="onSubmit(elmForm)">
       <div class="form-group">
-        <input class="form-inline" type="text" name="tournamentName" ngModel #tournamentName="ngModel" required minlength="5" placeholder="Tournament Name"
-        />
+        <input class="form-inline" type="text" name="tournamentName" ngModel #tournamentName="ngModel" required
+          minlength="5" placeholder="Tournament Name" />
         <div *ngIf="tournamentName.invalid && (tournamentName.dirty || tournamentName.touched)" class="alert">
           <p *ngIf="tournamentName.errors.required">
             (*)Tournament name is required

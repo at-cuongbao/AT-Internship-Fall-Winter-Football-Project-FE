@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
-import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { HomeComponent } from '../app/features/home/home.component';
 import { LoginComponent } from '../app/features/login/login.component';
@@ -15,11 +14,13 @@ import { BracketComponent } from './features/bracket/bracket.component';
 import { FeaturesComponent } from './features/features.component';
 import { TournamentRegistrationComponent } from './features/tournament-registration/tournament-registration.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatIconModule } from '@angular/material/icon';
 import { PredictionComponent } from './features/prediction/prediction.component';
 import { SliderComponent } from './shared/components/slider/slider.component';
 import { RegisterComponent } from './features/register/register.component';
+import { ScheduleComponent } from './features/schedule/schedule.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { QuestionMaskPipe } from './shared/pipes/question-mask.pipe';
+import { DateDefaultPipe } from './shared/pipes/date-default.pipe';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -29,7 +30,6 @@ export function tokenGetter() {
   declarations: [
     AppComponent,
     FooterComponent,
-    SidebarComponent,
     HeaderComponent,
     HomeComponent,
     LoginComponent,
@@ -38,7 +38,9 @@ export function tokenGetter() {
     TournamentRegistrationComponent,
     ScheduleComponent,
     SliderComponent,
-    RegisterComponent
+    RegisterComponent,
+    PredictionComponent, 
+    PageNotFoundComponent, QuestionMaskPipe, DateDefaultPipe 
   ],
   imports: [
     BrowserModule,
@@ -52,8 +54,6 @@ export function tokenGetter() {
         blacklistedRoutes: ['http://localhost:3000/api/authenticate']
       }
     }),
-    MatMenuModule,
-    MatIconModule,
     BrowserAnimationsModule
   ],
   providers: [],

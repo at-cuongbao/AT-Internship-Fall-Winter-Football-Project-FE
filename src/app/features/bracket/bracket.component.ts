@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatchService } from 'src/app/shared/services/match.service';
+import { ActivatedRoute } from '@angular/router';
 
 const POSITION = {
   ck: 2,
@@ -15,59 +16,38 @@ const POSITION = {
 export class BracketComponent implements OnInit {
   tournamentName: string;
   bracketView = [];
-  api = [
-    {
-      label: 'tk',
-      position: 1,
-      code: 'CHE',
-      score: null
-    }
-  ];
 
-  constructor(private matchService: MatchService) { }
+  constructor(
+    private matchService: MatchService,
+    private route: ActivatedRoute
+
+  ) { }
 
   ngOnInit() {
     this.getMatches();
-    this.generateMatches();
   }
 
-  generateMatches() {
+  generateMatches(data) {
     Object.keys(POSITION).forEach(key => {
-      for (let i = 1; i <= POSITION[key].length; i++) {
-        let team = this.api.find((value) => {
-          return (value.label === POSITION[key].label && value.position === i);
+      for (let i = 1; i <= POSITION[key]; i++) {
+        let team = data.find(value => {
+          return (value.label === key && value.position === i);
         });
-        if (team) {
-          this.bracketView.push({
-            label: POSITION[key].label,
-            position: i,
-            code: team ? team.code : '?',
-            score: team && team.score ? team.score : '?'
-          });
-        }
         this.bracketView.push({
-          label: POSITION[key].label,
+          label: key,
           position: i,
-          code: '?',
-          score: '?'
+          code: team && team.code ? team.code : '?',
+          score: team && team.score ? team.score : '?'
         });
       }
     });
   }
 
   getMatches() {
-    this.matchService.get("5c4fbbaa0b614f0a24019243")
+    let tournamentId = this.route.snapshot.paramMap.get('id') || '5c4fbbaa0b614f0a24019243';
+    this.matchService.get(tournamentId)
       .subscribe(data => {
-        this.tournamentName = data.tournamentName
+        this.generateMatches(data.matches);
       });
-  }
-
-  isEmpty(obj) {
-    for (var key in obj) {
-      if (obj.hasOwnProperty(key)) {
-        return false;
-      }
-    }
-    return true;
   }
 }
