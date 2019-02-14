@@ -19,6 +19,8 @@ import { SliderComponent } from './shared/components/slider/slider.component';
 import { RegisterComponent } from './features/register/register.component';
 import { ScheduleComponent } from './features/schedule/schedule.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { QuestionMaskPipe } from './shared/pipes/question-mask.pipe';
+import { DateDefaultPipe } from './shared/pipes/date-default.pipe';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -38,7 +40,7 @@ export function tokenGetter() {
     SliderComponent,
     RegisterComponent,
     PredictionComponent, 
-    PageNotFoundComponent 
+    PageNotFoundComponent, QuestionMaskPipe, DateDefaultPipe 
   ],
   imports: [
     BrowserModule,

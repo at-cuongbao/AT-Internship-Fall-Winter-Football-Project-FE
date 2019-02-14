@@ -42,12 +42,12 @@ export class ScheduleComponent implements OnInit {
           {
             firstTeam: {
               code: null,
-              logo: null,
+              logo: this.imgDefault,
               score: null
             },
             secondTeam: {
               code: null,
-              logo: null,
+              logo: this.imgDefault,
               score: null
             },
             start_at: null,
@@ -69,7 +69,6 @@ export class ScheduleComponent implements OnInit {
     });
     this.scheduleService.get(id)
       .subscribe(schedules => {
-        console.log(schedules);
         this.schedules = [];
         let quarters = [];
         let semis = [];
@@ -126,9 +125,7 @@ export class ScheduleComponent implements OnInit {
       tournament_team_id: [match.firstTeam.firstTeamId, match.secondTeam.secondTeamId]
     };
 
-    console.log(data);
-
-    let url = [END_POINT.prediction + '/new']
+    let url = [END_POINT.prediction + '/new'];
     this.apiService.post(url, data).pipe(
       map(response => {
         if (response) {

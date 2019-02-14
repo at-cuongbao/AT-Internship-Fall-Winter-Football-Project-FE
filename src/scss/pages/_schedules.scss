@@ -2,34 +2,35 @@
   margin: 50px auto;
   .group-block {
     margin: 20px 0;
-    margin-top: 71px;
+    margin-top: 50px;
     .group-title {
-      background: #76c100;
-      height: 48px;
-      line-height: 48px;
-      text-align: center;
+      font-size: 180%;
+      background: $color-light-green;
+      height: 50px;
+      line-height: 50px;
+      @extend %txt-center;
     }
     .final-title {
       text-transform: uppercase;
       color: $color-black;
-      font-weight: bold;
+      @extend %txt-bold;
     }
   }
   .schedule-match {
     width: 100%;
     th,
     td {
-      text-align: center;
+      @extend %txt-center;
       padding: 10px;
     }
 
     .match-item {
       &:hover {
-        background: #bcbcbc;
+        background: $color-light-grey;
       }
       td {
         height: 60px;
-        border-bottom: 1px solid #bcbcbc;
+        border-bottom: 1px solid $color-light-grey;
         img {
           width: 40px;
           height: 40px;
@@ -51,31 +52,33 @@
 
 .team {
   position: relative;
+
+  span {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    width: 20%;
+  }
+
+  img {
+    position: absolute;
+  }
+
   &.team1 {
     img {
-      position: absolute;
       left: 20px;
     }
-  
+
     span {
-      position: absolute;
-      top: 50%;
       right: 20px;
-      transform: translate(0, -50%);
-      width: 20%;
     }
   }
   &.team2 {
     img {
-      position: absolute;
       right: 20px;
     }
     span {
-      position: absolute;
-      top: 50%;
       left: 20px;
-      transform: translate(0, -50%);
-      width: 20%;
     }
   }
 }
@@ -102,30 +105,31 @@
 
 /* The Modal (background) */
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  display: none;
+  position: fixed;
+  z-index: 1;
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+
   /* Modal Content/Box */
   .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
+    background-color: $color-white;
+    margin: 9% auto;
     padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    border: 1px solid $color-light-grey;
+    width: 80%;
     .close {
-      color: #aaa;
+      color: $color-light-grey;
       float: right;
       font-size: 28px;
-      font-weight: bold;
-      &:hover, &:focus {
-        color: black;
+      @extend %txt-bold;
+      &:hover,
+      &:focus {
+        color: $color-black;
         text-decoration: none;
         cursor: pointer;
       }
@@ -166,15 +170,15 @@
         .logo_team-1 {
           height: 100px;
           width: 100px;
-        } 
+        }
       }
       .prediction-middle {
         position: absolute;
         left: 50%;
-        transform: translate(-50%,0);
+        transform: translate(-50%, 0);
         .prediction {
           height: 50px;
-          width: 50px; 
+          width: 50px;
           margin: 30px;
           text-align: center;
           font-size: 18px;
@@ -193,13 +197,13 @@
         .logo_team-2 {
           height: 100px;
           width: 100px;
-        } 
+        }
       }
-      .name-team-1 p, .name-team-2 p {
+      .code-team {
         padding-top: 8px;
         text-align: center;
         font-size: 18px;
-      } 
+      }
     }
     .btn-prediction {
       line-height: 30px;
@@ -207,10 +211,10 @@
       color: $color-white;
       background: $color-light-red;
       outline: none;
-      border: none;
+      border: 0;
       padding: 4px 24px;
       font-size: 1em;
-      font-weight: 700;
+      @extend %txt-bold;
       border-radius: 8px;
       position: absolute;
       top: 100px;
@@ -230,9 +234,10 @@
         .name-team-2 {
           right: 10%;
         }
-        .name-team-1 p, .name-team-2 p {
+        .name-team-1 p,
+        .name-team-2 p {
           font-size: 16px;
-        } 
+        }
       }
     }
   }
@@ -250,22 +255,26 @@
         font-size: 14px;
         font-weight: 500;
       }
-        .info-match-time {
-          font-size: 12px;
-          font-weight: 400;
-        }
+      .info-match-time {
+        font-size: 12px;
+        font-weight: 400;
+      }
     }
     .score-avatar {
       .score-prediction {
         padding-top: 10px;
         text-align: center;
         position: unset;
-        .name-team-1 , .name-team-2, .prediction-middle, .btn-prediction {
+        .name-team-1,
+        .name-team-2,
+        .prediction-middle,
+        .btn-prediction {
           position: unset;
         }
-        .name-team-1 p, .name-team-2 p {
+        .name-team-1 p,
+        .name-team-2 p {
           font-size: 14px;
-        } 
+        }
         .prediction-middle {
           transform: none;
         }

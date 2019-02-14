@@ -17,14 +17,14 @@
           </thead>
           <tr class="match-item">
             <td class="team team1 w20">
-              <img [src]="match?.firstTeam.logo || imgDefault" alt="">
+              <img [src]="match?.firstTeam.logo || imgDefault" alt="logo team1">
               <span>
-                {{ match?.firstTeam.code || '?'}}
+                {{ match?.firstTeam.code | questionMask }}
               </span>
             </td>
             <td class="date-start middle w40">
               <p>
-                {{ match.firstTeam.score || '?'}} : {{ match.secondTeam.score || '?'}}
+                {{ match.firstTeam.score | questionMask }} : {{ match.secondTeam.score | questionMask }}
               </p>
               <p>
                 {{ match.start_at || 'date start'}}
@@ -32,13 +32,13 @@
             </td>
             <td class="team team2 w20">
               <span>
-                {{ match?.secondTeam.code || '?'}}
+                {{ match?.secondTeam.code | questionMask }}
               </span>
-              <img [src]="match?.secondTeam.logo || imgDefault" alt="">
+              <img [src]="match?.secondTeam.logo || imgDefault" alt="logo team2">
             </td>
             <td class="center w20" *ngIf="auth.isLoggedIn() && !auth.currentUser.admin">
-              <a *ngIf="!match.firstTeam.score && !match.prediction?.is_predicted" (click)="openModal(match)">
-                <img src="../../../assets/images/predict-icon.png" alt="">
+              <a *ngIf="match.firstTeam.code && !match.firstTeam.score && !match.prediction?.is_predicted" (click)="openModal(match)">
+                <img src="../../../assets/images/predict-icon.png" alt="predict-icon">
               </a>
               <div *ngIf="match.prediction?.is_predicted">
                 <div>
@@ -51,7 +51,7 @@
             </td>
             <td class="center w20" *ngIf="auth.isLoggedIn() && auth.currentUser.admin">
               <a (click)="openModal(match)">
-                <img src="../../../assets/images/edit-icon.png" alt="">
+                <img src="../../../assets/images/edit-icon.png" alt="edit-icon">
               </a>
             </td>
           </tr>
@@ -76,7 +76,7 @@
         <div class="score-prediction">
           <div class="name-team-1">
             <img *ngIf="_match.firstTeam" [src]="_match.firstTeam.logo" alt="" class="logo_team-1">
-            <p>{{ _match.firstTeam?.code }}</p>
+            <p class="code-team">{{ _match.firstTeam?.code }}</p>
           </div>
           <div class="prediction-middle">
             <input type="number" value="{{ _match.firstTeam?.score }}" name="firstPrediction" class="prediction" ngModel
@@ -87,7 +87,7 @@
           </div>
           <div class="name-team-2">
             <img *ngIf="_match.secondTeam" [src]="_match.secondTeam.logo" alt="" class="logo_team-2">
-            <p>{{ _match.secondTeam?.code }}</p>
+            <p class="code-team">{{ _match.secondTeam?.code }}</p>
           </div>
           <button class="btn-prediction">Submit</button>
         </div>
