@@ -8,6 +8,7 @@ import { RegisterComponent } from 'src/app/features/register/register.component'
 import { PredictionComponent } from 'src/app/features/prediction/prediction.component';
 import { BracketComponent } from 'src/app/features/bracket/bracket.component';
 import { HomeComponent } from './features/home/home.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -27,7 +28,7 @@ const routes: Routes = [
         component: PredictionComponent
       },
       {
-        path: 'schedules',
+        path: 'schedules/:id',
         component: ScheduleComponent
       },
       {
@@ -43,6 +44,10 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent
   },
 ];
 

@@ -18,6 +18,7 @@ import { PredictionComponent } from './features/prediction/prediction.component'
 import { SliderComponent } from './shared/components/slider/slider.component';
 import { RegisterComponent } from './features/register/register.component';
 import { ScheduleComponent } from './features/schedule/schedule.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -36,7 +37,8 @@ export function tokenGetter() {
     ScheduleComponent,
     SliderComponent,
     RegisterComponent,
-    PredictionComponent
+    PredictionComponent, 
+    PageNotFoundComponent 
   ],
   imports: [
     BrowserModule,

@@ -11,23 +11,42 @@
             </tr>
             <tr *ngIf="match.round === 4.2">
               <th *ngIf="!auth.isLoggedIn()" colspan="3" class="final-title">Final</th>
-              <th *ngIf="auth.isLoggedIn() && !auth.currentUser.admin" colspan="4" class="final-title">Third and four</th>
-            </tr>
-            <tr>
-              <th>Ngày thi đấu</th>
-              <th>Team 1</th>
-              <th>Team 2</th>
-              <th *ngIf="auth.isLoggedIn() && !auth.currentUser.admin"></th>
+              <th *ngIf="auth.isLoggedIn() && !auth.currentUser.admin" colspan="4" class="final-title">Third and four
+              </th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>{{ match.start_at }}</td>
-              <td>{{ match?.firstTeam.code || '?'}}</td>
-              <td>{{ match?.secondTeam.code || '?'}}</td>
-              <td *ngIf="auth.isLoggedIn() && !auth.currentUser.admin"><a routerLink="/prediction/{{match.id}}">Prediction</a></td>
-            </tr>
-          </tbody>
+          <tr>
+            <td class="team team1 w20">
+              <img [src]="match?.firstTeam.logo || imgDefault" alt="">
+              <span>
+                {{ match?.firstTeam.code || '?'}}
+              </span>
+            </td>
+            <td class="date-start middle w40">
+              <p>
+                {{ match.firstTeam.score || '?'}} : {{ match.secondTeam.score || '?'}}
+              </p>
+              <p>
+                {{ match.start_at || 'date start'}}
+              </p>
+            </td>
+            <td class="team team2 w20">
+              <span>
+                {{ match?.secondTeam.code || '?'}}
+              </span>
+              <img [src]="match?.secondTeam.logo || imgDefault" alt="">
+            </td>
+            <td class="center w20" *ngIf="auth.isLoggedIn() && !auth.currentUser.admin && !match.firstTeam.score">
+              <a routerLink="/prediction/{{match.id}}">
+                <img src="../../../assets/images/predict-icon.png" alt="">
+              </a>
+            </td>
+            <td class="center w20" *ngIf="auth.isLoggedIn() && auth.currentUser.admin">
+              <a routerLink="/prediction/{{match.id}}">
+                <img src="../../../assets/images/edit-icon.png" alt="">
+              </a>
+            </td>
+          </tr>
         </ng-container>
       </table>
     </ng-container>

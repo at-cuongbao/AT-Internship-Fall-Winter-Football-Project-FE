@@ -13,4 +13,9 @@ export class TournamentService {
   tournamentRegistration(data: any) {
     this.api.post([END_POINT.tournaments], data).subscribe();
   }
+
+  get() {
+    let url = [END_POINT.tournaments];
+    return this.api.get(url);
+  }
 }
