@@ -17,7 +17,7 @@
           </thead>
           <tr class="match-item">
             <td class="team team1 w20">
-              <img [src]="match?.firstTeam.logo || imgDefault" alt="logo team1">
+              <img [src]="match?.firstTeam.logo" alt="logo team1">
               <span>
                 {{ match?.firstTeam.code | questionMask }}
               </span>
@@ -34,7 +34,7 @@
               <span>
                 {{ match?.secondTeam.code | questionMask }}
               </span>
-              <img [src]="match?.secondTeam.logo || imgDefault" alt="logo team2">
+              <img [src]="match?.secondTeam.logo" alt="logo team2">
             </td>
             <td class="center w20" *ngIf="auth.isLoggedIn() && !auth.currentUser.admin">
               <a *ngIf="match.firstTeam.code && !match.firstTeam.score && !match.prediction?.is_predicted" (click)="openModal(match)">
@@ -75,7 +75,7 @@
         </div>
         <div class="score-prediction">
           <div class="name-team-1">
-            <img *ngIf="_match.firstTeam" [src]="_match.firstTeam.logo" alt="" class="logo_team-1">
+            <img *ngIf="_match.firstTeam" [src]="_match.firstTeam.logo" alt="" class="logo-team-1">
             <p class="code-team">{{ _match.firstTeam?.code }}</p>
           </div>
           <div class="prediction-middle">

@@ -137,7 +137,7 @@
   }
 }
 .prediction-page {
-  font-weight: 700;
+  @extend %txt-bold;
   .prediction-heading {
     padding: 10px 0 32px 0;
     font-size: 32px;
@@ -167,7 +167,7 @@
       .name-team-1 {
         position: absolute;
         left: 18%;
-        .logo_team-1 {
+        .logo-team-1 {
           height: 100px;
           width: 100px;
         }
@@ -183,11 +183,11 @@
           text-align: center;
           font-size: 18px;
           padding-left: 12px;
-          font-weight: 700;
+          @extend %txt-bold;
         }
         .cross {
           font-size: 60px;
-          font-weight: 700;
+          @extend %txt-bold;
           display: inline;
         }
       }
@@ -234,8 +234,7 @@
         .name-team-2 {
           right: 10%;
         }
-        .name-team-1 p,
-        .name-team-2 p {
+        .code-team {
           font-size: 16px;
         }
       }
@@ -271,8 +270,7 @@
         .btn-prediction {
           position: unset;
         }
-        .name-team-1 p,
-        .name-team-2 p {
+        .code-team {
           font-size: 14px;
         }
         .prediction-middle {
