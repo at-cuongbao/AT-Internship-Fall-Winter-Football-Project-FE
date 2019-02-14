@@ -32,7 +32,7 @@ const routes: Routes = [
         component: ScheduleComponent
       },
       {
-        path: 'bracket',
+        path: 'bracket/:id',
         component: BracketComponent
       },
     ]
