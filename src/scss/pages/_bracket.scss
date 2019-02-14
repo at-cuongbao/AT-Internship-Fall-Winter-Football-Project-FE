@@ -13,7 +13,7 @@
   .auto-justify {
     padding-bottom: 32px;
     position: relative;
-    color: #fff;
+    color: $color-white;
     padding: 10%;
     &:after {
       content : "";
@@ -36,42 +36,34 @@
     }
     .match-result {
       .tk1 {
-        position: absolute;
         left: 100px;
         top: 100px;
       }
       .tk2 {
-        position: absolute;
         left: 100px;
         top: 170px;
       }
       .tk3 {
-        position: absolute;
         left: 100px;
         top: 300px;
       }
       .tk4 {
-        position: absolute;
         left: 100px;
         top: 370px;
       }
       .tk5 {
-        position: absolute;
         right: 100px;
         top: 100px;
       }
       .tk6 {
-        position: absolute;
         right: 100px;
         top: 170px;
       }
       .tk7 {
-        position: absolute;
         right: 100px;
         top: 300px;
       }
       .tk8 {
-        position: absolute;
         right: 100px;
         top: 370px;
       }
@@ -85,31 +77,22 @@
         }
       }
       .bk1 {
-        position: absolute;
         left: 300px;
         top: 200px;
       }
       .bk2 {
-        position: absolute;
         left: 300px;
         top: 270px;
       }
       .bk3 {
-        position: absolute;
         right: 300px;
         top: 200px;
-        .code {
-          float: right;
-          padding-right: 12px;
-        }
-        .score {
-          float: left;
-        }
       }
       .bk4 {
-        position: absolute;
         right: 300px;
         top: 270px;
+      }
+      .bk3, .bk4 {
         .code {
           float: right;
           padding-right: 12px;
@@ -119,16 +102,14 @@
         }
       }
       .ck1 {
-        position: absolute;
-        left: 50%;
-        transform: translate(-25%,0);
         top: 300px;
       }
       .ck2 {
-        position: absolute;
+        top: 370px;
+      }
+      .ck1, .ck2 {
         left: 50%;
         transform: translate(-25%,0);
-        top: 370px;
       }
       .tk1, .tk2, .tk3, .tk4, .bk1, .bk2, .ck1, .ck2 {
         img {
@@ -141,6 +122,7 @@
         }
       }
       .team-name {
+        position: absolute;
         span {
           font-size: 26px;
           font-weight: bold;
