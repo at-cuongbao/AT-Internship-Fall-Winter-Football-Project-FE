@@ -24,21 +24,20 @@ export class BracketComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.generateMatches();
     this.getMatches();
   }
 
-  generateMatches() {
+  generateMatches(data) {
     Object.keys(POSITION).forEach(key => {
       for (let i = 1; i <= POSITION[key]; i++) {
-        let team = this.bracketView.find((value) => {
+        let team = data.find(value => {
           return (value.label === key && value.position === i);
         });
         this.bracketView.push({
           label: key,
           position: i,
-          code: '?',
-          score: '?'
+          code: team && team.code ? team.code : '?',
+          score: team && team.score ? team.score : '?'
         });
       }
     });
@@ -48,16 +47,7 @@ export class BracketComponent implements OnInit {
     let tournamentId = this.route.snapshot.paramMap.get('id') || '5c4fbbaa0b614f0a24019243';
     this.matchService.get(tournamentId)
       .subscribe(data => {
-        data.matches.sort((n1, n2) => n1.id - n2.id);
-        let i = 0;
-        this.bracketView.map(
-          (team) => {
-            team.code = data.matches[Math.floor(i / 2)].code || 'code';
-            team.score = data.matches[Math.floor(i / 2)].score || '?';
-            i++;
-          }
-        )
-        this.tournamentName = data.tournamentName;
+        this.generateMatches(data.matches);
       });
   }
 }
