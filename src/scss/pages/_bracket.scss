@@ -1,0 +1,308 @@
+ .bracket-wrapper {
+  width: 100%;
+  margin-right: 0;
+  margin-left: 0;
+  text-align: center;
+  p {
+    padding: 20px;
+    text-transform: uppercase;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  .auto-justify {
+    padding-bottom: 32px;
+    position: relative;
+    color: #fff;
+    padding: 10%;
+    &:after {
+      content : "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: url('https://media.gettyimages.com/photos/germanys-midfielder-toni-kroos-shoots-a-corner-kick-during-the-russia-picture-id982169104');
+      background-size: cover;
+      width: 100%;
+      height: 100%;
+      opacity : 0.5;
+      z-index: -1;
+    }
+    .panel-center {
+      img {
+        position: relative;
+        top: -120px;
+      }
+    }
+    .teamName {
+      .tk1 {
+        position: absolute;
+        left: 100px;
+        top: 100px;
+      }
+      .tk2 {
+        position: absolute;
+        left: 100px;
+        top: 170px;
+      }
+      .tk3 {
+        position: absolute;
+        left: 100px;
+        top: 300px;
+      }
+      .tk4 {
+        position: absolute;
+        left: 100px;
+        top: 370px;
+      }
+      .tk5 {
+        position: absolute;
+        right: 100px;
+        top: 100px;
+      }
+      .tk6 {
+        position: absolute;
+        right: 100px;
+        top: 170px;
+      }
+      .tk7 {
+        position: absolute;
+        right: 100px;
+        top: 300px;
+      }
+      .tk8 {
+        position: absolute;
+        right: 100px;
+        top: 370px;
+      }
+      .tk1, .tk2, .tk3, .tk4 {
+        img {
+          float: left;
+        }
+        span {
+          float: left;
+          font-size: 26px;
+          font-weight: bold;
+          padding: 12px 0 12px 10px;
+          display: inline-block;
+        }
+      }
+      .tk5, .tk6, .tk7, .tk8 {
+        img {
+          float: right;
+        }
+        span {
+          font-size: 26px;
+          font-weight: bold;
+          padding: 12px 0 12px 10px;
+          display: inline-block;
+        }
+        .code {
+          float: right;
+          padding-right: 12px;
+        }
+        .score {
+          float: left;
+        }
+      }
+      .bk1 {
+        position: absolute;
+        left: 300px;
+        top: 200px;
+      }
+      .bk2 {
+        position: absolute;
+        left: 300px;
+        top: 270px;
+      }
+      .bk1, .bk2 {
+        img {
+          float: left;
+        }
+        span {
+          float: left;
+          font-size: 26px;
+          font-weight: bold;
+          padding: 12px 0 12px 10px;
+          display: inline-block;
+        }
+      }
+      .bk3 {
+        position: absolute;
+        right: 300px;
+        top: 200px;
+        .code {
+          float: right;
+          padding-right: 12px;
+        }
+        .score {
+          float: left;
+        }
+      }
+      .bk4 {
+        position: absolute;
+        right: 300px;
+        top: 270px;
+        .code {
+          float: right;
+          padding-right: 12px;
+        }
+        .score {
+          float: left;
+        }
+      }
+      .bk3, .bk4 {
+        img {
+          float: right;
+        }
+        span {
+          float: left;
+          font-size: 26px;
+          font-weight: bold;
+          padding: 12px 0 12px 10px;
+          display: inline-block;
+        }
+      }
+      .ck1 {
+        position: absolute;
+        left: 50%;
+        transform: translate(-20%,0);
+        top: 300px;
+      }
+      .ck2 {
+        position: absolute;
+        left: 50%;
+        transform: translate(-20%,0);
+        top: 370px;
+      }
+      .ck1, .ck2 {
+        img {
+          float: left;
+        }
+        span {
+          font-size: 26px;
+          font-weight: bold;
+          padding: 12px 0 12px 10px;
+          display: inline-block;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 1023px) {
+  .bracket-wrapper {
+    .auto-justify {
+      .panel-center {
+        img {
+          height: 250px;
+          width: 280px;
+          position: relative;
+          top: -100px;
+        }
+      }
+      .teamName {
+        .bk1 {
+          left: 260px;
+          top: 200px;
+        }
+        .bk2 {
+          left: 260px;
+          top: 270px;
+        }
+        .bk3 {
+          right: 260px;
+          top: 200px;
+        }
+        .bk4 {
+          right: 260px;
+          top: 270px;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 767px) {
+  .bracket-wrapper {
+    .auto-justify {
+      .panel-center {
+        img {
+          height: 200px;
+          width: 200px;
+          position: relative;
+          top: -80px;
+        }
+      }
+      .teamName {
+        .tk1 {
+          left: 60px;
+          top: 50px;
+        }
+        .tk2 {
+          left: 60px;
+          top: 110px;
+        }
+        .tk3 {
+          left: 60px;
+          top: 200px;
+        }
+        .tk4 {
+          left: 60px;
+          top: 260px;
+        }
+        .tk5 {
+          right: 60px;
+          top: 50px;
+        }
+        .tk6 {
+          right: 60px;
+          top: 110px;
+        }
+        .tk7 {
+          right: 60px;
+          top: 200px;
+        }
+        .tk8 {
+          right: 60px;
+          top: 260px;
+        }
+        .bk1 {
+          left: 200px;
+          top: 130px;
+        }
+        .bk2 {
+          left: 200px;
+          top: 190px;
+        }
+        .bk3 {
+          right: 200px;
+          top: 130px;
+        }
+        .bk4 {
+          right: 200px;
+          top: 190px;
+        }
+        .ck1 {
+          top: 220px;
+        }
+        .ck2 {
+          top: 280px;
+          
+        }
+        .tk1, .tk2, .tk3, .tk4, .tk5, .tk6, .tk7, .tk8, .bk1, .bk2, .bk3, .bk4, .ck1, .ck2 {
+          img {
+            height: 50px;
+            width: 50px;
+          }
+          span {
+            font-size: 18px;
+            padding: 10px 0 10px 10px;
+          }
+        } 
+      }
+    }
+  }
+}
+@media screen and (max-width: 479px) {
+  .bracket-wrapper {
+    display: none;
+  }
+}

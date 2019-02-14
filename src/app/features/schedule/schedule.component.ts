@@ -16,9 +16,12 @@ const GROUPS = ["A", "B", "C", "D", "E", "F", "G", "H"];
 })
 export class ScheduleComponent implements OnInit {
   schedules = [];
+<<<<<<< HEAD
   _match = {};
   @ViewChild("modal", { read: ElementRef }) modal: ElementRef;
   imageSource = '../../../assets/images/avatar-image.jpg';
+=======
+>>>>>>> 194233f482e3133ba6cd701fe1b77a5f7a1f5bf4
   imgDefault = '../../../assets/images/default-image.png';
 
   constructor(
@@ -37,17 +40,29 @@ export class ScheduleComponent implements OnInit {
   init() {
     GROUPS.map(group => {
       let tables = [];
+<<<<<<< HEAD
       for (let i = 0; i < 6; i++) {
+=======
+      for(let i = 0; i < 6; i++) {
+>>>>>>> 194233f482e3133ba6cd701fe1b77a5f7a1f5bf4
         tables.push(
           {
             firstTeam: {
               code: null,
+<<<<<<< HEAD
               logo: this.imgDefault,
+=======
+              logo: null,
+>>>>>>> 194233f482e3133ba6cd701fe1b77a5f7a1f5bf4
               score: null
             },
             secondTeam: {
               code: null,
+<<<<<<< HEAD
               logo: this.imgDefault,
+=======
+              logo: null,
+>>>>>>> 194233f482e3133ba6cd701fe1b77a5f7a1f5bf4
               score: null
             },
             start_at: null,
@@ -99,12 +114,19 @@ export class ScheduleComponent implements OnInit {
           }
         });
 
+<<<<<<< HEAD
         this.schedules.push(
           {
             groupName: 'Quater-final',
             matches: quarters
           },
           {
+=======
+        this.schedules.push({
+          groupName: 'Quater-final',
+          matches: quarters
+        }, {
+>>>>>>> 194233f482e3133ba6cd701fe1b77a5f7a1f5bf4
             groupName: 'Semi-final',
             matches: semis
           },

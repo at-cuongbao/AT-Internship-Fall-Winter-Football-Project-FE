@@ -28,11 +28,11 @@ const routes: Routes = [
         component: PredictionComponent
       },
       {
-        path: 'schedules',
+        path: 'schedules/:id',
         component: ScheduleComponent
       },
       {
-        path: 'bracket',
+        path: 'bracket/:id',
         component: BracketComponent
       },
     ]
