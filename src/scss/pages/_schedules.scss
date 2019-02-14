@@ -1,0 +1,255 @@
+.schedule-block {
+  margin: 50px auto;
+  .group-block {
+    margin: 50px 0 20px;
+    .group-title {
+      font-size: 180%;
+      background: $color-light-green;
+      height: 50px;
+      line-height: 50px;
+    }
+    .final-title {
+      text-transform: uppercase;
+      color: $color-black;
+      @extend %txt-bold;
+    }
+  }
+  .schedule-match {
+    width: 100%;
+    th,
+    td {
+      padding: 10px;
+    }
+
+    .match-item {
+      &:hover {
+        background: $color-light-grey;
+      }
+      td {
+        height: 60px;
+        border-bottom: 1px solid $color-light-grey;
+        img {
+          width: 40px;
+          height: 40px;
+        }
+      }
+    }
+
+    thead {
+      color: $color-green;
+    }
+    tbody {
+      color: $color-bold-blue;
+    }
+    tfoot {
+      color: $color-red;
+    }
+  }
+}
+
+.team {
+  position: relative;
+
+  span {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    width: 20%;
+  }
+
+  img {
+    position: absolute;
+  }
+
+  &.team1 {
+    img {
+      left: 20px;
+    }
+
+    span {
+      right: 20px;
+    }
+  }
+  &.team2 {
+    img {
+      right: 20px;
+    }
+    span {
+      left: 20px;
+    }
+  }
+}
+
+/* The Modal (background) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: $color-white;
+    margin: 9% auto;
+    padding: 20px;
+    border: 1px solid $color-light-grey;
+    width: 80%;
+    .close {
+      color: $color-light-grey;
+      float: right;
+      font-size: 28px;
+      &:hover,
+      &:focus {
+        color: $color-black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    }
+  }
+}
+.prediction-page {
+  .prediction-heading {
+    padding: 10px 0 32px 0;
+    font-size: 32px;
+    text-align: center;
+  }
+  .score-avatar {
+    background-size: 100% 100%;
+    color: $color-white;
+    height: 230px;
+    padding-bottom: 10px;
+    width: 100%;
+    .info-match {
+      font-size: 16px;
+      text-transform: uppercase;
+      font-weight: 600;
+      padding-top: 8px;
+      .info-match-time {
+        font-size: 14px;
+        font-weight: 400;
+      }
+    }
+    .score-prediction {
+      display: inline-block;
+      position: relative;
+      width: 100%;
+      .prediction-middle {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, 0);
+        .prediction {
+          height: 50px;
+          width: 50px;
+          margin: 30px;
+          text-align: center;
+          font-size: 18px;
+          padding-left: 12px;
+          @extend %txt-bold;
+        }
+        .cross {
+          font-size: 60px;
+          @extend %txt-bold;
+          display: inline;
+        }
+      }
+      .name-team-1 {
+        position: absolute;
+        left: 18%;
+      }
+      .name-team-2 {
+        position: absolute;
+        right: 18%;
+      }
+      .logo-size {
+        height: 100px;
+        width: 100px;
+      }
+      .code-team {
+        padding-top: 8px;
+        text-align: center;
+        font-size: 18px;
+      }
+    }
+    .btn-prediction {
+      line-height: 30px;
+      font-family: inherit;
+      color: $color-white;
+      background: $color-light-red;
+      outline: none;
+      border: 0;
+      padding: 4px 24px;
+      font-size: 16px;
+      @extend %txt-bold;
+      border-radius: 8px;
+      position: absolute;
+      top: 100px;
+      left: 50%;
+      margin-top: 28px;
+      transform: translateX(-50%);
+    }
+  }
+}
+@media screen and (max-width: 1023px) {
+  .container {
+    .score-avatar {
+      .score-prediction {
+        .name-team-1 {
+          left: 10%;
+        }
+        .name-team-2 {
+          right: 10%;
+        }
+        .code-team {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 767px) {
+  .container {
+    font-weight: 600;
+    padding: 28px;
+    .prediction-heading {
+      font-size: 24px;
+    }
+    .score-avatar {
+      height: 500px;
+      .info-match {
+        font-size: 14px;
+        font-weight: 500;
+      }
+      .info-match-time {
+        font-size: 12px;
+        font-weight: 400;
+      }
+    }
+    .score-avatar {
+      .score-prediction {
+        padding-top: 10px;
+        text-align: center;
+        position: unset;
+        .name-team-1,
+        .name-team-2,
+        .prediction-middle,
+        .btn-prediction {
+          position: unset;
+        }
+        .code-team {
+          font-size: 14px;
+        }
+        .prediction-middle {
+          transform: none;
+        }
+        .btn-prediction {
+          transform: none;
+        }
+      }
+    }
+  }
+}

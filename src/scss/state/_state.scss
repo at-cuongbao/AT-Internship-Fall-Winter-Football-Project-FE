@@ -17,10 +17,16 @@
   border: 1px solid transparent;
 }
 .alert-danger {
-  color: $color-light-red;
-  background-color: $color-white;
+  color: $color-white;
+  background-color: $color-light-red;
   border-color: $color-grey;
 }
 .active {
   color: $color-blue !important;
+}
+.txt-center {
+  text-align: center;
+}
+.txt-bold {
+  font-weight: 600;
 }

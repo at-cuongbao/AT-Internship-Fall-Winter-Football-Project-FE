@@ -1,7 +1,6 @@
 export class Team {
-  id: string;
   name: string;
-  nickName: string;
-  logo: string;
+  code: string;
   cover: string;
+  logo: string;
 }
