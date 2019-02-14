@@ -1,0 +1,18 @@
+.search-error {
+  height: 100%;
+  min-height: 500px;
+  text-align: center;
+  padding: 128px;
+  .error-headline {
+    font-size: 198px;
+    line-height: 150px;
+    color: $active-dot;
+    padding-bottom: 32px;
+  }
+  .error-title {
+    font-size: 45px;
+    line-height: 45px;
+    text-transform: uppercase;
+    color: $color-black;
+  }
+}
