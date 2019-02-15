@@ -25,8 +25,14 @@
   color: $color-blue !important;
 }
 .txt-center {
-  text-align: center;
+  text-align: center !important;
+}
+.txt-left {
+  text-align: left !important;
+}
+.txt-right {
+  text-align: right !important;
 }
 .txt-bold {
-  font-weight: 600;
+  font-weight: 600 !important;
 }

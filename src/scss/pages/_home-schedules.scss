@@ -1,33 +1,28 @@
-.matches {
+.match {
   width: 100%;
   padding: 10px;
   background: $color-light-black;
   color: $color-white;
   border-bottom: 1px solid $color-grey;
-
   &:hover {
     background: $color-grey;
   }
-  li {
+  p {
     display: inline-block;
     vertical-align: middle;
-    text-align: center;
   }
   .img-size {
     width: 40px;
     height: 40px;
   }
-  .location {
+  &-location {
     background-image: url(./assets/images/location-icon.png);
     background-position-x: 10px;
     background-position-y: 50%;
     background-repeat: no-repeat;
-    address {
-      text-align: left;
-      padding-left: 30px;
-    }
+    padding-left: 30px;
   }
-  .view {
+  &-view {
     &-link {
       width: 150px;
       line-height: 30px;
@@ -38,7 +33,6 @@
       -webkit-transition: 400ms all;
       text-transform: uppercase;
       border: 1px solid $color-blue;
-      
       &:hover {
         background: $color-blue;
       }
