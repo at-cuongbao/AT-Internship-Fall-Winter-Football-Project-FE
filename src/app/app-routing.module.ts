@@ -20,6 +20,10 @@ const routes: Routes = [
         component: HomeComponent
       },
       {
+        path: 'home',
+        component: HomeComponent
+      },
+      {
         path: 'tounament-registration',
         component: TournamentRegistrationComponent
       },

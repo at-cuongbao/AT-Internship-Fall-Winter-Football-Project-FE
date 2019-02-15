@@ -63,7 +63,7 @@
       text-transform: uppercase;
       font-size: 20px;
       &:hover {
-        color: $color-blue;
+        color: $active-dot;
       }
     }
     .dropdown {
@@ -110,6 +110,13 @@
     }
     .icon {
       display: none;
+    }
+  }
+}
+.bottom-nav-right {
+  &:hover {
+    .main-link {
+      color: #00afd8;
     }
   }
 }

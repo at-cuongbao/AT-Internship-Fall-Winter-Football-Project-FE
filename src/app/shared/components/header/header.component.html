@@ -8,10 +8,10 @@
         </span>
       </a>
       <div [ngClass]="{'responsive': isClick}" class="bottom-nav-right pull-right">
-        <a routerLink="/news" class="main-link">News</a>
+        <a routerLink="/home" class="main-link" routerLinkActive="active">Home</a>
         <div class="dropdown clearfix">
           <ng-container>
-            <button class="dropbtn">Schedule
+            <button class="dropbtn main-link" routerLinkActive="active">Tournement
               <span class="fa fa-caret-down"></span>
             </button>
             <div class="dropdown-content">
@@ -21,7 +21,6 @@
             </div>
           </ng-container>
         </div>
-        <a routerLink="/bracket/5c4fbbaa0b614f0a24019243" class="main-link" class="active">Bracket</a>
         <div *ngIf="auth.isLoggedIn()" class="dropdown clearfix">
           <ng-container *ngIf="auth.currentUser.admin">
             <button class="dropbtn">{{ auth.currentUser.name || 'Username' }}
@@ -44,7 +43,7 @@
             </div>
           </ng-container>
         </div>
-        <a routerLink="/login" *ngIf="!auth.isLoggedIn()" class="main-link">Log in</a>
+        <a routerLink="/login" *ngIf="!auth.isLoggedIn()" class="main-link" routerLinkActive="active">Log in</a>
         <a class="icon" (click)="createResponsive()">&#9776;</a>
       </div>
     </div>
