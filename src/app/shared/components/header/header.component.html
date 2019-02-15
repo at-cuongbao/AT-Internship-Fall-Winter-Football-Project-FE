@@ -3,25 +3,28 @@
     <div class="bottom-nav clearfix">
       <a routerLink="/" class="bottom-nav-left pull-left">
         <img class="bottom-nav-logo" src="../../../../assets/images/logo-img.png">
-        <span class="bottom-nav-brand">Sport
+        <span class="bottom-nav-brand">
+          Sport
           <em>.clc</em>
         </span>
       </a>
       <div [ngClass]="{'responsive': isClick}" class="bottom-nav-right pull-right">
-        <a routerLink="/news" class="main-link">News</a>
-        <div class="dropdown clearfix">
-          <ng-container>
-            <button class="dropbtn">Schedule
-              <span class="fa fa-caret-down"></span>
-            </button>
-            <div class="dropdown-content">
-              <ng-container *ngFor="let tournament of tournaments">
-                <a routerLink="/schedules/{{ tournament.id }}" class="sub-link">{{ tournament.name || 'Undefined' }}</a>
-              </ng-container>
-            </div>
-          </ng-container>
+        <a routerLink="/home" class="main-link" routerLinkActive="active">
+          Home
+        </a>
+        <div class="dropdown pull-left clearfix">
+          <a class="dropbtn main-link">
+            Tournement
+            <span class="fa fa-caret-down dropdown-ic"></span>
+          </a>
+          <div class="dropdown-content">
+            <ng-container *ngFor="let tournament of tournaments">
+              <a routerLink="/schedules/{{ tournament.id }}" class="sub-link">
+                {{ tournament.name || 'Undefined' }}
+              </a>
+            </ng-container>
+          </div>
         </div>
-        <a routerLink="/bracket/5c4fbbaa0b614f0a24019243" class="main-link" class="active">Bracket</a>
         <div *ngIf="auth.isLoggedIn()" class="dropdown clearfix">
           <ng-container *ngIf="auth.currentUser.admin">
             <button class="dropbtn">{{ auth.currentUser.name || 'Username' }}
@@ -44,7 +47,7 @@
             </div>
           </ng-container>
         </div>
-        <a routerLink="/login" *ngIf="!auth.isLoggedIn()" class="main-link">Log in</a>
+        <a routerLink="/login" *ngIf="!auth.isLoggedIn()" class="main-link" routerLinkActive="active">Log in</a>
         <a class="icon" (click)="createResponsive()">&#9776;</a>
       </div>
     </div>
