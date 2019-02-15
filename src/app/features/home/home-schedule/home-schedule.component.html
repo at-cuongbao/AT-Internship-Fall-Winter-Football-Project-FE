@@ -1,0 +1,32 @@
+<section class="home-schedule container">
+  <ul class="matches txt-center" *ngFor="let match of matches">
+    <li class="date w10 center">
+      {{ match.start_at || 'date start'}}
+    </li>
+    <li class="logo w10 center">
+      <img [src]="match?.firstTeam.logo" class="img-size" alt="logo team1">
+    </li>
+    <li class="code w10 center">
+      {{ match?.firstTeam.code | questionMask }}
+    </li>
+    <li class="score w10">
+      {{ match.firstTeam.score | questionMask }} : {{ match.secondTeam.score | questionMask }}
+    </li>
+    <li class="code w10">
+      {{ match?.secondTeam.code | questionMask }}
+    </li>
+    <li class="logo w10">
+      <img [src]="match?.secondTeam.logo" class="img-size" alt="logo team2">
+    </li>
+    <li class="location w20">
+      <address>
+        {{ match.location || 'location?' }}
+      </address> 
+    </li>
+    <li class="view w20">
+      <a class="view-link txt-bold" href="">
+        View
+      </a>
+    </li>
+  </ul>
+</section>
