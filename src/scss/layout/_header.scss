@@ -110,6 +110,13 @@
     }
   }
 }
+.bottom-nav-right {
+  &:hover {
+    .main-link {
+      color: #00afd8;
+    }
+  }
+}
 
 @media screen and (max-width: 1023px) {
   .header {
