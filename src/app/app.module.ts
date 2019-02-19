@@ -21,6 +21,7 @@ import { ScheduleComponent } from './features/schedule/schedule.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { QuestionMaskPipe } from './shared/pipes/question-mask.pipe';
 import { DateDefaultPipe } from './shared/pipes/date-default.pipe';
+import { FootballImagesComponent } from './features/home/football-images/football-images.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -40,7 +41,8 @@ export function tokenGetter() {
     SliderComponent,
     RegisterComponent,
     PredictionComponent, 
-    PageNotFoundComponent, QuestionMaskPipe, DateDefaultPipe 
+    PageNotFoundComponent, QuestionMaskPipe, DateDefaultPipe, 
+    FootballImagesComponent 
   ],
   imports: [
     BrowserModule,
