@@ -14,18 +14,18 @@ import { TournamentListComponent } from 'src/app/features/tournament-list/tourna
 const routes: Routes = [
   {
     path: '',
+    component: HomeComponent
+  },
+  {
+    path: '',
     component: FeaturesComponent,
     children: [
       {
-        path: '',
-        component: HomeComponent
-      },
-      {
-        path: 'tounament-registration',
+        path: 'tournament-registration',
         component: TournamentRegistrationComponent
       },
       {
-        path: 'tounaments',
+        path: 'tournaments',
         component: TournamentListComponent
       },
       {

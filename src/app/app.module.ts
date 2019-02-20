@@ -23,6 +23,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { QuestionMaskPipe } from './shared/pipes/question-mask.pipe';
 import { DateDefaultPipe } from './shared/pipes/date-default.pipe';
 import { TournamentListComponent } from './features/tournament-list/tournament-list.component';
+import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -45,7 +46,8 @@ export function tokenGetter() {
     PageNotFoundComponent, 
     QuestionMaskPipe, 
     DateDefaultPipe, 
-    TournamentListComponent 
+    TournamentListComponent, 
+    SidebarComponent 
   ],
   imports: [
     BrowserModule,
