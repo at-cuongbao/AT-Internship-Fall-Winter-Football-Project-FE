@@ -9,20 +9,25 @@ import { PredictionComponent } from 'src/app/features/prediction/prediction.comp
 import { BracketComponent } from 'src/app/features/bracket/bracket.component';
 import { HomeComponent } from './features/home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { TournamentListComponent } from 'src/app/features/tournament-list/tournament-list.component';
 import { TournamentDetailComponent } from './features/tournament-detail/tournament-detail.component';
 
 const routes: Routes = [
   {
     path: '',
+    component: HomeComponent
+  },
+  {
+    path: '',
     component: FeaturesComponent,
     children: [
       {
-        path: '',
-        component: HomeComponent
+        path: 'tournament-registration',
+        component: TournamentRegistrationComponent
       },
       {
-        path: 'tounament-registration',
-        component: TournamentRegistrationComponent
+        path: 'tournaments',
+        component: TournamentListComponent
       },
       {
         path: 'prediction/:id',
