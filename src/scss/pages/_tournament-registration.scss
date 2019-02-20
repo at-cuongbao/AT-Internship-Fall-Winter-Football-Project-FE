@@ -2,9 +2,10 @@
   width: 100%;
   background-size: cover;
   padding: 64px;
+  border-radius: 8px;
+  margin-left: 16px;
   .register {
     margin: 0 auto;
-    width: 60%;
     max-width: 1023px;
     font-weight: 700;
     background-color: $color-white;
