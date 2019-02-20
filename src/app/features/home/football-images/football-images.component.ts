@@ -15,6 +15,6 @@ export class FootballImagesComponent implements OnInit {
   }
 
   changeStatus(){
-    this.readTeam= !this.readTeam;
+    this.readTeam = !this.readTeam;
   }
 }

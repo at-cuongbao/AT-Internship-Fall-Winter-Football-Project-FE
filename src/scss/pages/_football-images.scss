@@ -2,7 +2,6 @@
   .our-team-wrap {
     position: relative;
     .our-team-title {
-      text-align: center;
       h3 {
         font-size: 38px;
         text-transform: uppercase;
@@ -14,7 +13,6 @@
     }
     .our-team-text {
       margin: 32px 0 0;
-      text-align: center;
       p {
         padding: 10px;
       }
@@ -97,9 +95,6 @@
           .team-name {
             padding-bottom: 10px;
           }
-        }
-        p {
-          text-align: center;
         }
         .team-name {
           color: $color-grey;
