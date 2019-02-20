@@ -54,7 +54,7 @@ export class HomeScheduleComponent implements OnInit {
             this.matches.push(match);
           };
         });
-        this.matches.sort((a,b) => (a.start_at > b.start_at) ? 1 : ((b.start_at > a.start_at) ? -1 : 0));;
+        this.matches.sort((a,b) => (a.start_at > b.start_at) ? 1 : ((b.start_at > a.start_at) ? -1 : 0));
       });
     }
 }
