@@ -9,6 +9,7 @@ import { PredictionComponent } from 'src/app/features/prediction/prediction.comp
 import { BracketComponent } from 'src/app/features/bracket/bracket.component';
 import { HomeComponent } from './features/home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { TournamentListComponent } from 'src/app/features/tournament-list/tournament-list.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
       {
         path: 'tounament-registration',
         component: TournamentRegistrationComponent
+      },
+      {
+        path: 'tounaments',
+        component: TournamentListComponent
       },
       {
         path: 'prediction/:id',

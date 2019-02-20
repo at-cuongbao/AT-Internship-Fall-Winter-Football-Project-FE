@@ -1,0 +1,104 @@
+<div class="tournament-list">
+  <div class="tournament-intro">
+    <div class="container">
+      <div class="tournament-cover" [style.backgroundImage]="'url('+ imageSource +')'">
+        <h1 class="tournament-heading">
+          Tournament list
+        </h1>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <ul class="breadcrumb">
+      <li>
+        <a href="index.html">Home</a>
+      </li>
+      <li class="breadcrumb-active">
+        <span>Tournament list</span>
+      </li>
+    </ul>
+    <main class="body-content clearfix">
+      <section class="main">
+        <div *ngFor="let tour of tournamentList | paginate: { itemsPerPage: 7, currentPage: pageActual }" class="card">
+          <a class="" routerLink="/tournamentDetail/{{tour._id}}">
+            <img src="../../../assets/images/35b8bf93115eb2b8da9f8b4f41fdb0fd.jpg" alt="Denim Jeans" style="width:100%" height="300">
+          </a>
+          <div class="card-wrapper">
+            <div class="date-creation">{{ tour.start_at | date:'short' }}</div>
+            <h4 class="card-title">
+              <a routerLink="/tournamentDetail/{{tour._id}}">{{ tour.name }}</a>
+            </h4>
+            <p class="card-content">Decription: {{ tour.desc || 'None' }}.</p>
+            <a class="read-more" routerLink="/tournamentDetail/{{tour._id}}">Read more</a>
+          </div>
+        </div>
+        <pagination-controls class="pagination-control" (pageChange)="pageActual = $event"></pagination-controls>
+      </section>
+      <aside class="sidebar">
+        <div class="categories-sidebar">
+          <h3 class="sidebar-title">Categories</h3>
+          <ul class="category-list">
+            <li class="category-item">
+              <a class="category-link">
+                Overall
+                <span class="category-label">(3)</span>
+              </a>
+            </li>
+            <li class="category-item">
+              <a class="category-link">
+                Players
+                <span class="category-label">(2)</span>
+              </a>
+            </li>
+            <li class="category-item">
+              <a class="category-link">
+                Life
+                <span class="category-label">(4)</span>
+              </a>
+            </li>
+            <li class="category-item parent">
+              <a class="category-link">
+                Entertainment
+                <span class="category-label">(1)</span>
+              </a>
+              <ul class="category-sub-list">
+                <li class="category-sub-item">
+                  <a class="category-sub-link">
+                    Art Style
+                    <span class="category-label">(3)</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="category-item">
+              <a class="category-link">
+                Uncategorized
+                <span class="category-label">(3)</span>
+              </a>
+            </li>
+          </ul>
+          <div class="clearfix"> </div>
+        </div>
+        <div class="newsletter-sidebar">
+          <h3 class="sidebar-title">Newsletter</h3>
+          <p class="introtext">Donec at ex aliquet, porttitor lacus eget</p>
+          <input class="newsletter-input" type="email" placeholder="Email">
+          <button class="btn btn-primary btn-newsletter">
+            <i class="fas fa-envelope"></i>
+          </button>
+        </div>
+        <div class="tags-sidebar">
+          <h3 class="sidebar-title">tags</h3>
+          <ul class="tag-list">
+            <li class="tag-item"><a href=""><span>soccer</span></a></li>
+            <li class="tag-item"><a href=""><span>kick</span></a></li>
+            <li class="tag-item"><a href=""><span>action</span></a></li>
+            <li class="tag-item"><a href=""><span>stadium</span></a></li>
+            <li class="tag-item"><a href=""><span>goals</span></a></li>
+            <li class="tag-item"><a href=""><span>home</span></a></li>
+          </ul>
+        </div>
+      </aside>
+    </main>
+  </div>
+</div>

@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { AppRoutingModule } from './app-routing.module';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { AppComponent } from './app.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
@@ -21,6 +22,7 @@ import { ScheduleComponent } from './features/schedule/schedule.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { QuestionMaskPipe } from './shared/pipes/question-mask.pipe';
 import { DateDefaultPipe } from './shared/pipes/date-default.pipe';
+import { TournamentListComponent } from './features/tournament-list/tournament-list.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -40,7 +42,7 @@ export function tokenGetter() {
     SliderComponent,
     RegisterComponent,
     PredictionComponent, 
-    PageNotFoundComponent, QuestionMaskPipe, DateDefaultPipe 
+    PageNotFoundComponent, QuestionMaskPipe, DateDefaultPipe, TournamentListComponent 
   ],
   imports: [
     BrowserModule,
@@ -54,7 +56,8 @@ export function tokenGetter() {
         blacklistedRoutes: ['http://localhost:3000/api/authenticate']
       }
     }),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
