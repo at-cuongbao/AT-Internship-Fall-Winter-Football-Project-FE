@@ -42,7 +42,10 @@ export function tokenGetter() {
     SliderComponent,
     RegisterComponent,
     PredictionComponent, 
-    PageNotFoundComponent, QuestionMaskPipe, DateDefaultPipe, TournamentListComponent 
+    PageNotFoundComponent, 
+    QuestionMaskPipe, 
+    DateDefaultPipe, 
+    TournamentListComponent 
   ],
   imports: [
     BrowserModule,
