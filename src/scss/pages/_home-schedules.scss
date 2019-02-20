@@ -24,7 +24,6 @@
   }
   &-view {
     &-link {
-      width: 150px;
       line-height: 30px;
       color: $color-white;
       display: block;
@@ -37,5 +36,31 @@
         background: $color-blue;
       }
     }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .match {
+    & &-location {
+      display: none;
+    }
+    & &-date {
+      width: 20%;
+    }
+    & &-score {
+      width: 20%;
+    }
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .match {
+    & &-team-logo {
+      width: 20%;
+    }
+    & &-team-code {
+      display: none;
+    }
+
   }
 }

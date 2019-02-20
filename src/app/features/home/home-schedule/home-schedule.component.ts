@@ -24,10 +24,10 @@ export class HomeScheduleComponent implements OnInit {
 
   init() {
     this.matches = [];
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 7; i++) {
       this.matches.push(
         {
-          start_at: '01/01/2020',
+          start_at: '01/01',
           firstTeam: {
             code: null,
             logo: this.imgDefault,
@@ -44,18 +44,17 @@ export class HomeScheduleComponent implements OnInit {
   }
 
   getMatches(): void {
-    let id;
     this.route.paramMap.subscribe((params: ParamMap) => {
-      id = params.get('id') || '5c4fbbaa0b614f0a24019243';
     });
-    this.scheduleService.get(id)
-      .subscribe(schedules => {
+    this.scheduleService.getNextMatch()
+      .subscribe(match => {
         this.matches = [];
-        schedules.map(match => {
-          if (this.matches.length < 10) {
+        match.map(match => {
+          if (this.matches.length < 7) {
             this.matches.push(match);
           };
         });
+        this.matches.sort((a,b) => (a.start_at > b.start_at) ? 1 : ((b.start_at > a.start_at) ? -1 : 0));;
       });
     }
 }
