@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-features',
@@ -6,8 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./features.component.scss']
 })
 export class FeaturesComponent implements OnInit {
-
-  constructor() { }
+  imageSource = '../../../assets/images/head-bg.jpg';
+  pageName: string = '';
+  
+  constructor(private router: Router) {
+    this.pageName = this.router.url.replace('/', '').replace('-', ' ');
+  }
 
   ngOnInit() {
   }
