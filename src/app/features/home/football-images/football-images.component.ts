@@ -7,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FootballImagesComponent implements OnInit {
   imageSource = '../../../../assets/images/our-team-main-wrap.jpg';
-  imageSource2 = '../../../../assets/images/neymar.png';
+  imageSource1 = '../../../../assets/images/neymar.png';
+  imageSource2 = '../../../../assets/images/ronaldo.png';
+  imageSource3 = '../../../../assets/images/messi.png';
+  imageSource4 = '../../../../assets/images/ibra.jpg';
   
   readTeam = false;
 
