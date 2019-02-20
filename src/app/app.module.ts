@@ -22,6 +22,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { QuestionMaskPipe } from './shared/pipes/question-mask.pipe';
 import { DateDefaultPipe } from './shared/pipes/date-default.pipe';
 import { TournamentDetailComponent } from './features/tournament-detail/tournament-detail.component';
+import { FootballImagesComponent } from './features/home/football-images/football-images.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -42,7 +43,8 @@ export function tokenGetter() {
     RegisterComponent,
     PredictionComponent, 
     PageNotFoundComponent, QuestionMaskPipe, DateDefaultPipe,
-    TournamentDetailComponent 
+    TournamentDetailComponent,  
+    FootballImagesComponent 
   ],
   imports: [
     BrowserModule,
