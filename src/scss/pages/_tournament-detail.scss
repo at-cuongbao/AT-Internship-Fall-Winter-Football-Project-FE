@@ -1,0 +1,77 @@
+.tournament-detail {
+  font-size: 16px;
+  line-height: 24px;
+  font-family: $font-family;
+  border-bottom: 1px solid red;
+  img {
+    width: 100vw;
+    height: 100vh;
+  }
+  .article-tournament {
+    margin: 32px 0;
+    .special-detail {
+      margin: 32px 0;
+      padding: 25px 20px 23px 30px;
+      position: relative;
+      border: none;
+      color: $color-light-black;
+      background: $color-light-grey;
+      font-weight: bold;
+    }
+    .special-detail::before {
+      content: '';
+      background-image: url('./assets/images/blockquote-left-bg.png');
+      top: 0;
+      left: 0;
+    }
+    .special-detail::after {
+      background-image: url('./assets/images/blockquote-right-bg.png');
+      bottom: 0;
+      right: 0;
+    }
+    .special-detail::before, .special-detail::after {
+      content: '';
+      width: 80px;
+      height: 60px;
+      position: absolute;
+      opacity: 0.1;
+    }
+    table {
+      margin: 16px 0;
+      width: 100%;
+      .heading {
+        th {
+          padding: 10px;
+          font-size: 18px;
+          color: $color-white;
+          background: $color-light-black;
+          font-weight: normal;
+        }
+        th:nth-child(2), th:nth-child(4){
+          background: $color-blue;
+        }
+      }
+      tr {
+        td {
+          padding: 4px;
+        }
+      }
+    }
+    table, th, td {
+      border: 1px solid $color-black;
+      border-collapse: collapse;
+    }
+  }
+}
+.other-tournament {
+  .other-post-title {
+    h3 {
+      font-size: 20px;
+      text-transform: uppercase;
+      font-family: 'monospace';
+      span {
+        color: $color-blue;
+      }
+    }
+  }
+}
