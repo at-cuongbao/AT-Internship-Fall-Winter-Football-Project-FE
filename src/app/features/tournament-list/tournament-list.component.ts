@@ -15,9 +15,7 @@ export class TournamentListComponent implements OnInit {
 
   ngOnInit() {
     this.tournamentService.get().subscribe(tournamentList => {
-      this.flag 
-        ? this.tournamentList = tournamentList.slice(0, 3)
-        : this.tournamentList = tournamentList;
+      this.tournamentList = this.flag ? tournamentList.slice(0, 3) : tournamentList;
     });
   }
 }
