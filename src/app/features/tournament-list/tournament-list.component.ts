@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { TournamentService } from 'src/app/shared/services/tournament.service';
 
 @Component({
@@ -7,15 +7,15 @@ import { TournamentService } from 'src/app/shared/services/tournament.service';
   styleUrls: ['./tournament-list.component.scss']
 })
 export class TournamentListComponent implements OnInit {
-  imageSource = '../../../assets/images/head-bg.jpg';
   tournamentList = [];
   pageActual = 1;
-  
+  @Input() flag;
+
   constructor(private tournamentService: TournamentService) { }
 
   ngOnInit() {
     this.tournamentService.get().subscribe(tournamentList => {
-      this.tournamentList = tournamentList;
+      this.tournamentList = this.flag ? tournamentList.slice(0, 3) : tournamentList;
     });
   }
 }
