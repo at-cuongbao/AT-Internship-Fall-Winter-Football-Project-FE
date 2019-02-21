@@ -49,11 +49,11 @@ export class TournamentRegistrationComponent {
   onSubmit(f: NgForm) {
     let data = {
       tournament: {
-        name: f.control.value.name,
+        name: f.control.value.tournamentName,
         start_at: f.control.value.start,
         end_at: f.control.value.finish,
         group_number: this.groups.length,
-        desc: f.control.value.des
+        desc: f.control.value.infor
       },
       teams: this.teams
     };
