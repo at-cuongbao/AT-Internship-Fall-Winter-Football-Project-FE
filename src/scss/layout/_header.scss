@@ -8,7 +8,7 @@
   background-color: rgba(45, 37, 37, 0.5);
   font-size: 16px;
   .bottom-nav-left {
-    height: 70px;
+    height: 66px;
     padding-right: 86px;
     position: relative;
     &:hover {
@@ -87,6 +87,7 @@
       }
     }
     .dropdown-content {
+      margin-top: -4px;
       display: none;
       position: absolute;
       background-color: $color-white;

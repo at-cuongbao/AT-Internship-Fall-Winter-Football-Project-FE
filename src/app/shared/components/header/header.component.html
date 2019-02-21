@@ -8,7 +8,7 @@
           <em>.clc</em>
         </span>
       </a>
-      <div [ngClass]="{'responsive': isClick}" class="bottom-nav-right pull-right">
+      <div [class.responsive]="isClick" class="bottom-nav-right pull-right">
         <a routerLink="/home" class="main-link" routerLinkActive="active">
           Home
         </a>

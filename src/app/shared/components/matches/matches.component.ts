@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './matches.component.html',
   styleUrls: ['./matches.component.scss']
 })
-export class MatchesComponent implements OnInit {
+export class MatchesComponent implements OnInit, OnChanges {
 
   @Input() matches: any;
   @Input() home = true;
@@ -17,6 +17,10 @@ export class MatchesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+  }
+
+  ngOnChanges() {
+    console.log(this.matches);
   }
 
   open(match: any) {

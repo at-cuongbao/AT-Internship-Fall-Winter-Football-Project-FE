@@ -44,3 +44,11 @@
     }
   }
 }
+
+@media screen and (max-width: 767px) {
+  .next-match-wrapper {
+    .home-next-match {
+      display: block;
+    }
+  }
+}
