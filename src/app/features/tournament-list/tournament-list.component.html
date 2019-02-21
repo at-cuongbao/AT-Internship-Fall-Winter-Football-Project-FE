@@ -1,21 +1,24 @@
-<section class="tournament-list">
-  <div *ngIf="tournamentList.length" class="tournament-top clearfix">
-    <div *ngFor="let tour of tournamentList | paginate: { itemsPerPage: 6, currentPage: pageActual }" class="card">
-      <a routerLink="/tournamentDetail/{{tour._id}}">
-        <img src="../../../assets/images/35b8bf93115eb2b8da9f8b4f41fdb0fd.jpg" alt="Denim Jeans" height="300">
-      </a>
-      <div class="card-wrapper">
-        <div class="date-creation">{{ tour.start_at | date:'short' }}</div>
-        <h4 class="card-title">
-          <a routerLink="/tournamentDetail/{{tour._id}}">{{ tour.name }}</a>
-        </h4>
-        <p class="card-content">Decription: {{ tour.desc || 'None' }}.</p>
-        <a class="read-more" routerLink="/tournamentDetail/{{tour._id}}">Read more</a>
+<div class="container">
+  <section class="tournament-list" [class.display-full]="flag">
+    <div *ngIf="tournamentList.length" class="tournament-top clearfix">
+      <div *ngFor="let tour of tournamentList | paginate: { itemsPerPage: 6, currentPage: pageActual }" class="card">
+        <a routerLink="/tournamentDetail/{{tour._id}}">
+          <img src="../../../assets/images/35b8bf93115eb2b8da9f8b4f41fdb0fd.jpg" alt="Denim Jeans" height="300">
+        </a>
+        <div class="card-wrapper">
+          <div class="date-creation">{{ tour.start_at | date:'short' }}</div>
+          <h4 class="card-title">
+            <a routerLink="/tournamentDetail/{{tour._id}}">{{ tour.name }}</a>
+          </h4>
+          <p class="card-content">Decription: {{ tour.desc || 'None' }}.</p>
+          <a class="read-more" routerLink="/tournamentDetail/{{tour._id}}">Read more</a>
+        </div>
       </div>
     </div>
-  </div>
-  <div [class.display-none]="flag" class="tournament-bottom">
-    <a routerLink="/tournament-registration" class="btn btn-success">CREATE TOURNAMENT</a>
-    <pagination-controls [class.display-none]="!tournamentList.length" class="pagination-control" (pageChange)="pageActual = $event"></pagination-controls>
-  </div>
-</section>
+    <div [class.display-none]="flag" class="tournament-bottom">
+      <a routerLink="/tournament-registration" class="btn btn-success">CREATE TOURNAMENT</a>
+      <pagination-controls [class.display-none]="!tournamentList.length" class="pagination-control" (pageChange)="pageActual = $event"></pagination-controls>
+    </div>
+  </section>
+  <app-sidebar [class.display-none]="flag"></app-sidebar>
+</div>

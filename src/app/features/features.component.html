@@ -1,28 +1,26 @@
 <div class="feature">
-    <div class="feature-intro">
-      <div class="container">
-        <div class="feature-cover" [style.backgroundImage]="'url('+ imageSource +')'">
-          <h1 class="feature-heading">
-            {{ pageName }}
-          </h1>
-        </div>
+  <div class="feature-intro">
+    <div class="container">
+      <div class="feature-cover" [style.backgroundImage]="'url('+ imageSource +')'">
+        <h1 class="feature-heading">
+          {{ pageName }}
+        </h1>
       </div>
     </div>
-    <div class="container">
-      <ul class="breadcrumb">
-        <li>
-          <a href="index.html">Home</a>
-        </li>
-        <li class="breadcrumb-active">
-          <span>{{ pageName }}</span>
-        </li>
-      </ul>
-      <main class="main-page clearfix">
-        <div class="body-content">
-          <router-outlet></router-outlet>
-        </div>
-        <app-sidebar></app-sidebar>
-      </main>
-    </div>
   </div>
-  
+  <div class="container">
+    <ul class="breadcrumb">
+      <li>
+        <a routerLink="/home">Home</a>
+      </li>
+      <li class="breadcrumb-active">
+        <span>{{ pageName }}</span>
+      </li>
+    </ul>
+  </div>
+  <main class="main-page clearfix">
+    <div class="body-content">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+</div>

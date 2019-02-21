@@ -10,11 +10,12 @@ export class FeaturesComponent implements OnInit {
   imageSource = '../../../assets/images/head-bg.jpg';
   pageName: string = '';
   
-  constructor(private router: Router) {
-    this.pageName = this.router.url.replace('/', '').replace('-', ' ');
-  }
+  constructor(private router: Router) {}
 
   ngOnInit() {
+    this.pageName = this.router.url.replace('/', '').replace('-', ' ');
+    let index = this.pageName.search('/');
+    this.pageName = this.pageName.slice(0, index);
   }
 
 }
