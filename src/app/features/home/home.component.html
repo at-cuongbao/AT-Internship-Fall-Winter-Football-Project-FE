@@ -1,11 +1,21 @@
 <app-slider></app-slider>
 <app-latest-result></app-latest-result>
-<app-schedule></app-schedule>
+<div class="next-match-wrapper">
+  <div class="home-next-match w50 inline-block pull-left">
+    <app-next-match [data]="matches[0]"></app-next-match>
+  </div>
+  <div class="home-schedule w50 inline-block">
+    <app-matches [matches]="matches"></app-matches>
+  </div>
+</div>
 <div class="our-tour txt-center container">
-  <h3 class="our-tour-title">Our <span>Tournaments</span></h3>
+  <h3 class="our-tour-title">Our
+    <span>Tournaments</span>
+  </h3>
   <div class="our-tour-text">Nullam quis eros tellus. Duis sit amet neque nec orci feugiat tincidunt. Lorem ipsum dolor sit amet,
-    <br> consectetur adipiscing elit. Nulla sed turpis aliquet, pharetra enim sit amet, congue erat. 
+    <br> consectetur adipiscing elit. Nulla sed turpis aliquet, pharetra enim sit amet, congue erat.
   </div>
   <app-tournament-list [flag]="true"></app-tournament-list>
 </div>
+
 <app-football-images></app-football-images>

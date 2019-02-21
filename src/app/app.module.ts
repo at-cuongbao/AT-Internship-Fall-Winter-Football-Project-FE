@@ -26,6 +26,8 @@ import { TournamentListComponent } from './features/tournament-list/tournament-l
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 import { FootballImagesComponent } from './features/home/football-images/football-images.component';
 import { LatestResultComponent } from './shared/components/latest-result/latest-result.component';
+import { MatchesComponent } from './shared/components/matches/matches.component';
+import { NextMatchComponent } from './shared/components/next-match/next-match.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -54,7 +56,9 @@ export function tokenGetter() {
     QuestionMaskPipe, 
     DateDefaultPipe, 
     FootballImagesComponent, 
-    LatestResultComponent 
+    LatestResultComponent,
+    MatchesComponent,
+    NextMatchComponent
   ],
   imports: [
     BrowserModule,

@@ -13,3 +13,34 @@
     font-size: 15px;
   }
 }
+.next-match-wrapper {
+  margin-top: 64px;
+  background-image: url(./assets/images/tr.png);
+  background-position-x: 50%;
+  background-position-y: 0px;
+  background-color: rgb(0, 142, 175);
+  padding: 96px;
+  .home-next-match {
+    background-color: $color-white;
+    height: 412px;
+  }
+  .home-schedule {
+    .match {
+      &-date {
+        width: 30%;
+      }
+      &-team-logo {
+        width: 15%;
+      }
+      &-team-code {
+        width: 15%;
+      }
+      &-location {
+        display: none;
+      }
+      &-view {
+        display: none;
+      }
+    }
+  }
+}
