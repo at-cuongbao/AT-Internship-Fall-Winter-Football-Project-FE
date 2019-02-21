@@ -13,3 +13,24 @@
     font-size: 15px;
   }
 }
+.main-page {
+  .home-schedule {
+    .match {
+      &-date {
+        width: 30%;
+      }
+      &-team-logo {
+        width: 15%;
+      }
+      &-team-code {
+        width: 15%;
+      }
+      &-location {
+        display: none;
+      }
+      &-view {
+        display: none;
+      }
+    }
+  }
+}
