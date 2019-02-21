@@ -2,7 +2,9 @@
   <ul class="matches">
     <li class="match txt-center" *ngFor="let match of matches">
       <p class="match-date w10" *ngIf="home">
-        {{ match.start_at | date:'MMMM dd, y' }}
+        <span>
+          {{ match.start_at | date:'MMMM dd' }}
+        </span>
       </p>
       <p class="match-date w10" *ngIf="!home">
         {{ match.start_at | date:'MMM, dd' }}
@@ -28,7 +30,7 @@
         <img [src]="match?.secondTeam.logo" class="img-size" alt="logo team2">
       </p>
       <p class="match-location w20 txt-left">
-        {{ match.location || 'location?' }}
+        {{ match.location || '' }}
       </p>
       <p class="match-view w20" *ngIf="!auth.currentUser?.admin">
         <a class="match-view-link txt-bold" href="">
