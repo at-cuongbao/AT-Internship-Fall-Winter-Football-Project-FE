@@ -25,10 +25,6 @@ const routes: Routes = [
         component: TournamentRegistrationComponent
       },
       {
-        path: 'home',
-        component: HomeComponent
-      },
-      {
         path: 'tournaments',
         component: TournamentListComponent
       },
