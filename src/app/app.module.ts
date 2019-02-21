@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { AppRoutingModule } from './app-routing.module';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { AppComponent } from './app.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
@@ -24,6 +25,7 @@ import { DateDefaultPipe } from './shared/pipes/date-default.pipe';
 import { TournamentDetailComponent } from './features/tournament-detail/tournament-detail.component';
 import { FootballImagesComponent } from './features/home/football-images/football-images.component';
 import { TournamentListComponent } from './features/tournament-list/tournament-list.component';
+import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -43,17 +45,24 @@ export function tokenGetter() {
     SliderComponent,
     RegisterComponent,
     PredictionComponent, 
-    PageNotFoundComponent, QuestionMaskPipe, DateDefaultPipe,
-    TournamentDetailComponent, 
-    PageNotFoundComponent, QuestionMaskPipe, DateDefaultPipe, 
+    SidebarComponent,
+    PageNotFoundComponent, 
+    QuestionMaskPipe, 
+    DateDefaultPipe, 
+    TournamentListComponent, 
+    SidebarComponent,
+    PageNotFoundComponent, 
+    QuestionMaskPipe, 
+    DateDefaultPipe, 
     FootballImagesComponent,
-    TournamentListComponent
+    TournamentDetailComponent  
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    NgxPaginationModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
