@@ -6,11 +6,10 @@
 .header {
   z-index: 1;
   background-color: rgba(45, 37, 37, 0.5);
+  font-size: 16px;
   .bottom-nav-left {
-    float: left;
-    padding: 0;
-    height: 71px;
-    padding-right: 85px;
+    height: 70px;
+    padding-right: 86px;
     position: relative;
     &:hover {
       span {
@@ -21,24 +20,25 @@
       }
     }
     &::after {
-      content: '';
+      content: "";
       transform: skewX(-33deg);
       background-color: $color-blue;
       position: absolute;
       right: 70px;
       top: 0;
       bottom: 0;
-      left: -1000%;
+      left: -99%;
     }
-    .bottom-nav-logo, .bottom-nav-brand {
+    .bottom-nav-logo,
+    .bottom-nav-brand {
       position: relative;
       z-index: 1;
     }
     .bottom-nav-logo {
       padding: 15px;
-      transition: transform .8s ease-in-out;
+      transition: transform 0.8s ease-in-out;
       &:hover {
-        transform:rotate(150deg);
+        transform: rotate(150deg);
       }
     }
     .bottom-nav-brand {
@@ -47,7 +47,6 @@
       font-size: 38px;
       line-height: 70px;
       text-transform: uppercase;
-      font-family: fantasy;
       em {
         color: $color-white;
       }
@@ -57,34 +56,33 @@
     a {
       float: left;
       color: $color-white;
-      text-align: center;
       padding: 24px 16px;
-      text-decoration: none;
       text-transform: uppercase;
-      font-size: 20px;
+      &.active,
       &:hover {
-        color: $color-blue;
+        color: $active-dot;
+        border-bottom: 2px solid $color-blue;
+      }
+      .dropdown-ic {
+        margin-bottom: -1px;
       }
     }
     .dropdown {
-      float: left;
       &:hover {
         .dropbtn {
           color: $color-blue;
         }
         .dropdown-content {
+          top: 70px;
           display: block;
         }
       }
       .dropbtn {
-        font-size: 20px;
         text-transform: uppercase;
-        border: none;
         outline: none;
         color: $color-white;
         padding: 24px 16px;
         background-color: inherit;
-        font-family: inherit;
         margin: 0;
       }
     }
@@ -103,7 +101,6 @@
         color: $color-white;
         background-color: $color-black;
         padding: 12px 16px;
-        text-decoration: none;
         display: block;
         text-align: center;
       }
@@ -118,7 +115,8 @@
   .header {
     background-color: $color-light-black;
     .bottom-nav-right {
-      a, .dropbtn {
+      a,
+      .dropbtn {
         display: none;
       }
       .icon {
@@ -144,7 +142,8 @@
         top: 0;
         top: -73px;
       }
-      .main-link, .dropdown {
+      .main-link,
+      .dropdown {
         float: none;
         display: block;
         text-align: center;

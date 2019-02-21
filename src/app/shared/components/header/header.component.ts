@@ -23,8 +23,7 @@ export class HeaderComponent implements OnInit {
       data.map(tournament => {
         this.tournaments.push({ id: tournament._id, name: tournament.name });
       });
-    });
-    
+    });   
   }
 
   createResponsive() {
