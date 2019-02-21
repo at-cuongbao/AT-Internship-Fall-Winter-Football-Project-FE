@@ -33,8 +33,8 @@
         {{ match.location || '' }}
       </p>
       <p class="match-view w20" *ngIf="!auth.currentUser?.admin">
-        <a class="match-view-link txt-bold" href="">
-          View
+        <a class="match-view-link txt-bold" (click)="open(match)">
+          Predict
         </a>
       </p>
       <p class="match-view w20" *ngIf="auth.isLoggedIn() && auth.currentUser.admin">
