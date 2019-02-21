@@ -21,7 +21,6 @@ import { ScheduleComponent } from './features/schedule/schedule.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { QuestionMaskPipe } from './shared/pipes/question-mask.pipe';
 import { DateDefaultPipe } from './shared/pipes/date-default.pipe';
-import { HomeScheduleComponent } from './features/home/home-schedule/home-schedule.component';
 import { FootballImagesComponent } from './features/home/football-images/football-images.component';
 import { MatchesComponent } from './shared/components/matches/matches.component';
 import { NextMatchComponent } from './shared/components/next-match/next-match.component';
@@ -47,7 +46,6 @@ export function tokenGetter() {
     PageNotFoundComponent,
     QuestionMaskPipe,
     DateDefaultPipe,
-    HomeScheduleComponent,
     FootballImagesComponent,
     MatchesComponent,
     NextMatchComponent 
