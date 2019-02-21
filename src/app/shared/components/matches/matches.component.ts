@@ -16,9 +16,6 @@ export class MatchesComponent implements OnInit {
     private auth: AuthService,
   ) { }
 
-  ngOnInit() {
-  }
-
   open(match: any) {
     this.openModal.emit(match);
   }

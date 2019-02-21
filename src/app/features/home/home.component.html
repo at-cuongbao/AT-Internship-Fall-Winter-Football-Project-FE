@@ -1,9 +1,9 @@
 <app-slider></app-slider>
 <app-latest-result></app-latest-result>
-<div class="next-match-wrapper">
+<div class="next-match-wrapper" *ngIf="matches.length">
   <div class="container">
     <div class="home-next-match w50 inline-block pull-left">
-      <app-next-match [data]="matches[0]"></app-next-match>
+      <app-next-match [match]="matches[0]"></app-next-match>
     </div>
     <div class="home-schedule w50 inline-block">
       <app-matches [matches]="matches"></app-matches>

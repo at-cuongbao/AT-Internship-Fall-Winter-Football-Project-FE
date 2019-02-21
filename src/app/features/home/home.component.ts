@@ -41,15 +41,9 @@ export class HomeComponent implements OnInit {
 
   getMatches(): void {
     this.scheduleService.getNextMatch()
-      .subscribe(match => {
-        this.matches = [];
-        match.map(match => {
-          if (this.matches.length < 7) {
-            this.matches.push(match);
-          };
-        });
-        this.matches.sort((a,b) => (a.start_at > b.start_at) ? 1 : ((b.start_at > a.start_at) ? -1 : 0));
+      .subscribe(matches => {
+        this.matches = matches;
+        this.matches.sort((a,b) => (a.start_at > b.start_at) ? 1 : 0);
       });
     }
-
 }
