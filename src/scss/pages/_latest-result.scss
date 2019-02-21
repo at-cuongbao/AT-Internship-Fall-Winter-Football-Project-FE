@@ -38,17 +38,11 @@
     border: 1px solid $color-white;
     .latest-team-left, .latest-team-right {
       display: inline-block;
-      width: 15%;
       height: 100%;
-      img {
-        width: 60%;
-        vertical-align: middle;
-        margin-left: 169px;
-      }
     }
     .latest-team-right {
       position: absolute;
-      right: 87px;
+      right: 0;
       img {
         margin-left: 0;
       }
@@ -94,7 +88,6 @@
             float: left;
             font-size: 33px;
             line-height: 70px;
-            position: relative;
             &::before {
               content: 'vs';
               margin-top: -15px;
@@ -109,7 +102,8 @@
               position: absolute;
               z-index: 2;
               top: 50%;
-              right: -40px;
+              left: 50%;
+              transform: translate(-50%,0);
             }
           }
         }
@@ -170,24 +164,20 @@
     }
   }
 }
-
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 1023px) {
   .latest-result {
     .latest-middle {
       .latest-versus {
         .versus-team {
-          width: 100%;
-          position: static;
-        }
-        .latest-score {
-          .score-title {
-            display: none;
-          }
-          .score-table {
-            margin: 10px 0;
-          }
+         font-size: 30px;
         }
       }
     }
   }
 }
+@media screen and (max-width: 767px) {
+  .latest-result {
+    display: none;
+  }    
+}
+
