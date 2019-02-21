@@ -9,6 +9,7 @@ import { AuthService } from '../../services/auth.service';
 export class MatchesComponent implements OnInit {
 
   @Input() matches: any;
+  @Input() home = true;
   @Output() openModal = new EventEmitter<any>();
 
   constructor(

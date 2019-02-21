@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
     for (let i = 0; i < 7; i++) {
       this.matches.push(
         {
-          start_at: '01/01',
+          start_at: '02/02/2020',
           firstTeam: {
             code: null,
             logo: this.imgDefault,
