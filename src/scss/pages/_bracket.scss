@@ -1,5 +1,4 @@
 .bracket-wrapper {
-  margin-top: 70px;
   width: 100%;
   text-align: center;
   p {
@@ -251,7 +250,8 @@
     }
   }
 }
-@media screen and (max-width: 479px) {
+
+@media screen and (max-width: 767px) {
   .bracket-wrapper {
     display: none;
   }

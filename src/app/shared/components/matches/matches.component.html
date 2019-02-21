@@ -1,0 +1,45 @@
+<div class="schedule">
+  <ul class="matches">
+    <li class="match txt-center" *ngFor="let match of matches">
+      <p class="match-date w10" *ngIf="home">
+        {{ match.start_at | date:'MMMM dd, y' }}
+      </p>
+      <p class="match-date w10" *ngIf="!home">
+        {{ match.start_at | date:'MMM, dd' }}
+      </p>
+      <p class="match-team-logo w10 border-left">
+        <img [src]="match?.firstTeam.logo" class="img-size" alt="logo team1">
+      </p>
+      <p class="match-team-code w10">
+        {{ match?.firstTeam.code | questionMask }}
+      </p>
+      <p class="match-score w10">
+        <ng-container *ngIf="match.firstTeam.score">
+          {{ match.firstTeam.score }} : {{ match.secondTeam.score | questionMask }}
+        </ng-container>
+        <ng-container *ngIf="!match.firstTeam.score">
+          VS
+        </ng-container>
+      </p>
+      <p class="match-team-code w10">
+        {{ match?.secondTeam.code | questionMask }}
+      </p>
+      <p class="match-team-logo w10">
+        <img [src]="match?.secondTeam.logo" class="img-size" alt="logo team2">
+      </p>
+      <p class="match-location w20 txt-left">
+        {{ match.location || 'location?' }}
+      </p>
+      <p class="match-view w20" *ngIf="!auth.currentUser?.admin">
+        <a class="match-view-link txt-bold" href="">
+          View
+        </a>
+      </p>
+      <p class="match-view w20" *ngIf="auth.isLoggedIn() && auth.currentUser.admin">
+        <a class="match-view-link txt-bold" (click)="open(match)">
+          Edit
+        </a>
+      </p>
+    </li>
+  </ul>
+</div>

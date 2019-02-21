@@ -50,7 +50,7 @@ export class ScheduleComponent implements OnInit {
               logo: this.imgDefault,
               score: null
             },
-            start_at: null,
+            start_at: '1/1',
             round: 1
           }
         );
@@ -114,6 +114,7 @@ export class ScheduleComponent implements OnInit {
           },
         );
       })
+      
   }
 
   submit(f: NgForm, match) {

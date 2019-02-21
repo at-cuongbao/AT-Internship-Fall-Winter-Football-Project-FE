@@ -1,0 +1,30 @@
+<div class="next-match txt-center">
+  <div class="next-match-title">
+    <em>Next match</em>
+  </div>
+  <div class="next-match-content">
+    <div class="match-team">
+      <p class="match-team-logo w10">
+        <img [src]="match?.firstTeam.logo" class="img-size" alt="logo team1">
+      </p>
+      <p class="match-team-code w10">
+        {{ match?.firstTeam.code | questionMask }}
+      </p>
+      <p class="versus w10">
+        VS
+      </p>
+      <p class="match-team-code w10">
+        {{ match?.secondTeam.code | questionMask }}
+      </p>
+      <p class="match-team-logo w10">
+        <img [src]="match?.secondTeam.logo" class="img-size" alt="logo team2">
+      </p>
+    </div>
+    <div class="match-date">
+      {{ match.start_at | date:'MMM, dd, y' }}
+    </div>
+    <div class="match-location">
+      {{ match.location || 'location?' }}
+    </div>
+  </div>
+</div>

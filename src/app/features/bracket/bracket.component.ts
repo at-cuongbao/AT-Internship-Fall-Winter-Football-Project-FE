@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
 import { MatchService } from 'src/app/shared/services/match.service';
 import { ActivatedRoute } from '@angular/router';
+import { Output, EventEmitter, OnInit, Component } from '@angular/core';
 
 const POSITION = {
   ck: 2,
@@ -48,6 +48,8 @@ export class BracketComponent implements OnInit {
     this.matchService.get(tournamentId)
       .subscribe(data => {
         this.generateMatches(data.matches);
+      }, error => {
+        this.generateMatches([]);
       });
   }
 }
