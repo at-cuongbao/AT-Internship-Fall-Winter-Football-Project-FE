@@ -23,6 +23,8 @@ import { QuestionMaskPipe } from './shared/pipes/question-mask.pipe';
 import { DateDefaultPipe } from './shared/pipes/date-default.pipe';
 import { HomeScheduleComponent } from './features/home/home-schedule/home-schedule.component';
 import { FootballImagesComponent } from './features/home/football-images/football-images.component';
+import { MatchesComponent } from './shared/components/matches/matches.component';
+import { NextMatchComponent } from './shared/components/next-match/next-match.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -46,7 +48,9 @@ export function tokenGetter() {
     QuestionMaskPipe,
     DateDefaultPipe,
     HomeScheduleComponent,
-    FootballImagesComponent 
+    FootballImagesComponent,
+    MatchesComponent,
+    NextMatchComponent 
   ],
   imports: [
     BrowserModule,

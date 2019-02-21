@@ -1,10 +1,10 @@
 .schedule-block {
   margin: 50px auto;
   .group-block {
-    margin: 50px 0 20px;
+    margin: 70px 0 20px;
     .group-title {
       font-size: 180%;
-      background: $color-light-green;
+      background: $color-blue;
       height: 50px;
       line-height: 50px;
     }
@@ -13,69 +13,8 @@
       color: $color-black;
       @extend %txt-bold;
     }
-  }
-  .schedule-match {
-    width: 100%;
-    th,
-    td {
-      padding: 10px;
-    }
-
-    .match-item {
-      &:hover {
-        background: $color-light-grey;
-      }
-      td {
-        height: 60px;
-        border-bottom: 1px solid $color-light-grey;
-        img {
-          width: 40px;
-          height: 40px;
-        }
-      }
-    }
-
-    thead {
-      color: $color-green;
-    }
-    tbody {
-      color: $color-bold-blue;
-    }
-    tfoot {
-      color: $color-red;
-    }
-  }
-}
-
-.team {
-  position: relative;
-
-  span {
-    position: absolute;
-    top: 50%;
-    transform: translate(0, -50%);
-    width: 20%;
-  }
-
-  img {
-    position: absolute;
-  }
-
-  &.team1 {
-    img {
-      left: 20px;
-    }
-
-    span {
-      right: 20px;
-    }
-  }
-  &.team2 {
-    img {
-      right: 20px;
-    }
-    span {
-      left: 20px;
+    .schedule {
+      padding: 0;
     }
   }
 }
