@@ -1,0 +1,193 @@
+.latest-result {
+  margin-top: 64px;
+  font-family: cursive;
+  .latest-top {
+    position: relative;
+    z-index: 1;
+    &::before {
+      content: '';
+      border: solid $color-blue;
+      border-width: 1px 1px 0 1px;
+      position: absolute;
+      z-index: -1;
+      left: 0;
+      right: 0;
+      top: 16px;
+      bottom: 0;
+    }
+    .latest-heading {
+      padding: 0 65px;
+      background: $color-white;
+      font-size: 38px;
+      display: inline-block;
+      line-height: 30px;
+      margin-bottom: 20px;
+      span {
+        color: $color-blue;
+      }
+    }
+    .latest-position {
+      padding: 20px 0;
+      font-size: 20px;
+    }
+  }
+  .latest-middle {
+    margin: 32px 0;
+    position: relative;
+    background: $color-dark-white;
+    border: 1px solid $color-white;
+    .latest-team-left, .latest-team-right {
+      display: inline-block;
+      width: 15%;
+      height: 100%;
+      img {
+        width: 60%;
+        vertical-align: middle;
+        margin-left: 169px;
+      }
+    }
+    .latest-team-right {
+      position: absolute;
+      right: 87px;
+      img {
+        margin-left: 0;
+      }
+    }
+    .latest-versus {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 50%;
+      .versus-team, .latest-score {
+        display: inline-block;
+      }
+      .versus-team {
+        font-size: 33px;
+        position: absolute;
+        top: 50%;
+        left: 0;
+      }
+      .versus-team-right {
+        right: 0;
+        left: unset;
+      }
+      .latest-score {
+        width: 30%;
+        .score-title {
+          margin-bottom: 8px;
+        }
+        .score-table {
+          position: relative;
+          background: #00afd8;
+          &:before {
+            content: '';
+            border: 1px solid #00afd8;
+            position: absolute;
+            top: -3px;
+            right: -3px;
+            bottom: -3px;
+            left: -3px;
+          }
+          .score-left {
+            width: 37%;
+            float: left;
+            font-size: 33px;
+            line-height: 70px;
+            position: relative;
+            &::before {
+              content: 'vs';
+              margin-top: -15px;
+              line-height: 30px;
+              width: 30px;
+              height: 30px;
+              border-radius: 50%;
+              background: #00afd8;
+              position: relative;
+              font-size: 16px;
+              text-transform: uppercase;
+              position: absolute;
+              z-index: 2;
+              top: 50%;
+              right: -40px;
+            }
+          }
+        }
+        .score-right {
+          width: 37%;
+          float: right;
+          position: relative;
+          font-size: 33px;
+          z-index: 1;
+          color: $color-blue;
+          line-height: 70px;
+          background: $color-light-black;
+          &::before {
+            content: '';
+            width: 90%;
+            z-index: -1;
+            position: absolute;
+            background: $color-light-black;
+            left: -23px;
+            top: 0;
+            right: 100%;
+            bottom: 0;
+            transform: skewX(-33deg);
+          }
+        }
+      }
+    }
+  }
+  .latest-bottom {
+    position: relative;
+    &::before {
+      content: '';
+      border: solid $color-blue;
+      border-width: 0 1px 1px 1px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 18px;
+    }
+    .latest-desc {
+      margin: 0 auto;
+      width: 80%;
+    }
+    .latest-btn {
+      padding: 0 100px;
+      background-color: $color-white;
+      display: inline-block;
+      z-index: 2;
+      position: relative;
+      .btn-more-info {
+        padding: 0 50px;
+        background: $color-blue;
+        line-height: 38px;
+        border: none;
+        margin-top: 35px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .latest-result {
+    .latest-middle {
+      .latest-versus {
+        .versus-team {
+          width: 100%;
+          position: static;
+        }
+        .latest-score {
+          .score-title {
+            display: none;
+          }
+          .score-table {
+            margin: 10px 0;
+          }
+        }
+      }
+    }
+  }
+}

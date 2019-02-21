@@ -139,8 +139,6 @@ export class ScheduleComponent implements OnInit {
   };
 
   openModal(match) {
-    console.log("Modal2");
-    
     this._match = match;
     this.renderer.setElementAttribute(this.modal.nativeElement, "style", "display: block");
   }

@@ -13,7 +13,17 @@
     font-size: 15px;
   }
 }
-.main-page {
+.next-match-wrapper {
+  margin-top: 64px;
+  background-image: url(./assets/images/tr.png);
+  background-position-x: 50%;
+  background-position-y: 0px;
+  background-color: rgb(0, 142, 175);
+  padding: 96px;
+  .home-next-match {
+    background-color: $color-white;
+    height: 412px;
+  }
   .home-schedule {
     .match {
       &-date {
@@ -31,6 +41,14 @@
       &-view {
         display: none;
       }
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .next-match-wrapper {
+    .home-next-match {
+      display: block;
     }
   }
 }
