@@ -1,11 +1,12 @@
 import { Component, OnInit, ViewChild, ElementRef, Renderer } from '@angular/core';
 import { ScheduleService } from 'src/app/shared/services/schedule.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Route, Router, RouterStateSnapshot } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { END_POINT } from 'src/app/shared/services/api-registry';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { map } from 'rxjs/operators';
+import { ActivatedRouteSnapshot } from '@angular/router/src/router_state';
 
 const GROUPS = ["A", "B", "C", "D", "E", "F", "G", "H"];
 
@@ -26,6 +27,7 @@ export class ScheduleComponent implements OnInit {
     private auth: AuthService,
     private apiService: ApiService,
     private route: ActivatedRoute,
+    private router: Router,
     private renderer: Renderer
   ) { }
 
@@ -139,6 +141,11 @@ export class ScheduleComponent implements OnInit {
   };
 
   openModal(match) {
+    if (!this.auth.isLoggedIn()) {
+      return this.router.navigate(['/login'], { queryParams: {
+        returnUrl: this.router.url
+      }})
+    }
     this._match = match;
     this.renderer.setElementAttribute(this.modal.nativeElement, "style", "display: block");
   }
