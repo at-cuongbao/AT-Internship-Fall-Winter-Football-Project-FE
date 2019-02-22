@@ -19,5 +19,6 @@ export class TournamentListComponent implements OnInit {
         ? this.tournamentList = tournamentList.slice(0, 3)
         : this.tournamentList = tournamentList;
     });
+    
   }
 }
