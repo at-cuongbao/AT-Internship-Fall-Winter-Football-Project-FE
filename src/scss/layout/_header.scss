@@ -5,7 +5,7 @@
 }
 .header {
   z-index: 9;
-  background-color: rgba(45, 37, 37, 0.5);
+  background-color: rgba(45, 37, 37, 1);
   font-size: 16px;
   .bottom-nav-left {
     height: 66px;
@@ -112,9 +112,13 @@
   }
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 979px) {
   .header {
     background-color: $color-light-black;
+    position: static;
+    .container {
+      padding: 0;
+    }
     .bottom-nav-right {
       a,
       .dropbtn {
@@ -124,14 +128,6 @@
         float: right;
         display: block;
       }
-    }
-  }
-}
-@media screen and (max-width: 767px) {
-  .header {
-    position: static;
-    .container {
-      padding: 0;
     }
     .bottom-nav-right.responsive {
       display: block;

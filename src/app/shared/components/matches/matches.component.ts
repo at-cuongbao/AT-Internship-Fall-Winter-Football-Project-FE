@@ -6,14 +6,11 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './matches.component.html',
   styleUrls: ['./matches.component.scss']
 })
-export class MatchesComponent implements OnInit {
+export class MatchesComponent {
   
   @Input() matches: any;
   @Input() home = true;
   @Output() openModal = new EventEmitter<any>();
-  
-  ngOnInit(): void {
-  }
   
   constructor(
     private auth: AuthService,

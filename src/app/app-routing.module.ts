@@ -13,6 +13,7 @@ import { TournamentListComponent } from 'src/app/features/tournament-list/tourna
 import { AuthGuardService } from 'src/app/shared/services/auth-guard.service';
 import { AdminAuthGuardService } from 'src/app/shared/services/admin-auth-guard.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { TournamentDetailComponent } from './features/tournament-detail/tournament-detail.component';
 
 const routes: Routes = [
   {
@@ -50,6 +51,10 @@ const routes: Routes = [
         component: BracketComponent
       },
     ]
+  },
+  {
+    path: 'tournament-detail/:id',
+    component: TournamentDetailComponent
   },
   {
     path: 'login',

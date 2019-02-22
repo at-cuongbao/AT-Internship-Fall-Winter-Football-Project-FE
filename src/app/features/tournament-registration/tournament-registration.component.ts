@@ -11,23 +11,23 @@ import { TournamentService } from 'src/app/shared/services/tournament.service';
 export class TournamentRegistrationComponent implements DoCheck {
   @ViewChild("modal", { read: ElementRef }) modal: ElementRef;
   @ViewChild("f", { read: ElementRef }) modalForm: ElementRef;
-  
+
   imageSource = '../../../assets/images/anhbongda.jpg';
   imageUrl = '../../../assets/images/default-image.png';
   imageLogo = '';
   imageCover = '';
-  
+
   teams: Team[] = [];
   isSubmited = false;
-  
+
   groups = [];
   tables = ["A", "B", "C", "D", "E", "F", "H", "G"];
-  
+
   constructor(
     private tournamentService: TournamentService,
     private renderer: Renderer
-  ) { }
-  
+  ) {}
+
   ngDoCheck(): void {
     this.isSubmited = this.teams.length === 16 ? true : false;
   }
@@ -67,14 +67,14 @@ export class TournamentRegistrationComponent implements DoCheck {
 
   onModalSubmit(modalForm: NgForm) {
     let index = +this.modal.nativeElement.getAttribute('id');
-    
+
     let team = new Team();
     team.name = modalForm.control.value.name;
     team.code = modalForm.control.value.code;
     team.cover = this.imageCover ? this.imageCover : this.imageUrl;
     team.logo = this.imageLogo ? this.imageLogo : this.imageUrl;
     this.teams[index] = team;
-    
+
     this.resetForm();
     this.closeModal();
   }
