@@ -1,0 +1,199 @@
+.tournament-detail {
+  font-size: 16px;
+  line-height: 24px;
+  font-family: $font-family;
+  .tournament-content {
+    img {
+      width: 100vw;
+      height: 100vh;
+    }
+    .article-wrap {
+      padding-bottom: 32px;
+      .article-tournament {
+        margin: 32px 0;
+      }
+    }
+    .special-detail {
+      width: 100%;
+      font-size: 22px;
+      margin: 32px auto;
+      padding: 24px;
+      position: relative;
+      border: none;
+      background: $color-light-grey;
+      font-weight: bold;
+      .tournament-bracket {
+        width: 70%;
+        span a {
+          color: $color-bold-blue;
+        }
+        span a:hover {
+          color: $color-blue;
+        }
+      }
+    }
+    .special-detail::before {
+      background-image: url('./assets/images/blockquote-left-bg.png');
+      top: 0;
+      left: 5%;
+    }
+    .special-detail::after {
+      background-image: url('./assets/images/blockquote-right-bg.png');
+      bottom: 0;
+      right: 5%;
+    }
+    .special-detail::before, .special-detail::after {
+      content: '';
+      width: 80px;
+      height: 60px;
+      position: absolute;
+      opacity: 0.1;
+    }
+    table {
+      margin: 16px 0;
+      width: 100%;
+      .heading {
+        th {
+          width: 25%;
+          padding: 10px;
+          font-size: 18px;
+          color: $color-white;
+          background: $color-light-black;
+          font-weight: normal;
+        }
+        th:nth-child(2n) {
+          background: $color-blue;
+        }
+      }
+      tr {
+        td {
+          padding: 4px;
+        }
+      }
+    }
+    table, th, td {
+      border: 1px solid $color-black;
+      border-collapse: collapse;
+    }
+  }
+  .other-tournament {
+    border-top: 1px solid $color-light-grey;
+    padding: 32px 0;
+    .other-post-title {
+      padding-left: 16px;
+      h3 {
+        font-size: 20px;
+        text-transform: uppercase;
+        font-family: 'monospace';
+        span {
+          color: $color-blue;
+        }
+      }
+    }
+    .tournament-wrap {
+      margin: 16px 0;
+      position: relative;
+      .tournament-list {
+        width: 100%;
+        .tournament-item {
+          width: calc(100% / 3);
+          padding: 0 16px 0;
+          display: inline-block;
+          position: relative;
+          overflow: hidden;
+          .tournament-block {
+            border: 1px solid $color-light-grey;
+            img {
+              width: 100%;
+              height: 20git 0px;
+            }
+            .tournament-infor {
+              background-color: $color-white;
+              .tournament-desc {
+                padding: 10px 0 8px;
+                a:hover {
+                  color: $color-blue;
+                }
+              }
+            }
+            .tournament-date {
+              color: $color-grey;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 767px) {
+  .tournament-detail {
+    .tournament-content {
+      table {
+        .heading {
+          th {
+            font-size: 24px;
+          }
+        }
+      }
+    }
+    .other-tournament {
+      .tournament-wrap {
+        .tournament-list {
+          .tournament-item .tournament-block img {
+            height: 150px;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 479px) {
+  .tournament-detail {
+    font-size: 14px;
+    line-height: 22px;
+    .tournament-content {
+      table {
+        .heading {
+          th {
+            font-size: 20px;
+          }
+        }
+      }
+    }
+    .other-tournament {
+      .tournament-wrap {
+        .tournament-list {
+          .tournament-item:last-child {
+            padding-bottom: 0px;
+          }
+          .tournament-item {
+            width: calc(100% / 2);
+            padding: 0 16px 16px;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            .tournament-block {
+              border: 1px solid $color-light-grey;
+              img {
+                width: 100%;
+                height: 150px;
+              }
+              .tournament-infor{
+                background-color: $color-white;
+                .tournament-desc {
+                  padding: 10px 0 10px;
+                  a:hover {
+                    color: $color-blue;
+                  }
+                }
+              }
+              .tournament-date {
+                color: $color-grey;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

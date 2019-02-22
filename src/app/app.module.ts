@@ -28,6 +28,7 @@ import { FootballImagesComponent } from './features/home/football-images/footbal
 import { LatestResultComponent } from './shared/components/latest-result/latest-result.component';
 import { MatchesComponent } from './shared/components/matches/matches.component';
 import { NextMatchComponent } from './shared/components/next-match/next-match.component';
+import { TournamentDetailComponent } from './features/tournament-detail/tournament-detail.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -55,6 +56,7 @@ export function tokenGetter() {
     PageNotFoundComponent, 
     QuestionMaskPipe, 
     DateDefaultPipe, 
+    TournamentDetailComponent,
     FootballImagesComponent, 
     LatestResultComponent,
     MatchesComponent,
@@ -65,6 +67,7 @@ export function tokenGetter() {
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    NgxPaginationModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
@@ -72,8 +75,7 @@ export function tokenGetter() {
         blacklistedRoutes: ['http://localhost:3000/api/authenticate']
       }
     }),
-    BrowserAnimationsModule,
-    NgxPaginationModule
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
