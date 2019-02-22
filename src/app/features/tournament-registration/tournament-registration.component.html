@@ -8,8 +8,8 @@
       </div>
       <form class="register-form" #elmForm="ngForm" (ngSubmit)="onSubmit(elmForm)">
         <div class="form-group">
-          <input class="form-inline" type="text" name="tournamentName" ngModel #tournamentName="ngModel" required minlength="5" placeholder="Tournament Name"
-          />
+          <input class="form-inline" type="text" name="tournamentName" ngModel #tournamentName="ngModel" required
+            minlength="5" placeholder="Tournament Name" />
           <div *ngIf="tournamentName.invalid && (tournamentName.dirty || tournamentName.touched)" class="alert">
             <p *ngIf="tournamentName.errors.required">
               (*)Tournament name is required
@@ -28,7 +28,8 @@
           </div>
         </div>
         <div class="form-group">
-          <input class="form-inline" type="date" name="finish" ngModel #finish="ngModel" required placeholder="Finish Day">
+          <input class="form-inline" type="date" name="finish" ngModel #finish="ngModel" required
+            placeholder="Finish Day">
           <div *ngIf="finish.invalid && (finish.dirty || finish.touched)" class="alert">
             <p *ngIf="finish.errors.required">
               (*)Finish day is required
@@ -36,8 +37,11 @@
           </div>
         </div>
         <div class="form-group">
-          <input class="form-inline" type="number" name="number" ngModel #number="ngModel" required (ngModelChange)="convert(number);"
-            placeholder="Group Number" min="1">
+          <select class="form-inline" name="number" ngModel #number="ngModel" required
+            (ngModelChange)="convert(number)">
+            <option value="4">4</option>
+            <option value="8">8</option>
+          </select>
           <div *ngIf="number.invalid && (number.dirty || number.touched)" class="alert">
             <p *ngIf="number.errors.required">
               (*)Number team is required
@@ -103,62 +107,62 @@
               </td>
             </tr>
           </table>
+        </div>
+        <div class="form-group">
+          <textarea class="form-inline" type="text" name="infor" ngModel #infor="ngModel" required
+            placeholder="Short Description Of Team"></textarea>
+          <div *ngIf="infor.invalid && (infor.dirty || infor.touched)" class="alert">
+            <p *ngIf="infor.errors.required">
+              (*)Informarion is required
+            </p>
           </div>
-          <div class="form-group">
-            <textarea class="form-inline" type="text" name="infor" ngModel #infor="ngModel" required placeholder="Short Description Of Team"></textarea>
-            <div *ngIf="infor.invalid && (infor.dirty || infor.touched)" class="alert">
-              <p *ngIf="infor.errors.required">
-                (*)Informarion is required
-              </p>
-            </div>
-          </div>
-          <button class="btn-form" [disabled]="!isSubmited && elmForm.invalid">Send Application</button>
+        </div>
+        <button class="btn-form" [disabled]="!isSubmited && elmForm.invalid">Send Application</button>
       </form>
-      </div>
     </div>
-    <app-sidebar></app-sidebar>
   </div>
+  <app-sidebar></app-sidebar>
+</div>
 
-  <div #modal class="modal">
-    <div class="modal-content">
-      <span (click)="closeModal()" class="close">&times;</span>
-      <form #f="ngForm" (ngSubmit)="onModalSubmit(f)">
-        <div class="form-group">
-          <label>Name: </label>
-          <input class="form-control" type="text" placeholder="Name" name="name" #name="ngModel" ngModel required>
-          <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
-            <p *ngIf="name.errors.required">
-              (*)Name is required
-            </p>
-          </div>
+<div #modal class="modal">
+  <div class="modal-content">
+    <span (click)="closeModal()" class="close">&times;</span>
+    <form #f="ngForm" (ngSubmit)="onModalSubmit(f)">
+      <div class="form-group">
+        <label>Name: </label>
+        <input class="form-control" type="text" placeholder="Name" name="name" #name="ngModel" ngModel required>
+        <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+          <p *ngIf="name.errors.required">
+            (*)Name is required
+          </p>
         </div>
-        <div class="form-group">
-          <label>Code Name: </label>
-          <input class="form-control" type="text" placeholder="Code Name" name="code" #code="ngModel" ngModel required>
-          <div *ngIf="code.invalid && (code.dirty || code.touched)" class="alert alert-danger">
-            <p *ngIf="code.errors.required">
-              (*)Code name is required
-            </p>
-          </div>
+      </div>
+      <div class="form-group">
+        <label>Code Name: </label>
+        <input class="form-control" type="text" placeholder="Code Name" name="code" #code="ngModel" ngModel required>
+        <div *ngIf="code.invalid && (code.dirty || code.touched)" class="alert alert-danger">
+          <p *ngIf="code.errors.required">
+            (*)Code name is required
+          </p>
         </div>
-        <div class="form-group">
-          <div class="image-wrapper">
-            <label>Cover: </label>
-            <img class="cover-img" width="60" height="60" [src]="imageCover" alt="">
-          </div>
-          <input class="form-control" type="file" name="cover" (change)="handleFileInput($event.target.files, false)">
+      </div>
+      <div class="form-group">
+        <div class="image-wrapper">
+          <label>Cover: </label>
+          <img class="cover-img" width="60" height="60" [src]="imageCover" alt="">
         </div>
-        <div class="form-group">
-          <div class="image-wrapper">
-            <label>Logo: </label>
-            <img class="logo-img" width="60" height="60" [src]="imageLogo" alt="">
-          </div>
-          <input class="form-control" type="file" name="logo" (change)="handleFileInput($event.target.files)">
+        <input class="form-control" type="file" name="cover" (change)="handleFileInput($event.target.files, false)">
+      </div>
+      <div class="form-group">
+        <div class="image-wrapper">
+          <label>Logo: </label>
+          <img class="logo-img" width="60" height="60" [src]="imageLogo" alt="">
         </div>
-        <div class="form-group txt-center">
-          <button type="submit" class="btn btn-success" (click)="closeModal()" [disabled]="f.invalid">Add Team</button>
-        </div>
-      </form>
-    </div>
+        <input class="form-control" type="file" name="logo" (change)="handleFileInput($event.target.files)">
+      </div>
+      <div class="form-group txt-center">
+        <button type="submit" class="btn btn-success" (click)="closeModal()" [disabled]="f.invalid">Add Team</button>
+      </div>
+    </form>
   </div>
-  
+</div>
