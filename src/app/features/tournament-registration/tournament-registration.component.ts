@@ -68,34 +68,7 @@ export class TournamentRegistrationComponent implements DoCheck {
       },
       teams: this.teams
     };
-    const dataTemp = {
-      teams: [
-        { name: "Club", code: "FC", cover: "../../../assets/images/default-image.png", logo: "../../../assets/images/default-image.png" },
-        { name: "Club", code: "FC", cover: "../../../assets/images/default-image.png", logo: "../../../assets/images/default-image.png" },
-        { name: "Club", code: "FC", cover: "../../../assets/images/default-image.png", logo: "../../../assets/images/default-image.png" },
-        { name: "Club", code: "FC", cover: "../../../assets/images/default-image.png", logo: "../../../assets/images/default-image.png" },
-        { name: "Club", code: "FC", cover: "../../../assets/images/default-image.png", logo: "../../../assets/images/default-image.png" },
-        { name: "Club", code: "FC", cover: "../../../assets/images/default-image.png", logo: "../../../assets/images/default-image.png" },
-        { name: "Club", code: "FC", cover: "../../../assets/images/default-image.png", logo: "../../../assets/images/default-image.png" },
-        { name: "Club", code: "FC", cover: "../../../assets/images/default-image.png", logo: "../../../assets/images/default-image.png" },
-        { name: "Club", code: "FC", cover: "../../../assets/images/default-image.png", logo: "../../../assets/images/default-image.png" },
-        { name: "Club", code: "FC", cover: "../../../assets/images/default-image.png", logo: "../../../assets/images/default-image.png" },
-        { name: "Club", code: "FC", cover: "../../../assets/images/default-image.png", logo: "../../../assets/images/default-image.png" },
-        { name: "Club", code: "FC", cover: "../../../assets/images/default-image.png", logo: "../../../assets/images/default-image.png" },
-        { name: "Club", code: "FC", cover: "../../../assets/images/default-image.png", logo: "../../../assets/images/default-image.png" },
-        { name: "Club", code: "FC", cover: "../../../assets/images/default-image.png", logo: "../../../assets/images/default-image.png" },
-        { name: "Club", code: "FC", cover: "../../../assets/images/default-image.png", logo: "../../../assets/images/default-image.png" },
-        { name: "Club", code: "FC", cover: "../../../assets/images/default-image.png", logo: "../../../assets/images/default-image.png" }
-      ],
-      tournament: {
-        desc: "infor",
-        end_at: "12/12/1993",
-        group_number: 4,
-        name: "infor",
-        start_at: "12/12/1993"
-      }
-    }
-    this.apiService.post([END_POINT.tournaments], dataTemp).subscribe(tournamentId => {
+    this.apiService.post([END_POINT.tournaments], data).subscribe(tournamentId => {
       this.router.navigate(['schedules', tournamentId]);
     });
   }
