@@ -19,7 +19,7 @@ import { PredictionComponent } from './features/prediction/prediction.component'
 import { SliderComponent } from './shared/components/slider/slider.component';
 import { RegisterComponent } from './features/register/register.component';
 import { ScheduleComponent } from './features/schedule/schedule.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from '../app/shared/components/page-not-found/page-not-found.component';
 import { QuestionMaskPipe } from './shared/pipes/question-mask.pipe';
 import { DateDefaultPipe } from './shared/pipes/date-default.pipe';
 import { TournamentListComponent } from './features/tournament-list/tournament-list.component';
