@@ -10,6 +10,7 @@
     }
     .card-wrapper {
       height: 250px;
+      position: relative;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
       padding: 14px 14px 20px 24px; 
       .date-creation {
@@ -29,7 +30,10 @@
         margin-bottom: 32px;
       }
       .read-more {
-        border: none;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        border: 0;
         display: inline-block;
         outline: 0;
         padding: 12px;
