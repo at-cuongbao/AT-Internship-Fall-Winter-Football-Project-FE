@@ -15,7 +15,9 @@ export class FeaturesComponent implements OnInit {
   ngOnInit() {
     this.pageName = this.router.url.replace('/', '').replace('-', ' ');
     let index = this.pageName.search('/');
-    this.pageName = this.pageName.slice(0, index);
+    if (index !== -1) {
+      this.pageName = this.pageName.slice(0, index);
+    }
   }
 
 }

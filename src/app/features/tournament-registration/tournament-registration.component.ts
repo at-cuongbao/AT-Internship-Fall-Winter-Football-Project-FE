@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, Renderer } from '@angular/core';
+import { Component, ElementRef, ViewChild, Renderer, DoCheck } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Team } from 'src/app/shared/models/team';
 import { TournamentService } from 'src/app/shared/services/tournament.service';
@@ -8,24 +8,29 @@ import { TournamentService } from 'src/app/shared/services/tournament.service';
   templateUrl: './tournament-registration.component.html',
   styleUrls: ['./tournament-registration.component.scss']
 })
-export class TournamentRegistrationComponent {
+export class TournamentRegistrationComponent implements DoCheck {
   @ViewChild("modal", { read: ElementRef }) modal: ElementRef;
   @ViewChild("f", { read: ElementRef }) modalForm: ElementRef;
-
+  
   imageSource = '../../../assets/images/anhbongda.jpg';
   imageUrl = '../../../assets/images/default-image.png';
   imageLogo = '';
   imageCover = '';
-
+  
   teams: Team[] = [];
-
+  isSubmited = false;
+  
   groups = [];
   tables = ["A", "B", "C", "D", "E", "F", "H", "G"];
-
+  
   constructor(
     private tournamentService: TournamentService,
     private renderer: Renderer
   ) { }
+  
+  ngDoCheck(): void {
+    this.isSubmited = this.teams.length === 16 ? true : false;
+  }
 
   handleFileInput(file: FileList, isForLogo = true) {
     const reader = new FileReader();
@@ -49,11 +54,11 @@ export class TournamentRegistrationComponent {
   onSubmit(f: NgForm) {
     let data = {
       tournament: {
-        name: f.control.value.name,
+        name: f.control.value.tournamentName,
         start_at: f.control.value.start,
         end_at: f.control.value.finish,
         group_number: this.groups.length,
-        desc: f.control.value.des
+        desc: f.control.value.infor
       },
       teams: this.teams
     };

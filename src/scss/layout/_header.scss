@@ -134,14 +134,12 @@
       padding: 0;
     }
     .bottom-nav-right.responsive {
-      position: relative;
       display: block;
       width: 100%;
       a.icon {
         position: absolute;
         right: 0;
         top: 0;
-        top: -73px;
       }
       .main-link,
       .dropdown {

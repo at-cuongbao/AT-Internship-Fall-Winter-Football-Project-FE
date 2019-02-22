@@ -3,18 +3,15 @@
     <div class="bottom-nav clearfix">
       <a routerLink="/" class="bottom-nav-left pull-left">
         <img class="bottom-nav-logo" src="../../../../assets/images/logo-img.png">
-        <span class="bottom-nav-brand">
-          Sport
-          <em>.clc</em>
-        </span>
+        <span class="bottom-nav-brand">Sport<em>.clc</em></span>
       </a>
       <div [class.responsive]="isClick" class="bottom-nav-right pull-right">
         <a routerLink="/home" class="main-link" routerLinkActive="active">
           Home
         </a>
         <div class="dropdown pull-left clearfix">
-          <a class="dropbtn main-link">
-            Tournement
+          <a routerLink="/tournaments" routerLinkActive="active" class="dropbtn main-link">
+            Tournements
             <span class="fa fa-caret-down dropdown-ic"></span>
           </a>
           <div class="dropdown-content">
