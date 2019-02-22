@@ -1,17 +1,17 @@
-<div class="container">
+<div class="container" *ngIf="tournamentList.length">
   <section class="tournament-list" [class.display-full]="flag">
     <div *ngIf="tournamentList.length" class="tournament-top clearfix">
       <div *ngFor="let tour of tournamentList | paginate: { itemsPerPage: 6, currentPage: pageActual }" class="card">
-        <a routerLink="/tournamentDetail/{{tour._id}}">
+        <a routerLink="/tournament-detail/{{tour._id}}">
           <img src="../../../assets/images/35b8bf93115eb2b8da9f8b4f41fdb0fd.jpg" alt="Denim Jeans" height="300">
         </a>
         <div class="card-wrapper">
           <div class="date-creation">{{ tour.start_at | date:'short' }}</div>
           <h4 class="card-title">
-            <a routerLink="/tournamentDetail/{{tour._id}}">{{ tour.name }}</a>
+            <a routerLink="/tournament-detail/{{tour._id}}">{{ tour.name || 'Unset' }}</a>
           </h4>
           <p class="card-content">Decription: {{ tour.desc || 'None' }}.</p>
-          <a class="read-more" routerLink="/tournamentDetail/{{tour._id}}">Read more</a>
+          <a class="read-more" routerLink="/tournament-detail/{{tour._id}}">Read more</a>
         </div>
       </div>
     </div>
@@ -21,4 +21,8 @@
     </div>
   </section>
   <app-sidebar [class.display-none]="flag"></app-sidebar>
+</div>
+
+<div class="container" *ngIf="!tournamentList.length">
+  <p class="notification-error">No tournaments !</p>
 </div>
