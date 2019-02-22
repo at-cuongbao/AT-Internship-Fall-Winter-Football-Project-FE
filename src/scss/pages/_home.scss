@@ -48,7 +48,30 @@
 @media screen and (max-width: 767px) {
   .next-match-wrapper {
     .home-next-match {
-      display: block;
+      width: 100%;
+      height: 300px;
+    }
+    .home-schedule {
+      width: 100%;
+      .match-score {
+        width: 10%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .next-match-wrapper {
+    .home-schedule {
+      .match-score {
+        width: 10%;
+      }
+      .match-date {
+        width: 40%;
+      }
+      .match-team-logo {
+        width: 25%;
+      }
     }
   }
 }

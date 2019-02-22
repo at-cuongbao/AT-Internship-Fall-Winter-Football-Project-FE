@@ -21,10 +21,10 @@
       </p>
     </div>
     <div class="match-date">
-      {{ match.start_at | date:'MMM, dd, y' }}
+      {{ match.start_at | date:'MMMM, dd, y' }}
     </div>
     <div class="match-location">
-      {{ match.location || 'location?' }}
+      {{ match.location || '' }}
     </div>
   </div>
 </div>
