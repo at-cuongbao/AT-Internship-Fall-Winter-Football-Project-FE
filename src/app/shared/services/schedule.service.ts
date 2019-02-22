@@ -13,4 +13,8 @@ export class ScheduleService {
     let url = [`${END_POINT.matches}/show/${tournament_id}`];
     return this.apiService.get(url);
   }
+
+  getNextMatch() {
+    return this.apiService.get([END_POINT.matches + '/next-match']);
+  }
 }

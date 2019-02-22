@@ -1,66 +1,22 @@
-<div class="schedule-block container">
-  <section class="group-block" *ngFor="let item of schedules">
-    <ng-container *ngIf="item.matches.length">
-      <h4 class="group-title txt-center">Group {{item.groupName}}</h4>
-      <table class="schedule-match txt-center">
-        <ng-container *ngFor="let match of item.matches">
-          <thead>
-            <tr *ngIf="match.round === 4.1">
-              <th *ngIf="!auth.isLoggedIn()" class="final-title" colspan="3">Final</th>
-              <th *ngIf="auth.isLoggedIn() && !auth.currentUser.admin" class="final-title" colspan="4">Final</th>
-            </tr>
-            <tr *ngIf="match.round === 4.2">
-              <th *ngIf="!auth.isLoggedIn()" colspan="3" class="final-title">Final</th>
-              <th *ngIf="auth.isLoggedIn() && !auth.currentUser.admin" colspan="4" class="final-title">Third and four
-              </th>
-            </tr>
-          </thead>
-          <tr class="match-item">
-            <td class="team team1 w20">
-              <img [src]="match?.firstTeam.logo" alt="logo team1">
-              <span>
-                {{ match?.firstTeam.code | questionMask }}
-              </span>
-            </td>
-            <td class="date-start middle w40">
-              <p>
-                {{ match.firstTeam.score | questionMask }} : {{ match.secondTeam.score | questionMask }}
-              </p>
-              <p>
-                {{ match.start_at || 'date start'}}
-              </p>
-            </td>
-            <td class="team team2 w20">
-              <span>
-                {{ match?.secondTeam.code | questionMask }}
-              </span>
-              <img [src]="match?.secondTeam.logo" alt="logo team2">
-            </td>
-            <td class="center w20" *ngIf="auth.isLoggedIn() && !auth.currentUser.admin">
-              <a *ngIf="match.firstTeam.code && !match.firstTeam.score && !match.prediction?.is_predicted" (click)="openModal(match)">
-                <img src="../../../assets/images/predict-icon.png" alt="predict-icon">
-              </a>
-              <div *ngIf="match.prediction?.is_predicted">
-                <div>
-                  Predicted:
-                </div>
-                <div>
-                  {{ match.prediction.firstTeam_score_prediction }} : {{ match.prediction.secondTeam_score_prediction }}
-                </div>
-              </div>
-            </td>
-            <td class="center w20" *ngIf="auth.isLoggedIn() && auth.currentUser.admin">
-              <a (click)="openModal(match)">
-                <img src="../../../assets/images/edit-icon.png" alt="edit-icon">
-              </a>
-            </td>
-          </tr>
-        </ng-container>
-      </table>
-    </ng-container>
-  </section>
+<div class="container">
+  <div class="schedule-block">
+    <section class="group-block" *ngFor="let item of schedules">
+      <ng-container *ngIf="item.matches.length">
+        <h4 class="group-title txt-center">Group {{item.groupName}}</h4>
+        <div *ngIf="item.matches.round === 4.2">
+          <span *ngIf="!auth.isLoggedIn()" colspan="3" class="final-title">
+            Final
+          </span>
+          <span *ngIf="auth.isLoggedIn() && !auth.currentUser.admin" colspan="4" class="final-title">
+            Third and four
+          </span>
+        </div>
+        <app-matches [matches]="item.matches" [home]="false" (openModal)="openModal($event)"></app-matches>
+      </ng-container>
+    </section>
+  </div>
+  <app-sidebar></app-sidebar>
 </div>
-
 <div #modal class="prediction-page modal txt-bold">
   <div class="modal-content">
     <span (click)="closeModal()" class="close txt-bold">&times;</span>

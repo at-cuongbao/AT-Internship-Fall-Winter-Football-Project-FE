@@ -27,9 +27,18 @@
 .txt-center {
   text-align: center;
 }
+.txt-left {
+  text-align: left !important;
+}
+.txt-right {
+  text-align: right;
+}
 .txt-bold {
   font-weight: 600;
 }
 .display-none {
   display: none !important;
+}
+.display-full {
+  width: 100% !important;
 }

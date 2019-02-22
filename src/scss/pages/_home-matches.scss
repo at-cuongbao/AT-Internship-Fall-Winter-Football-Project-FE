@@ -1,0 +1,80 @@
+.match {
+  width: 100%;
+  background: $color-light-black;
+  color: $color-white;
+  border-bottom: 1px solid $color-grey;
+  &:hover {
+    background: $color-grey;
+  }
+  p {
+    padding: 8px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .img-size {
+    width: 40px;
+    height: 40px;
+  }
+  .border-left {
+    border-left: 1px solid $color-grey;
+  }
+  &-score {
+    color: $color-blue;
+  }
+  & &-location {
+    background-image: url(./assets/images/location-icon.png);
+    background-position-x: 10px;
+    background-position-y: 50%;
+    background-repeat: no-repeat;
+    padding-left: 30px;
+  }
+  &-view {
+    &-link {
+      line-height: 30px;
+      color: $color-white;
+      display: block;
+      font-size: 12px;
+      transition: 400ms all;
+      -webkit-transition: 400ms all;
+      text-transform: uppercase;
+      border: 1px solid $color-blue;
+      &:hover {
+        background: $color-blue;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .match {
+    & &-location {
+      display: none;
+    }
+    & &-date {
+      width: 20%;
+    }
+    & &-team-code {
+      width: 15%;
+    }
+    & &-score {
+      width: 10%;
+    }
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .match {
+    & &-team-logo {
+      width: 20%;
+    }
+    & &-team-code {
+      display: none;
+    }
+    & &-view {
+      width: 30%;
+    }
+    & &-date {
+      width: 20%;
+    }
+  }
+}
