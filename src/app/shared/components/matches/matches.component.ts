@@ -12,9 +12,6 @@ export class MatchesComponent implements OnInit {
   @Input() home = true;
   @Output() openModal = new EventEmitter<any>();
   
-  ngOnInit(): void {
-  }
-  
   constructor(
     private auth: AuthService,
   ) { }
