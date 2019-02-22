@@ -19,6 +19,9 @@ export class TournamentRegistrationComponent implements DoCheck {
 
   teams: Team[] = [];
   isSubmited = false;
+  teamName = '';
+  teamCode = '';
+
 
   groups = [];
   tables = ["A", "B", "C", "D", "E", "F", "H", "G"];
@@ -81,6 +84,12 @@ export class TournamentRegistrationComponent implements DoCheck {
 
   openModal(index) {
     this.resetForm();
+    if (this.teams[index]) {
+      this.teamName = this.teams[index].name;
+      this.teamCode = this.teams[index].code;
+      this.imageCover = this.teams[index].cover;
+      this.imageLogo = this.teams[index].logo;
+    }
     this.renderer.setElementAttribute(this.modal.nativeElement, "style", "display: block");
     this.renderer.setElementAttribute(this.modal.nativeElement, "id", `${index}`);
   }
