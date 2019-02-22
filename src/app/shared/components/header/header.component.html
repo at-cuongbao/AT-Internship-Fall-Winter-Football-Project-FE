@@ -25,11 +25,11 @@
             </ng-container>
           </div>
         </div>
-        <div *ngIf="auth.isLoggedIn()" class="dropdown clearfix">
+        <div *ngIf="auth.isLoggedIn()" class="dropdown inline-block clearfix">
           <ng-container *ngIf="auth.currentUser.admin">
-            <button class="dropbtn">{{ auth.currentUser.name || 'Username' }}
+            <a class="dropbtn">{{ auth.currentUser.name || 'Username' }}
               <span class="fa fa-caret-down"></span>
-            </button>
+            </a>
             <div class="dropdown-content">
               <a routerLink="/tounament-registration" class="sub-link">Create tournament</a>
               <a routerLink="/info/{{ auth.currentUser.sub }}" class="sub-link">Information</a>
@@ -37,9 +37,9 @@
             </div>
           </ng-container>
           <ng-container *ngIf="!auth.currentUser.admin">
-            <button class="dropbtn">{{ auth.currentUser.name || 'Username' }}
+            <a class="dropbtn">{{ auth.currentUser.name || 'Username' }}
               <span class="fa fa-caret-down"></span>
-            </button>
+            </a>
             <div class="dropdown-content">
               <a class="sub-link">Link 2</a>
               <a class="sub-link">Link 3</a>
