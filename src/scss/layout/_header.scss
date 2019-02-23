@@ -131,6 +131,7 @@
       }
     }
     .bottom-nav-right.responsive {
+      height: 194px;
       display: block;
       width: 100%;
       a.icon {
@@ -153,6 +154,7 @@
       }
       .dropdown-content {
         position: relative;
+        display: none !important;
       }
     }
   }
