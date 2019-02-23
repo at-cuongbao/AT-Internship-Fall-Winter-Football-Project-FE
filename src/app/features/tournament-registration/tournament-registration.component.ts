@@ -1,7 +1,9 @@
 import { Component, ElementRef, ViewChild, Renderer, DoCheck } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Team } from 'src/app/shared/models/team';
-import { TournamentService } from 'src/app/shared/services/tournament.service';
+import { ApiService } from 'src/app/shared/services/api.service';
+import { END_POINT } from 'src/app/shared/services/api-registry';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tournament-registration',
@@ -27,8 +29,9 @@ export class TournamentRegistrationComponent implements DoCheck {
   tables = ["A", "B", "C", "D", "E", "F", "H", "G"];
 
   constructor(
-    private tournamentService: TournamentService,
-    private renderer: Renderer
+    private apiService: ApiService,
+    private renderer: Renderer,
+    private router: Router
   ) {}
 
   ngDoCheck(): void {
@@ -65,7 +68,9 @@ export class TournamentRegistrationComponent implements DoCheck {
       },
       teams: this.teams
     };
-    this.tournamentService.tournamentRegistration(data);
+    this.apiService.post([END_POINT.tournaments], data).subscribe(tournamentId => {
+      this.router.navigate(['schedules', tournamentId]);
+    });
   }
 
   onModalSubmit(modalForm: NgForm) {

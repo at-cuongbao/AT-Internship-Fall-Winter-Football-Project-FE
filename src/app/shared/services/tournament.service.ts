@@ -11,7 +11,7 @@ export class TournamentService {
   constructor(private api: ApiService) { }
 
   tournamentRegistration(data: any) {
-    this.api.post([END_POINT.tournaments], data).subscribe();
+    this.api.post([END_POINT.tournaments], data);
   }
 
   get() {

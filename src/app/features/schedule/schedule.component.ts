@@ -19,7 +19,7 @@ export class ScheduleComponent implements OnInit {
   schedules = [];
   _match = {};
   @ViewChild("modal", { read: ElementRef }) modal: ElementRef;
-  imageSource = '../../../assets/images/avatar-image.jpg';
+  imageSource = '../../../assets/images/tr.png';
   imgDefault = '../../../assets/images/default-image.png';
 
   constructor(
@@ -116,7 +116,6 @@ export class ScheduleComponent implements OnInit {
           },
         );
       })
-      
   }
 
   submit(f: NgForm, match) {
@@ -127,17 +126,12 @@ export class ScheduleComponent implements OnInit {
       scorePrediction: [f.value.firstPrediction, f.value.secondPrediction],
       tournament_team_id: [match.firstTeam.firstTeamId, match.secondTeam.secondTeamId]
     };
-
     let url = [END_POINT.prediction + '/new'];
-    this.apiService.post(url, data).pipe(
-      map(response => {
-        if (response) {
-          return response ? true : false;
-        }
-      })
-    ).subscribe(
-      value => { value }
-    );
+    if (this.auth.currentUser.admin) {
+      url = [END_POINT.matches + '/update'];
+    }
+    this.apiService.post(url, data).subscribe();
+    this.closeModal();
   };
 
   openModal(match) {
