@@ -22,24 +22,27 @@
             </ng-container>
           </div>
         </div>
-        <div *ngIf="auth.isLoggedIn()" class="dropdown inline-block clearfix">
+        <div *ngIf="auth.isLoggedIn()" class="dropdown dropdown-image inline-block clearfix">
           <ng-container *ngIf="auth.currentUser.admin">
             <a class="dropbtn">{{ auth.currentUser.name || 'Username' }}
               <span class="fa fa-caret-down dropdown-ic"></span>
             </a>
             <div class="dropdown-content">
+              <a class="sub-link">{{ auth.currentUser.name || 'Username' }}</a>
               <a routerLink="/tournament-registration" class="sub-link">Create tournament</a>
               <a routerLink="/info/{{ auth.currentUser.sub }}" class="sub-link">Information</a>
               <a (click)="logout()" class="sub-link">Log out</a>
             </div>
           </ng-container>
           <ng-container *ngIf="!auth.currentUser.admin">
-            <a class="dropbtn">{{ auth.currentUser.name || 'Username' }}
+            <a class="dropbtn btn-image">
+              <img src="../../../../assets/images/T7Z35JWLQ-U9R5N05T7-e955542bf924-48.jpg" alt="user-image">
               <span class="fa fa-caret-down dropdown-ic"></span>
             </a>
             <div class="dropdown-content">
-              <a class="sub-link">Link 2</a>
-              <a class="sub-link">Link 3</a>
+              <a class="sub-link">{{ auth.currentUser.name || 'Username' }}</a>
+              <a class="sub-link">Profile</a>
+              <a class="sub-link">Languages</a>
               <a (click)="logout()" class="sub-link">Log out</a>
             </div>
           </ng-container>
