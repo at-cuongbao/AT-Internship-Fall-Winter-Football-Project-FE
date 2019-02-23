@@ -86,6 +86,30 @@
         background-color: inherit;
         margin: 0;
       }
+      
+    }
+    .dropdown-image {
+      height: 100%;
+      position: relative;
+      .btn-image {
+        width: 66px;
+        height: 100%;
+        padding: 0;
+        img, span {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+        img {
+          width: 45px;
+          height: 45px;
+          border-radius: 25%;
+        }
+        span {
+          margin-left: 50px;
+          height: 19px;
+        }
+      }
     }
     .dropdown-content {
       margin-top: -4px;
