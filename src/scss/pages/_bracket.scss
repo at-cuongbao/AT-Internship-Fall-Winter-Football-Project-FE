@@ -1,6 +1,7 @@
 .bracket-wrapper {
   width: 100%;
   text-align: center;
+  background-color: $color-blue;
   p {
     padding: 20px;
     text-transform: uppercase;
@@ -18,7 +19,6 @@
       position: absolute;
       top: 0;
       left: 0;
-      background: url('https://media.gettyimages.com/photos/germanys-midfielder-toni-kroos-shoots-a-corner-kick-during-the-russia-picture-id982169104');
       background-size: cover;
       width: 100%;
       height: 100%;
