@@ -28,8 +28,7 @@
       }
       .form-group {
         font-size: 20px;
-        padding: 8px;
-        margin-bottom: 16px;
+        padding: 32px 16px 4px;
       }
       .tb-league {
         width: 100%;
@@ -50,6 +49,9 @@
         .row th a {
           float: right;
           padding-right: 8px;
+        }
+        .member-team {
+          cursor: pointer;
         }
         .member-team td {
           background: $color-white;
@@ -103,6 +105,28 @@
       font-weight: 400;
       border-radius: 8px;
     }
+  }
+}
+// === modal ===
+.team-form {
+  .team-name {
+    padding: 34px 0 8px;
+  }
+  label {
+    width: 110px;
+  }
+  .team-input {
+    display: inline-block;
+    max-width: 100%;
+    width: calc(100% - 110px);
+  }
+  .input-file {
+    cursor: pointer;
+    padding: 0;
+    position: absolute;
+    left: 110px;
+    height: 60px;
+    width: 60px;
   }
 }
 @media screen and (max-width: 1023px) {

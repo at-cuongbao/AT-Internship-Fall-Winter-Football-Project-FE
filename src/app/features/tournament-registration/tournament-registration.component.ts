@@ -1,19 +1,20 @@
-import { Component, ElementRef, ViewChild, Renderer, DoCheck } from '@angular/core';
+import { Component, ElementRef, ViewChild, Renderer, DoCheck, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Team } from 'src/app/shared/models/team';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { END_POINT } from 'src/app/shared/services/api-registry';
 import { Router } from '@angular/router';
+import { initDomAdapter } from '@angular/platform-browser/src/browser';
 
 @Component({
   selector: 'app-tournament-registration',
   templateUrl: './tournament-registration.component.html',
   styleUrls: ['./tournament-registration.component.scss']
 })
-export class TournamentRegistrationComponent implements DoCheck {
+export class TournamentRegistrationComponent implements OnInit, DoCheck {
   @ViewChild("modal", { read: ElementRef }) modal: ElementRef;
   @ViewChild("f", { read: ElementRef }) modalForm: ElementRef;
-
+  
   imageSource = '../../../assets/images/anhbongda.jpg';
   imageUrl = '../../../assets/images/default-image.png';
   imageLogo = '';
@@ -24,18 +25,33 @@ export class TournamentRegistrationComponent implements DoCheck {
   teamName = '';
   teamCode = '';
 
-
   groups = [];
-  tables = ["A", "B", "C", "D", "E", "F", "H", "G"];
+  tables = ["A", "B", "C", "D", "E", "F", "G", "H"];
 
   constructor(
     private apiService: ApiService,
     private renderer: Renderer,
     private router: Router
   ) {}
+  
+  ngOnInit(): void {
+    this.initTeam();
+  }
+
+  initTeam() {
+    this.tables.map(tables => {
+      for (let i = 0; i < 32; i++) {
+        let team = new Team();
+        team.name = "Name Team " + (i + 1);
+        team.code = "Code Team " + (i + 1);
+        team.cover = this.imageUrl;
+        team.logo = this.imageUrl;
+        this.teams[i] = team;
+      }
+    });
+  }
 
   ngDoCheck(): void {
-    this.isSubmited = this.teams.length === 16 ? true : false;
   }
 
   handleFileInput(file: FileList, isForLogo = true) {
@@ -62,7 +78,6 @@ export class TournamentRegistrationComponent implements DoCheck {
       tournament: {
         name: f.control.value.tournamentName,
         start_at: f.control.value.start,
-        end_at: f.control.value.finish,
         group_number: this.groups.length,
         desc: f.control.value.infor
       },
@@ -75,7 +90,6 @@ export class TournamentRegistrationComponent implements DoCheck {
 
   onModalSubmit(modalForm: NgForm) {
     let index = +this.modal.nativeElement.getAttribute('id');
-
     let team = new Team();
     team.name = modalForm.control.value.name;
     team.code = modalForm.control.value.code;

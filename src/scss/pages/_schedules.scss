@@ -34,6 +34,7 @@
   background-color: rgba(0, 0, 0, 0.4);
   /* Modal Content/Box */
   .modal-content {
+    padding: 16px 126px 0;
     background-color: $color-white;
     border-radius: 8px;
     margin: 7% auto;
@@ -46,9 +47,10 @@
       }
     }
     .close {
-      padding-right: 25px;
+      position: absolute;
+      top: 102px;
+      right: 290px;
       color: $color-light-grey;
-      float: right;
       font-size: 28px;
       &:hover,
       &:focus {
@@ -68,7 +70,7 @@
   .score-avatar {
     background-size: 100% 100%;
     background-color: $color-blue;
-    border-radius:  0 0 8px 8px;
+    border-radius: 0 0 8px 8px;
     color: $color-white;
     height: 230px;
     padding-bottom: 10px;
@@ -141,7 +143,6 @@
         transform: translateX(-50%);
       }
     }
-    
   }
 }
 @media screen and (max-width: 1023px) {
