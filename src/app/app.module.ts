@@ -29,6 +29,8 @@ import { LatestResultComponent } from './shared/components/latest-result/latest-
 import { MatchesComponent } from './shared/components/matches/matches.component';
 import { NextMatchComponent } from './shared/components/next-match/next-match.component';
 import { TournamentDetailComponent } from './features/tournament-detail/tournament-detail.component';
+import { MatchDetailComponent } from './features/match-detail/match-detail.component';
+import { TeamDetailComponent } from './features/team-detail/team-detail.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -60,7 +62,9 @@ export function tokenGetter() {
     FootballImagesComponent, 
     LatestResultComponent,
     MatchesComponent,
-    NextMatchComponent
+    NextMatchComponent,
+    MatchDetailComponent,
+    TeamDetailComponent
   ],
   imports: [
     BrowserModule,

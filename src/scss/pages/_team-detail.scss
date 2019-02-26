@@ -1,0 +1,147 @@
+.team-detail {
+  font-family: $font-body;
+  .team-name {
+    width: 100%;
+    height: 500px;
+    background-image: url('./assets/images/background.jpg');
+    position: relative;
+    p {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      text-transform: uppercase;
+      font-size: 50px;
+      font-weight: 1000px;
+      color: $color-white;
+    }
+  }
+  .team-infr {
+    padding: 64px 0;
+    .team-infr-left {
+      width: 25%;
+      img {
+        width: 150px;
+        height: 150px;
+      }
+      p {
+        margin-top: 24px; 
+        color: $color-black;
+        font-weight: 700px;
+        span {
+          color: $color-grey;
+        }
+      }
+      p:nth-child(3) {
+        margin-top: 0px;
+        color: $color-grey;
+      }
+      p:nth-child(2) {
+        font-size: 25px;
+      }
+    }
+    .team-infr-right {
+      width: 75%;
+      padding-left: 20px;
+      .club-history {
+        p {
+          font-size: 25px;
+          color: $color-black;
+          font-weight: 700px;
+          border-left: 10px solid $color-blue;
+          padding-left: 16px;
+        }
+      }
+      .detail-content {
+        p {
+          padding-top: 30px;
+        }
+      }
+      .team-image {
+        img {
+          width: 100%;
+          padding-top: 30px;
+        }
+        p {
+          font-size: 20px;
+          color: $color-black;
+          font-weight: 700px;
+          padding-top: 16px;
+        }
+      }
+      .player-images {
+        padding-top: 30px;
+        font-family: $font-family;
+        h3 {
+          font-size: 20px;
+          text-transform: uppercase;
+          font-family: $font-family;
+          span {
+            color: $color-blue;
+          }
+        }
+        .team-image {
+          font-family: $font-body;
+          .team-mem {
+            width: calc(100% / 3);
+            display: inline-block;
+            padding-right: 8px;
+            img {
+              width: 100%;
+              height: 320px;
+            }
+            .player-name {
+              font-size: 20px;
+              color: $color-black;
+              padding-right: 4px;
+            }
+            p {
+              font-size: 16px;
+              padding-top: 6px;
+            }
+          }
+          .team-mem:last-child {
+            padding-right: 0px;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 767px) {
+  .team-detail {
+    .team-infr {
+      .team-infr-left {
+        width: 100%;
+      }
+      .team-infr-right {
+        width: 100%;
+        padding: 32px 0 0;
+        .player-images {
+          .team-image {
+            .team-mem {
+              width: calc(100% / 2);
+              padding: 0 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 479px) {
+  .team-detail {
+    .team-infr {
+      .team-infr-right {
+        .player-images {
+          .team-image {
+            .team-mem {
+              width: 100%;
+              padding: 0 64px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

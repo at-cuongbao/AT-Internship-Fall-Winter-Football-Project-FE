@@ -8,7 +8,7 @@
   background-color: rgba(45, 37, 37, 0.5);
   font-size: 16px;
   .bottom-nav-left {
-    height: 66px;
+    height: 69px;
     padding-right: 86px;
     position: relative;
     &:hover {
@@ -47,6 +47,7 @@
       font-size: 38px;
       line-height: 70px;
       text-transform: uppercase;
+      font-family: $font-family;
       em {
         color: $color-white;
       }
@@ -56,24 +57,28 @@
     a {
       float: left;
       color: $color-white;
-      padding: 24px 16px;
       text-transform: uppercase;
+      font-family: $font-play;
+      padding: 27px 16px 24px;
+      letter-spacing: 0.03em;
+      border-bottom: 2px solid transparent;
       &.active,
       &:hover {
         color: $active-dot;
-        border-bottom: 2px solid $color-blue;
+        border-bottom-color: $color-blue;
       }
       .dropdown-ic {
         margin-bottom: -1px;
       }
     }
     .dropdown {
+      position: relative;
       &:hover {
         .dropbtn {
           color: $color-blue;
         }
         .dropdown-content {
-          top: 70px;
+          // top: 70px;
           display: block;
         }
       }
@@ -81,29 +86,31 @@
         text-transform: uppercase;
         outline: none;
         color: $color-white;
-        padding: 24px 16px;
+        padding: 26px 16px 24px;
         background-color: inherit;
         margin: 0;
       }
     }
     .dropdown-content {
-      margin-top: -4px;
       display: none;
       position: absolute;
-      background-color: $color-white;
+      background-color: #2d2525;
       min-width: 160px;
-      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
       z-index: 1;
+      top: 100%;
+      left: 0;
+      right: 0;
       .sub-link {
+        text-align: left;
+        float: none;
+        color: $color-white;
+        // background-color: $color-black;
+        padding: 10px 18px;
+        display: block;
+        font-size: 13px;
         &:hover {
           color: $color-blue;
         }
-        float: none;
-        color: $color-white;
-        background-color: $color-black;
-        padding: 12px 16px;
-        display: block;
-        text-align: center;
       }
     }
     .icon {

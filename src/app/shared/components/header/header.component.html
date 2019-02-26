@@ -22,7 +22,7 @@
             </ng-container>
           </div>
         </div>
-        <div *ngIf="auth.isLoggedIn()" class="dropdown inline-block clearfix">
+        <div *ngIf="auth.isLoggedIn()" class="dropdown pull-right clearfix">
           <ng-container *ngIf="auth.currentUser.admin">
             <a class="dropbtn">{{ auth.currentUser.name || 'Username' }}
               <span class="fa fa-caret-down"></span>

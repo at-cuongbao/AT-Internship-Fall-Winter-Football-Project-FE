@@ -19,7 +19,7 @@ export class ScheduleComponent implements OnInit {
   schedules = [];
   _match = {};
   @ViewChild("modal", { read: ElementRef }) modal: ElementRef;
-  imageSource = '../../../assets/images/avatar-image.jpg';
+  imageSource = '../../../assets/images/tr.png';
   imgDefault = '../../../assets/images/default-image.png';
 
   constructor(

@@ -14,6 +14,8 @@ import { AuthGuardService } from 'src/app/shared/services/auth-guard.service';
 import { AdminAuthGuardService } from 'src/app/shared/services/admin-auth-guard.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { TournamentDetailComponent } from './features/tournament-detail/tournament-detail.component';
+import { MatchDetailComponent } from './features/match-detail/match-detail.component';
+import { TeamDetailComponent } from './features/team-detail/team-detail.component';
 
 const routes: Routes = [
   {
@@ -63,6 +65,14 @@ const routes: Routes = [
   {
     path: 'tournament-detail/:id',
     component: TournamentDetailComponent
+  },
+  {
+    path: 'match-detail/:id',
+    component: MatchDetailComponent
+  },
+  {
+    path: 'team-detail/:id',
+    component: TeamDetailComponent
   },
   {
     path: '**',
