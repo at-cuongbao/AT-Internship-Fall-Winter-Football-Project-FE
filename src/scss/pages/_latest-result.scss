@@ -133,6 +133,7 @@
     }
   }
   .latest-bottom {
+    font-family: $font-body;
     position: relative;
     &::before {
       content: '';

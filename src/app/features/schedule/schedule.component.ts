@@ -23,6 +23,7 @@ export class ScheduleComponent implements OnInit {
   imgDefault = '../../../assets/images/default-image.png';
   score1;
   score2;
+  indexMatch: number;
 
   constructor(
     private scheduleService: ScheduleService,
@@ -77,7 +78,7 @@ export class ScheduleComponent implements OnInit {
         let quarters = [];
         let semis = [];
         let finals = [];
-
+        
         GROUPS.map(group => {
           let tables = [];
           schedules.map(match => {
@@ -132,8 +133,14 @@ export class ScheduleComponent implements OnInit {
     if (this.auth.currentUser.admin) {
       url = [END_POINT.matches + '/update'];
     }
-    this.apiService.post(url, data).subscribe();
-    this.closeModal();
+    this.apiService.post(url, data).subscribe(code => {
+      if (code === 200) {
+        this.closeModal();
+        this.getSchedule();
+      } else {
+        alert("Time out to predict !");
+      }
+    });
   };
 
   openModal(match) {

@@ -3,7 +3,7 @@
 }
 
 body {
-  font-family: $font-family;
+  font-family: $font-body;
 }
 
 a {
@@ -22,6 +22,14 @@ input[type=submit] {
 
 ul {
   list-style-type: none;
+}
+
+p {
+  line-height: 1.5;
+}
+
+a {
+  transition: all .4s;
 }
 
 label {

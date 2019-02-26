@@ -5,18 +5,32 @@
       <div class="article-tournament clearfix">
         <p>
           Vivamus hendrerit, tortor sed luctus maximus, nunc urna hendrerit nibh, sit amet efficitur libero lorem quis mauris. Nunc a pulvinar lectus. Pellentesque aliquam justo ut rhoncus lobortis. In sed venenatis massa. Sed sodales faucibus odio, eget tempus nibh accumsan ut. Fusce tincidunt semper finibus. Nullam consequat non leo interdum pulvinar.
-          <br><br>
-          Suspendisse odio erat, suscipit vel aliquam tristique, dapibus at neque. Aliquam lectus tellus, feugiat non sodales nec, rhoncus a est. Etiam hendrerit, eros nec mollis blandit, velit sem aliquet ex, id tristique metus ligula tincidunt nisi. Ut porta augue at molestie feugiat. Donec quis neque molestie, interdum sapien at, dictum diam. Nam aliquam diam vitae purus vestibulum, sit amet rutrum tortor aliquet. Curabitur rhoncus consectetur tempor. Vivamus volutpat, mauris non auctor molestie, est ex auctor eros, vel egestas eros tellus non dui.
         </p>
       </div>
       <div class="special-detail">
-        <marquee class="tournament-bracket">
-          <span><a routerLink="/bracket/{{id}}">This is the link of the tournament bracket. Click it !</a></span>
-        </marquee>
+        <div class="tournament-bracket">
+          <marquee class="bracket-link">
+            <span><a routerLink="/bracket/{{id}}">This is the link of the tournament bracket. Click it !</a></span>
+          </marquee> 
+        </div>
       </div>
-      <p>
-        Interdum et malesuada fames ac ante ipsum primis in faucibus. Nunc sit amet consequat magna. Donec congue sem felis, vel bibendum risus rutrum vel. Vivamus sed turpis nec nisl volutpat euismod eu in nisi. In sapien tortor, efficitur non ullamcorper in, fermentum malesuada quam. Fusce sed elit pharetra, semper nibh id, rutrum est. Phasellus id mollis elit. Nullam iaculis consequat est sed dignissim. Morbi rhoncus aliquet justo, et feugiat augue feugiat ut. Integer odio est, lobortis eu dolor faucibus, pretium imperdiet sapien. Nunc in ligula metus. Quisque mi lacus, ullamcorper sed bibendum vel, vehicula a tortor.
-      </p>
+      <div class="article-tournament clearfix">
+        <p>
+          Suspendisse odio erat, suscipit vel aliquam tristique, dapibus at neque. Aliquam lectus tellus, feugiat non sodales nec, rhoncus a est. Etiam hendrerit, eros nec mollis blandit, velit sem aliquet ex, id tristique metus ligula tincidunt nisi. Ut porta augue at molestie feugiat. Donec quis neque molestie, interdum sapien at, dictum diam. Nam aliquam diam vitae purus vestibulum, sit amet rutrum tortor aliquet. Curabitur rhoncus consectetur tempor. Vivamus volutpat, mauris non auctor molestie, est ex auctor eros, vel egestas eros tellus non dui.
+        </p>
+      </div>
+      <div class="tournament-image">
+        <img src="./../../../assets//images/UEFA.jpg">
+      </div>
+      <div class="article-tournament clearfix">
+        <p>
+          Vivamus hendrerit, tortor sed luctus maximus, nunc urna hendrerit nibh, sit amet efficitur libero lorem quis mauris. Nunc a pulvinar lectus. Pellentesque aliquam justo ut rhoncus lobortis. In sed venenatis massa. Sed sodales faucibus odio, eget tempus nibh accumsan ut. Fusce tincidunt semper finibus. Nullam consequat non leo interdum pulvinar.
+        </p>
+        <br>
+        <p>
+          Suspendisse odio erat, suscipit vel aliquam tristique, dapibus at neque. Aliquam lectus tellus, feugiat non sodales nec, rhoncus a est. Etiam hendrerit, eros nec mollis blandit, velit sem aliquet ex, id tristique metus ligula tincidunt nisi. Ut porta augue at molestie feugiat. Donec quis neque molestie, interdum sapien at, dictum diam. Nam aliquam diam vitae purus vestibulum, sit amet rutrum tortor aliquet. Curabitur rhoncus consectetur tempor. Vivamus volutpat, mauris non auctor molestie, est ex auctor eros, vel egestas eros tellus non dui.
+        </p>
+      </div>
       <table>
         <tr class="heading txt-center">
           <th>Table A</th>
@@ -25,30 +39,65 @@
           <th>Table D</th>
         </tr>
         <tr>
-          <td>Borussia Dortmund</td>
-          <td>Atlético Madrid</td>
-          <td>Monaco</td>
-          <td>PSG</td>
+          <td>
+            <a href="#"><img src="{{ teams[0]?.team_id.logo }}"><span>{{ teams[0]?.team_id.name }}</span></a>
+          </td>
+          <td>
+            <a href="#"><img src="{{ teams[4]?.team_id.logo }}"><span>{{ teams[4]?.team_id.name }}</span></a>
+          </td>
+          <td>
+            <a href="#"><img src="{{ teams[8]?.team_id.logo }}"><span>{{ teams[8]?.team_id.name }}</span></a>
+          </td>
+          <td>
+            <a href="#"><img src="{{ teams[12]?.team_id.logo }}"><span>{{ teams[12]?.team_id.name }}</span></a>
+          </td>
         </tr>
         <tr>
-          <td>Barcelona</td>
-          <td>Tottenham Hotspur</td>
-          <td>Liverpool</td>
-          <td>Napoli</td>
+          <td>
+            <a href="#"><img src="{{ teams[1]?.team_id.logo }}"><span>{{ teams[1]?.team_id.name }}</span></a>
+          </td>
+          <td>
+            <a href="#"><img src="{{ teams[5]?.team_id.logo }}"><span>{{ teams[5]?.team_id.name }}</span></a>
+          </td>
+          <td>
+            <a href="#"><img src="{{ teams[9]?.team_id.logo }}"><span>{{ teams[9]?.team_id.name }}</span></a>
+          </td>
+          <td>
+            <a href="#"><img src="{{ teams[13]?.team_id.logo }}"><span>{{ teams[13]?.team_id.name }}</span></a>
+          </td>
         </tr>
         <tr>
-          <td>Porto</td>
-          <td>Bayern München</td>
-          <td>Manchester City</td>
-          <td>Olympique Lyonnais</td>
+          <td>
+            <a href="#"><img src="{{ teams[2]?.team_id.logo }}"><span>{{ teams[2]?.team_id.name }}</span></a>
+          </td>
+          <td>
+            <a href="#"><img src="{{ teams[6]?.team_id.logo }}"><span>{{ teams[6]?.team_id.name }}</span></a>
+          </td>
+          <td>
+            <a href="#"><img src="{{ teams[10]?.team_id.logo }}"><span>{{ teams[10]?.team_id.name }}</span></a>
+          </td>
+          <td>
+            <a href="#"><img src="{{ teams[14]?.team_id.logo }}"><span>{{ teams[14]?.team_id.name }}</span></a>
+          </td>
         </tr>
         <tr>
-          <td>Real Madrid</td>
-          <td>Juventus</td>
-          <td>Manchester United</td>
-          <td>Roma</td>
+          <td>
+            <a href="#"><img src="{{ teams[3]?.team_id.logo }}"><span>{{ teams[3]?.team_id.name }}</span></a>
+          </td>
+          <td>
+            <a href="#"><img src="{{ teams[7]?.team_id.logo }}"><span>{{ teams[7]?.team_id.name }}</span></a>
+          </td>
+          <td>
+            <a href="#"><img src="{{ teams[11]?.team_id.logo }}"><span>{{ teams[11]?.team_id.name }}</span></a>
+          </td>
+          <td>
+            <a href="#"><img src="{{ teams[15]?.team_id.logo }}"><span>{{ teams[15]?.team_id.name }}</span></a>
+          </td>
         </tr>
       </table>
+      <div class="tournament-schedules">
+        <a routerLink="/schedules/{{id}}">This is the link of the tournament schedule. Click it !</a>
+      </div> 
     </div>
     <div class="container">
       <div class="other-tournament clearfix">

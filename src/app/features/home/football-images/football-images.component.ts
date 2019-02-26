@@ -13,6 +13,8 @@ export class FootballImagesComponent implements OnInit {
   imageSource4 = '../../../../assets/images/ibra.jpg';
   
   readTeam = false;
+  readMore = ['Read More']; 
+  flag = true;
 
   constructor() { }
 
@@ -20,6 +22,13 @@ export class FootballImagesComponent implements OnInit {
   }
 
   changeStatus(){
+    this.flag = !this.flag;
     this.readTeam = !this.readTeam;
+    if (this.flag) {
+      this.readMore = ['Read More']; 
+    } else {
+      this.readMore = ['Close'];
+    }
   }
+  
 }

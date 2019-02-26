@@ -71,6 +71,8 @@
     text-align: center;
   }
   .score-avatar {
+    border-radius: 0 0 8px 8px;
+    background-color: $color-blue;
     background-size: 100% 100%;
     background-color: $color-blue;
     border-radius: 0 0 8px 8px;
@@ -92,17 +94,25 @@
       display: inline-block;
       position: relative;
       width: 100%;
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+}
       .prediction-middle {
         position: absolute;
         left: 50%;
         transform: translate(-50%, 0);
         .prediction {
+          border: none;
+          border-bottom: 2px solid $color-bold-blue;
           height: 50px;
           width: 50px;
           margin: 30px;
           text-align: center;
           font-size: 18px;
-          padding-left: 12px;
+          padding: 0px !important;
+          transition: opacity .4s cubic-bezier(.25,.8,.25,1);
           @extend %txt-bold;
         }
         .cross {
