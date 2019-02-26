@@ -16,7 +16,7 @@
       </div>
     </div>
     <div [class.display-none]="flag" class="tournament-bottom">
-      <a routerLink="/tournament-registration" class="btn btn-success">CREATE TOURNAMENT</a>
+      <a routerLink="/tournament-registration" class="btn btn-success">Create tournament</a>
       <pagination-controls [class.display-none]="!tournamentList.length" class="pagination-control" (pageChange)="pageActual = $event"></pagination-controls>
     </div>
   </section>
@@ -24,6 +24,6 @@
 </div>
 
 <div class="container" *ngIf="!tournamentList.length">
-  <p class="notification-error">No tournaments !</p>
+  <p class="notification">No tournaments !</p>
   <a routerLink="/tournament-registration" class="btn btn-success">CREATE TOURNAMENT</a>
 </div>

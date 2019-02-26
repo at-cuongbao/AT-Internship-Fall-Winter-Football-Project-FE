@@ -29,7 +29,9 @@ export class MatchesComponent implements OnInit {
       this.getNextMatch.emit(match);
     } else {
       if (!this.isClickTagA) {
-        this.router.navigate([END_POINT.match_detail + match.id]);
+        console.log([END_POINT.match_detail + '/' + match.id]);
+        
+        this.router.navigate([END_POINT.match_detail + '/' + match.id]);
       }
       // handle when click button in li tag
       this.isClickTagA = !this.isClickTagA;

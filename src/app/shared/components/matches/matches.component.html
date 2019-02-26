@@ -24,7 +24,10 @@
         <ng-container *ngIf="match.firstTeam.score">
           {{ match.firstTeam.score }} : {{ match.secondTeam.score | questionMask }}
         </ng-container>
-        <ng-container *ngIf="!match.firstTeam.score">
+        <ng-container *ngIf="!match.firstTeam.score && match?.prediction?.is_predicted">
+          {{ match.prediction.firstTeam_score_prediction }} : {{ match.prediction.secondTeam_score_prediction | questionMask }}
+        </ng-container>
+        <ng-container *ngIf="!match.firstTeam.score && !match?.prediction?.is_predicted">
           VS
         </ng-container>
       </p>
