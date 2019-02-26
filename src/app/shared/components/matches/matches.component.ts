@@ -13,6 +13,7 @@ export class MatchesComponent implements OnInit {
   @Input() home = true;
   @Output() openModal = new EventEmitter<any>();
   @Output() getNextMatch = new EventEmitter<any>();
+  @Input() flag = true;
   isClickTagA = false;
 
   constructor(
@@ -33,11 +34,9 @@ export class MatchesComponent implements OnInit {
       this.getNextMatch.emit(match);
     } else {
       if (!this.isClickTagA) {
-        console.log([END_POINT.match_detail + '/' + match.id]);
-        
         this.router.navigate([END_POINT.match_detail + '/' + match.id]);
       }
-      // handle when click button in li tag
+      // Handle when clicking a button in a li tag.
       this.isClickTagA = !this.isClickTagA;
     }
   }
@@ -46,5 +45,4 @@ export class MatchesComponent implements OnInit {
     this.isClickTagA = !this.isClickTagA;
     this.openModal.emit(match);
   }
-
 }

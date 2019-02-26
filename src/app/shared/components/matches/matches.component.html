@@ -24,10 +24,7 @@
         <ng-container *ngIf="match.firstTeam.score">
           {{ match.firstTeam.score }} : {{ match.secondTeam.score | questionMask }}
         </ng-container>
-        <ng-container *ngIf="!match.firstTeam.score && match?.prediction?.is_predicted">
-          {{ match.prediction.firstTeam_score_prediction }} : {{ match.prediction.secondTeam_score_prediction | questionMask }}
-        </ng-container>
-        <ng-container *ngIf="!match.firstTeam.score && !match?.prediction?.is_predicted">
+        <ng-container *ngIf="!match.firstTeam.score">
           VS
         </ng-container>
       </p>
@@ -38,17 +35,17 @@
         <img [src]="match?.secondTeam.logo" class="img-size" alt="logo team2">
       </p>
       <p class="match-view w25" *ngIf="!auth.currentUser?.admin">
-        <a *ngIf="!match.firstTeam.score" class="match-view-link txt-bold" (click)="open(match)">
+        <button *ngIf="!match.firstTeam.score" class="match-view-link txt-bold" (click)="open(match)" [disabled]="flag || !match.firstTeam.code">
           {{ match?.prediction?.is_predicted ? 'Predicted' : 'Predict' }}
-        </a>
+        </button>
         <a *ngIf="match.firstTeam.score" class="match-view-link txt-bold">
           View
         </a>
       </p>
       <p class="match-view w25" *ngIf="auth.isLoggedIn() && auth.currentUser.admin">
-        <a class="match-view-link txt-bold" (click)="open(match)">
+        <button class="match-view-link txt-bold" (click)="open(match)" [disabled]="flag">
           Edit
-        </a>
+        </button>
       </p>
     </li>
   </ul>
