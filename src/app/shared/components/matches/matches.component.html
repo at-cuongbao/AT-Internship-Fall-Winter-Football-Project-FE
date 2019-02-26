@@ -1,6 +1,6 @@
 <div class="schedule">
   <ul class="matches">
-    <li class="match" *ngFor="let match of matches" (click)="openMatchDetail(match, home)">
+    <li class="match" *ngFor="let match of matches" [class.disabled-li]="flag || (flag && !match.firstTeam.code)" (click)="openMatchDetail(match, home)">
       <p class="match-date w30" *ngIf="home">
         <span>
           {{ match.start_at | date:'MMMM dd' }}
@@ -15,7 +15,9 @@
         </span>
       </p>
       <p class="match-team-logo w10 border-left">
-        <img [src]="match?.firstTeam.logo" class="img-size" alt="logo team1">
+        <a routerLink="/team-detail/{{ match?.firstTeam.firstTeamId }}">
+          <img [src]="match?.firstTeam.logo" class="img-size" alt="logo team1">
+        </a>
       </p>
       <p class="match-team-code w10">
         {{ match?.firstTeam.code | questionMask }}
@@ -32,7 +34,9 @@
         {{ match?.secondTeam.code | questionMask }}
       </p>
       <p class="match-team-logo w10">
-        <img [src]="match?.secondTeam.logo" class="img-size" alt="logo team2">
+        <a routerLink="/team-detail/{{ match?.secondTeam.secondTeamId }}">
+          <img [src]="match?.secondTeam.logo" class="img-size" alt="logo team2">
+        </a>
       </p>
       <p class="match-view w25" *ngIf="!auth.currentUser?.admin">
         <button *ngIf="!match.firstTeam.score" class="match-view-link txt-bold" (click)="open(match)" [disabled]="flag || !match.firstTeam.code">

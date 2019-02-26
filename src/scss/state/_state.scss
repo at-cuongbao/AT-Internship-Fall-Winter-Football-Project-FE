@@ -61,3 +61,6 @@ input.file {
 	left: 0px;
 	z-index: 1;
 }
+.disabled-li {
+  pointer-events: none;
+}

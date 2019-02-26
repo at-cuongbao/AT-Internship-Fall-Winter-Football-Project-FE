@@ -4,7 +4,7 @@
       {{ match.start_at | date:'MMMM, dd, y | h:mm a' }}
     </div>
     <div class="match-location">
-      {{ match?.location || 'location' }}
+      {{ match?.location || 'Location: ?' }}
     </div>
     <div class="match-team">
       <p class="match-team-logo w20">
@@ -24,7 +24,7 @@
       </p>
     </div>
     <div>
-      <button type="button" class="btn btn-predict" (click)="openModal(match)">
+      <button type="button" class="btn btn-predict" (click)="openModal(match)" [disabled]="!match?.location">
         Predict
       </button>
     </div>
