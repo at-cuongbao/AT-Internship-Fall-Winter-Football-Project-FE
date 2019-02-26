@@ -45,4 +45,20 @@
 .notification-error {
   font-size: 33px;
   color: $color-red;
+  margin-bottom: 20px;
+}
+input.file {
+  position: relative;
+	-moz-opacity: 0;
+	opacity: 0;
+	z-index: 2;
+}
+.fileinputs {
+	position: relative;
+}
+.fakefile {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 1;
 }

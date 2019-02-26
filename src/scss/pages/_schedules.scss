@@ -25,6 +25,7 @@
 .modal {
   display: none;
   position: fixed;
+  animation: 400s all;
   z-index: 2;
   left: 0;
   top: 0;
@@ -33,11 +34,10 @@
   background-color: rgba(0, 0, 0, 0.4);
   /* Modal Content/Box */
   .modal-content {
-    position: relative;
+    padding: 16px 126px 0;
     background-color: $color-white;
     border-radius: 8px;
     margin: 7% auto;
-    padding: 20px 0 0;
     border: 1px solid $color-light-grey;
     width: 60%;
     .image-wrapper {
@@ -47,12 +47,11 @@
       }
     }
     .close {
-      right: 10px;
-      top: 0;
       position: absolute;
+      top: 102px;
+      right: 290px;
       color: $color-light-grey;
-      float: right;
-      font-size: 30px;
+      font-size: 28px;
       &:hover,
       &:focus {
         color: $color-black;
@@ -72,6 +71,8 @@
     border-radius: 0 0 8px 8px;
     background-color: $color-blue;
     background-size: 100% 100%;
+    background-color: $color-blue;
+    border-radius: 0 0 8px 8px;
     color: $color-white;
     height: 230px;
     padding-bottom: 10px;
@@ -138,7 +139,7 @@
         line-height: 30px;
         font-family: inherit;
         color: $color-white;
-        background-color: $color-light-black;
+        background: $color-light-black;
         outline: none;
         border: 0;
         padding: 4px 24px;

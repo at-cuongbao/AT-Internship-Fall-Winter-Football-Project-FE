@@ -33,7 +33,9 @@
       </div>
       <div class="score-avatar" [style.backgroundImage]="'url('+ imageSource +')'">
         <div class="info-match txt-center">
-          <div class="info-match-time">{{ _match.start_at | date:'MMMM, dd | h:mm a' || 'Undefined' }}</div>
+          <div class="info-match-time">
+            {{ _match.start_at | date:'MMMM, dd | h:mm a' || 'Undefined' }}
+          </div>
         </div>
         <div class="score-prediction">
           <div class="name-team-1">

@@ -18,7 +18,7 @@ export class AdminAuthGuardService implements CanActivate {
       return true;
     }
 
-    this.router.navigate(['/403']);
+    this.router.navigate(['/error', 403]);
     return false;
   }
 }

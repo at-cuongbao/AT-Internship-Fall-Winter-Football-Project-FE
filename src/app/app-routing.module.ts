@@ -8,7 +8,7 @@ import { RegisterComponent } from 'src/app/features/register/register.component'
 import { PredictionComponent } from 'src/app/features/prediction/prediction.component';
 import { BracketComponent } from 'src/app/features/bracket/bracket.component';
 import { HomeComponent } from './features/home/home.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from '../app/shared/components/page-not-found/page-not-found.component';
 import { TournamentListComponent } from 'src/app/features/tournament-list/tournament-list.component';
 import { AuthGuardService } from 'src/app/shared/services/auth-guard.service';
 import { AdminAuthGuardService } from 'src/app/shared/services/admin-auth-guard.service';
@@ -55,6 +55,10 @@ const routes: Routes = [
     ]
   },
   {
+    path: 'tournament-detail/:id',
+    component: TournamentDetailComponent
+  },
+  {
     path: 'login',
     component: LoginComponent
   },
@@ -63,8 +67,8 @@ const routes: Routes = [
     component: RegisterComponent
   },
   {
-    path: 'tournament-detail/:id',
-    component: TournamentDetailComponent
+    path: 'error/:num',
+    component: PageNotFoundComponent
   },
   {
     path: 'match-detail/:id',
@@ -76,8 +80,8 @@ const routes: Routes = [
   },
   {
     path: '**',
-    component: PageNotFoundComponent
-  }
+    redirectTo: '/error/404',
+  },
 ];
 
 @NgModule({

@@ -15,6 +15,7 @@ const POSITION = {
 })
 export class BracketComponent implements OnInit {
   tournamentName: string;
+  src = "../../../assets/images/tr.png";
   bracketView = [];
 
   constructor(
