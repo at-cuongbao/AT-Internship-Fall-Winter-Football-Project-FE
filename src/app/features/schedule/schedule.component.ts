@@ -75,7 +75,7 @@ export class ScheduleComponent implements OnInit {
         let quarters = [];
         let semis = [];
         let finals = [];
-
+        
         GROUPS.map(group => {
           let tables = [];
           schedules.map(match => {
