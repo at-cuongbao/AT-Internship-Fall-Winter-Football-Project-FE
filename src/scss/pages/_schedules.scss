@@ -62,6 +62,9 @@
   }
 }
 .prediction-page {
+  & .modal-content {
+    padding: 0;
+  }
   .prediction-heading {
     padding: 10px 0 32px 0;
     font-size: 32px;
