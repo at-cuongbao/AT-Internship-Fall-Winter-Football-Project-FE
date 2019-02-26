@@ -42,12 +42,17 @@
             <img *ngIf="_match.firstTeam" [src]="_match.firstTeam.logo" alt="" class="logo-size">
             <p class="code-team">{{ _match.firstTeam?.code }}</p>
           </div>
-          <div class="prediction-middle">
+          <div class="prediction-middle" *ngIf="_match?.prediction?.is_predicted">
+            <input type="number" value="{{ _match.prediction.firstTeam_score_prediction }}" class="prediction" min="0" required>
+            <div class="cross">-</div>
+            <input type="number" value="{{ _match.prediction.secondTeam_score_prediction }}" class="prediction" min="0" required>
+          </div>
+          <div class="prediction-middle" *ngIf="!_match?.prediction?.is_predicted">
             <input type="number" value="{{ _match.firstTeam?.score }}" name="firstPrediction" class="prediction" ngModel
-              #firstPrediction="ngModel" min="0" required />
+              #firstPrediction="ngModel" min="0" required>
             <div class="cross">-</div>
             <input type="number" value="{{ _match.secondTeam?.score }}" name="secondPrediction" class="prediction"
-              ngModel #secondPrediction="ngModel" min="0" required />
+              ngModel #secondPrediction="ngModel" min="0" required>
           </div>
           <div class="name-team-2">
             <img *ngIf="_match.secondTeam" [src]="_match.secondTeam.logo" alt="" class="logo-size">

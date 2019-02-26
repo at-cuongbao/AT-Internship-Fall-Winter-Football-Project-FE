@@ -21,6 +21,8 @@ export class ScheduleComponent implements OnInit {
   @ViewChild("modal", { read: ElementRef }) modal: ElementRef;
   imageSource = '../../../assets/images/tr.png';
   imgDefault = '../../../assets/images/default-image.png';
+  score1;
+  score2;
 
   constructor(
     private scheduleService: ScheduleService,

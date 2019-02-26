@@ -21,7 +21,11 @@ export class MatchesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.matches.sort((a, b) => (a.start_at > b.start_at) ? 1 : -1);
+    this.sortMatch(this.matches);
+  }
+
+  sortMatch(matches) {
+    matches.sort((a, b) => (a.start_at > b.start_at) ? 1 : -1);
   }
 
   openMatchDetail(match: any) {
