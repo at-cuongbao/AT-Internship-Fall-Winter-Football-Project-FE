@@ -47,6 +47,7 @@ export class HomeComponent implements OnInit {
         }
       );
     }
+    this.match = this.matches[0];
   }
 
   getMatches(): void {
