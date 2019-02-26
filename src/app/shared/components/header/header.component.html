@@ -27,7 +27,7 @@
             <a class="dropbtn">{{ auth.currentUser.name || 'Username' }}
               <span class="fa fa-caret-down dropdown-ic"></span>
             </a>
-            <div class="dropdown-content">
+            <div class="dropdown-content dropdown-right">
               <a class="sub-link">{{ auth.currentUser.name || 'Username' }}</a>
               <a routerLink="/tournament-registration" class="sub-link">Create tournament</a>
               <a routerLink="/info/{{ auth.currentUser.sub }}" class="sub-link">Information</a>
@@ -39,7 +39,7 @@
               <img src="../../../../assets/images/T7Z35JWLQ-U9R5N05T7-e955542bf924-48.jpg" alt="user-image">
               <span class="fa fa-caret-down dropdown-ic"></span>
             </a>
-            <div class="dropdown-content">
+            <div class="dropdown-content dropdown-right">
               <a class="sub-link">{{ auth.currentUser.name || 'Username' }}</a>
               <a class="sub-link">Profile</a>
               <a class="sub-link">Languages</a>
