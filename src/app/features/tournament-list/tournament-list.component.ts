@@ -18,9 +18,6 @@ export class TournamentListComponent implements OnInit {
       this.flag 
         ? this.tournamentList = tournamentList.slice(0, 3)
         : this.tournamentList = tournamentList;
-        console.log(this.tournamentList);
-        
     });
-    
   }
 }
