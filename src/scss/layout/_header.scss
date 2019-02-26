@@ -27,7 +27,7 @@
       right: 70px;
       top: 0;
       bottom: 0;
-      left: -99%;
+      left: -999%;
     }
     .bottom-nav-logo,
     .bottom-nav-brand {
@@ -63,6 +63,7 @@
       &:hover {
         color: $active-dot;
         border-bottom: 2px solid $color-blue;
+        box-shadow: 0px 0px 30px 1px;
       }
       .dropdown-ic {
         margin-bottom: -1px;
@@ -116,7 +117,7 @@
       display: none;
       position: absolute;
       background-color: $color-white;
-      min-width: 160px;
+      min-width: 173px;
       box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
       z-index: 1;
       .sub-link {
@@ -155,6 +156,7 @@
       }
     }
     .bottom-nav-right.responsive {
+      height: 194px;
       display: block;
       width: 100%;
       a.icon {
@@ -177,6 +179,7 @@
       }
       .dropdown-content {
         position: relative;
+        display: none !important;
       }
     }
   }

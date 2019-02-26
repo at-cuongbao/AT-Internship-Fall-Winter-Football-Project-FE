@@ -1,13 +1,18 @@
 <div class="schedule">
   <ul class="matches">
-    <li class="match txt-center" *ngFor="let match of matches">
-      <p class="match-date w10" *ngIf="home">
+    <li class="match" *ngFor="let match of matches" (click)="openMatchDetail(match, home)">
+      <p class="match-date w30" *ngIf="home">
         <span>
           {{ match.start_at | date:'MMMM dd' }}
         </span>
       </p>
-      <p class="match-date w10" *ngIf="!home">
-        {{ match.start_at | date:'MMM, dd' }}
+      <p class="match-date w25" *ngIf="!home">
+        <span class="short-date">
+          {{ match.start_at | date:'MMM, dd' }}
+        </span>
+        <span>
+          {{ match.start_at | date:'MMM, dd | h:mm a' }}
+        </span>
       </p>
       <p class="match-team-logo w10 border-left">
         <img [src]="match?.firstTeam.logo" class="img-size" alt="logo team1">
@@ -32,15 +37,15 @@
       <p class="match-team-logo w10">
         <img [src]="match?.secondTeam.logo" class="img-size" alt="logo team2">
       </p>
-      <p class="match-location w20 txt-left">
-        {{ match.location || '' }}
-      </p>
-      <p class="match-view w20" *ngIf="!auth.currentUser?.admin">
-        <a class="match-view-link txt-bold" (click)="open(match)">
-          Predict
+      <p class="match-view w25" *ngIf="!auth.currentUser?.admin">
+        <a *ngIf="!match.firstTeam.score" class="match-view-link txt-bold" (click)="open(match)">
+          {{ match?.prediction?.is_predicted ? 'Predicted' : 'Predict' }}
+        </a>
+        <a *ngIf="match.firstTeam.score" class="match-view-link txt-bold">
+          View
         </a>
       </p>
-      <p class="match-view w20" *ngIf="auth.isLoggedIn() && auth.currentUser.admin">
+      <p class="match-view w25" *ngIf="auth.isLoggedIn() && auth.currentUser.admin">
         <a class="match-view-link txt-bold" (click)="open(match)">
           Edit
         </a>

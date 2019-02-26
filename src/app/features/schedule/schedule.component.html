@@ -22,11 +22,20 @@
     <span (click)="closeModal()" class="close txt-bold">&times;</span>
     <form class="prediction-form" #elmForm="ngForm" (ngSubmit)="submit(elmForm, _match)">
       <div class="prediction-heading txt-center">
-        <p><b>Prediction Match</b></p>
+        <p>
+          <b *ngIf="auth.isLoggedIn() && !auth.currentUser.admin">
+            Predict Match
+          </b>
+          <b *ngIf="auth.isLoggedIn() && auth.currentUser.admin">
+            Edit Match
+          </b>
+        </p>
       </div>
       <div class="score-avatar" [style.backgroundImage]="'url('+ imageSource +')'">
         <div class="info-match txt-center">
-          <div class="info-match-time">{{ _match.start_at  || 'Undefined' }}</div>
+          <div class="info-match-time">
+            {{ _match.start_at | date:'MMMM, dd | h:mm a' || 'Undefined' }}
+          </div>
         </div>
         <div class="score-prediction">
           <div class="name-team-1">
