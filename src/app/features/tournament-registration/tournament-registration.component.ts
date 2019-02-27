@@ -34,18 +34,19 @@ export class TournamentRegistrationComponent implements DoCheck, OnInit {
   ) {}
 
   ngDoCheck(): void {
+    this.isSubmited = this.teams.length === 16 ? true : false;
   }
 
   ngOnInit(): void {
     this.initTeam();
   }
  
-   initTeam() {
+   initTeam() { 
     this.tables.map(tables => {
       for (let i = 0; i < 32; i++) {
         let team = new Team();
         team.name = "Name Team " + (i + 1);
-        team.code = "Code Team " + (i + 1);
+        team.code = "Code";
         team.cover = this.imageUrl;
         team.logo = this.imageUrl;
         this.teams[i] = team;
