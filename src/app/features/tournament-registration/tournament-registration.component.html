@@ -107,7 +107,7 @@
           </div>
         </div>
         <div class="div-btn">
-          <button class="btn-form" [class.disabled]="elmForm.invalid" [attr.disabled]="elmForm.valid ? null : ''">
+          <button class="btn-form" [class.disabled]="!isSubmited || elmForm.invalid" [disabled]="!isSubmited || elmForm.invalid">
             Send Application
           </button>
         </div>
@@ -154,7 +154,7 @@
           (change)="handleFileInput($event.target.files)" ngModel>
       </div>
       <div class="form-group txt-center">
-        <button type="submit" class="btn btn-success" (click)="closeModal()" [disabled]="f.invalid && isSubmited">Add Team</button>
+        <button type="submit" class="btn btn-success" (click)="closeModal()" [disabled]="f.invalid">Add Team</button>
       </div>
     </form>
   </div>

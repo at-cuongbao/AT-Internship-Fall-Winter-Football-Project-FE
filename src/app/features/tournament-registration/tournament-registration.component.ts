@@ -18,6 +18,7 @@ export class TournamentRegistrationComponent implements DoCheck, OnInit {
   imageUrl = '../../../assets/images/default-image.png';
   imageLogo = '';
   imageCover = '';
+  numberGroup = 4;
 
   teams: Team[] = [];
   isSubmited = false;
@@ -34,7 +35,9 @@ export class TournamentRegistrationComponent implements DoCheck, OnInit {
   ) {}
 
   ngDoCheck() {
-    this.isSubmited = this.teams.length === 16 ? true : false;
+    this.isSubmited = this.teams.length === (this.numberGroup * 4) ? true : false;
+    console.log(this.numberGroup);
+    console.log(this.teams.length);
   }
 
   ngOnInit() {
@@ -43,7 +46,7 @@ export class TournamentRegistrationComponent implements DoCheck, OnInit {
  
    initTeam() { 
     this.tables.map(tables => {
-      for (let i = 0; i < 32; i++) {
+      for (let i = 0; i < (4 * this.numberGroup); i++) {
         let team = new Team();
         team.name = "Name Team " + (i + 1);
         team.code = "Code";
@@ -67,6 +70,7 @@ export class TournamentRegistrationComponent implements DoCheck, OnInit {
   }
 
   convert(number) {
+    this.numberGroup = number.value;
     this.groups = [];
     for (let i = 0; i < number.value; i++) {
       this.groups.push(i);
