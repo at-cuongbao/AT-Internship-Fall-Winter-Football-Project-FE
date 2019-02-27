@@ -2,28 +2,28 @@
   <img class="logo" src="./../../../assets/images/championsleaguelogo.jpg" alt="Championsleague-Logo">
   <div class="match-content container">
     <div class="article-match clearfix">
-      <p>Chelsea - Barca: Choking "gunfight", peaking glory</p>
+      <p>{{ match.firstTeam?.code }} - {{ match.secondTeam?.code }}: Choking "gunfight", peaking glory</p>
     </div>
     <div class="heading-match">
-      <p class="match-day">Monday, 03/03/2019 02:37 AM (GMT+7)</p>
+      <p class="match-day">{{ match.start_at }}</p>
       <p class="match-summary"><b>Vivamus hendrerit, tortor sed luctus maximus, nunc urna hendrerit nibh, sit amet efficitur libero lorem quis mauris. Nunc a pulvinar lectus. Pellentesque aliquam justo ut rhoncus lobortis. In sed venenatis massa. Sed sodales faucibus odio, eget tempus nibh accumsan ut. Fusce tincidunt semper finibus. Nullam consequat non leo interdum pulvinar.</b></p>
     </div>
     <div class="latest-middle clearfix">
       <a class="latest-team-left">
-        <img src="./../../../assets/images/chel.png" alt="Chel">
+        <img [src]="match.firstTeam.cover" alt="Chel">
       </a>
       <div class="latest-versus txt-center">
-        <span class="versus-team">CHEL</span>
+        <span class="versus-team">{{ match.firstTeam.code }}</span>
         <div class="latest-score">
           <div class="score-table clearfix">
-            <div class="score-left txt-center">3</div>
-            <div class="score-right txt-center">5</div>
+            <div class="score-left txt-center">{{ match.firstTeam.score }}</div>
+            <div class="score-right txt-center">{{ match.secondTeam.score }}</div>
           </div>
         </div>
-        <span class="versus-team versus-team-right">Barca</span>
+        <span class="versus-team versus-team-right">{{ match.secondTeam.code }}</span>
       </div>
       <a class="latest-team-right">
-        <img src="./../../../assets/images/Barca.png" alt="">
+        <img [src]="match.secondTeam.cover" alt="">
       </a>
     </div>
     <div class="match-content clearfix">
@@ -37,8 +37,8 @@
     </div>
     <div class="start-lineup">
       <p><b class="bold">Starting lineup</b> :</p>            
-      <p><b class="bold">Chelsea:</b>  1 Kepa, 30 David Luiz, 28 Azpilicueta, 33 Emerson, 2 A. Rüdiger, 8 R. Barkley, 5 Jorginho, 7 N. Kante, 22 Willian, 10 E. Hazard, 11 Pedro</p>
-      <p><b class="bold">Barcelona:</b>  1 M. ter Stegen, 3 Piqué, 18 Jordi Alba, 23 S. Umtiti, 2 Nélson Semedo, 4 I. Rakitić, 22 A. Vidal, 5 Sergio Busquets, 7 Philippe Coutinho, 10 L. Messi, 9 L. Suárez</p>     
+      <p><b class="bold">{{ match.firstTeam.code }}:</b>  1 Kepa, 30 David Luiz, 28 Azpilicueta, 33 Emerson, 2 A. Rüdiger, 8 R. Barkley, 5 Jorginho, 7 N. Kante, 22 Willian, 10 E. Hazard, 11 Pedro</p>
+      <p><b class="bold">{{ match.secondTeam.code }}:</b>  1 M. ter Stegen, 3 Piqué, 18 Jordi Alba, 23 S. Umtiti, 2 Nélson Semedo, 4 I. Rakitić, 22 A. Vidal, 5 Sergio Busquets, 7 Philippe Coutinho, 10 L. Messi, 9 L. Suárez</p>     
     </div>
     <div class="image-match">
       <img src="./../../../assets/images/ChelvsBarca.jpg" >
@@ -62,7 +62,7 @@
       </thead>
       <tbody>
         <tr>
-          <td>Chelsea</td>
+          <td>{{ match.firstTeam.code }}</td>
           <td>3</td>
           <td>40%</td>
           <td>14(6)</td>
@@ -72,7 +72,7 @@
           <td>5</td>
         </tr>
         <tr>
-          <td>Barca</td>
+          <td>{{ match.secondTeam.code }}</td>
           <td>5</td>
           <td>60%</td>
           <td>18(9)</td>

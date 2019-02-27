@@ -1,12 +1,10 @@
 import { Component, OnInit, ViewChild, ElementRef, Renderer } from '@angular/core';
 import { ScheduleService } from 'src/app/shared/services/schedule.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
-import { ActivatedRoute, ParamMap, Route, Router, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { END_POINT } from 'src/app/shared/services/api-registry';
 import { ApiService } from 'src/app/shared/services/api.service';
-import { map } from 'rxjs/operators';
-import { ActivatedRouteSnapshot } from '@angular/router/src/router_state';
 
 const GROUPS = ["A", "B", "C", "D", "E", "F", "G", "H"];
 
@@ -19,9 +17,15 @@ export class ScheduleComponent implements OnInit {
   schedules = [];
   _match = {};
   @ViewChild("modal", { read: ElementRef }) modal: ElementRef;
+  @ViewChild("elmForm", { read: ElementRef }) elmForm: ElementRef
   imageSource = '../../../assets/images/tr.png';
   imgDefault = '../../../assets/images/default-image.png';
+  firstPredictionValue: Number;
+  secondPredictionValue: Number;
+  firstTeamScoreValue: Number;
+  secondTeamScoreValue: Number;
   indexMatch: number;
+  flag = true;
 
   constructor(
     private scheduleService: ScheduleService,
@@ -72,6 +76,7 @@ export class ScheduleComponent implements OnInit {
     });
     this.scheduleService.get(id)
       .subscribe(schedules => {
+        this.flag = false;
         this.schedules = [];
         let quarters = [];
         let semis = [];
@@ -148,10 +153,19 @@ export class ScheduleComponent implements OnInit {
       }})
     }
     this._match = match;
+    this.firstPredictionValue = match.prediction.firstTeam_score_prediction;
+    this.secondPredictionValue = match.prediction.secondTeam_score_prediction;
+    this.firstTeamScoreValue = match.firstTeam.score;
+    this.secondTeamScoreValue = match.secondTeam.score;
     this.renderer.setElementAttribute(this.modal.nativeElement, "style", "display: block");
   }
 
   closeModal() {
+    this.resetForm();
     this.renderer.setElementAttribute(this.modal.nativeElement, "style", "display: none");
+  }
+
+  resetForm() {
+    this.elmForm.nativeElement.reset();
   }
 }

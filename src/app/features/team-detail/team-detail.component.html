@@ -1,12 +1,12 @@
 <div class="team-detail">
   <div class="team-name">
-    <p>Barcelona</p>
+    <p>{{ team.name }}</p>
   </div>
   <div class="team-infr">
     <div class="container">
       <div class="team-infr-left pull-left clearfix">
-        <img src="./../../../assets/images/Barca.png">
-        <p>Fc Barcelona</p>
+        <img *ngIf="team" [src]="team.logo">
+        <p>FC {{ team.name }}</p>
         <p>Football Club</p> 
         <p>Established In :<span> 1902</span></p>
         <p>Arena/Stadium :<span> Camp Nou</span></p>
