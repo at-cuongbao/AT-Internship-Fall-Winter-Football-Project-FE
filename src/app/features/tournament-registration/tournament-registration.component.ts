@@ -33,11 +33,11 @@ export class TournamentRegistrationComponent implements DoCheck, OnInit {
     private router: Router
   ) {}
 
-  ngDoCheck(): void {
+  ngDoCheck() {
     this.isSubmited = this.teams.length === 16 ? true : false;
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.initTeam();
   }
  
