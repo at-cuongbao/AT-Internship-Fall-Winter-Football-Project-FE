@@ -66,7 +66,7 @@ export class TournamentRegistrationComponent implements DoCheck {
       },
       teams: this.teams
     };
-    console.log(f.control.value.start);
+    alert("You have registered successfully !");
     this.apiService.post([END_POINT.tournaments], data).subscribe(tournamentId => {
       this.router.navigate(['schedules', tournamentId]);
     });
