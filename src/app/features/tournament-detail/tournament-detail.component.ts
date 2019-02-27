@@ -13,9 +13,8 @@ export class TournamentDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private apiService: ApiService,
   ) { }
-  id = '';
   teams = [];
-
+  id = '';
   ngOnInit() {
     this.id = this.route.snapshot.params.id;
     let url = [END_POINT.tournamentTeams + '/' + this.id];
@@ -28,4 +27,5 @@ export class TournamentDetailComponent implements OnInit {
       }
     );
   }
+  
 }

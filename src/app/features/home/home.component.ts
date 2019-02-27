@@ -7,7 +7,6 @@ import { ScheduleService } from 'src/app/shared/services/schedule.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
   matches = [];
   match = {};
   imgDefault = '../../../assets/images/default-image.png';

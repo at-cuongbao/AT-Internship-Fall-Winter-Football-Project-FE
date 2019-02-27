@@ -1,11 +1,12 @@
 .bracket-wrapper {
+  font-family: $font-body;
   width: 100%;
   text-align: center;
   background-color: $color-blue;
   p {
     padding: 20px;
     text-transform: uppercase;
-    font-size: 24px;
+    font-size: 32px;
     font-weight: bold;
   }
   .auto-justify {
@@ -27,6 +28,8 @@
     }
     .panel-center {
       img {
+        height: 280px;
+        width: 300px;
         position: relative;
         top: -120px;
       }
@@ -116,6 +119,10 @@
       }
       .team-name {
         position: absolute;
+        img {
+          width: 50px;
+          height: 50px;
+        }
         span {
           font-size: 26px;
           font-weight: bold;

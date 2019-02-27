@@ -19,6 +19,10 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getTournaments();
+  }
+
+  getTournaments() {
     this.tournamentService.get().subscribe(data => {
       data.map(tournament => {
         this.tournaments.push({ id: tournament._id, name: tournament.name });

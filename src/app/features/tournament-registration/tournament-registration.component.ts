@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, Renderer, DoCheck, OnInit } from '@angular/core';
+import { Component, ElementRef, ViewChild, Renderer, DoCheck } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Team } from 'src/app/shared/models/team';
 import { ApiService } from 'src/app/shared/services/api.service';
@@ -11,7 +11,7 @@ import { initDomAdapter } from '@angular/platform-browser/src/browser';
   templateUrl: './tournament-registration.component.html',
   styleUrls: ['./tournament-registration.component.scss']
 })
-export class TournamentRegistrationComponent implements OnInit, DoCheck {
+export class TournamentRegistrationComponent implements DoCheck {
   @ViewChild("modal", { read: ElementRef }) modal: ElementRef;
   @ViewChild("f", { read: ElementRef }) modalForm: ElementRef;
   
@@ -33,23 +33,6 @@ export class TournamentRegistrationComponent implements OnInit, DoCheck {
     private renderer: Renderer,
     private router: Router
   ) {}
-  
-  ngOnInit(): void {
-    this.initTeam();
-  }
-
-  initTeam() {
-    this.tables.map(tables => {
-      for (let i = 0; i < 32; i++) {
-        let team = new Team();
-        team.name = "Name Team " + (i + 1);
-        team.code = "Code Team " + (i + 1);
-        team.cover = this.imageUrl;
-        team.logo = this.imageUrl;
-        this.teams[i] = team;
-      }
-    });
-  }
 
   ngDoCheck(): void {
   }
@@ -83,6 +66,7 @@ export class TournamentRegistrationComponent implements OnInit, DoCheck {
       },
       teams: this.teams
     };
+    console.log(f.control.value.start);
     this.apiService.post([END_POINT.tournaments], data).subscribe(tournamentId => {
       this.router.navigate(['schedules', tournamentId]);
     });
@@ -93,8 +77,8 @@ export class TournamentRegistrationComponent implements OnInit, DoCheck {
     let team = new Team();
     team.name = modalForm.control.value.name;
     team.code = modalForm.control.value.code;
-    team.cover = this.imageCover ? this.imageCover : this.imageUrl;
-    team.logo = this.imageLogo ? this.imageLogo : this.imageUrl;
+    team.cover = modalForm.control.value.cover ? "../../../assets/images/" + modalForm.control.value.cover.slice(12) : this.imageUrl;
+    team.logo = modalForm.control.value.logo ? "../../../assets/images/" + modalForm.control.value.logo.slice(12) : this.imageUrl;
     this.teams[index] = team;
 
     this.resetForm();
