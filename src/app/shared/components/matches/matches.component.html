@@ -20,7 +20,7 @@
         </a>
       </p>
       <p class="match-team-code w10">
-        {{ match?.firstTeam.code | questionMask }}
+        {{ match?.firstTeam.code | slice:0:6 | questionMask }}
       </p>
       <p class="match-score w10">
         <ng-container *ngIf="match.firstTeam.score">
@@ -31,7 +31,7 @@
         </ng-container>
       </p>
       <p class="match-team-code w10">
-        {{ match?.secondTeam.code | questionMask }}
+        {{ match?.secondTeam.code | slice:0:6 | questionMask }}
       </p>
       <p class="match-team-logo w10">
         <a routerLink="/team-detail/{{ match?.secondTeam.secondTeamId }}">

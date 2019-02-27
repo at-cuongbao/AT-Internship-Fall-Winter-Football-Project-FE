@@ -11,13 +11,13 @@
         <img [src]="match?.firstTeam?.logo" class="img-size" alt="logo team1">
       </p>
       <p class="match-team-code w20">
-        {{ match?.firstTeam?.code | questionMask }}
+        {{ match?.firstTeam?.code | slice:0:6 | questionMask }}
       </p>
       <p class="versus w20">
         VS
       </p>
       <p class="match-team-code w20">
-        {{ match?.secondTeam?.code | questionMask }}
+        {{ match?.secondTeam?.code | slice:0:6 | questionMask }}
       </p>
       <p class="match-team-logo w20">
         <img [src]="match?.secondTeam?.logo" class="img-size" alt="logo team2">
@@ -48,7 +48,7 @@
         <div class="score-prediction">
           <div class="name-team-1">
             <img *ngIf="_match.firstTeam" [src]="_match.firstTeam.logo" alt="" class="logo-size">
-            <p class="code-team">{{ _match.firstTeam?.code }}</p>
+            <p class="code-team">{{ _match.firstTeam?.code | slice:0:6 }}</p>
           </div>
           <div class="prediction-middle">
             <input type="number" value="{{ _match?.prediction?.is_predicted.firstTeam_score_prediction }}" name="firstPrediction" class="prediction" min="0" required>
@@ -57,7 +57,7 @@
           </div>
           <div class="name-team-2">
             <img *ngIf="_match.secondTeam" [src]="_match.secondTeam.logo" alt="" class="logo-size">
-            <p class="code-team">{{ _match.secondTeam?.code }}</p>
+            <p class="code-team">{{ _match.secondTeam?.code | slice:0:6 }}</p>
           </div>
           <button class="btn-prediction" [disabled]="elmForm.invalid">Submit</button>
         </div>
