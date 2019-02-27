@@ -1,17 +1,16 @@
-import { Component, ElementRef, ViewChild, Renderer, DoCheck } from '@angular/core';
+import { Component, ElementRef, ViewChild, Renderer, DoCheck, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Team } from 'src/app/shared/models/team';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { END_POINT } from 'src/app/shared/services/api-registry';
 import { Router } from '@angular/router';
-import { initDomAdapter } from '@angular/platform-browser/src/browser';
 
 @Component({
   selector: 'app-tournament-registration',
   templateUrl: './tournament-registration.component.html',
   styleUrls: ['./tournament-registration.component.scss']
 })
-export class TournamentRegistrationComponent implements DoCheck {
+export class TournamentRegistrationComponent implements DoCheck, OnInit {
   @ViewChild("modal", { read: ElementRef }) modal: ElementRef;
   @ViewChild("f", { read: ElementRef }) modalForm: ElementRef;
   
@@ -35,6 +34,23 @@ export class TournamentRegistrationComponent implements DoCheck {
   ) {}
 
   ngDoCheck(): void {
+  }
+
+  ngOnInit(): void {
+    this.initTeam();
+  }
+ 
+   initTeam() {
+    this.tables.map(tables => {
+      for (let i = 0; i < 32; i++) {
+        let team = new Team();
+        team.name = "Name Team " + (i + 1);
+        team.code = "Code Team " + (i + 1);
+        team.cover = this.imageUrl;
+        team.logo = this.imageUrl;
+        this.teams[i] = team;
+      }
+    });
   }
 
   handleFileInput(file: FileList, isForLogo = true) {
@@ -66,7 +82,7 @@ export class TournamentRegistrationComponent implements DoCheck {
       },
       teams: this.teams
     };
-    console.log(f.control.value.start);
+    alert('You have register successfully !');
     this.apiService.post([END_POINT.tournaments], data).subscribe(tournamentId => {
       this.router.navigate(['schedules', tournamentId]);
     });
