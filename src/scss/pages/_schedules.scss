@@ -123,13 +123,13 @@
       }
       .name-team-1 {
         position: absolute;
-        left: 18%;
+        left: 12% !important;
       }
       .name-team-2 {
         position: absolute;
-        right: 18%;
+        right: 12% !important;
       }
-      .logo-size {
+      .name-team-1 .logo-size,.name-team-2 .logo-size {
         height: 100px;
         width: 100px;
       }
@@ -159,14 +159,14 @@
   }
 }
 @media screen and (max-width: 1023px) {
-  .container {
+  .prediction-page {
     .score-avatar {
       .score-prediction {
         .name-team-1 {
-          left: 10%;
+          left: 3% !important;
         }
         .name-team-2 {
-          right: 10%;
+          right: 3% !important;
         }
         .code-team {
           font-size: 16px;
@@ -175,50 +175,8 @@
     }
   }
 }
-@media screen and (max-width: 979px) {
+@media screen and (max-width: 864px) {
   .schedule-block {
-    width: 100%;
-  }
-}
-@media screen and (max-width: 767px) {
-  .container {
-    font-weight: 600;
-    padding: 28px;
-    .prediction-heading {
-      font-size: 24px;
-    }
-    .score-avatar {
-      height: 500px;
-      .info-match {
-        font-size: 14px;
-        font-weight: 500;
-      }
-      .info-match-time {
-        font-size: 12px;
-        font-weight: 400;
-      }
-    }
-    .score-avatar {
-      .score-prediction {
-        padding-top: 10px;
-        text-align: center;
-        position: unset;
-        .name-team-1,
-        .name-team-2,
-        .prediction-middle,
-        .btn-prediction {
-          position: unset;
-        }
-        .code-team {
-          font-size: 14px;
-        }
-        .prediction-middle {
-          transform: none;
-        }
-        .btn-prediction {
-          transform: none;
-        }
-      }
-    }
+    display: none;
   }
 }
