@@ -34,6 +34,23 @@ export class TournamentRegistrationComponent implements DoCheck {
     private router: Router
   ) {}
 
+  ngOnInit(): void {
+    this.initTeam();
+  }
+
+   initTeam() {
+    this.tables.map(tables => {
+      for (let i = 0; i < 32; i++) {
+        let team = new Team();
+        team.name = "Name Team " + (i + 1);
+        team.code = "Code Team " + (i + 1);
+        team.cover = this.imageUrl;
+        team.logo = this.imageUrl;
+        this.teams[i] = team;
+      }
+    });
+  }
+
   ngDoCheck(): void {
   }
 
@@ -66,7 +83,7 @@ export class TournamentRegistrationComponent implements DoCheck {
       },
       teams: this.teams
     };
-    console.log(f.control.value.start);
+    alert("You have registered successfully !");
     this.apiService.post([END_POINT.tournaments], data).subscribe(tournamentId => {
       this.router.navigate(['schedules', tournamentId]);
     });
