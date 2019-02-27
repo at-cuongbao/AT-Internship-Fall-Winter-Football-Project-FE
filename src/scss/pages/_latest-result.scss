@@ -39,6 +39,10 @@
     .latest-team-left, .latest-team-right {
       display: inline-block;
       height: 100%;
+      img {
+        width: 100px;
+        height: 100px;
+      }
     }
     .latest-team-right {
       position: absolute;
@@ -60,6 +64,7 @@
         font-size: 33px;
         position: absolute;
         top: 50%;
+        transform: translate(0, -50%);
         left: 0;
       }
       .versus-team-right {

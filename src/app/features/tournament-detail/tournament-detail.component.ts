@@ -14,10 +14,10 @@ export class TournamentDetailComponent implements OnInit {
     private apiService: ApiService,
   ) { }
   teams = [];
-
+  id = '';
   ngOnInit() {
-    let id = this.route.snapshot.params.id;
-    let url = [END_POINT.tournamentTeams + '/' + id];
+    this.id = this.route.snapshot.params.id;
+    let url = [END_POINT.tournamentTeams + '/' + this.id];
     this.apiService.get(url).subscribe(
       value => {
         value.sort((a, b) => {
@@ -27,4 +27,5 @@ export class TournamentDetailComponent implements OnInit {
       }
     );
   }
+  
 }
