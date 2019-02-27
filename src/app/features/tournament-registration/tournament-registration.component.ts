@@ -83,6 +83,7 @@ export class TournamentRegistrationComponent implements OnInit, DoCheck {
       },
       teams: this.teams
     };
+    console.log(f.control.value.start);
     this.apiService.post([END_POINT.tournaments], data).subscribe(tournamentId => {
       this.router.navigate(['schedules', tournamentId]);
     });
@@ -93,8 +94,8 @@ export class TournamentRegistrationComponent implements OnInit, DoCheck {
     let team = new Team();
     team.name = modalForm.control.value.name;
     team.code = modalForm.control.value.code;
-    team.cover = this.imageCover ? this.imageCover : this.imageUrl;
-    team.logo = this.imageLogo ? this.imageLogo : this.imageUrl;
+    team.cover = modalForm.control.value.cover ? "../../../assets/images/" + modalForm.control.value.cover.slice(12) : this.imageUrl;
+    team.logo = modalForm.control.value.logo ? "../../../assets/images/" + modalForm.control.value.logo.slice(12) : this.imageUrl;
     this.teams[index] = team;
 
     this.resetForm();
