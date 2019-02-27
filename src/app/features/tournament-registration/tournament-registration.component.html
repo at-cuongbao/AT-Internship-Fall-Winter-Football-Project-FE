@@ -107,7 +107,7 @@
           </div>
         </div>
         <div class="div-btn">
-          <button class="btn-form" [class.disabled]="!Submited || elmForm.invalid" disabled="elmForm.invalid">
+          <button class="btn-form" [class.disabled]="elmForm.invalid" [attr.disabled]="elmForm.valid ? null : ''">
             Send Application
           </button>
         </div>
