@@ -25,7 +25,7 @@ export class ScheduleComponent implements OnInit {
   firstTeamScoreValue: Number;
   secondTeamScoreValue: Number;
   indexMatch: number;
-  flag = false;
+  flag = true;
 
   constructor(
     private scheduleService: ScheduleService,
