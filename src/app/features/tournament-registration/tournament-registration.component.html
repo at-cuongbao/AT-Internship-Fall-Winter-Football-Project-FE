@@ -107,7 +107,7 @@
           </div>
         </div>
         <div class="div-btn">
-          <button class="btn-form" [class.disabled]="elmForm.invalid" [attr.disabled]="elmForm.valid ? null : ''">
+          <button class="btn-form" [class.disabled]="!isSubmited || elmForm.invalid" [disabled]="!isSubmited || elmForm.invalid">
             Send Application
           </button>
         </div>
@@ -134,7 +134,7 @@
       <div class="form-group">
         <label>Code Name: </label>
         <input class="form-control team-input" type="text" placeholder="Code Name" name="code" [(ngModel)]="teamCode"
-          #code="ngModel" ngModel required minlength="4">
+          #code="ngModel" ngModel required maxlength="4">
         <div *ngIf="code.invalid && (code.dirty || code.touched)" class="alert alert-danger">
           <p *ngIf="code.errors.required">
             (*)Code name is required
