@@ -21,6 +21,8 @@ export class ScheduleComponent implements OnInit {
   imageSource = '../../../assets/images/tr.png';
   imgDefault = '../../../assets/images/default-image.png';
   flag = true;
+  firstTeam_score_prediction;
+  secondTeam_score_prediction;
 
   constructor(
     private scheduleService: ScheduleService,
@@ -131,7 +133,7 @@ export class ScheduleComponent implements OnInit {
     if (this.auth.currentUser.admin) {
       url = [END_POINT.matches + '/update'];
       data.scorePrediction = [f.value.firstTeamScore, f.value.secondTeamScore];
-      data.winners = [f.value.firstTeamWinner, f.value.secondTeamWinner];
+      // data.winners = [f.value.firstTeamWinner, f.value.secondTeamWinner];
     }
     this.apiService.post(url, data).subscribe(code => {
       if (code === 200) {
@@ -144,6 +146,8 @@ export class ScheduleComponent implements OnInit {
   };
 
   openModal(match) {
+    this.firstTeam_score_prediction = match.prediction.firstTeam_score_prediction;
+    this.secondTeam_score_prediction = match.prediction.secondTeam_score_prediction;
     if (!this.auth.isLoggedIn()) {
       return this.router.navigate(['/login'], { queryParams: {
         returnUrl: this.router.url
@@ -154,7 +158,6 @@ export class ScheduleComponent implements OnInit {
   }
 
   closeModal() {
-    this.resetForm();
     this.renderer.setElementAttribute(this.modal.nativeElement, "style", "display: none");
   }
 
