@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, Renderer, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, Renderer, ViewChild, ElementRef, DoCheck } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
@@ -11,15 +11,15 @@ import { ApiService } from '../../services/api.service';
   templateUrl: './next-match.component.html',
   styleUrls: ['./next-match.component.scss']
 })
-export class NextMatchComponent implements OnInit, OnChanges {
+export class NextMatchComponent implements OnInit, OnChanges, DoCheck {
 
-  @Input("match") match = {};
+  @Input("match") match: any;
   _match = {};
   @ViewChild("modal", { read: ElementRef }) modal: ElementRef;
   @ViewChild("elmForm", { read: ElementRef }) elmForm: ElementRef
   firstPredictionValue: Number;
   secondPredictionValue: Number;
-  firstTeamScoreValue: Number;
+  firstTeamScoreValue = 0;
   secondTeamScoreValue: Number;
   indexMatch: number;
   flag = true;
@@ -31,6 +31,10 @@ export class NextMatchComponent implements OnInit, OnChanges {
     private apiService: ApiService
   ) { }
 
+  ngDoCheck(): void {
+    // this.firstTeamScoreValue = this.match.firstTeam.score;
+    // console.log(this.firstTeamScoreValue);
+  }
   ngOnInit() {
   }
 
@@ -48,9 +52,14 @@ export class NextMatchComponent implements OnInit, OnChanges {
     let url = [END_POINT.prediction + '/new'];
     if (this.auth.currentUser.admin) {
       url = [END_POINT.matches + '/update'];
+      data.scorePrediction = [f.value.firstTeamScore, f.value.secondTeamScore];
+      // data.winners = [f.value.firstTeamWinner, f.value.secondTeamWinner];
     }
     this.apiService.post(url, data).subscribe(code => {
       if (code === 200) {
+        this.match = match;
+        this.firstTeamScoreValue = match.firstTeam.score;
+        this.match.secondTeam.score = match.secondTeam.score;
         this.closeModal();
       } else {
         alert("Time out to predict !");
@@ -58,18 +67,28 @@ export class NextMatchComponent implements OnInit, OnChanges {
     });
   };
 
+  openMatch(match) {
+    if (match.id) {
+      this.router.navigate([END_POINT.match_detail + '/' + match.id]);
+    } else {
+      alert("Match have not id!");
+    }
+  }
+
   openModal(match) {
     if (!this.auth.isLoggedIn()) {
-      return this.router.navigate(['/login'], { queryParams: {
-        returnUrl: this.router.url
-      }})
+      return this.router.navigate(['/login'], {
+        queryParams: {
+          returnUrl: this.router.url
+        }
+      })
     }
     this._match = match;
     this.renderer.setElementAttribute(this.modal.nativeElement, "style", "display: block");
   }
 
   closeModal() {
-    this.resetForm();
+    // this.resetForm();
     this.renderer.setElementAttribute(this.modal.nativeElement, "style", "display: none");
   }
 
