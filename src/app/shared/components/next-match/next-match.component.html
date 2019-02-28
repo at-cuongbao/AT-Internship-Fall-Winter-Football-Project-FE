@@ -11,7 +11,7 @@
         <img [src]="match?.firstTeam?.logo" class="img-size" alt="logo team1">
       </p>
       <p class="match-team-code w20">
-        {{ match?.firstTeam?.code | slice:0:6 | questionMask }}
+        {{ match?.firstTeam?.code | slice:0:4 | questionMask }}
       </p>
       <p class="versus w20">
         <ng-container *ngIf="match?.firstTeam?.score">
@@ -22,15 +22,20 @@
         </ng-container>
       </p>
       <p class="match-team-code w20">
-        {{ match?.secondTeam?.code | slice:0:6 | questionMask }}
+        {{ match?.secondTeam?.code | slice:0:4 | questionMask }}
       </p>
       <p class="match-team-logo w20">
         <img [src]="match?.secondTeam?.logo" class="img-size" alt="logo team2">
       </p>
     </div>
     <div>
-      <button *ngIf="!match.firstTeam.score" class="btn btn-predict txt-bold" (click)="openModal(match)">
-        {{ match?.prediction?.is_predicted ? 'Predicted' : 'Predict' }}
+      <button class="btn btn-predict txt-bold" (click)="openModal(match)">
+        <span *ngIf="auth.currentUser.admin">
+          Edit
+        </span>
+        <span *ngIf="!match.firstTeam.score && !auth.currentUser.admin">
+          {{ match?.prediction?.is_predicted ? 'Predicted' : 'Predict' }}
+        </span>
       </button>
       <button (click)="openMatch(match)" class="btn btn-predict txt-bold">
         View detail
@@ -56,7 +61,7 @@
         <div class="score-prediction">
           <div class="name-team-1">
             <img *ngIf="_match.firstTeam" [src]="_match.firstTeam.logo" alt="" class="logo-size">
-            <p class="code-team">{{ _match.firstTeam?.code | slice:0:6 }}</p>
+            <p class="code-team">{{ _match.firstTeam?.code | slice:0:4 }}</p>
           </div>
           <div class="prediction-middle">
             <input type="number" value="{{ _match?.prediction?.is_predicted.firstTeam_score_prediction }}" name="firstPrediction" class="prediction" min="0" required>
@@ -65,7 +70,7 @@
           </div>
           <div class="name-team-2">
             <img *ngIf="_match.secondTeam" [src]="_match.secondTeam.logo" alt="" class="logo-size">
-            <p class="code-team">{{ _match.secondTeam?.code | slice:0:6 }}</p>
+            <p class="code-team">{{ _match.secondTeam?.code | slice:0:4 }}</p>
           </div>
           <button class="btn-prediction" [disabled]="elmForm.invalid">Submit</button>
         </div>
