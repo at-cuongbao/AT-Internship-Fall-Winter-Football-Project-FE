@@ -131,7 +131,7 @@ export class ScheduleComponent implements OnInit {
     if (this.auth.currentUser.admin) {
       url = [END_POINT.matches + '/update'];
       data.scorePrediction = [f.value.firstTeamScore, f.value.secondTeamScore];
-      data.winners = [f.value.firstTeamWinner, f.value.secondTeamWinner];
+      // data.winners = [f.value.firstTeamWinner, f.value.secondTeamWinner];
     }
     this.apiService.post(url, data).subscribe(code => {
       if (code === 200) {
