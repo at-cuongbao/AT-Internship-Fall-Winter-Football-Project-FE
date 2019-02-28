@@ -1,6 +1,6 @@
 <div class="schedule">
   <ul class="matches">
-    <li class="match" *ngFor="let match of matches" (click)="openMatchDetail(match, home)">
+    <li class="match" *ngFor="let match of matches" (click)="openMatchDetail(match)">
       <p class="match-date w30" *ngIf="home">
         <span>
           {{ match.start_at | date:'MMMM dd' }}

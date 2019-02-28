@@ -14,7 +14,12 @@
         {{ match?.firstTeam?.code | slice:0:6 | questionMask }}
       </p>
       <p class="versus w20">
-        VS
+        <ng-container *ngIf="match?.firstTeam?.score">
+          {{ match?.firstTeam?.score }} : {{ match?.secondTeam?.score | questionMask }}
+        </ng-container>
+        <ng-container *ngIf="!match?.firstTeam?.score">
+          VS
+        </ng-container>
       </p>
       <p class="match-team-code w20">
         {{ match?.secondTeam?.code | slice:0:6 | questionMask }}
@@ -26,6 +31,9 @@
     <div>
       <button *ngIf="!match.firstTeam.score" class="btn btn-predict txt-bold" (click)="openModal(match)">
         {{ match?.prediction?.is_predicted ? 'Predicted' : 'Predict' }}
+      </button>
+      <button (click)="openMatch(match)" class="btn btn-predict txt-bold">
+        View detail
       </button>
     </div>
   </div>

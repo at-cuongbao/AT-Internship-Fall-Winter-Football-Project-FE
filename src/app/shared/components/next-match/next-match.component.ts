@@ -58,6 +58,14 @@ export class NextMatchComponent implements OnInit, OnChanges {
     });
   };
 
+  openMatch(match) {
+    if (match.id) {
+      this.router.navigate([END_POINT.match_detail + '/' + match.id]);
+    } else {
+      alert("Match have not id!");
+    }
+  }
+
   openModal(match) {
     if (!this.auth.isLoggedIn()) {
       return this.router.navigate(['/login'], { queryParams: {
