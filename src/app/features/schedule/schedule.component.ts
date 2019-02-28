@@ -20,11 +20,6 @@ export class ScheduleComponent implements OnInit {
   @ViewChild("elmForm", { read: ElementRef }) elmForm: ElementRef
   imageSource = '../../../assets/images/tr.png';
   imgDefault = '../../../assets/images/default-image.png';
-  firstPredictionValue: Number;
-  secondPredictionValue: Number;
-  firstTeamScoreValue: Number;
-  secondTeamScoreValue: Number;
-  indexMatch: number;
   flag = true;
 
   constructor(
@@ -135,6 +130,8 @@ export class ScheduleComponent implements OnInit {
     let url = [END_POINT.prediction + '/new'];
     if (this.auth.currentUser.admin) {
       url = [END_POINT.matches + '/update'];
+      data.scorePrediction = [f.value.firstTeamScore, f.value.secondTeamScore];
+      data.winners = [f.value.firstTeamWinner, f.value.secondTeamWinner];
     }
     this.apiService.post(url, data).subscribe(code => {
       if (code === 200) {
@@ -153,10 +150,6 @@ export class ScheduleComponent implements OnInit {
       }})
     }
     this._match = match;
-    this.firstPredictionValue = match.prediction.firstTeam_score_prediction;
-    this.secondPredictionValue = match.prediction.secondTeam_score_prediction;
-    this.firstTeamScoreValue = match.firstTeam.score;
-    this.secondTeamScoreValue = match.secondTeam.score;
     this.renderer.setElementAttribute(this.modal.nativeElement, "style", "display: block");
   }
 
