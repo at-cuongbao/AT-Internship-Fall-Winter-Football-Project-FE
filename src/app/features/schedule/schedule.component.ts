@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, Renderer } from '@angular/core';
 import { ScheduleService } from 'src/app/shared/services/schedule.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
-import { ActivatedRoute, ParamMap, Router, NavigationStart } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router, NavigationEnd } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { END_POINT } from 'src/app/shared/services/api-registry';
 import { ApiService } from 'src/app/shared/services/api.service';
@@ -33,7 +33,7 @@ export class ScheduleComponent implements OnInit {
     private renderer: Renderer
   ) { 
     router.events.forEach((event) => {
-      if(event instanceof NavigationStart) {
+      if (event instanceof NavigationEnd) {
         this.getSchedule();
       }
     });
