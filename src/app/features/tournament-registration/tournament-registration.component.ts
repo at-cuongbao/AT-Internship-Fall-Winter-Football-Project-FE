@@ -36,8 +36,6 @@ export class TournamentRegistrationComponent implements DoCheck, OnInit {
 
   ngDoCheck() {
     this.isSubmited = this.teams.length === (this.numberGroup * 4) ? true : false;
-    console.log(this.numberGroup);
-    console.log(this.teams.length);
   }
 
   ngOnInit() {
