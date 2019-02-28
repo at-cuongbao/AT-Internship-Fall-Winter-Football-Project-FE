@@ -18,11 +18,11 @@ export class ScheduleComponent implements OnInit {
   _match = {};
   @ViewChild("modal", { read: ElementRef }) modal: ElementRef;
   @ViewChild("elmForm", { read: ElementRef }) elmForm: ElementRef
+  @ViewChild("leftWinner", { read: ElementRef }) leftWinner: ElementRef
+  @ViewChild("rightWinner", { read: ElementRef }) rightWinner: ElementRef
   imageSource = '../../../assets/images/tr.png';
   imgDefault = '../../../assets/images/default-image.png';
   flag = true;
-  firstTeam_score_prediction;
-  secondTeam_score_prediction;
 
   constructor(
     private scheduleService: ScheduleService,
@@ -37,6 +37,10 @@ export class ScheduleComponent implements OnInit {
         this.getSchedule();
       }
     });
+  }
+
+  changeFlag() {
+    this.flag = !this.flag;
   }
 
   ngOnInit() {
@@ -75,7 +79,7 @@ export class ScheduleComponent implements OnInit {
   getSchedule(): void {
     let id: string;
     this.route.paramMap.subscribe((params: ParamMap) => {
-      id = params.get('id') || '5c4fbbaa0b614f0a24019243';
+      id = params.get('id') || '';
     });
     this.scheduleService.get(id)
       .subscribe(schedules => {
@@ -110,20 +114,16 @@ export class ScheduleComponent implements OnInit {
           }
         });
 
-        this.schedules.push(
-          {
-            groupName: 'Quater-final',
-            matches: quarters
-          },
-          {
-            groupName: 'Semi-final',
-            matches: semis
-          },
-          {
-            groupName: 'Final and third',
-            matches: finals
-          },
-        );
+        this.schedules.push({
+          groupName: 'Quater-final',
+          matches: quarters
+        }, {
+          groupName: 'Semi-final',
+          matches: semis
+        }, {
+          groupName: 'Final and third',
+          matches: finals
+        });
       })
   }
 
@@ -131,14 +131,15 @@ export class ScheduleComponent implements OnInit {
     const data = {
       match_id: match.id,
       user_id: this.auth.currentUser.sub,
-      scorePrediction: [f.value.firstPrediction, f.value.secondPrediction],
+      scorePrediction: [f.value.firstTeamPrediction, f.value.secondTeamPrediction],
       tournament_team_id: [match.firstTeam.firstTeamId, match.secondTeam.secondTeamId]
     };
+    
     let url = [END_POINT.prediction + '/new'];
     if (this.auth.currentUser.admin) {
       url = [END_POINT.matches + '/update'];
       data.scorePrediction = [f.value.firstTeamScore, f.value.secondTeamScore];
-      // data.winners = [f.value.firstTeamWinner, f.value.secondTeamWinner];
+      data.winners = [this.rightWinner.nativeElement.value, this.leftWinner.nativeElement.value];
     }
     this.apiService.post(url, data).subscribe(code => {
       if (code === 200) {
@@ -151,8 +152,6 @@ export class ScheduleComponent implements OnInit {
   };
 
   openModal(match) {
-    this.firstTeam_score_prediction = match.prediction.firstTeam_score_prediction;
-    this.secondTeam_score_prediction = match.prediction.secondTeam_score_prediction;
     if (!this.auth.isLoggedIn()) {
       return this.router.navigate(['/login'], { queryParams: {
         returnUrl: this.router.url

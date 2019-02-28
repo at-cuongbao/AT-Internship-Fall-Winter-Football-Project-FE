@@ -39,7 +39,7 @@
         </a>
       </p>
       <p class="match-view w25" *ngIf="!auth.currentUser?.admin">
-        <button [class.disabled]="match?.prediction?.isAllow" *ngIf="!match.firstTeam.score" 
+        <button [class.disabled]="flag || match?.prediction?.isAllow || !match.firstTeam.code" *ngIf="!match.firstTeam.score" 
           class="match-view-link txt-bold" (click)="open(match)" [disabled]="flag || !match.firstTeam.code || match?.prediction?.isAllow">
           {{ match?.prediction?.is_predicted ? 'View Prediction' : 'Predict' }}
         </button>
