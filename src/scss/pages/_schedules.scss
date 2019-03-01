@@ -126,6 +126,16 @@
             transform: translate(-50%, -50%);
           }
         }
+        .winner1 {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+        }
+        .winner2 {
+          position: absolute;
+          bottom: 0;
+          right: 0;
+        }
       }
       .name-team-1 {
         position: absolute;

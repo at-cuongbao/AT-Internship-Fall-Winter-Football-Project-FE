@@ -34,11 +34,13 @@ export class HomeComponent implements OnInit {
         {
           start_at: '02/02/2020',
           firstTeam: {
+            firstTeamId: null,
             code: null,
             logo: this.imgDefault,
             score: null
           },
           secondTeam: {
+            secondTeamId: null,
             code: null,
             logo: this.imgDefault,
             score: null
@@ -52,6 +54,8 @@ export class HomeComponent implements OnInit {
   getMatches(): void {
     this.scheduleService.getNextMatch()
       .subscribe(matches => {
+        console.log(matches);
+        
         this.matches = matches;
         this.matches.sort((a, b) => (a.start_at > b.start_at) ? 1 : -1);
         this.match = matches[0];
