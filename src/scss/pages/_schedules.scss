@@ -48,10 +48,10 @@
     }
     .close {
       position: absolute;
-      top: 102px;
-      right: 290px;
+      top: 93px;
+      right: 280px;
       color: $color-light-grey;
-      font-size: 28px;
+      font-size: 34px;
       &:hover,
       &:focus {
         color: $color-black;
@@ -111,14 +111,30 @@
           margin: 30px;
           text-align: center;
           font-size: 18px;
-          padding: 0px !important;
           transition: opacity .4s cubic-bezier(.25,.8,.25,1);
           @extend %txt-bold;
+          padding-left: 0px !important; 
         }
         .cross {
+          position: relative;
           font-size: 60px;
           @extend %txt-bold;
-          display: inline;
+          p {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+        }
+        .winner1 {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+        }
+        .winner2 {
+          position: absolute;
+          bottom: 0;
+          right: 0;
         }
       }
       .name-team-1 {

@@ -51,6 +51,8 @@ export class NextMatchComponent {
   };
 
   openMatch(match) {
+    console.log(match);
+    
     if (match.id) {
       this.router.navigate([END_POINT.match_detail + '/' + match.id]);
     } else {

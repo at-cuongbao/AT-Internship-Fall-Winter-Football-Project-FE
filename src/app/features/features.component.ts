@@ -22,6 +22,7 @@ export class FeaturesComponent {
         this.pageName =  event.url;
         this.pageName = this.pageName.replace('/', '').replace('-', ' ');
       }
+      
       let index = this.pageName.search('/');
       if (index !== -1) {
         this.pageName = this.pageName.slice(0, index);

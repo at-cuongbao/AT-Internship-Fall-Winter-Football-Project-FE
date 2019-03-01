@@ -57,10 +57,10 @@
             <input type="number" name="secondTeamScore" value="{{ _match.secondTeam?.score }}" ngModel class="prediction" min="0" required>
             <ng-container
               *ngIf="elmForm?.value.firstTeamScore && elmForm?.value.firstTeamScore === elmForm?.value.secondTeamScore">
-              <div class="" style="float:left">
+              <div class="winner1">
                 Winner: <input #leftWinner class="" type="radio" name="checkWinner" value="{{ !flag }}" (change)="changeFlag()">
               </div>
-              <div class="" style="float:right">
+              <div class="winner2">
                 Winner: <input #rightWinner class="" type="radio" name="checkWinner" value="{{ flag }}" (change)="changeFlag()">
               </div>
             </ng-container>
