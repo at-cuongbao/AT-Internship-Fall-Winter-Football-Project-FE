@@ -53,8 +53,10 @@
           </div>
           <div class="prediction-middle" *ngIf="!_match?.prediction?.is_predicted || auth.currentUser.admin">
             <input type="number" name="firstTeamScore" value="{{ _match.firstTeam?.score }}" ngModel class="prediction" min="0" required>
+            <span *ngIf="_match.firstTeam?.winner">*</span>
             <div class="cross">-</div>
             <input type="number" name="secondTeamScore" value="{{ _match.secondTeam?.score }}" ngModel class="prediction" min="0" required>
+            <span *ngIf="_match.secondTeam?.winner">*</span>
             <ng-container
               *ngIf="elmForm?.value.firstTeamScore && elmForm?.value.firstTeamScore === elmForm?.value.secondTeamScore">
               <div class="" style="float:left">
@@ -69,7 +71,7 @@
             <img *ngIf="_match.secondTeam" [src]="_match.secondTeam.logo" alt="" class="logo-size">
             <p class="code-team">{{ _match.secondTeam?.code }}</p>
           </div>
-          <button class="btn-prediction" [class.display-none]="_match?.prediction?.is_predicted"
+          <button class="btn-prediction" [class.display-none]="_match?.prediction?.is_predicted && !auth.currentUser.admin"
             [disabled]="elmForm.invalid">Submit</button>
         </div>
       </div>
