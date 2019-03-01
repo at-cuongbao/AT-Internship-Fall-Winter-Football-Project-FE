@@ -31,14 +31,15 @@ export class NextMatchComponent {
       match_id: match.id,
       user_id: this.auth.currentUser.sub,
       scorePrediction: [f.value.firstTeamPrediction, f.value.secondTeamPrediction],
-      tournament_team_id: [match.firstTeam.firstTeamId, match.secondTeam.secondTeamId]
+      tournament_team_id: [match.firstTeam.firstTeamId, match.secondTeam.secondTeamId],
+      winners: null
     };
 
     let url = [END_POINT.prediction + '/new'];
     if (this.auth.currentUser.admin) {
       url = [END_POINT.matches + '/update'];
       data.scorePrediction = [f.value.firstTeamScoreValue, f.value.secondTeamScoreValue];
-      // data.winners = [f.value.firstTeamWinner, f.value.secondTeamWinner];
+      data.winners = [f.value.firstTeamWinner, f.value.secondTeamWinner];
     }
     this.apiService.post(url, data).subscribe(code => {
       if (code === 200) {

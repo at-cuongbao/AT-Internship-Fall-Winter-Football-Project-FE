@@ -34,7 +34,7 @@ export class ScheduleComponent implements OnInit {
   ) { 
     router.events.forEach((event) => {
       if (event instanceof NavigationStart) {
-        // this.getSchedule();
+        this.getSchedule();
       }
     });
   }
@@ -55,11 +55,13 @@ export class ScheduleComponent implements OnInit {
         tables.push(
           {
             firstTeam: {
+              firstTeamId: null,
               code: null,
               logo: this.imgDefault,
               score: null
             },
             secondTeam: {
+              secondTeamId: null,
               code: null,
               logo: this.imgDefault,
               score: null
@@ -124,8 +126,8 @@ export class ScheduleComponent implements OnInit {
           groupName: 'Final and third',
           matches: finals
         });
-        console.log(quarters);
       })
+
   }
 
   submit(f: NgForm, match) {

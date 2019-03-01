@@ -38,6 +38,7 @@ export class BracketComponent implements OnInit {
           label: key,
           position: i,
           code: team && team.code ? team.code : '?',
+          logo: team && team.logo ? team.logo : '',
           score: team && team.score ? team.score : '?'
         });
       }
