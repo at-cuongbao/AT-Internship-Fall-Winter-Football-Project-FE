@@ -9,6 +9,9 @@ import { END_POINT } from 'src/app/shared/services/api-registry';
   styleUrls: ['./match-detail.component.scss']
 })
 export class MatchDetailComponent implements OnInit {
+id = '';
+tournaments = [];
+
   match = {
     start_at: '?',
     firstTeam: {
@@ -51,5 +54,13 @@ export class MatchDetailComponent implements OnInit {
           }
         }
       });
+
+      let urls = [END_POINT.tournaments + '/' + this.id];
+      this.api.get(urls).subscribe(
+        value => {
+          this.tournaments = value;
+          console.log(this.tournaments);
+        }
+      );
   }
 }

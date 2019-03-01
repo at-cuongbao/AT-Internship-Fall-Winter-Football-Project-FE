@@ -32,7 +32,11 @@ export class TeamDetailComponent implements OnInit {
       .subscribe(data => {
         if (data != 404) {
           this.team = data
+          
         }
-      });
+      }
+      );
+   
+    
   }
 }
