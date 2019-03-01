@@ -5,12 +5,12 @@
       <p>{{ match.firstTeam?.code }} - {{ match.secondTeam?.code }}: Choking "gunfight", peaking glory</p>
     </div>
     <div class="heading-match">
-      <p class="match-day">{{ match.start_at }}</p>
+      <p class="match-day">{{ match.start_at | date:'MMMM, dd | h:mm a' }}</p>
       <p class="match-summary"><b>Vivamus hendrerit, tortor sed luctus maximus, nunc urna hendrerit nibh, sit amet efficitur libero lorem quis mauris. Nunc a pulvinar lectus. Pellentesque aliquam justo ut rhoncus lobortis. In sed venenatis massa. Sed sodales faucibus odio, eget tempus nibh accumsan ut. Fusce tincidunt semper finibus. Nullam consequat non leo interdum pulvinar.</b></p>
     </div>
     <div class="latest-middle clearfix">
       <a class="latest-team-left">
-        <img [src]="match.firstTeam.cover" alt="Chel">
+        <img [src]="match.firstTeam.logo" alt="Chel">
       </a>
       <div class="latest-versus txt-center">
         <span class="versus-team">{{ match.firstTeam.code | slice:0:4 }}</span>
@@ -23,7 +23,7 @@
         <span class="versus-team versus-team-right">{{ match.secondTeam.code | slice:0:4 }}</span>
       </div>
       <a class="latest-team-right">
-        <img [src]="match.secondTeam.cover" alt="">
+        <img [src]="match.secondTeam.logo" alt="">
       </a>
     </div>
     <div class="match-content clearfix">
