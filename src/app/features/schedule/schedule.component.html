@@ -50,7 +50,7 @@
           <div class="prediction-middle" *ngIf="!_match?.prediction?.is_predicted || auth.currentUser.admin">
             <input type="number" [(ngModel)]="firstTeamScoreValue"  name="firstTeamScore" class="prediction"
               #firstPrediction min="0" required>
-            <div class="cross">-</div>
+            <div class="cross"><p>-</p></div>
             <input type="number" [(ngModel)]="secondTeamScoreValue"  name="secondTeamScore" class="prediction"
               #secondPrediction min="0" required>
           </div>

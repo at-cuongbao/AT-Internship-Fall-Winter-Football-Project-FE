@@ -31,6 +31,7 @@
         <div class="form-group">
           <select class="form-inline" name="number" ngModel #number="ngModel" required
             (ngModelChange)="convert(number)">
+            <option value="" disabled selected hidden><p>Number of tables</p></option>
             <option value="4">4</option>
             <option value="8">8</option>
           </select>

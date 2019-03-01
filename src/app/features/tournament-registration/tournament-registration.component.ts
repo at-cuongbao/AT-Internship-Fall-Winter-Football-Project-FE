@@ -35,7 +35,7 @@ export class TournamentRegistrationComponent implements DoCheck {
   ) {}
 
   ngOnInit(): void {
-    this.initTeam();
+    // this.initTeam();
   }
 
    initTeam() {
