@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, Renderer, ViewChild, ElementRef, DoCheck } from '@angular/core';
+import { Component, Renderer, ViewChild, ElementRef, Input, EventEmitter, Output } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
@@ -11,17 +11,12 @@ import { ApiService } from '../../services/api.service';
   templateUrl: './next-match.component.html',
   styleUrls: ['./next-match.component.scss']
 })
-export class NextMatchComponent implements OnInit, OnChanges, DoCheck {
-
+export class NextMatchComponent {
+  @Output() updateSchedule: EventEmitter<Event> = new EventEmitter();
   @Input("match") match: any;
   _match = {};
   @ViewChild("modal", { read: ElementRef }) modal: ElementRef;
   @ViewChild("elmForm", { read: ElementRef }) elmForm: ElementRef
-  firstPredictionValue: Number;
-  secondPredictionValue: Number;
-  firstTeamScoreValue = 0;
-  secondTeamScoreValue: Number;
-  indexMatch: number;
   flag = true;
 
   constructor(
@@ -31,35 +26,23 @@ export class NextMatchComponent implements OnInit, OnChanges, DoCheck {
     private apiService: ApiService
   ) { }
 
-  ngDoCheck(): void {
-    // this.firstTeamScoreValue = this.match.firstTeam.score;
-    // console.log(this.firstTeamScoreValue);
-  }
-  ngOnInit() {
-  }
-
-  ngOnChanges() {
-  }
-
   submit(f: NgForm, match) {
     const data = {
-      date: new Date().getTime(),
       match_id: match.id,
       user_id: this.auth.currentUser.sub,
-      scorePrediction: [f.value.firstPrediction, f.value.secondPrediction],
+      scorePrediction: [f.value.firstTeamPrediction, f.value.secondTeamPrediction],
       tournament_team_id: [match.firstTeam.firstTeamId, match.secondTeam.secondTeamId]
     };
+
     let url = [END_POINT.prediction + '/new'];
     if (this.auth.currentUser.admin) {
       url = [END_POINT.matches + '/update'];
-      data.scorePrediction = [f.value.firstTeamScore, f.value.secondTeamScore];
+      data.scorePrediction = [f.value.firstTeamScoreValue, f.value.secondTeamScoreValue];
       // data.winners = [f.value.firstTeamWinner, f.value.secondTeamWinner];
     }
     this.apiService.post(url, data).subscribe(code => {
       if (code === 200) {
         this.match = match;
-        this.firstTeamScoreValue = match.firstTeam.score;
-        this.match.secondTeam.score = match.secondTeam.score;
         this.closeModal();
       } else {
         alert("Time out to predict !");
@@ -88,11 +71,14 @@ export class NextMatchComponent implements OnInit, OnChanges, DoCheck {
   }
 
   closeModal() {
-    // this.resetForm();
     this.renderer.setElementAttribute(this.modal.nativeElement, "style", "display: none");
   }
 
   resetForm() {
     this.elmForm.nativeElement.reset();
+  }
+
+  callUpdateSchedule() {
+    this.updateSchedule.emit();
   }
 }

@@ -35,11 +35,13 @@ export class HomeComponent implements OnInit, DoCheck {
         {
           start_at: '02/02/2020',
           firstTeam: {
+            firstTeamId: null,
             code: null,
             logo: this.imgDefault,
             score: null
           },
           secondTeam: {
+            secondTeamId: null,
             code: null,
             logo: this.imgDefault,
             score: null
