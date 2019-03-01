@@ -13,12 +13,12 @@ export class MatchDetailComponent implements OnInit {
     start_at: '?',
     firstTeam: {
       code: '?',
-      cover: '../../../assets/images/logo-img.png',
+      logo: '../../../assets/images/logo-img.png',
       score: '?'
     },
     secondTeam: {
       code: '?',
-      cover: '../../../assets/images/logo-img.png',
+      logo: '../../../assets/images/logo-img.png',
       score: '?'
     }
   };
@@ -40,12 +40,12 @@ export class MatchDetailComponent implements OnInit {
             start_at: data[0].match_id.start_at,
             firstTeam: {
               code: data[0].tournament_team_id.team_id.code,
-              cover: data[0].tournament_team_id.team_id.cover,
+              logo: data[0].tournament_team_id.team_id.logo,
               score: data[0].score || '?'
             },
             secondTeam: {
               code: data[1].tournament_team_id.team_id.code,
-              cover: data[1].tournament_team_id.team_id.cover,
+              logo: data[1].tournament_team_id.team_id.logo,
               score: data[1].score || '?'
             }
           }

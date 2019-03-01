@@ -44,16 +44,9 @@
             <img *ngIf="_match.firstTeam" [src]="_match.firstTeam.logo" alt="" class="logo-size">
             <p class="code-team">{{ _match.firstTeam?.code }}</p>
           </div>
-          <div class="prediction-middle" *ngIf="_match?.prediction?.is_predicted && !auth.currentUser.admin">
-            <input type="number" name="firstTeamPrediction" value="{{ _match.prediction.firstTeam_score_prediction }}"
-              ngModel class="prediction" min="0" required>
-            <div class="cross">-</div>
-            <input type="number" name="secondTeamPrediction" value="{{ _match.prediction.secondTeam_score_prediction }}"
-              ngModel class="prediction" min="0" required>
-          </div>
           <div class="prediction-middle" *ngIf="!_match?.prediction?.is_predicted || auth.currentUser.admin">
             <input type="number" name="firstTeamScore" value="{{ _match.firstTeam?.score }}" ngModel class="prediction" min="0" required>
-            <div class="cross">-</div>
+            <div class="cross"><p>-</p></div>
             <input type="number" name="secondTeamScore" value="{{ _match.secondTeam?.score }}" ngModel class="prediction" min="0" required>
             <ng-container
               *ngIf="elmForm?.value.firstTeamScore && elmForm?.value.firstTeamScore === elmForm?.value.secondTeamScore">
