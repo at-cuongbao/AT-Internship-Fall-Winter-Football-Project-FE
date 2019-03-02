@@ -17,7 +17,6 @@ import { BracketComponent } from './features/bracket/bracket.component';
 import { FeaturesComponent } from './features/features.component';
 import { TournamentRegistrationComponent } from './features/tournament-registration/tournament-registration.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { PredictionComponent } from './features/prediction/prediction.component';
 import { SliderComponent } from './shared/components/slider/slider.component';
 import { RegisterComponent } from './features/register/register.component';
 import { ScheduleComponent } from './features/schedule/schedule.component';
@@ -52,7 +51,6 @@ export function tokenGetter() {
     ScheduleComponent,
     SliderComponent,
     RegisterComponent,
-    PredictionComponent, 
     PageNotFoundComponent, 
     QuestionMaskPipe, 
     DateDefaultPipe, 
