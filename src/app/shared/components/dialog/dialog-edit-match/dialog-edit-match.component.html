@@ -22,7 +22,7 @@
             <p class="code-team">{{ match.firstTeam?.code | slice:0:4 }}</p>
           </div>
           <!-- Predict for user -->
-          <div class="prediction-middle" *ngIf="match?.prediction?.is_predicted && !auth.currentUser?.admin">
+          <div class="prediction-middle" *ngIf="!auth.currentUser?.admin">
             <input type="number" [(ngModel)]="firstTeamPrediction_ngModel" name="firstTeamPrediction"
               value="{{ match.prediction.firstTeam_score_prediction }}" ngModel class="prediction" #firstTeamScoreValue
               min="0" required>
@@ -31,7 +31,7 @@
               value="{{ match.prediction.secondTeam_score_prediction }}" ngModel class="prediction" min="0" required>
           </div>
           <!-- Edit for admin -->
-          <div class="prediction-middle" *ngIf="!match?.prediction?.is_predicted || auth.currentUser?.admin">
+          <div class="prediction-middle" *ngIf="auth.currentUser?.admin">
             <input [(ngModel)]="firstTeamScore_ngModel" type="number" name="firstTeamScoreValue" class="prediction"
               min="0" required>
             <div class="cross">-</div>

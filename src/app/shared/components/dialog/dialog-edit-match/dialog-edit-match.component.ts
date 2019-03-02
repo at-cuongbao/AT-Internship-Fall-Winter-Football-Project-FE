@@ -15,7 +15,6 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
   @Output("onSubmit") sendData = new EventEmitter();
   @ViewChild("modal", { read: ElementRef }) modal: ElementRef;
   @ViewChild("elmForm", { read: NgForm }) elmForm: NgForm;
-  flag = true;
   firstTeamPrediction_ngModel;
   secondTeamPrediction_ngModel;
   firstTeamScore_ngModel;
@@ -29,9 +28,6 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
   ) { }
 
   ngOnChanges() {
-    console.log("ngOnChanges");
-    console.log(this.matches);
-    
     this.match = this.matches[0];
     if (this.auth.currentUser) {
       if (this.auth.currentUser.admin) {
@@ -46,7 +42,6 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.renderer.setElementAttribute(this.modal.nativeElement, "style", "display: block");
-    console.log("ngOnInit");
   }
 
   onSubmit(form: NgForm, match) {
@@ -54,10 +49,9 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
       match_id: match.id,
       user_id: this.auth.currentUser.sub,
       scorePrediction: [form.value.firstTeamPrediction, form.value.secondTeamPrediction],
-      tournament_team_id: [match.firstTeam.firstTeamId, match.secondTeam.secondTeamId],
+      tournament_team_id: [match.firstTeam.id, match.secondTeam.id],
       winners: []
     };
-
     let url = [END_POINT.prediction + '/new'];
     if (this.auth.currentUser.admin) {
       url = [END_POINT.matches + '/update'];
@@ -76,6 +70,5 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
 
   closeModal(match) {
     this.sendData.emit(match);
-    // this.renderer.setElementAttribute(this.modal.nativeElement, "style", "display: none");
   }
 }

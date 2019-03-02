@@ -3,8 +3,11 @@
     <div class="match-date">
       {{ match.start_at | date:'MMMM, dd, y | h:mm a' }}
     </div>
-    <div class="match-location">
-      {{ match?.location || 'Location: ?' }}
+    <div class="match-location middle">
+      <img src="../../../../assets/images/location-icon.png" alt="location-icon">
+      <span>
+        {{ match?.location || 'Việt Nam' }}
+      </span>
     </div>
     <div class="match-team">
       <p class="match-team-logo w20">
