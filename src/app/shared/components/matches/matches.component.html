@@ -1,5 +1,5 @@
 <div class="schedule">
-  <ul class="matches">
+  <ul *ngIf="matches" class="matches">
     <li class="match" *ngFor="let match of matches" (click)="openMatchDetail(match)">
       <p class="match-date w30" *ngIf="home">
         <span>

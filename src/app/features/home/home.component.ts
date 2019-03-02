@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
   ngAfterViewInit() {
     let home_next_match = this.elem.nativeElement.querySelectorAll(".home-next-match");
     let home_schedule = this.elem.nativeElement.querySelectorAll('.home-schedule');
-    home_next_match[0].style.height = home_schedule[0].offsetHeight + 'px';
+    // home_next_match[0].style.height = home_schedule[0].offsetHeight + 'px';
   }
 
   init() {

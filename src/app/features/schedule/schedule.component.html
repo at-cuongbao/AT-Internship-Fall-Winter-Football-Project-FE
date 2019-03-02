@@ -44,25 +44,17 @@
             <img *ngIf="_match.firstTeam" [src]="_match.firstTeam.logo" alt="" class="logo-size">
             <p class="code-team">{{ _match.firstTeam?.code }}</p>
           </div>
-          <div class="prediction-middle" *ngIf="_match?.prediction?.is_predicted && !auth.currentUser.admin">
-            <input type="number" name="firstTeamPrediction" value="{{ _match.prediction.firstTeam_score_prediction }}"
-              ngModel class="prediction" min="0" required>
-            <div class="cross">-</div>
-            <input type="number" name="secondTeamPrediction" value="{{ _match.prediction.secondTeam_score_prediction }}"
-              ngModel class="prediction" min="0" required>
-          </div>
           <div class="prediction-middle" *ngIf="!_match?.prediction?.is_predicted || auth.currentUser.admin">
-            <input type="number" name="firstTeamScore" value="{{ _match.firstTeam?.score }}" ngModel class="prediction" min="0" required>
+            <input type="number" #firstTeamValue name="firstTeamScore" ngModel value="{{ _match.firstTeam?.score }}" class="prediction" min="0" required>
             <span *ngIf="_match.firstTeam?.winner">*</span>
-            <div class="cross">-</div>
-            <input type="number" name="secondTeamScore" value="{{ _match.secondTeam?.score }}" ngModel class="prediction" min="0" required>
+            <div class="cross"><p>-</p></div>
+            <input type="number" #secondTeamValue name="secondTeamScore" ngModel value="{{ _match.secondTeam?.score }}" class="prediction" min="0" required>
             <span *ngIf="_match.secondTeam?.winner">*</span>
-            <ng-container
-              *ngIf="elmForm?.value.firstTeamScore && elmForm?.value.firstTeamScore === elmForm?.value.secondTeamScore">
-              <div class="" style="float:left">
+            <ng-container *ngIf="_match.round !== 1 && firstTeamValue?.value === secondTeamValue?.value">
+              <div class="winner1">
                 Winner: <input #leftWinner class="" type="radio" name="checkWinner" value="{{ !flag }}" (change)="changeFlag()">
               </div>
-              <div class="" style="float:right">
+              <div class="winner2">
                 Winner: <input #rightWinner class="" type="radio" name="checkWinner" value="{{ flag }}" (change)="changeFlag()">
               </div>
             </ng-container>
@@ -72,7 +64,7 @@
             <p class="code-team">{{ _match.secondTeam?.code }}</p>
           </div>
           <button class="btn-prediction" [class.display-none]="_match?.prediction?.is_predicted && !auth.currentUser.admin"
-            [disabled]="elmForm.invalid">Submit</button>
+            [disabled]="!firstTeamValue?.nativeElement?.value || !secondTeamValue?.nativeElement?.value">Submit</button>
         </div>
       </div>
     </form>

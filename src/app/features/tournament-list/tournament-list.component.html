@@ -3,7 +3,7 @@
     <div *ngIf="tournamentList.length" class="tournament-top clearfix">
       <div *ngFor="let tour of tournamentList | paginate: { itemsPerPage: 6, currentPage: pageActual }" class="card">
         <a routerLink="/tournament-detail/{{tour._id}}">
-          <img src="../../../assets/images/35b8bf93115eb2b8da9f8b4f41fdb0fd.jpg" alt="Denim Jeans" height="300">
+          <img src="../../../assets/images/championsleaguelogo.jpg" alt="Denim Jeans" height="300">
         </a>
         <div class="card-wrapper">
           <div class="date-creation">{{ tour.start_at | date:'short' }}</div>

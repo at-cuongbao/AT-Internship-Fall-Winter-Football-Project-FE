@@ -16,7 +16,11 @@ export class NextMatchComponent {
   @Input("match") match: any;
   _match = {};
   @ViewChild("modal", { read: ElementRef }) modal: ElementRef;
-  @ViewChild("elmForm", { read: ElementRef }) elmForm: ElementRef
+  @ViewChild("elmForm", { read: ElementRef }) elmForm: ElementRef;
+  @ViewChild("firstTeamValue", { read: ElementRef }) firstTeamValue: ElementRef;
+  @ViewChild("secondTeamValue", { read: ElementRef }) secondTeamValue: ElementRef;
+  @ViewChild("leftWinner", { read: ElementRef }) leftWinner: ElementRef;
+  @ViewChild("rightWinner", { read: ElementRef }) rightWinner: ElementRef;
   flag = true;
 
   constructor(
@@ -30,7 +34,7 @@ export class NextMatchComponent {
     const data = {
       match_id: match.id,
       user_id: this.auth.currentUser.sub,
-      scorePrediction: [f.value.firstTeamPrediction, f.value.secondTeamPrediction],
+      scorePrediction: [this.firstTeamValue.nativeElement.value, this.secondTeamValue.nativeElement.value],
       tournament_team_id: [match.firstTeam.firstTeamId, match.secondTeam.secondTeamId],
       winners: null
     };
@@ -38,7 +42,7 @@ export class NextMatchComponent {
     let url = [END_POINT.prediction + '/new'];
     if (this.auth.currentUser.admin) {
       url = [END_POINT.matches + '/update'];
-      data.scorePrediction = [f.value.firstTeamScoreValue, f.value.secondTeamScoreValue];
+      data.scorePrediction = [this.firstTeamValue.nativeElement.value, this.secondTeamValue.nativeElement.value],
       data.winners = [f.value.firstTeamWinner, f.value.secondTeamWinner];
     }
     this.apiService.post(url, data).subscribe(code => {
@@ -60,6 +64,9 @@ export class NextMatchComponent {
   }
 
   openModal(match) {
+    this.renderer.setElementAttribute(this.firstTeamValue.nativeElement, "value", match.firstTeam ? match.firstTeam.score : null);
+    this.renderer.setElementAttribute(this.secondTeamValue.nativeElement, "value", match.secondTeam ? match.secondTeam.score : null);
+
     if (!this.auth.isLoggedIn()) {
       return this.router.navigate(['/login'], {
         queryParams: {
@@ -72,6 +79,7 @@ export class NextMatchComponent {
   }
 
   closeModal() {
+    this.resetForm();
     this.renderer.setElementAttribute(this.modal.nativeElement, "style", "display: none");
   }
 
