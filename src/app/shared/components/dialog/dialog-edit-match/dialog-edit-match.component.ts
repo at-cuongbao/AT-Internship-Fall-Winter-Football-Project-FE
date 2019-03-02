@@ -21,6 +21,9 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
   secondTeamScore_ngModel;
   match: any;
   data: any;
+  isWinner = true;
+  imageWinner = '../../../assets/images/prize.png';
+
   constructor(
     private auth: AuthService,
     private renderer: Renderer,
@@ -29,6 +32,7 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
     this.match = this.matches[0];
+    console.log(this.match);
     if (this.auth.currentUser) {
       if (this.auth.currentUser.admin) {
         this.firstTeamScore_ngModel = this.match.firstTeam.score;
@@ -42,6 +46,9 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.renderer.setElementAttribute(this.modal.nativeElement, "style", "display: block");
+    if (this.match.secondTeam.winners || (this.match.firstTeam.score < this.match.secondTeam.score)) {
+      this.isWinner = false;
+    }
   }
 
   onSubmit(form: NgForm, match) {
@@ -70,5 +77,17 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
 
   closeModal(match) {
     this.sendData.emit(match);
+  }
+
+  changeFlag(isWinner) {
+    this.isWinner = isWinner;
+  }
+
+  checkWinner() {
+    if (this.firstTeamScore_ngModel < this.secondTeamScore_ngModel) {
+      this.isWinner = false;
+    } else {
+      this.isWinner = true;
+    }
   }
 }

@@ -1,10 +1,7 @@
-import { Component, OnInit, ViewChild, ElementRef, Renderer } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ScheduleService } from 'src/app/shared/services/schedule.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { ActivatedRoute, ParamMap, Router, NavigationEnd } from '@angular/router';
-import { NgForm } from '@angular/forms';
-import { END_POINT } from 'src/app/shared/services/api-registry';
-import { ApiService } from 'src/app/shared/services/api.service';
 
 const GROUPS = ["A", "B", "C", "D", "E", "F", "G", "H"];
 
@@ -15,32 +12,21 @@ const GROUPS = ["A", "B", "C", "D", "E", "F", "G", "H"];
 })
 export class ScheduleComponent implements OnInit {
   schedules = [];
-  _match = {};
-  @ViewChild("modal", { read: ElementRef }) modal: ElementRef;
-  @ViewChild("elmForm", { read: ElementRef }) elmForm: ElementRef
-  @ViewChild("leftWinner", { read: ElementRef }) leftWinner: ElementRef
-  @ViewChild("rightWinner", { read: ElementRef }) rightWinner: ElementRef
+  matchData = [];
   imageSource = '../../../assets/images/tr.png';
   imgDefault = '../../../assets/images/default-image.png';
-  flag = true;
 
   constructor(
     private scheduleService: ScheduleService,
     private auth: AuthService,
-    private apiService: ApiService,
     private route: ActivatedRoute,
-    private router: Router,
-    private renderer: Renderer
+    private router: Router
   ) { 
     router.events.forEach((event) => {
       if (event instanceof NavigationEnd) {
         this.getSchedule();
       }
     });
-  }
-
-  changeFlag() {
-    this.flag = !this.flag;
   }
 
   ngOnInit() {
@@ -83,7 +69,6 @@ export class ScheduleComponent implements OnInit {
     });
     this.scheduleService.get(id)
       .subscribe(schedules => {
-        this.flag = false;
         this.schedules = [];
         let quarters = [];
         let semis = [];
@@ -127,46 +112,19 @@ export class ScheduleComponent implements OnInit {
       })
   }
 
-  submit(f: NgForm, match) {
-    const data = {
-      match_id: match.id,
-      user_id: this.auth.currentUser.sub,
-      scorePrediction: [f.value.firstTeamPrediction, f.value.secondTeamPrediction],
-      tournament_team_id: [match.firstTeam.firstTeamId, match.secondTeam.secondTeamId],
-      winners: [match.firstTeam.winners, match.secondTeam.winners]
-    };
-    
-    let url = [END_POINT.prediction + '/new'];
-    if (this.auth.currentUser.admin) {
-      url = [END_POINT.matches + '/update'];
-      data.scorePrediction = [f.value.firstTeamScore, f.value.secondTeamScore];
-      data.winners = [this.rightWinner.nativeElement.value, this.leftWinner.nativeElement.value];
-    }
-    this.apiService.post(url, data).subscribe(code => {
-      if (code === 200) {
-        this.closeModal();
-        this.getSchedule();
-      } else {
-        alert("Time out to predict !");
-      }
-    });
-  };
-
   openModal(match) {
     if (!this.auth.isLoggedIn()) {
       return this.router.navigate(['/login'], { queryParams: {
         returnUrl: this.router.url
       }})
     }
-    this._match = match;
-    this.renderer.setElementAttribute(this.modal.nativeElement, "style", "display: block");
+    this.matchData.push(match);
   }
 
-  closeModal() {
-    this.renderer.setElementAttribute(this.modal.nativeElement, "style", "display: none");
-  }
-
-  resetForm() {
-    this.elmForm.nativeElement.reset();
+  onSubmit(match: any) {
+    if (match) {
+      this.getSchedule();
+    } 
+    this.matchData = [];
   }
 }
