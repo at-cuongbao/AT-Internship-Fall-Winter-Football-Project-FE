@@ -1,0 +1,50 @@
+<div #modal class="prediction-page modal txt-bold">
+  <div class="modal-content">
+    <span (click)="closeModal()" class="close txt-bold">&times;</span>
+    <form class="prediction-form" #elmForm="ngForm" (ngSubmit)="onSubmit(elmForm, match)">
+      <div class="prediction-heading txt-center">
+        <b *ngIf="auth.isLoggedIn() && !auth.currentUser?.admin">
+          Predict Match
+        </b>
+        <b *ngIf="auth.isLoggedIn() && auth.currentUser?.admin">
+          Edit Match
+        </b>
+      </div>
+      <div class="score-avatar">
+        <div class="info-match txt-center">
+          <div class="info-match-time">
+            {{ match.start_at | date:'MMMM, dd | h:mm a' || 'Undefined' }}
+          </div>
+        </div>
+        <div class="score-prediction">
+          <div class="name-team-1">
+            <img *ngIf="match.firstTeam" [src]="match.firstTeam.logo" alt="" class="logo-size">
+            <p class="code-team">{{ match.firstTeam?.code | slice:0:4 }}</p>
+          </div>
+          <!-- Predict for user -->
+          <div class="prediction-middle" *ngIf="match?.prediction?.is_predicted && !auth.currentUser?.admin">
+            <input type="number" [(ngModel)]="firstTeamPrediction_ngModel" name="firstTeamPrediction"
+              value="{{ match.prediction.firstTeam_score_prediction }}" ngModel class="prediction" #firstTeamScoreValue
+              min="0" required>
+            <div class="cross">-</div>
+            <input type="number" [(ngModel)]="secondTeamPrediction_ngModel" name="secondTeamPrediction"
+              value="{{ match.prediction.secondTeam_score_prediction }}" ngModel class="prediction" min="0" required>
+          </div>
+          <!-- Edit for admin -->
+          <div class="prediction-middle" *ngIf="!match?.prediction?.is_predicted || auth.currentUser?.admin">
+            <input [(ngModel)]="firstTeamScore_ngModel" type="number" name="firstTeamScoreValue" class="prediction"
+              min="0" required>
+            <div class="cross">-</div>
+            <input [(ngModel)]="secondTeamScore_ngModel" type="number" name="secondTeamScoreValue" class="prediction"
+              min="0" required>
+          </div>
+          <div class="name-team-2">
+            <img *ngIf="match.secondTeam" [src]="match.secondTeam.logo" alt="" class="logo-size">
+            <p class="code-team">{{ match.secondTeam?.code | slice:0:4 }}</p>
+          </div>
+          <button class="btn-prediction" [disabled]="elmForm.invalid">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
