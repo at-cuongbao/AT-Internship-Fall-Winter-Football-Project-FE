@@ -132,14 +132,15 @@ export class ScheduleComponent implements OnInit {
       match_id: match.id,
       user_id: this.auth.currentUser.sub,
       scorePrediction: [f.value.firstTeamPrediction, f.value.secondTeamPrediction],
-      tournament_team_id: [match.firstTeam.firstTeamId, match.secondTeam.secondTeamId]
+      tournament_team_id: [match.firstTeam.firstTeamId, match.secondTeam.secondTeamId],
+      winners: [match.firstTeam.winners, match.secondTeam.winners]
     };
     
     let url = [END_POINT.prediction + '/new'];
     if (this.auth.currentUser.admin) {
       url = [END_POINT.matches + '/update'];
       data.scorePrediction = [f.value.firstTeamScore, f.value.secondTeamScore];
-      // data.winners = [this.rightWinner.nativeElement.value, this.leftWinner.nativeElement.value];
+      data.winners = [this.rightWinner.nativeElement.value, this.leftWinner.nativeElement.value];
     }
     this.apiService.post(url, data).subscribe(code => {
       if (code === 200) {

@@ -55,8 +55,6 @@ export class HomeComponent implements OnInit, DoCheck {
   getMatches(): void {
     this.scheduleService.getNextMatch()
       .subscribe(matches => {
-        console.log(matches);
-        
         this.matches = matches;
         this.matches.sort((a, b) => (a.start_at > b.start_at) ? 1 : -1);
         this.match = matches[0];
