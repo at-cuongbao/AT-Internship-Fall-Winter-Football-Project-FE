@@ -1,35 +1,22 @@
-import { Component, Renderer, ViewChild, ElementRef, Input, EventEmitter, Output, DoCheck } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
-import { NgForm } from '@angular/forms';
 import { END_POINT } from 'src/app/shared/services/api-registry';
-import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-next-match',
   templateUrl: './next-match.component.html',
   styleUrls: ['./next-match.component.scss']
 })
-export class NextMatchComponent implements DoCheck {
-  @Output() updateSchedule: EventEmitter<Event> = new EventEmitter();
+export class NextMatchComponent {
+  @Output() updateSchedule = new EventEmitter();
   @Input("match") match: any;
   matchData = [];
-  _match = {};
-  flag = true;
-  firstTeamPrediction_ngModel;
-  secondTeamPrediction_ngModel;
-  firstTeamScore_ngModel;
-  secondTeamScore_ngModel;
 
   constructor(
     private auth: AuthService,
-    private router: Router,
-    private renderer: Renderer,
-    private apiService: ApiService
+    private router: Router
   ) { }
-
-  ngDoCheck() {
-  }
 
   openMatch(match) {
     if (match.id) {
@@ -52,13 +39,8 @@ export class NextMatchComponent implements DoCheck {
 
   onSubmit(match: any) {
     if (match) {
-      this.callUpdateSchedule();
-      this.match = match;
+      this.updateSchedule.emit(match.id);
     } 
     this.matchData = [];
-  }
-
-  callUpdateSchedule() {
-    this.updateSchedule.emit();
   }
 }

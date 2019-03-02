@@ -15,12 +15,12 @@
         </span>
       </p>
       <p class="match-team-logo w10 border-left">
-        <a routerLink="/team-detail/{{ match?.firstTeam.firstTeamId }}">
+        <a routerLink="/team-detail/{{ match?.firstTeam.id }}">
           <img [src]="match?.firstTeam.logo" class="img-size" alt="logo team1">
         </a>
       </p>
       <p class="match-team-code w10">
-        {{ match?.firstTeam.code | slice:0:6 | questionMask }}
+        {{ match?.firstTeam.code | slice:0:4 | questionMask }}
       </p>
       <p class="match-score w10">
         <ng-container *ngIf="match.firstTeam.score">
@@ -31,10 +31,10 @@
         </ng-container>
       </p>
       <p class="match-team-code w10">
-        {{ match?.secondTeam.code | slice:0:6 | questionMask }}
+        {{ match?.secondTeam.code | slice:0:4 | questionMask }}
       </p>
       <p class="match-team-logo w10">
-        <a routerLink="/team-detail/{{ match?.secondTeam.secondTeamId }}">
+        <a routerLink="/team-detail/{{ match?.secondTeam.id }}">
           <img [src]="match?.secondTeam.logo" class="img-size" alt="logo team2">
         </a>
       </p>

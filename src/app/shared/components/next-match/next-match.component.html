@@ -8,7 +8,9 @@
     </div>
     <div class="match-team">
       <p class="match-team-logo w20">
-        <img [src]="match?.firstTeam?.logo" class="img-size" alt="logo team1">
+        <a routerLink="/team-detail/{{ match?.firstTeam.id }}">
+          <img [src]="match?.firstTeam?.logo" class="img-size" alt="logo team1">
+        </a>
       </p>
       <p class="match-team-code w20">
         {{ match?.firstTeam?.code | slice:0:4 | questionMask }}
@@ -25,7 +27,9 @@
         {{ match?.secondTeam?.code | slice:0:4 | questionMask }}
       </p>
       <p class="match-team-logo w20">
-        <img [src]="match?.secondTeam?.logo" class="img-size" alt="logo team2">
+        <a routerLink="/team-detail/{{ match?.secondTeam.id }}">
+          <img [src]="match?.secondTeam?.logo" class="img-size" alt="logo team2">
+        </a>
       </p>
     </div>
     <div>
@@ -44,4 +48,5 @@
     </div>
   </div>
 </div>
-<app-dialog-edit-match *ngIf="matchData.length" [matchData]="matchData" (onSubmit)="onSubmit($event)"></app-dialog-edit-match>
+<app-dialog-edit-match *ngIf="matchData.length" [matchData]="matchData" (onSubmit)="onSubmit($event)">
+</app-dialog-edit-match>

@@ -52,12 +52,19 @@ export class HomeComponent implements OnInit, DoCheck {
     this.match = this.matches[0];
   }
 
-  getMatches(): void {
+  getMatches(match_id?): void {
     this.scheduleService.getNextMatch()
       .subscribe(matches => {
         this.matches = matches;
         this.matches.sort((a, b) => (a.start_at > b.start_at) ? 1 : -1);
-        this.match = matches[0];
+        if (match_id) {
+          matches.forEach(element => {
+            if (element.id === match_id) {
+              this.match = element;
+              return;
+            }
+          });
+        } else this.match = matches[0];
       });
   }
 
