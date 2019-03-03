@@ -35,7 +35,7 @@ export class NextMatchComponent {
       match_id: match.id,
       user_id: this.auth.currentUser.sub,
       scorePrediction: [this.firstTeamValue.nativeElement.value, this.secondTeamValue.nativeElement.value],
-      tournament_team_id: [match.firstTeam.firstTeamId, match.secondTeam.secondTeamId],
+      tournament_team_id: [match.firstTeam.id, match.secondTeam.id],
       winners: null
     };
 

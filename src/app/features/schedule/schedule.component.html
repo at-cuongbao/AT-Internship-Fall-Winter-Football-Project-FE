@@ -44,6 +44,11 @@
             <img *ngIf="_match.firstTeam" [src]="_match.firstTeam.logo" alt="" class="logo-size">
             <p class="code-team">{{ _match.firstTeam?.code }}</p>
           </div>
+          <div class="prediction-middle" *ngIf="_match?.prediction?.is_predicted">
+            <input type="text" #firstTeamValue name="firstTeamScore" ngModel value="{{ _match?.prediction?.firstTeam_score_prediction }}" class="prediction" min="0" required>
+            <div class="cross"><p>-</p></div>
+            <input type="text" #secondTeamValue name="secondTeamScore" ngModel value="{{ _match?.secondTeam?.secondTeam_score_prediction }}" class="prediction" min="0" required>
+          </div>
           <div class="prediction-middle" *ngIf="!_match?.prediction?.is_predicted || auth.currentUser.admin">
             <input type="number" #firstTeamValue name="firstTeamScore" ngModel value="{{ _match.firstTeam?.score }}" class="prediction" min="0" required>
             <span *ngIf="_match.firstTeam?.winner">*</span>
@@ -63,8 +68,13 @@
             <img *ngIf="_match.secondTeam" [src]="_match.secondTeam.logo" alt="" class="logo-size">
             <p class="code-team">{{ _match.secondTeam?.code }}</p>
           </div>
-          <button class="btn-prediction" [class.display-none]="_match?.prediction?.is_predicted && !auth.currentUser.admin"
-            [disabled]="!firstTeamValue?.nativeElement?.value || !secondTeamValue?.nativeElement?.value">Submit</button>
+          <button class="btn-prediction" 
+            [class.display-none]="_match?.prediction?.is_predicted && !auth.currentUser.admin"
+            [disabled]="
+              !firstTeamValue?.nativeElement?.value || 
+              !secondTeamValue?.nativeElement?.value ||
+            "
+          >Submit</button>
         </div>
       </div>
     </form>

@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, Renderer } from '@angular/core';
 import { ScheduleService } from 'src/app/shared/services/schedule.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
-import { ActivatedRoute, ParamMap, Router, NavigationStart } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router, NavigationStart, NavigationEnd } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { END_POINT } from 'src/app/shared/services/api-registry';
 import { ApiService } from 'src/app/shared/services/api.service';
@@ -24,7 +24,7 @@ export class ScheduleComponent implements OnInit {
   @ViewChild("rightWinner", { read: ElementRef }) rightWinner: ElementRef;
   imageSource = '../../../assets/images/tr.png';
   imgDefault = '../../../assets/images/default-image.png';
-  flag = true;
+  flag = false;
 
   constructor(
     private scheduleService: ScheduleService,
@@ -35,7 +35,7 @@ export class ScheduleComponent implements OnInit {
     private renderer: Renderer
   ) { 
     router.events.forEach((event) => {
-      if (event instanceof NavigationStart) {
+      if (event instanceof NavigationEnd) {
         this.getSchedule();
       }
     });
@@ -46,7 +46,7 @@ export class ScheduleComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.init();
+    this.init();
     this.getSchedule();
   }
 
@@ -57,13 +57,13 @@ export class ScheduleComponent implements OnInit {
         tables.push(
           {
             firstTeam: {
-              firstTeamId: null,
+              id: null,
               code: null,
               logo: this.imgDefault,
               score: null
             },
             secondTeam: {
-              secondTeamId: null,
+              id: null,
               code: null,
               logo: this.imgDefault,
               score: null
@@ -141,6 +141,7 @@ export class ScheduleComponent implements OnInit {
       winners: null
     };
     
+    
     let url = [END_POINT.prediction + '/new'];
     if (this.auth.currentUser.admin) {
       url = [END_POINT.matches + '/update'];
@@ -149,20 +150,26 @@ export class ScheduleComponent implements OnInit {
         this.rightWinner ? this.rightWinner.nativeElement.value : '',
         this.leftWinner ? this.leftWinner.nativeElement.value : ''
       ];
+      console.log(data.winners);
     }
-    this.apiService.post(url, data).subscribe(code => {
-      if (code === 200) {
-        this.closeModal();
-        this.getSchedule();
-      } else {
-        alert("Time out to predict !");
-      }
-    });
+    // this.apiService.post(url, data).subscribe(code => {
+    //   if (code === 200) {
+    //     this.closeModal();
+    //     this.getSchedule();
+    //   } else {
+    //     alert("Time out to predict !");
+    //   }
+    // });
   };
 
   openModal(match) {
-    this.renderer.setElementAttribute(this.firstTeamValue.nativeElement, "value", match.firstTeam ? match.firstTeam.score : null);
-    this.renderer.setElementAttribute(this.secondTeamValue.nativeElement, "value", match.secondTeam ? match.secondTeam.score : null);
+    if (this.auth.currentUser && this.auth.currentUser.admin) {
+      this.renderer.setElementAttribute(this.firstTeamValue.nativeElement, "value", match.firstTeam ? match.firstTeam.score : null);
+      this.renderer.setElementAttribute(this.secondTeamValue.nativeElement, "value", match.secondTeam ? match.secondTeam.score : null);
+    } else {
+      this.renderer.setElementAttribute(this.firstTeamValue.nativeElement, "value", match.prediction ? match.prediction.firstTeam_score_prediction : null);
+      this.renderer.setElementAttribute(this.secondTeamValue.nativeElement, "value", match.prediction ? match.prediction.secondTeam_score_prediction : null);      
+    }
     
     if (!this.auth.isLoggedIn()) {
       return this.router.navigate(['/login'], { queryParams: {

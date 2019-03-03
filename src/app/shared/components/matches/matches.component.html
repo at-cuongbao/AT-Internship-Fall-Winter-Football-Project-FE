@@ -15,7 +15,7 @@
         </span>
       </p>
       <p class="match-team-logo w10 border-left">
-        <a routerLink="/team-detail/{{ match?.firstTeam.firstTeamId }}">
+        <a routerLink="/team-detail/{{ match?.firstTeam.id }}">
           <img [src]="match?.firstTeam.logo" class="img-size" alt="logo team1">
         </a>
       </p>
@@ -34,21 +34,24 @@
         {{ match?.secondTeam.code | slice:0:6 | questionMask }}
       </p>
       <p class="match-team-logo w10">
-        <a routerLink="/team-detail/{{ match?.secondTeam.secondTeamId }}">
+        <a routerLink="/team-detail/{{ match?.secondTeam.id }}">
           <img [src]="match?.secondTeam.logo" class="img-size" alt="logo team2">
         </a>
       </p>
       <p class="match-view w25" *ngIf="!auth.currentUser?.admin">
         <button [class.disabled]="flag || match?.prediction?.isAllow || !match.firstTeam.code" *ngIf="!match.firstTeam.score" 
           class="match-view-link txt-bold" (click)="open(match)" [disabled]="flag || !match.firstTeam.code || match?.prediction?.isAllow">
-          {{ match?.prediction?.is_predicted ? 'View Prediction' : 'Predict' }}
+          <ng-container *ngIf="!auth.isLoggedIn()">Predict</ng-container>
+          <ng-container *ngIf="auth.isLoggedIn()">
+            {{ match?.prediction?.is_predicted ? 'View Prediction' : 'Predict' }}
+          </ng-container>
         </button>
         <a *ngIf="match.firstTeam.score" class="match-view-link txt-bold">
           View
         </a>
       </p>
       <p class="match-view w25" *ngIf="auth.isLoggedIn() && auth.currentUser.admin">
-        <button class="match-view-link txt-bold" (click)="open(match)" [disabled]="flag">
+        <button class="match-view-link txt-bold" (click)="open(match)" [disabled]="!flag && !match.firstTeam.code">
           Edit
         </button>
       </p>
