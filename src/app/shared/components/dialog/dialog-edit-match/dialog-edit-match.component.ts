@@ -49,7 +49,6 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
       this.isWinner = false;
     }
     if (this.match.round !== 1) {
-      this.disableRadio_btn = false;
       if (this.firstTeamScore_ngModel === this.secondTeamScore_ngModel) {
         this.disableRadio_btn = false;
       }

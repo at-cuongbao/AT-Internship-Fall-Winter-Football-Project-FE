@@ -59,6 +59,7 @@ export class TournamentDetailComponent implements OnInit {
         this.bracketView.push({
           label: key,
           position: i,
+          logo: team && team.logo ? team.logo : '',
           code: team && team.code ? team.code : '?',
           score: team && team.score ? team.score : '?'
         });

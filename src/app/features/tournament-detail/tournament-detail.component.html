@@ -29,8 +29,8 @@
           </div>
           <div class="match-result" *ngFor='let team of bracketView'>
             <div class="{{ team.label + team.position}} team-name">
-              <img src="../../../assets/images/logo-img.png" alt="team logo">
-              <span class="code">{{ team.code | slice:0:4 }}</span>
+              <img src="{{ team.logo }}" alt="team logo">
+              <span class="code">{{ team.code | slice:0:3 }}</span>
               <span class="score">{{ team.score }}</span>
             </div>
           </div>

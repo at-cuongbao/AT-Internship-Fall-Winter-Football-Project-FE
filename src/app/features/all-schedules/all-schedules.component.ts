@@ -32,7 +32,7 @@ export class AllSchedulesComponent implements OnInit {
           return { group: key, data: group_to_values[key] };
         });
 
-        this.schedules = groups;
+        this.schedules = groups.sort((a, b) => a.group > b.group ? 1 : -1);
       })
   }
 
