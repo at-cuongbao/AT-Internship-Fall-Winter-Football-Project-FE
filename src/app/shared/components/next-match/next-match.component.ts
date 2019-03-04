@@ -13,6 +13,7 @@ export class NextMatchComponent {
   @Input("match") match: any;
   matchData = [];
 
+
   constructor(
     private auth: AuthService,
     private router: Router

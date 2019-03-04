@@ -33,6 +33,7 @@ export class TeamDetailComponent implements OnInit {
         if (data != 404) {
           this.team = data
         }
-      });
+      }
+      );
   }
 }

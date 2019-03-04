@@ -19,14 +19,16 @@ export class TournamentDetailComponent implements OnInit {
   tournamentName: string;
   _src = "../../../assets/images/tr.png";
   bracketView = [];
+  teams = [];
+  id = '';
+  tournaments = [];
 
   constructor(
     private matchService: MatchService,
     private route: ActivatedRoute,
     private apiService: ApiService,
   ) { }
-  teams = [];
-  id = '';
+
   ngOnInit() {
     this.getMatches();
     this.id = this.route.snapshot.params.id;
@@ -37,6 +39,13 @@ export class TournamentDetailComponent implements OnInit {
           return (a.groupName > b.groupName) ? 1 : -1;
         })
         this.teams = value;
+      }
+    );
+
+    let urls = [END_POINT.tournaments + '/' + this.id];
+    this.apiService.get(urls).subscribe(
+      value => {
+        this.tournaments = value;
       }
     );
   }
@@ -66,5 +75,4 @@ export class TournamentDetailComponent implements OnInit {
         this.generateMatches([]);
       });
   }
-  
 }

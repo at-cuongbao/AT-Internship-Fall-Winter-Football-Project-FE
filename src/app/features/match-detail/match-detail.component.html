@@ -1,13 +1,13 @@
 <div class="match-detail">
   <div class="match-name">
-    <p>Laliga</p>
+    <p>{{tournament.tournament_team_id?.tournament_id.name}}</p>
   </div>
   <div class="match-content container">
     <div class="article-match clearfix">
       <p>{{ match.firstTeam?.code }} - {{ match.secondTeam?.code }}: Choking "gunfight", peaking glory</p>
     </div>
     <div class="heading-match">
-      <p class="match-day">{{ match.start_at | date:'MMMM, dd | h:mm a' }}</p>
+      <p class="match-day">{{ match.start_at }}</p>
       <p class="match-summary"><b>Vivamus hendrerit, tortor sed luctus maximus, nunc urna hendrerit nibh, sit amet efficitur libero lorem quis mauris. Nunc a pulvinar lectus. Pellentesque aliquam justo ut rhoncus lobortis. In sed venenatis massa. Sed sodales faucibus odio, eget tempus nibh accumsan ut. Fusce tincidunt semper finibus. Nullam consequat non leo interdum pulvinar.</b></p>
     </div>
     <div class="latest-middle clearfix">
