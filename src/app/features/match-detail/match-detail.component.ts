@@ -10,7 +10,7 @@ import { END_POINT } from 'src/app/shared/services/api-registry';
 })
 export class MatchDetailComponent implements OnInit {
   match = {
-    start_at: '?',
+    start_at: null,
     firstTeam: {
       code: '?',
       logo: '../../../assets/images/logo-img.png',

@@ -17,7 +17,6 @@ import { BracketComponent } from './features/bracket/bracket.component';
 import { FeaturesComponent } from './features/features.component';
 import { TournamentRegistrationComponent } from './features/tournament-registration/tournament-registration.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { PredictionComponent } from './features/prediction/prediction.component';
 import { SliderComponent } from './shared/components/slider/slider.component';
 import { RegisterComponent } from './features/register/register.component';
 import { ScheduleComponent } from './features/schedule/schedule.component';
@@ -34,6 +33,7 @@ import { TournamentDetailComponent } from './features/tournament-detail/tourname
 import { MatchDetailComponent } from './features/match-detail/match-detail.component';
 import { TeamDetailComponent } from './features/team-detail/team-detail.component';
 import { AllSchedulesComponent } from './features/all-schedules/all-schedules.component';
+import { DialogEditMatchComponent } from './shared/components/dialog/dialog-edit-match/dialog-edit-match.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -52,7 +52,6 @@ export function tokenGetter() {
     ScheduleComponent,
     SliderComponent,
     RegisterComponent,
-    PredictionComponent, 
     PageNotFoundComponent, 
     QuestionMaskPipe, 
     DateDefaultPipe, 
@@ -68,7 +67,8 @@ export function tokenGetter() {
     NextMatchComponent,
     MatchDetailComponent,
     TeamDetailComponent,
-    AllSchedulesComponent
+    AllSchedulesComponent,
+    DialogEditMatchComponent
   ],
   imports: [
     BrowserModule,

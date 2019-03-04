@@ -19,7 +19,7 @@
   <app-sidebar></app-sidebar>
 </div>
 
-<div #modal class="prediction-page modal txt-bold">
+<!-- <div #modal class="prediction-page modal txt-bold">
   <div class="modal-content">
     <span (click)="closeModal()" class="close txt-bold">&times;</span>
     <form class="prediction-form" #elmForm="ngForm" (ngSubmit)="submit(elmForm, _match)">
@@ -79,4 +79,5 @@
       </div>
     </form>
   </div>
-</div>
+</div> -->
+<app-dialog-edit-match *ngIf="matchData.length" [matchData]="matchData" (onSubmit)="onSubmit($event)"></app-dialog-edit-match>
