@@ -12,10 +12,10 @@ import { PageNotFoundComponent } from '../app/shared/components/page-not-found/p
 import { TournamentListComponent } from 'src/app/features/tournament-list/tournament-list.component';
 import { AuthGuardService } from 'src/app/shared/services/auth-guard.service';
 import { AdminAuthGuardService } from 'src/app/shared/services/admin-auth-guard.service';
-import { AuthService } from 'src/app/shared/services/auth.service';
 import { TournamentDetailComponent } from './features/tournament-detail/tournament-detail.component';
 import { MatchDetailComponent } from './features/match-detail/match-detail.component';
 import { TeamDetailComponent } from './features/team-detail/team-detail.component';
+import { AllSchedulesComponent } from './features/all-schedules/all-schedules.component';
 
 const routes: Routes = [
   {
@@ -52,6 +52,10 @@ const routes: Routes = [
         path: 'bracket/:id',
         component: BracketComponent
       },
+      {
+        path: 'all-schedules',
+        component: AllSchedulesComponent
+      }
     ]
   },
   {

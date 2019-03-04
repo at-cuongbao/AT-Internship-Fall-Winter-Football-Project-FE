@@ -129,7 +129,6 @@ export class ScheduleComponent implements OnInit {
           matches: finals
         });
       })
-
   }
 
   submit(f: NgForm, match) {
@@ -150,16 +149,15 @@ export class ScheduleComponent implements OnInit {
         this.rightWinner ? this.rightWinner.nativeElement.value : '',
         this.leftWinner ? this.leftWinner.nativeElement.value : ''
       ];
-      console.log(data.winners);
     }
-    // this.apiService.post(url, data).subscribe(code => {
-    //   if (code === 200) {
-    //     this.closeModal();
-    //     this.getSchedule();
-    //   } else {
-    //     alert("Time out to predict !");
-    //   }
-    // });
+    this.apiService.post(url, data).subscribe(code => {
+      if (code === 200) {
+        this.closeModal();
+        this.getSchedule();
+      } else {
+        alert("Time out to predict !");
+      }
+    });
   };
 
   openModal(match) {

@@ -33,6 +33,7 @@ import { NextMatchComponent } from './shared/components/next-match/next-match.co
 import { TournamentDetailComponent } from './features/tournament-detail/tournament-detail.component';
 import { MatchDetailComponent } from './features/match-detail/match-detail.component';
 import { TeamDetailComponent } from './features/team-detail/team-detail.component';
+import { AllSchedulesComponent } from './features/all-schedules/all-schedules.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -66,7 +67,8 @@ export function tokenGetter() {
     MatchesComponent,
     NextMatchComponent,
     MatchDetailComponent,
-    TeamDetailComponent
+    TeamDetailComponent,
+    AllSchedulesComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,295 @@
+.all-schedule-block {
+  width: 100%;
+  float: right;
+  .group-block-schedules {
+    margin: 0 0 40px;
+    .group-title-date {
+      padding-left: 24%;
+      font-size: 180%;
+      background: $color-blue;
+      height: 50px;
+      line-height: 50px;
+    }
+    .final-title {
+      text-transform: uppercase;
+      color: $color-black;
+      @extend %txt-bold;
+    }
+    .schedule {
+      padding: 0;
+    }
+  }
+}
+
+.match {
+  width: 100%;
+  background: $color-light-black;
+  color: $color-white;
+  text-align: center;
+  border-bottom: 1px solid $color-grey;
+  &:hover {
+    background: $color-grey;
+    cursor: pointer;
+  }
+  > * {
+    text-align: center;
+    padding: 4px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .img-size {
+    vertical-align: middle;
+    width: 40px;
+    height: 40px;
+  }
+  &-date {
+    .short-date {
+      display: none;
+    }
+  }
+  &-score {
+    color: $color-blue;
+  }
+  &-view {
+    &-link {
+      line-height: 30px;
+      color: $color-white;
+      width: 100%;
+      background-color: $color-black;
+      display: block;
+      font-size: 12px;
+      transition: 400ms all;
+      -webkit-transition: 400ms all;
+      text-transform: uppercase;
+      border: 1px solid $color-blue;
+      &:hover {
+        background: $color-blue;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .match {
+    & &-date {
+      width: 23%;
+      span {
+        display: none;
+      }
+      .short-date {
+        display: inline;
+      }
+    }
+    & &-score {
+      width: 14%;
+    }
+    & &-view {
+      width: 23%;
+    }
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .match {
+    padding: 0 2px;
+    p {
+      padding: 4px 0;
+    }
+    & &-team-logo {
+      width: 17%;
+    }
+    & &-team-code {
+      display: none;
+    }
+    & &-score {
+      width: 16%;
+    }
+    & &-date {
+      width: 25%;
+    }
+    & &-view {
+      width: 25%;
+    }
+  }
+}
+
+
+/* The Modal (background) */
+.modal {
+  display: none;
+  position: fixed;
+  animation: 400s all;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Modal Content/Box */
+  .modal-content {
+    padding: 16px 126px 0;
+    background-color: $color-white;
+    border-radius: 8px;
+    margin: 7% auto;
+    border: 1px solid $color-light-grey;
+    width: 60%;
+    .image-wrapper {
+      label {
+        transform: translateY(-150%);
+        margin-right: 10px;
+      }
+    }
+    .close {
+      position: absolute;
+      top: 93px;
+      right: 280px;
+      color: $color-light-grey;
+      font-size: 34px;
+      &:hover,
+      &:focus {
+        color: $color-black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    }
+  }
+}
+.prediction-page {
+  & .modal-content {
+    padding: 0;
+  }
+  .prediction-heading {
+    padding: 10px 0 32px 0;
+    font-size: 32px;
+    text-align: center;
+  }
+  .score-avatar {
+    border-radius: 0 0 8px 8px;
+    background-color: $color-blue;
+    background-size: 100% 100%;
+    background-color: $color-blue;
+    border-radius: 0 0 8px 8px;
+    color: $color-white;
+    height: 230px;
+    padding-bottom: 10px;
+    width: 100%;
+    .info-match {
+      font-size: 16px;
+      text-transform: uppercase;
+      font-weight: 600;
+      padding-top: 8px;
+      .info-match-time {
+        font-size: 14px;
+        font-weight: 400;
+      }
+    }
+    .score-prediction {
+      display: inline-block;
+      position: relative;
+      width: 100%;
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+      }
+      .prediction-middle {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, 0);
+        .prediction {
+          border: none;
+          border-bottom: 2px solid $color-bold-blue;
+          height: 50px;
+          width: 50px;
+          margin: 30px;
+          text-align: center;
+          font-size: 18px;
+          transition: opacity .4s cubic-bezier(.25,.8,.25,1);
+          @extend %txt-bold;
+          padding-left: 0px !important; 
+        }
+        .cross {
+          position: relative;
+          font-size: 60px;
+          @extend %txt-bold;
+          p {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+        }
+        .winner1 {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+        }
+        .winner2 {
+          position: absolute;
+          bottom: 0;
+          right: 0;
+        }
+      }
+      .name-team-1 {
+        position: absolute;
+        left: 12% !important;
+      }
+      .name-team-2 {
+        position: absolute;
+        right: 12% !important;
+      }
+      .name-team-1 .logo-size,.name-team-2 .logo-size {
+        height: 100px;
+        width: 100px;
+      }
+      .code-team {
+        padding-top: 8px;
+        text-align: center;
+        font-size: 18px;
+      }
+      .btn-prediction {
+        line-height: 30px;
+        font-family: inherit;
+        color: $color-white;
+        background: $color-light-black;
+        outline: none;
+        border: 0;
+        padding: 4px 24px;
+        font-size: 16px;
+        @extend %txt-bold;
+        border-radius: 8px;
+        position: absolute;
+        top: 100px;
+        left: 50%;
+        margin-top: 28px;
+        transform: translateX(-50%);
+      }
+    }
+  }
+}
+@media screen and (max-width: 1023px) {
+  .prediction-page {
+    .score-avatar {
+      .score-prediction {
+        .name-team-1 {
+          left: 3% !important;
+        }
+        .name-team-2 {
+          right: 3% !important;
+        }
+        .code-team {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 864px) {
+  .all-schedule-block {
+    .group-block-schedules {
+      .group-title-date {
+        font-size: 150%;
+      }
+    }
+  }
+}
