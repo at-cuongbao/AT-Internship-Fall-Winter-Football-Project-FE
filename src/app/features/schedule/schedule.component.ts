@@ -69,6 +69,7 @@ export class ScheduleComponent implements OnInit {
     });
     this.scheduleService.get(id)
       .subscribe(schedules => {
+        console.log(schedules);
         this.schedules = [];
         let quarters = [];
         let semis = [];
@@ -88,10 +89,10 @@ export class ScheduleComponent implements OnInit {
         });
 
         schedules.map(match => {
-          if (!match.group) {
-            if (match.round > 1 && match.round < 3) {
+          if (match.round !== 1) {
+            if (match.round < 3) {
               quarters.push(match);
-            } else if (match.round > 3 && match.round < 4) {
+            } else if (match.round < 4) {
               semis.push(match);
             } else {
               finals.push(match);
