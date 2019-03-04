@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, Renderer } from '@angular/core';
 import { ScheduleService } from 'src/app/shared/services/schedule.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
-import { ActivatedRoute, ParamMap, Router, NavigationEnd } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router, NavigationStart } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { END_POINT } from 'src/app/shared/services/api-registry';
 import { ApiService } from 'src/app/shared/services/api.service';
@@ -33,8 +33,8 @@ export class ScheduleComponent implements OnInit {
     private renderer: Renderer
   ) { 
     router.events.forEach((event) => {
-      if (event instanceof NavigationEnd) {
-        this.getSchedule();
+      if (event instanceof NavigationStart) {
+        // this.getSchedule();
       }
     });
   }
@@ -92,7 +92,7 @@ export class ScheduleComponent implements OnInit {
         GROUPS.map(group => {
           let tables = [];
           schedules.map(match => {
-            if (match.group === group && match.round == 1) {
+            if (match.group === group && match.round === 1) {
               tables.push(match);
             }
           });
@@ -103,10 +103,10 @@ export class ScheduleComponent implements OnInit {
         });
 
         schedules.map(match => {
-          if (!match.group) {
-            if (match.round > 1 && match.round < 3) {
+          if (match.round !== 1) {
+            if (match.round < 3) {
               quarters.push(match);
-            } else if (match.round > 3 && match.round < 4) {
+            } else if (match.round < 4) {
               semis.push(match);
             } else {
               finals.push(match);
@@ -124,6 +124,7 @@ export class ScheduleComponent implements OnInit {
           groupName: 'Final and third',
           matches: finals
         });
+        console.log(quarters);
       })
   }
 
@@ -132,14 +133,17 @@ export class ScheduleComponent implements OnInit {
       match_id: match.id,
       user_id: this.auth.currentUser.sub,
       scorePrediction: [f.value.firstTeamPrediction, f.value.secondTeamPrediction],
-      tournament_team_id: [match.firstTeam.firstTeamId, match.secondTeam.secondTeamId]
+      tournament_team_id: [match.firstTeam.firstTeamId, match.secondTeam.secondTeamId],
+      winners: null
     };
     
     let url = [END_POINT.prediction + '/new'];
     if (this.auth.currentUser.admin) {
       url = [END_POINT.matches + '/update'];
       data.scorePrediction = [f.value.firstTeamScore, f.value.secondTeamScore];
-      // data.winners = [this.rightWinner.nativeElement.value, this.leftWinner.nativeElement.value];
+      data.winners = [
+        this.rightWinner ? this.rightWinner.nativeElement.value : '',
+        this.leftWinner ? this.leftWinner.nativeElement.value : ''];
     }
     this.apiService.post(url, data).subscribe(code => {
       if (code === 200) {

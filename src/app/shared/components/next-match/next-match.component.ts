@@ -19,12 +19,14 @@ export class NextMatchComponent {
   @ViewChild("elmForm", { read: ElementRef }) elmForm: ElementRef
   flag = true;
 
+
   constructor(
     private auth: AuthService,
     private router: Router,
     private renderer: Renderer,
     private apiService: ApiService
-  ) { }
+  ) {
+   }
 
   submit(f: NgForm, match) {
     const data = {
@@ -33,6 +35,7 @@ export class NextMatchComponent {
       scorePrediction: [f.value.firstTeamPrediction, f.value.secondTeamPrediction],
       tournament_team_id: [match.firstTeam.firstTeamId, match.secondTeam.secondTeamId]
     };
+    console.log(this.match);
 
     let url = [END_POINT.prediction + '/new'];
     if (this.auth.currentUser.admin) {

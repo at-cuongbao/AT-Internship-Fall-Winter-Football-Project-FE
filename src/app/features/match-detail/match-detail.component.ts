@@ -10,7 +10,7 @@ import { END_POINT } from 'src/app/shared/services/api-registry';
 })
 export class MatchDetailComponent implements OnInit {
 id = '';
-tournaments = [];
+tournament = '';
 
   match = {
     start_at: '?',
@@ -39,8 +39,9 @@ tournaments = [];
     this.api.get([END_POINT.matches + '/' + id])
       .subscribe(data => {
         if (data != 404) {
+          this.tournament = data[0]
           this.match = {
-            start_at: data[0].match_id.start_at,
+            start_at: new Date(data[0].match_id.start_at).toLocaleString(),
             firstTeam: {
               code: data[0].tournament_team_id.team_id.code,
               logo: data[0].tournament_team_id.team_id.logo,
@@ -55,12 +56,5 @@ tournaments = [];
         }
       });
 
-      let urls = [END_POINT.tournaments + '/' + this.id];
-      this.api.get(urls).subscribe(
-        value => {
-          this.tournaments = value;
-          console.log(this.tournaments);
-        }
-      );
   }
 }

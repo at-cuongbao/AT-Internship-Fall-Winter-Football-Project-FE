@@ -28,6 +28,7 @@ export class TournamentDetailComponent implements OnInit {
   teams = [];
   id = '';
   tournaments = [];
+
   ngOnInit() {
     this.getMatches();
     this.id = this.route.snapshot.params.id;
@@ -40,6 +41,8 @@ export class TournamentDetailComponent implements OnInit {
         this.teams = value;
       }
     );
+    
+    
 
     let urls = [END_POINT.tournaments + '/' + this.id];
     this.apiService.get(urls).subscribe(
