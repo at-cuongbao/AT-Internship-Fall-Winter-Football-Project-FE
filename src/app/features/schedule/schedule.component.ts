@@ -40,13 +40,13 @@ export class ScheduleComponent implements OnInit {
         tables.push(
           {
             firstTeam: {
-              id: null,
+              firstTeamId: null,
               code: null,
               logo: this.imgDefault,
               score: null
             },
             secondTeam: {
-              id: null,
+              firstTeamId: null,
               code: null,
               logo: this.imgDefault,
               score: null

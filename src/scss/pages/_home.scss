@@ -49,7 +49,7 @@
   padding: 64px 0;
   .home-next-match {
     background-color: $color-white;
-    height: 412px;
+    min-height: 343px;
   }
   .home-schedule {
     .match {

@@ -6,12 +6,12 @@
     <div class="match-location middle">
       <img src="../../../../assets/images/location-icon.png" alt="location-icon">
       <span>
-        {{ match?.location || 'Việt Nam' }}
+        {{ match?.tournamentName }}
       </span>
     </div>
     <div class="match-team">
       <p class="match-team-logo w20">
-        <a routerLink="/team-detail/{{ match?.firstTeam.id }}">
+        <a routerLink="/team-detail/{{ match?.firstTeam.firstTeamId }}">
           <img [src]="match?.firstTeam?.logo" class="img-size" alt="logo team1">
         </a>
       </p>
@@ -30,7 +30,7 @@
         {{ match?.secondTeam?.code | slice:0:4 | questionMask }}
       </p>
       <p class="match-team-logo w20">
-        <a routerLink="/team-detail/{{ match?.secondTeam.id }}">
+        <a routerLink="/team-detail/{{ match?.secondTeam.secondTeamId }}">
           <img [src]="match?.secondTeam?.logo" class="img-size" alt="logo team2">
         </a>
       </p>

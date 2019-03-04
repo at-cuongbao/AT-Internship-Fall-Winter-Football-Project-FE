@@ -17,7 +17,6 @@ export class HomeComponent implements OnInit, DoCheck {
   ) { }
 
   ngOnInit() {
-    this.init();
     this.getMatches();
   }
 
@@ -26,30 +25,6 @@ export class HomeComponent implements OnInit, DoCheck {
     let home_schedule = this.elem.nativeElement.querySelectorAll('.home-schedule');
     if (home_next_match[0])
     home_next_match[0].style.height = home_schedule[0].offsetHeight + 'px';
-  }
-
-  init() {
-    this.matches = [];
-    for (let i = 0; i < 7; i++) {
-      this.matches.push(
-        {
-          start_at: '02/02/2020',
-          firstTeam: {
-            firstTeamId: null,
-            code: null,
-            logo: this.imgDefault,
-            score: null
-          },
-          secondTeam: {
-            secondTeamId: null,
-            code: null,
-            logo: this.imgDefault,
-            score: null
-          },
-        }
-      );
-    }
-    this.match = this.matches[0];
   }
 
   getMatches(match_id?): void {
