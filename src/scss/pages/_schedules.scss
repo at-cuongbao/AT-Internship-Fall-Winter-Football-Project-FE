@@ -117,6 +117,7 @@
         }
         .cross {
           position: relative;
+          top: 10px;
           font-size: 60px;
           @extend %txt-bold;
           p {

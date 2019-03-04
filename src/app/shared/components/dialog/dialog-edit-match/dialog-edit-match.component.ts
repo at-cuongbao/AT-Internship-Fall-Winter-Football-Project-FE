@@ -20,8 +20,8 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
   firstTeamScore_ngModel;
   secondTeamScore_ngModel;
   match: any;
-  data: any;
   isWinner = true;
+  disableRadio_btn = true;
   imageWinner = '../../../assets/images/prize.png';
 
   constructor(
@@ -47,6 +47,12 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
     this.renderer.setElementAttribute(this.modal.nativeElement, "style", "display: block");
     if (this.match.secondTeam.winners || (this.match.firstTeam.score < this.match.secondTeam.score)) {
       this.isWinner = false;
+    }
+    if (this.match.round !== 1) {
+      this.disableRadio_btn = false;
+      if (this.firstTeamScore_ngModel === this.secondTeamScore_ngModel) {
+        this.disableRadio_btn = false;
+      }
     }
   }
 
@@ -83,10 +89,15 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
   }
 
   checkWinner() {
-    if (this.firstTeamScore_ngModel < this.secondTeamScore_ngModel) {
-      this.isWinner = false;
-    } else {
-      this.isWinner = true;
+    this.disableRadio_btn = true;
+    if (this.match.round !== 1) {
+      if (this.firstTeamScore_ngModel < this.secondTeamScore_ngModel) {
+        this.isWinner = false;
+      } else if (this.firstTeamScore_ngModel === this.secondTeamScore_ngModel) {
+        this.disableRadio_btn = false;
+      } else {
+        this.isWinner = true;
+      }
     }
   }
 }

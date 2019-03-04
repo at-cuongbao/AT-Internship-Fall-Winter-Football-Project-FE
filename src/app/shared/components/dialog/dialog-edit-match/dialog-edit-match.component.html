@@ -32,22 +32,22 @@
           </div>
           <!-- Edit for admin -->
           <div class="prediction-middle" *ngIf="auth.currentUser?.admin">
-            <img *ngIf="isWinner" [src]="imageWinner" alt="star icon">
+            <img *ngIf="!disableRadio_btn && isWinner" [src]="imageWinner" alt="star icon">
             <input [(ngModel)]="firstTeamScore_ngModel" type="number" name="firstTeamScoreValue" class="prediction"
-              min="0" (change)="checkWinner()" required>
+              min="0" (ngModelChange)="checkWinner()" required>
             <div class="cross">-</div>
             <input [(ngModel)]="secondTeamScore_ngModel" type="number" name="secondTeamScoreValue" class="prediction"
-              min="0" (change)="checkWinner()" required>
-            <img *ngIf="!isWinner" class="imgWinner2" [src]="imageWinner" alt="star icon">
+              min="0" (ngModelChange)="checkWinner()" required>
+            <img *ngIf="!disableRadio_btn && !isWinner" class="imgWinner2" [src]="imageWinner" alt="star icon">
             <!-- Choose winner -->
             <ng-container
-              *ngIf="firstTeamScore_ngModel === firstTeamScore_ngModel">
+              *ngIf="!disableRadio_btn">
               <div class="winner1">
-                Winner: <input #leftWinner type="radio" name="checkWinner" [value]="true" [(ngModel)]="isWinner"
+                Winner: <input type="radio" name="checkWinner" [value]="true" [(ngModel)]="isWinner"
                   (change)="changeFlag(true)">
               </div>
               <div class="winner2">
-                Winner: <input #rightWinner type="radio" name="checkWinner" [value]="false" [(ngModel)]="isWinner"
+                Winner: <input type="radio" name="checkWinner" [value]="false" [(ngModel)]="isWinner"
                   (change)="changeFlag(false)">
               </div>
             </ng-container>

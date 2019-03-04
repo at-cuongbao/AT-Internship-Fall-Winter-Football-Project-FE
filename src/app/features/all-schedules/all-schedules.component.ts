@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { END_POINT } from 'src/app/shared/services/api-registry';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-all-schedules',
@@ -12,7 +13,7 @@ export class AllSchedulesComponent implements OnInit {
   schedules = [];
   pageActual = 1;
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private router: Router) { }
 
   ngOnInit() {
     this.getSchedule();
@@ -23,16 +24,19 @@ export class AllSchedulesComponent implements OnInit {
       .subscribe(returnedSchedules => {
         let group_to_values = returnedSchedules.reduce(function (obj, item) {
           obj[item.start_at] = obj[item.start_at] || [];
-          obj[item.start_at].push({ firstTeam: item.firstTeam, secondTeam: item.secondTeam });
+          obj[item.start_at].push({ id: item.id, firstTeam: item.firstTeam, secondTeam: item.secondTeam });
           return obj;
         }, {});
-        
+
         let groups = Object.keys(group_to_values).map(function (key) {
-            return {group: key, data: group_to_values[key]};
+          return { group: key, data: group_to_values[key] };
         });
 
         this.schedules = groups;
       })
   }
 
+  openMatchDetail(match: any) {
+    this.router.navigate([END_POINT.match_detail + '/' + match.id]);
+  }
 }

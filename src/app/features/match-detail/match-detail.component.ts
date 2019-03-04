@@ -38,7 +38,7 @@ export class MatchDetailComponent implements OnInit {
     this.api.get([END_POINT.matches + '/' + id])
       .subscribe(data => {
         if (data != 404) {
-          this.tournament = data[0]
+          this.tournament = data[0];
           this.match = {
             start_at: new Date(data[0].match_id.start_at).toLocaleString(),
             firstTeam: {

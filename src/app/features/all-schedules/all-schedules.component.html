@@ -3,7 +3,7 @@
     <section class="group-block-schedules" *ngFor="let item of schedules">
       <ng-container>
         <div class="schedule">
-          <h4 class="group-title-date">Date: {{item.group}}</h4>
+          <h4 class="group-title-date">Date: {{item.group | date:'MMM, dd | h:mm a'}}</h4>
           <ul class="matches">
             <li class="match" *ngFor="let match of item.data | paginate: { itemsPerPage: 6, currentPage: pageActual }" (click)="openMatchDetail(match)">
               <p class="match-team-logo w10">
@@ -30,7 +30,7 @@
                   <img [src]="match?.secondTeam.logo" class="img-size" alt="logo team2">
                 </a>
               </p>
-              <p class="match-view w25">
+              <p class="match-view match-view-custom w25">
                 <a class="match-view-link txt-bold">
                   View
                 </a>
