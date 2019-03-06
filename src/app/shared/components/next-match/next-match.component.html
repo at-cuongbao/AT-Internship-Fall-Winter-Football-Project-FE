@@ -36,12 +36,9 @@
       </p>
     </div>
     <div>
-      <button *ngIf="auth.currentUser?.admin || !match.firstTeam.score" class="btn btn-predict txt-bold"
+      <button *ngIf="!auth.currentUser?.admin" class="btn btn-predict txt-bold"
         (click)="openModal(match)">
-        <span *ngIf="auth.currentUser?.admin">
-          Edit
-        </span>
-        <span *ngIf="!auth.currentUser?.admin">
+        <span>
           {{ match?.prediction?.is_predicted ? 'Predicted' : 'Predict' }}
         </span>
       </button>

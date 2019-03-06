@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { END_POINT } from 'src/app/shared/services/api-registry';
 import { AuthService } from 'src/app/shared/services/auth.service';
@@ -13,6 +13,8 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class AllSchedulesComponent implements OnInit {
   schedules = [];
   pageActual = 1;
+  matchData = [];
+  isClickTagA = false;
 
   constructor(
     private apiService: ApiService, 
@@ -47,5 +49,22 @@ export class AllSchedulesComponent implements OnInit {
 
   openMatchDetail(match: any) {
     this.router.navigate([END_POINT.match_detail + '/' + match.id]);
+  }
+
+  openModal(match) {
+    if (!this.auth.isLoggedIn()) {
+      return this.router.navigate(['/login'], { queryParams: {
+        returnUrl: this.router.url
+      }})
+    }
+    this.matchData.push(match);
+  }
+
+  onSubmit(match: any) {
+    if (match) {
+      this.spinner.show();
+      this.getSchedule();
+    } 
+    this.matchData = [];
   }
 }

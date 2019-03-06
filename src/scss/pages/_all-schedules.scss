@@ -4,7 +4,6 @@
   .group-block-schedules {
     margin: 0 0 40px;
     .group-title-date {
-      padding-left: 24%;
       font-size: 180%;
       background: $color-blue;
       height: 50px;
@@ -76,8 +75,8 @@
   .match {
     & &-date {
       width: 23%;
-      span {
-        display: none;
+      .tournament-name {
+        display: inline !important;
       }
       .short-date {
         display: inline;
@@ -140,19 +139,6 @@
       label {
         transform: translateY(-150%);
         margin-right: 10px;
-      }
-    }
-    .close {
-      position: absolute;
-      top: 93px;
-      right: 280px;
-      color: $color-light-grey;
-      font-size: 34px;
-      &:hover,
-      &:focus {
-        color: $color-black;
-        text-decoration: none;
-        cursor: pointer;
       }
     }
   }
@@ -291,7 +277,7 @@
   .all-schedule-block {
     .group-block-schedules {
       .group-title-date {
-        font-size: 150%;
+        font-size: 100%;
       }
     }
   }

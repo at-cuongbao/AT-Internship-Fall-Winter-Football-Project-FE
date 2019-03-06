@@ -34,6 +34,7 @@
   background-color: rgba(0, 0, 0, 0.4);
   /* Modal Content/Box */
   .modal-content {
+    position: relative;
     padding: 16px 126px 0;
     background-color: $color-white;
     border-radius: 8px;
@@ -48,8 +49,8 @@
     }
     .close {
       position: absolute;
-      top: 93px;
-      right: 280px;
+      right: 10px;
+      top: 0px;
       color: $color-light-grey;
       font-size: 34px;
       &:hover,
@@ -59,6 +60,9 @@
         cursor: pointer;
       }
     }
+  }
+  .modal-content-important {
+    padding: 16px 48px !important;
   }
 }
 .prediction-page {
@@ -196,5 +200,28 @@
 @media screen and (max-width: 979px) {
   .schedule-block {
     width: 100%;
+  }
+}
+@media screen and (max-width: 860px) {
+  .modal-content {
+    .prediction {
+      margin: 0 !important;
+    }
+    .btn-prediction {
+      margin-top: 0 !important;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .modal-content {
+    .prediction {
+      width: 40px !important;
+      height: 40px !important;
+    }
+    .logo-size {
+      width: 60px !important;
+      height: 60px !important;
+    }
   }
 }

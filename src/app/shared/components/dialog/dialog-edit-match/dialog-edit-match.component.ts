@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 import { END_POINT } from 'src/app/shared/services/api-registry';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import swal from 'sweetalert';
 
 @Component({
   selector: 'app-dialog-edit-match',
@@ -74,9 +75,14 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
     this.apiService.post(url, data).subscribe(code => {
       if (code === 200) {
         this.match = match;
-        this.closeModal(match);
       } else {
-        alert("Time out to predict !");
+        swal({
+          // buttons: false,
+          text: 'Time out to predict !',
+          icon: "error",
+          timer: 2000,
+        });
+        this.closeModal(match);
       }
     });
   };
