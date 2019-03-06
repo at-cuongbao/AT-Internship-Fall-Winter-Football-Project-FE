@@ -20,7 +20,7 @@
         <div class="score-prediction">
           <div class="name-team-1">
             <img *ngIf="match.firstTeam" [src]="match.firstTeam.logo" alt="" class="logo-size">
-            <p class="code-team">{{ match.firstTeam?.code | slice:0:4 }}</p>
+            <p class="code-team">{{ match.firstTeam?.code | slice:0:3 }}</p>
           </div>
           <!-- Predict for user -->
           <div class="prediction-middle" *ngIf="!auth.currentUser?.admin">
@@ -55,9 +55,9 @@
           </div>
           <div class="name-team-2">
             <img *ngIf="match.secondTeam" [src]="match.secondTeam.logo" alt="" class="logo-size">
-            <p class="code-team">{{ match.secondTeam?.code | slice:0:4 }}</p>
+            <p class="code-team">{{ match.secondTeam?.code | slice:0:3 }}</p>
           </div>
-          <button class="btn-prediction" [disabled]="elmForm.invalid">Submit</button>
+          <button class="btn-prediction disabled" [class.disabled]="elmForm.invalid" [disabled]="elmForm.invalid">Submit</button>
         </div>
       </div>
     </form>
