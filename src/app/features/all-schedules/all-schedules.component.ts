@@ -13,7 +13,10 @@ export class AllSchedulesComponent implements OnInit {
   schedules = [];
   pageActual = 1;
 
-  constructor(private apiService: ApiService, private router: Router) { }
+  constructor(
+    private apiService: ApiService, 
+    private router: Router,
+    private auth: AuthService) { }
 
   ngOnInit() {
     this.getSchedule();
@@ -22,9 +25,10 @@ export class AllSchedulesComponent implements OnInit {
   getSchedule(): void {
     this.apiService.get([END_POINT.matches])
       .subscribe(returnedSchedules => {
+        console.log(returnedSchedules);
         let group_to_values = returnedSchedules.reduce(function (obj, item) {
           obj[item.start_at] = obj[item.start_at] || [];
-          obj[item.start_at].push({ id: item.id, firstTeam: item.firstTeam, secondTeam: item.secondTeam });
+          obj[item.start_at].push({ id: item.id, tournamentName: item.tournamentName, firstTeam: item.firstTeam, secondTeam: item.secondTeam });
           return obj;
         }, {});
 
@@ -33,7 +37,9 @@ export class AllSchedulesComponent implements OnInit {
         });
 
         this.schedules = groups.sort((a, b) => a.group > b.group ? 1 : -1);
+        
       })
+    
   }
 
   openMatchDetail(match: any) {
