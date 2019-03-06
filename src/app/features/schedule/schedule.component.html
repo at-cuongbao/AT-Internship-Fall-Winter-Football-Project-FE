@@ -4,14 +4,6 @@
     <section class="group-block" *ngFor="let item of schedules">
       <ng-container *ngIf="item.matches.length">
         <h4 class="group-title txt-center">Group {{item.groupName}}</h4>
-        <div *ngIf="item.matches.round === 4.2">
-          <span *ngIf="!auth.isLoggedIn()" colspan="3" class="final-title">
-            Final
-          </span>
-          <span *ngIf="auth.isLoggedIn() && !auth.currentUser.admin" colspan="4" class="final-title">
-            Third and four
-          </span>
-        </div>
         <app-matches [matches]="item.matches" [home]="false" [flag]="flag" (openModal)="openModal($event)">
         </app-matches>
       </ng-container>
