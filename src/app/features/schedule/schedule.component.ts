@@ -3,6 +3,7 @@ import { ScheduleService } from 'src/app/shared/services/schedule.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { ActivatedRoute, ParamMap, Router, NavigationEnd } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { fake_data } from '../../../assets/mock-match';
 
 const GROUPS = ["A", "B", "C", "D", "E", "F", "G", "H"];
 
@@ -237,8 +238,7 @@ export class ScheduleComponent implements OnInit {
           });
         });
 
-
-        schedules.map((match, index) => {
+        schedules.map(match => {
           if (match.round !== 1) {
             if (match.round < 3) {
               quarters.push(match);
@@ -257,13 +257,13 @@ export class ScheduleComponent implements OnInit {
           quarters = [];
           semis = [];
           finals = [];
-          this.data4.map(match => {
+          fake_data.quarters.map(match => {
             quarters.push(match);
           })
-          this.data2.map(match => {
+          fake_data.semis.map(match => {
             semis.push(match);
           })
-          this.data1.map(match => {
+          fake_data.finals.map(match => {
             finals.push(match);
           })
         }
@@ -278,7 +278,6 @@ export class ScheduleComponent implements OnInit {
           groupName: 'Final',
           matches: finals
         });
-
         this.spinner.hide();
       })
   }

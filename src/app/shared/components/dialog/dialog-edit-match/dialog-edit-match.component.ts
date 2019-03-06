@@ -56,7 +56,6 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
         this.disableRadio_btn = false;
       }
     }
-    console.log(this.match);
   }
 
   onSubmit(form: NgForm, match) {
