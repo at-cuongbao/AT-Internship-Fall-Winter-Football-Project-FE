@@ -82,8 +82,8 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
           icon: "error",
           timer: 2000,
         });
-        this.closeModal(match);
       }
+      this.closeModal(match);
     });
   };
 
