@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { TournamentService } from '../../services/tournament.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
@@ -19,10 +20,18 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.tournamentService.get().subscribe(data => {
-      data.map(tournament => {
-        this.tournaments.push({ id: tournament._id, name: tournament.name });
-      });
+    this.getTournaments();
+  }
+
+  getTournaments() {
+    this.tournamentService.get().pipe(map(res => {
+      let tournaments = [];
+      res.map(tour => {
+        tournaments.push({ id: tour._id, name: tour.name });
+      })
+      return tournaments;
+    })).subscribe(data => {
+      this.tournaments = data;
     });   
   }
 

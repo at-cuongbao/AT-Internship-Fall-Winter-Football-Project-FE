@@ -18,7 +18,11 @@
       padding: 64px 0 50px 0;
       text-align: center;
       text-transform: uppercase;
-      color: $color-primary;
+      color: $color-white;
+      p b {
+        background-color:rgba(55,52,52,0.4);
+      }
+     
     }
     .register-form {
       margin: 0 100px;
@@ -29,6 +33,9 @@
       .form-group {
         font-size: 20px;
         padding: 32px 16px 4px;
+        select {
+          color: $color-grey;
+        }
       }
       .tb-league {
         width: 100%;

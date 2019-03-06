@@ -1,4 +1,5 @@
 <div class="container">
+  <ngx-spinner></ngx-spinner>
   <div class="schedule-block">
     <section class="group-block" *ngFor="let item of schedules">
       <ng-container *ngIf="item.matches.length">
@@ -11,56 +12,11 @@
             Third and four
           </span>
         </div>
-        <app-matches [matches]="item.matches" [home]="false" [flag]="flag" (openModal)="openModal($event)"></app-matches>
+        <app-matches [matches]="item.matches" [home]="false" [flag]="flag" (openModal)="openModal($event)">
+        </app-matches>
       </ng-container>
     </section>
   </div>
   <app-sidebar></app-sidebar>
 </div>
-<div #modal class="prediction-page modal txt-bold">
-  <div class="modal-content">
-    <span (click)="closeModal()" class="close txt-bold">&times;</span>
-    <form class="prediction-form" #elmForm="ngForm" (ngSubmit)="submit(elmForm, _match)">
-      <div class="prediction-heading txt-center">
-        <p>
-          <b *ngIf="auth.isLoggedIn() && !auth.currentUser.admin">
-            Predict Match
-          </b>
-          <b *ngIf="auth.isLoggedIn() && auth.currentUser.admin">
-            Edit Match
-          </b>
-        </p>
-      </div>
-      <div class="score-avatar" [style.backgroundImage]="'url('+ imageSource +')'">
-        <div class="info-match txt-center">
-          <div class="info-match-time">
-            {{ _match.start_at | date:'MMMM, dd | h:mm a' || 'Undefined' }}
-          </div>
-        </div>
-        <div class="score-prediction">
-          <div class="name-team-1">
-            <img *ngIf="_match.firstTeam" [src]="_match.firstTeam.logo" alt="" class="logo-size">
-            <p class="code-team">{{ _match.firstTeam?.code }}</p>
-          </div>
-          <div class="prediction-middle" *ngIf="_match?.prediction?.is_predicted && !auth.currentUser.admin">
-            <input type="number" [(ngModel)]="firstPredictionValue" name="firstPrediction" class="prediction" min="0" required>
-            <div class="cross">-</div>
-            <input type="number" [(ngModel)]="secondPredictionValue" name="secondPrediction" class="prediction" min="0" required>
-          </div>
-          <div class="prediction-middle" *ngIf="!_match?.prediction?.is_predicted || auth.currentUser.admin">
-            <input type="number" [(ngModel)]="firstTeamScoreValue"  name="firstTeamScore" class="prediction"
-              #firstPrediction min="0" required>
-            <div class="cross">-</div>
-            <input type="number" [(ngModel)]="secondTeamScoreValue"  name="secondTeamScore" class="prediction"
-              #secondPrediction min="0" required>
-          </div>
-          <div class="name-team-2">
-            <img *ngIf="_match.secondTeam" [src]="_match.secondTeam.logo" alt="" class="logo-size">
-            <p class="code-team">{{ _match.secondTeam?.code }}</p>
-          </div>
-          <button class="btn-prediction" [disabled]="elmForm.invalid">Submit</button>
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
+<app-dialog-edit-match *ngIf="matchData.length" [matchData]="matchData" (onSubmit)="onSubmit($event)"></app-dialog-edit-match>

@@ -49,14 +49,14 @@
   padding: 64px 0;
   .home-next-match {
     background-color: $color-white;
-    height: 412px;
+    min-height: 343px;
   }
   .home-schedule {
     .match {
-      &-date {
-        width: 30%;
-      }
       &-team-logo {
+        width: 15%;
+      }
+      &-score {
         width: 15%;
       }
       &-team-code {

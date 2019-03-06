@@ -1,7 +1,7 @@
 <div class="schedule">
-  <ul class="matches">
-    <li class="match" *ngFor="let match of matches" [class.disabled-li]="flag || (!flag && !match.firstTeam.code)" (click)="openMatchDetail(match, home)">
-      <p class="match-date w30" *ngIf="home">
+  <ul *ngIf="matches" class="matches">
+    <li class="match" *ngFor="let match of matches" (click)="openMatchDetail(match)">
+      <p class="match-date w25" *ngIf="home">
         <span>
           {{ match.start_at | date:'MMMM dd' }}
         </span>
@@ -20,7 +20,7 @@
         </a>
       </p>
       <p class="match-team-code w10">
-        {{ match?.firstTeam.code | questionMask }}
+        {{ match?.firstTeam.code | slice:0:3 | questionMask }}
       </p>
       <p class="match-score w10">
         <ng-container *ngIf="match.firstTeam.score">
@@ -31,7 +31,7 @@
         </ng-container>
       </p>
       <p class="match-team-code w10">
-        {{ match?.secondTeam.code | questionMask }}
+        {{ match?.secondTeam.code | slice:0:3 | questionMask }}
       </p>
       <p class="match-team-logo w10">
         <a routerLink="/team-detail/{{ match?.secondTeam.secondTeamId }}">
@@ -39,15 +39,19 @@
         </a>
       </p>
       <p class="match-view w25" *ngIf="!auth.currentUser?.admin">
-        <button *ngIf="!match.firstTeam.score" class="match-view-link txt-bold" (click)="open(match)" [disabled]="flag || !match.firstTeam.code">
-          {{ match?.prediction?.is_predicted ? 'Predicted' : 'Predict' }}
+        <button [class.disabled]="flag || match?.prediction?.isAllow || !match.firstTeam.code" *ngIf="!match.firstTeam.score && !(flag || !match.firstTeam.code || match?.prediction?.isAllow)" 
+          class="match-view-link txt-bold" (click)="open(match)" [disabled]="flag || !match.firstTeam.code || match?.prediction?.isAllow">
+          <ng-container *ngIf="!auth.isLoggedIn()">Predict</ng-container>
+          <ng-container *ngIf="auth.isLoggedIn()">
+            {{ match?.prediction?.is_predicted ? 'View Prediction' : 'Predict' }}
+          </ng-container>
         </button>
-        <a *ngIf="match.firstTeam.score" class="match-view-link txt-bold">
+        <a *ngIf="match.firstTeam.score || (flag || !match.firstTeam.code || match?.prediction?.isAllow)" class="match-view-link txt-bold">
           View
         </a>
       </p>
       <p class="match-view w25" *ngIf="auth.isLoggedIn() && auth.currentUser.admin">
-        <button class="match-view-link txt-bold" (click)="open(match)" [disabled]="flag">
+        <button class="match-view-link txt-bold" (click)="open(match)" [class.disabled]="!flag && !match.firstTeam.code" [disabled]="!flag && !match.firstTeam.code">
           Edit
         </button>
       </p>

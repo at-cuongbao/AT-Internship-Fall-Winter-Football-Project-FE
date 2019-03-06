@@ -3,63 +3,53 @@
     <div class="match-date">
       {{ match.start_at | date:'MMMM, dd, y | h:mm a' }}
     </div>
-    <div class="match-location">
-      {{ match?.location || 'Location: ?' }}
+    <div class="match-location middle">
+      <img src="../../../../assets/images/location-icon.png" alt="location-icon">
+      <span>
+        {{ match?.tournamentName }}
+      </span>
     </div>
     <div class="match-team">
       <p class="match-team-logo w20">
-        <img [src]="match?.firstTeam?.logo" class="img-size" alt="logo team1">
+        <a routerLink="/team-detail/{{ match?.firstTeam.firstTeamId }}">
+          <img [src]="match?.firstTeam?.logo" class="img-size" alt="logo team1">
+        </a>
       </p>
       <p class="match-team-code w20">
-        {{ match?.firstTeam?.code | questionMask }}
+        {{ match?.firstTeam?.code | slice:0:4 | questionMask }}
       </p>
       <p class="versus w20">
-        VS
+        <ng-container *ngIf="match?.firstTeam?.score">
+          {{ match?.firstTeam?.score | questionMask }} : {{ match?.secondTeam?.score | questionMask }}
+        </ng-container>
+        <ng-container *ngIf="!match?.firstTeam?.score">
+          VS
+        </ng-container>
       </p>
       <p class="match-team-code w20">
-        {{ match?.secondTeam?.code | questionMask }}
+        {{ match?.secondTeam?.code | slice:0:4 | questionMask }}
       </p>
       <p class="match-team-logo w20">
-        <img [src]="match?.secondTeam?.logo" class="img-size" alt="logo team2">
+        <a routerLink="/team-detail/{{ match?.secondTeam.secondTeamId }}">
+          <img [src]="match?.secondTeam?.logo" class="img-size" alt="logo team2">
+        </a>
       </p>
     </div>
     <div>
-      <button type="button" class="btn btn-predict" (click)="openModal(match)" [disabled]="!match?.location">
-        Predict
+      <button *ngIf="auth.currentUser?.admin || !match.firstTeam.score" class="btn btn-predict txt-bold"
+        (click)="openModal(match)">
+        <span *ngIf="auth.currentUser?.admin">
+          Edit
+        </span>
+        <span *ngIf="!auth.currentUser?.admin">
+          {{ match?.prediction?.is_predicted ? 'Predicted' : 'Predict' }}
+        </span>
+      </button>
+      <button (click)="openMatch(match)" class="btn btn-predict txt-bold">
+        View detail
       </button>
     </div>
   </div>
 </div>
-<div #modal class="prediction-page modal txt-bold">
-  <div class="modal-content">
-    <span (click)="closeModal()" class="close txt-bold">&times;</span>
-    <form class="prediction-form" #elmForm="ngForm" (ngSubmit)="submit(elmForm, _match)">
-      <div class="prediction-heading txt-center">
-        <p><b>Prediction Match</b></p>
-      </div>
-      <div class="score-avatar" [style.backgroundImage]="'url('+ imageSource +')'">
-        <div class="info-match txt-center">
-          <div class="info-match-time">{{ _match.start_at  || 'Undefined' }}</div>
-        </div>
-        <div class="score-prediction">
-          <div class="name-team-1">
-            <img *ngIf="_match.firstTeam" [src]="_match.firstTeam.logo" alt="" class="logo-size">
-            <p class="code-team">{{ _match.firstTeam?.code }}</p>
-          </div>
-          <div class="prediction-middle">
-            <input type="number" value="{{ _match.firstTeam?.score }}" name="firstPrediction" class="prediction" ngModel
-              #firstPrediction="ngModel" min="0" required />
-            <div class="cross">-</div>
-            <input type="number" value="{{ _match.secondTeam?.score }}" name="secondPrediction" class="prediction"
-              ngModel #secondPrediction="ngModel" min="0" required />
-          </div>
-          <div class="name-team-2">
-            <img *ngIf="_match.secondTeam" [src]="_match.secondTeam.logo" alt="" class="logo-size">
-            <p class="code-team">{{ _match.secondTeam?.code }}</p>
-          </div>
-          <button class="btn-prediction">Submit</button>
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
+<app-dialog-edit-match *ngIf="matchData.length" [matchData]="matchData" (onSubmit)="onSubmit($event)">
+</app-dialog-edit-match>

@@ -4,14 +4,14 @@ import { Team } from 'src/app/shared/models/team';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { END_POINT } from 'src/app/shared/services/api-registry';
 import { Router } from '@angular/router';
-import { initDomAdapter } from '@angular/platform-browser/src/browser';
+import swal from 'sweetalert'
 
 @Component({
   selector: 'app-tournament-registration',
   templateUrl: './tournament-registration.component.html',
   styleUrls: ['./tournament-registration.component.scss']
 })
-export class TournamentRegistrationComponent implements OnInit, DoCheck {
+export class TournamentRegistrationComponent implements DoCheck, OnInit {
   @ViewChild("modal", { read: ElementRef }) modal: ElementRef;
   @ViewChild("f", { read: ElementRef }) modalForm: ElementRef;
   
@@ -19,6 +19,7 @@ export class TournamentRegistrationComponent implements OnInit, DoCheck {
   imageUrl = '../../../assets/images/default-image.png';
   imageLogo = '';
   imageCover = '';
+  numberGroup = 4;
 
   teams: Team[] = [];
   isSubmited = false;
@@ -33,25 +34,26 @@ export class TournamentRegistrationComponent implements OnInit, DoCheck {
     private renderer: Renderer,
     private router: Router
   ) {}
-  
-  ngOnInit(): void {
-    this.initTeam();
+
+  ngDoCheck() {
+    this.isSubmited = this.teams.length === (this.numberGroup * 4) ? true : false;
   }
 
-  initTeam() {
+  ngOnInit() {
+    this.initTeam();
+  }
+ 
+   initTeam() { 
     this.tables.map(tables => {
-      for (let i = 0; i < 32; i++) {
+      for (let i = 0; i < (4 * this.numberGroup); i++) {
         let team = new Team();
         team.name = "Name Team " + (i + 1);
-        team.code = "Code Team " + (i + 1);
+        team.code = "Code";
         team.cover = this.imageUrl;
         team.logo = this.imageUrl;
         this.teams[i] = team;
       }
     });
-  }
-
-  ngDoCheck(): void {
   }
 
   handleFileInput(file: FileList, isForLogo = true) {
@@ -67,6 +69,7 @@ export class TournamentRegistrationComponent implements OnInit, DoCheck {
   }
 
   convert(number) {
+    this.numberGroup = number.value;
     this.groups = [];
     for (let i = 0; i < number.value; i++) {
       this.groups.push(i);
@@ -83,9 +86,17 @@ export class TournamentRegistrationComponent implements OnInit, DoCheck {
       },
       teams: this.teams
     };
-    this.apiService.post([END_POINT.tournaments], data).subscribe(tournamentId => {
-      this.router.navigate(['schedules', tournamentId]);
-    });
+    if (this.isSubmited && !f.invalid) {
+      swal({
+        // buttons: false,
+        text: 'You have register successfully !',
+        icon: "success",
+        timer: 2000,
+      });
+      this.apiService.post([END_POINT.tournaments], data).subscribe(tournamentId => {
+        this.router.navigate(['schedules', tournamentId]);
+      });
+    }
   }
 
   onModalSubmit(modalForm: NgForm) {
@@ -93,8 +104,8 @@ export class TournamentRegistrationComponent implements OnInit, DoCheck {
     let team = new Team();
     team.name = modalForm.control.value.name;
     team.code = modalForm.control.value.code;
-    team.cover = this.imageCover ? this.imageCover : this.imageUrl;
-    team.logo = this.imageLogo ? this.imageLogo : this.imageUrl;
+    team.cover = modalForm.control.value.cover ? "../../../assets/images/" + modalForm.control.value.cover.slice(12) : this.imageUrl;
+    team.logo = modalForm.control.value.logo ? "../../../assets/images/" + modalForm.control.value.logo.slice(12) : this.imageUrl;
     this.teams[index] = team;
 
     this.resetForm();

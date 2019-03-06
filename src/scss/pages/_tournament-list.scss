@@ -57,6 +57,10 @@
   .tournament-bottom {
     clear: both;
     padding: 0 0 32px 3%;
+    .btn-success {
+      background-color: $color-blue;
+      border-color: $color-white;
+    }
     .pagination-control {
       float: right;
       display: block;

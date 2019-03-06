@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-register',
@@ -12,12 +13,15 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private auth: AuthService) { }
+    private auth: AuthService,
+    private spinner: NgxSpinnerService
+  ) { }
 
   ngOnInit() {
   }
 
   register(credentials: any) {
+    this.spinner.show();
     this.auth.register(credentials)
       .subscribe(result => {
         if (result) {
@@ -25,6 +29,7 @@ export class RegisterComponent implements OnInit {
         } else {
           this.invalidRegister = true;
         }
+        this.spinner.hide();
       });
   }
 }

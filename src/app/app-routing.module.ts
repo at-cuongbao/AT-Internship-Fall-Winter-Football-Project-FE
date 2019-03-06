@@ -5,17 +5,16 @@ import { FeaturesComponent } from './features/features.component';
 import { TournamentRegistrationComponent } from './features/tournament-registration/tournament-registration.component';
 import { ScheduleComponent } from './features/schedule/schedule.component';
 import { RegisterComponent } from 'src/app/features/register/register.component';
-import { PredictionComponent } from 'src/app/features/prediction/prediction.component';
 import { BracketComponent } from 'src/app/features/bracket/bracket.component';
 import { HomeComponent } from './features/home/home.component';
 import { PageNotFoundComponent } from '../app/shared/components/page-not-found/page-not-found.component';
 import { TournamentListComponent } from 'src/app/features/tournament-list/tournament-list.component';
 import { AuthGuardService } from 'src/app/shared/services/auth-guard.service';
 import { AdminAuthGuardService } from 'src/app/shared/services/admin-auth-guard.service';
-import { AuthService } from 'src/app/shared/services/auth.service';
 import { TournamentDetailComponent } from './features/tournament-detail/tournament-detail.component';
 import { MatchDetailComponent } from './features/match-detail/match-detail.component';
 import { TeamDetailComponent } from './features/team-detail/team-detail.component';
+import { AllSchedulesComponent } from './features/all-schedules/all-schedules.component';
 
 const routes: Routes = [
   {
@@ -40,11 +39,6 @@ const routes: Routes = [
         component: TournamentListComponent
       },
       {
-        path: 'prediction/:id',
-        component: PredictionComponent,
-        canActivate: [ AuthGuardService ]
-      },
-      {
         path: 'schedules/:id',
         component: ScheduleComponent,
       },
@@ -52,6 +46,10 @@ const routes: Routes = [
         path: 'bracket/:id',
         component: BracketComponent
       },
+      {
+        path: 'all-schedules',
+        component: AllSchedulesComponent
+      }
     ]
   },
   {

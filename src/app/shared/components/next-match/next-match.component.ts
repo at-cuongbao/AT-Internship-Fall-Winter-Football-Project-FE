@@ -1,41 +1,47 @@
-import { Component, OnInit, Input, OnChanges, Renderer, ViewChild, ElementRef } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { END_POINT } from 'src/app/shared/services/api-registry';
 
 @Component({
   selector: 'app-next-match',
   templateUrl: './next-match.component.html',
   styleUrls: ['./next-match.component.scss']
 })
-export class NextMatchComponent implements OnInit, OnChanges {
+export class NextMatchComponent {
+  @Output() updateSchedule = new EventEmitter();
+  @Input("match") match: any;
+  matchData = [];
 
-  @Input("match") match = {};
-  _match = {};
-  @ViewChild("modal", { read: ElementRef }) modal: ElementRef;
 
   constructor(
     private auth: AuthService,
-    private router: Router,
-    private renderer: Renderer
+    private router: Router
   ) { }
 
-  ngOnInit() {
-  }
-
-  ngOnChanges() {
+  openMatch(match) {
+    if (match.id) {
+      this.router.navigate([END_POINT.match_detail + '/' + match.id]);
+    } else {
+      alert("Can not find match id!");
+    }
   }
 
   openModal(match) {
     if (!this.auth.isLoggedIn()) {
-      return this.router.navigate(['/login'], { queryParams: {
-        returnUrl: this.router.url
-      }})
+      return this.router.navigate(['/login'], {
+        queryParams: {
+          returnUrl: this.router.url
+        }
+      })
     }
-    this._match = match;
-    this.renderer.setElementAttribute(this.modal.nativeElement, "style", "display: block");
+    this.matchData.push(match);
   }
 
-  closeModal() {
-    this.renderer.setElementAttribute(this.modal.nativeElement, "style", "display: none");
+  onSubmit(match: any) {
+    if (match) {
+      this.updateSchedule.emit(match.id);
+    } 
+    this.matchData = [];
   }
 }

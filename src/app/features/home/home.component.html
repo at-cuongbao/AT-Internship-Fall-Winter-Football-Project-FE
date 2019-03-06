@@ -3,13 +3,13 @@
 <div class="next-match-title txt-center">
   <h4>
     Next 
-    <span>match</span>
+    <span>matches</span>
   </h4>
 </div>
 <div class="next-match-wrapper" *ngIf="matches.length">
   <div class="container">
     <div class="home-next-match w50 inline-block pull-left">
-      <app-next-match [match]="match"></app-next-match>
+      <app-next-match (updateSchedule)="getMatches($event)" [match]="match"></app-next-match>
     </div>
     <div class="home-schedule w50 inline-block">
       <app-matches [matches]="matches" (getNextMatch)="getNextMatch($event)"></app-matches>

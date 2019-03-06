@@ -1,3 +1,4 @@
+<ngx-spinner></ngx-spinner>
 <div class="card-signin">
   <form class="form-sinin" #f="ngForm" (ngSubmit)="signIn(f.value)">
     <h2 class="form-signin-heading">Please sign in</h2>
@@ -21,6 +22,6 @@
       </div>
     </div>
     <button class="btn btn-primary btn-block" [disabled]="f.invalid">Sign in</button>
-    <a routerLink="/register" class="forgot-password">Haven't had account yet? Go Register</a>
+    <a routerLink="/register" class="forgot-password">Haven't had account yet? <span class="go-register">Go Register</span></a>
   </form>
 </div>

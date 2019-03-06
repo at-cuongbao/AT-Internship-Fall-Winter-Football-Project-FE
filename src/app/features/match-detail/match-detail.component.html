@@ -1,8 +1,11 @@
+<ngx-spinner></ngx-spinner>
 <div class="match-detail">
-  <img class="logo" src="./../../../assets/images/championsleaguelogo.jpg" alt="Championsleague-Logo">
+  <div class="match-name">
+    <p>{{tournament.tournament_team_id?.tournament_id.name}}</p>
+  </div>
   <div class="match-content container">
     <div class="article-match clearfix">
-      <p>{{ match.firstTeam?.code }} - {{ match.secondTeam?.code }}: Choking "gunfight", peaking glory</p>
+      <p>{{ match.firstTeam?.code | slice:0:3 }} - {{ match.secondTeam?.code | slice:0:3 }}: Choking "gunfight", peaking glory</p>
     </div>
     <div class="heading-match">
       <p class="match-day">{{ match.start_at }}</p>
@@ -10,20 +13,20 @@
     </div>
     <div class="latest-middle clearfix">
       <a class="latest-team-left">
-        <img [src]="match.firstTeam.cover" alt="Chel">
+        <img [src]="match.firstTeam.logo" alt="Chel">
       </a>
       <div class="latest-versus txt-center">
-        <span class="versus-team">{{ match.firstTeam.code }}</span>
+        <span class="versus-team">{{ match.firstTeam.code | slice:0:3 }}</span>
         <div class="latest-score">
           <div class="score-table clearfix">
-            <div class="score-left txt-center">{{ match.firstTeam.score }}</div>
+            <div [class.score-left]="!match.firstTeam.score" class="score-left-default txt-center">{{ match.firstTeam.score }}</div>
             <div class="score-right txt-center">{{ match.secondTeam.score }}</div>
           </div>
         </div>
-        <span class="versus-team versus-team-right">{{ match.secondTeam.code }}</span>
+        <span class="versus-team versus-team-right">{{ match.secondTeam.code | slice:0:3 }}</span>
       </div>
       <a class="latest-team-right">
-        <img [src]="match.secondTeam.cover" alt="">
+        <img [src]="match.secondTeam.logo" alt="">
       </a>
     </div>
     <div class="match-content clearfix">
@@ -37,8 +40,8 @@
     </div>
     <div class="start-lineup">
       <p><b class="bold">Starting lineup</b> :</p>            
-      <p><b class="bold">{{ match.firstTeam.code }}:</b>  1 Kepa, 30 David Luiz, 28 Azpilicueta, 33 Emerson, 2 A. Rüdiger, 8 R. Barkley, 5 Jorginho, 7 N. Kante, 22 Willian, 10 E. Hazard, 11 Pedro</p>
-      <p><b class="bold">{{ match.secondTeam.code }}:</b>  1 M. ter Stegen, 3 Piqué, 18 Jordi Alba, 23 S. Umtiti, 2 Nélson Semedo, 4 I. Rakitić, 22 A. Vidal, 5 Sergio Busquets, 7 Philippe Coutinho, 10 L. Messi, 9 L. Suárez</p>     
+      <p><b class="bold">{{ match.firstTeam.code | slice:0:3 }}:</b>  1 Kepa, 30 David Luiz, 28 Azpilicueta, 33 Emerson, 2 A. Rüdiger, 8 R. Barkley, 5 Jorginho, 7 N. Kante, 22 Willian, 10 E. Hazard, 11 Pedro</p>
+      <p><b class="bold">{{ match.secondTeam.code | slice:0:3 }}:</b>  1 M. ter Stegen, 3 Piqué, 18 Jordi Alba, 23 S. Umtiti, 2 Nélson Semedo, 4 I. Rakitić, 22 A. Vidal, 5 Sergio Busquets, 7 Philippe Coutinho, 10 L. Messi, 9 L. Suárez</p>     
     </div>
     <div class="image-match">
       <img src="./../../../assets/images/ChelvsBarca.jpg" >
@@ -62,7 +65,7 @@
       </thead>
       <tbody>
         <tr>
-          <td>{{ match.firstTeam.code }}</td>
+          <td>{{ match.firstTeam.code | slice:0:3 }}</td>
           <td>3</td>
           <td>40%</td>
           <td>14(6)</td>
@@ -72,7 +75,7 @@
           <td>5</td>
         </tr>
         <tr>
-          <td>{{ match.secondTeam.code }}</td>
+          <td>{{ match.secondTeam.code | slice:0:3 }}</td>
           <td>5</td>
           <td>60%</td>
           <td>18(9)</td>

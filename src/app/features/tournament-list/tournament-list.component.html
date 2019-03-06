@@ -1,9 +1,10 @@
-<div class="container" *ngIf="tournamentList.length">
-  <section class="tournament-list" [class.display-full]="flag">
+<div class="container">
+  <section *ngIf="tournamentList.length" class="tournament-list" [class.display-full]="flag">
+    <ngx-spinner></ngx-spinner>
     <div *ngIf="tournamentList.length" class="tournament-top clearfix">
       <div *ngFor="let tour of tournamentList | paginate: { itemsPerPage: 6, currentPage: pageActual }" class="card">
         <a routerLink="/tournament-detail/{{tour._id}}">
-          <img src="../../../assets/images/35b8bf93115eb2b8da9f8b4f41fdb0fd.jpg" alt="Denim Jeans" height="300">
+          <img src="../../../assets/images/championsleaguelogo.jpg" alt="Denim Jeans" height="300">
         </a>
         <div class="card-wrapper">
           <div class="date-creation">{{ tour.start_at | date:'short' }}</div>
@@ -16,14 +17,14 @@
       </div>
     </div>
     <div [class.display-none]="flag" class="tournament-bottom">
-      <a routerLink="/tournament-registration" class="btn btn-success">Create tournament</a>
+      <a *ngIf="auth.isLoggedIn() && auth.currentUser.admin" routerLink="/tournament-registration" class="btn btn-success">Create</a>
       <pagination-controls [class.display-none]="!tournamentList.length" class="pagination-control" (pageChange)="pageActual = $event"></pagination-controls>
     </div>
   </section>
   <app-sidebar [class.display-none]="flag"></app-sidebar>
 </div>
 
-<div class="container" *ngIf="!tournamentList.length">
+<div class="container" *ngIf="!tournamentList.length && auth.isLoggedIn() && auth.currentUser.admin">
   <p class="notification">No tournaments !</p>
-  <a routerLink="/tournament-registration" class="btn btn-success">CREATE TOURNAMENT</a>
+  <a *ngIf="auth.isLoggedIn() && auth.currentUser.admin" routerLink="/tournament-registration" class="btn btn-success">Create</a>
 </div>

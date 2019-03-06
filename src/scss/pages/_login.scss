@@ -15,8 +15,10 @@
     .forgot-password {
       margin-top: 10px;
       display: inline-block;
-      color: rgb(104, 145, 162);
       text-align: center;
+    }
+    .go-register {
+      color: $color-blue;
     }
   }
 }

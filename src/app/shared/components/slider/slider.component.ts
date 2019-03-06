@@ -7,9 +7,9 @@ import { Component } from '@angular/core';
 })
 export class SliderComponent {
   imageSources = [
-    '../../../../assets/images/main-slider-img.jpg',
-    '../../../../assets/images/main-slider-img1.jpg',
-    '../../../../assets/images/main-slider-img2.jpg'
+    '../../../../assets/images/messi-bg.jpg',
+    '../../../../assets/images/ronaldo-bg.jpg',
+    '../../../../assets/images/torres-bg.jpg'
   ];
 
   constructor() {}
