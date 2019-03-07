@@ -1,3 +1,4 @@
+<ngx-spinner></ngx-spinner>
 <div class="match-detail">
   <div class="match-name">
     <p>{{tournament.tournament_team_id?.tournament_id.name}}</p>
@@ -18,7 +19,7 @@
         <span class="versus-team">{{ match.firstTeam.code | slice:0:4 }}</span>
         <div class="latest-score">
           <div class="score-table clearfix">
-            <div class="score-left txt-center">{{ match.firstTeam.score }}</div>
+            <div [class.score-left]="!match.firstTeam.score" class="score-left-default txt-center">{{ match.firstTeam.score }}</div>
             <div class="score-right txt-center">{{ match.secondTeam.score }}</div>
           </div>
         </div>

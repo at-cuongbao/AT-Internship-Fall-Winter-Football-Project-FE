@@ -3,6 +3,7 @@ import { ApiService } from 'src/app/shared/services/api.service';
 import { END_POINT } from 'src/app/shared/services/api-registry';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-all-schedules',
@@ -16,16 +17,18 @@ export class AllSchedulesComponent implements OnInit {
   constructor(
     private apiService: ApiService, 
     private router: Router,
-    private auth: AuthService) { }
+    private auth: AuthService,
+    private spinner: NgxSpinnerService
+  ) { }
 
   ngOnInit() {
+    this.spinner.show();
     this.getSchedule();
   }
 
   getSchedule(): void {
     this.apiService.get([END_POINT.matches])
       .subscribe(returnedSchedules => {
-        console.log(returnedSchedules);
         let group_to_values = returnedSchedules.reduce(function (obj, item) {
           obj[item.start_at] = obj[item.start_at] || [];
           obj[item.start_at].push({ id: item.id, tournamentName: item.tournamentName, firstTeam: item.firstTeam, secondTeam: item.secondTeam });
@@ -37,7 +40,7 @@ export class AllSchedulesComponent implements OnInit {
         });
 
         this.schedules = groups.sort((a, b) => a.group > b.group ? 1 : -1);
-        
+        this.spinner.hide();
       })
     
   }

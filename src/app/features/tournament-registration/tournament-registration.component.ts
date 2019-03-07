@@ -4,6 +4,7 @@ import { Team } from 'src/app/shared/models/team';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { END_POINT } from 'src/app/shared/services/api-registry';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-tournament-registration',
@@ -31,6 +32,7 @@ export class TournamentRegistrationComponent implements DoCheck, OnInit {
   constructor(
     private apiService: ApiService,
     private renderer: Renderer,
+    private spinner: NgxSpinnerService,
     private router: Router
   ) {}
 
@@ -86,7 +88,9 @@ export class TournamentRegistrationComponent implements DoCheck, OnInit {
       teams: this.teams
     };
     alert('You have register successfully !');
+    this.spinner.show();
     this.apiService.post([END_POINT.tournaments], data).subscribe(tournamentId => {
+      this.spinner.hide();
       this.router.navigate(['schedules', tournamentId]);
     });
   }

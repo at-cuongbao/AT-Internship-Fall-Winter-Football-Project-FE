@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { SlideshowModule } from 'ng-simple-slideshow';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { AppComponent } from './app.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
@@ -86,7 +87,8 @@ export function tokenGetter() {
     BrowserAnimationsModule,
     SlideshowModule,
     OwlDateTimeModule,
-    OwlNativeDateTimeModule
+    OwlNativeDateTimeModule,
+    NgxSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

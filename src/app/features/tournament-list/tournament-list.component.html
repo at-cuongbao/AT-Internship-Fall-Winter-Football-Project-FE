@@ -1,5 +1,6 @@
-<div class="container" *ngIf="tournamentList.length">
-  <section class="tournament-list" [class.display-full]="flag">
+<div class="container">
+  <section *ngIf="tournamentList.length" class="tournament-list" [class.display-full]="flag">
+    <ngx-spinner></ngx-spinner>
     <div *ngIf="tournamentList.length" class="tournament-top clearfix">
       <div *ngFor="let tour of tournamentList | paginate: { itemsPerPage: 6, currentPage: pageActual }" class="card">
         <a routerLink="/tournament-detail/{{tour._id}}">
@@ -16,14 +17,14 @@
       </div>
     </div>
     <div [class.display-none]="flag" class="tournament-bottom">
-      <a routerLink="/tournament-registration" class="btn btn-success">Create</a>
+      <a *ngIf="auth.isLoggedIn() && auth.currentUser.admin" routerLink="/tournament-registration" class="btn btn-success">Create</a>
       <pagination-controls [class.display-none]="!tournamentList.length" class="pagination-control" (pageChange)="pageActual = $event"></pagination-controls>
     </div>
   </section>
   <app-sidebar [class.display-none]="flag"></app-sidebar>
 </div>
 
-<div class="container" *ngIf="!tournamentList.length">
+<div class="container" *ngIf="!tournamentList.length && auth.isLoggedIn() && auth.currentUser.admin">
   <p class="notification">No tournaments !</p>
-  <a routerLink="/tournament-registration" class="btn btn-success">Create</a>
+  <a *ngIf="auth.isLoggedIn() && auth.currentUser.admin" routerLink="/tournament-registration" class="btn btn-success">Create</a>
 </div>

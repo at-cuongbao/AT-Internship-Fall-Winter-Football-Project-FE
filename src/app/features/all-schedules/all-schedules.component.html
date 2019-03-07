@@ -1,5 +1,6 @@
 <div class="container">
   <div class="all-schedule-block">
+    <ngx-spinner></ngx-spinner>
     <section class="group-block-schedules"
       *ngFor="let item of schedules | paginate: { itemsPerPage: 6, currentPage: pageActual }">
       <ng-container>

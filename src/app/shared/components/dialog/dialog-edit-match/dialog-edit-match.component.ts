@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { END_POINT } from 'src/app/shared/services/api-registry';
 import { ApiService } from 'src/app/shared/services/api.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-dialog-edit-match',
@@ -27,7 +28,8 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
   constructor(
     private auth: AuthService,
     private renderer: Renderer,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private spinner: NgxSpinnerService
   ) { }
 
   ngOnChanges() {

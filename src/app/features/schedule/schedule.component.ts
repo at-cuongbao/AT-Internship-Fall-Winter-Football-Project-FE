@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ScheduleService } from 'src/app/shared/services/schedule.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { ActivatedRoute, ParamMap, Router, NavigationEnd } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 const GROUPS = ["A", "B", "C", "D", "E", "F", "G", "H"];
 
@@ -20,47 +21,19 @@ export class ScheduleComponent implements OnInit {
     private scheduleService: ScheduleService,
     private auth: AuthService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private spinner: NgxSpinnerService
   ) { 
     router.events.forEach((event) => {
       if (event instanceof NavigationEnd) {
+        this.spinner.show();
         this.getSchedule();
       }
     });
   }
 
   ngOnInit() {
-    this.init();
-  }
-
-  init() {
-    GROUPS.map(group => {
-      let tables = [];
-      for (let i = 0; i < 6; i++) {
-        tables.push(
-          {
-            firstTeam: {
-              firstTeamId: null,
-              code: null,
-              logo: this.imgDefault,
-              score: null
-            },
-            secondTeam: {
-              firstTeamId: null,
-              code: null,
-              logo: this.imgDefault,
-              score: null
-            },
-            start_at: '1/1',
-            round: 1
-          }
-        );
-      }
-      this.schedules.push({
-        groupName: group,
-        matches: tables
-      });
-    });
+    this.spinner.show();
   }
 
   getSchedule(): void {
@@ -110,6 +83,8 @@ export class ScheduleComponent implements OnInit {
           groupName: 'Final and third',
           matches: finals
         });
+
+        this.spinner.hide();
       })
   }
 
@@ -124,6 +99,7 @@ export class ScheduleComponent implements OnInit {
 
   onSubmit(match: any) {
     if (match) {
+      this.spinner.show();
       this.getSchedule();
     } 
     this.matchData = [];

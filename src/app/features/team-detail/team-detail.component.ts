@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { END_POINT } from 'src/app/shared/services/api-registry';
 import { Team } from 'src/app/shared/models/team';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-team-detail',
@@ -11,18 +12,20 @@ import { Team } from 'src/app/shared/models/team';
 })
 export class TeamDetailComponent implements OnInit {
   team: Team = {
-    name: '?',
-    code: '?',
+    name: '',
+    code: '',
     cover: '../../../assets/images/logo-img.png',
     logo: '../../../assets/images/logo-img.png'
   };
 
   constructor(
     private route: ActivatedRoute,
-    private api: ApiService
+    private api: ApiService,
+    private spinner: NgxSpinnerService
   ) { }
 
   ngOnInit() {
+    this.spinner.show();
     this.getTeam();
   }
 
@@ -33,7 +36,7 @@ export class TeamDetailComponent implements OnInit {
         if (data != 404) {
           this.team = data
         }
-      }
-      );
+        this.spinner.hide();
+      });
   }
 }

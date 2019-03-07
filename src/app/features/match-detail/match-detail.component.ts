@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { END_POINT } from 'src/app/shared/services/api-registry';
-  
+import { NgxSpinnerService } from 'ngx-spinner';
+
 @Component({
   selector: 'app-match-detail',
   templateUrl: './match-detail.component.html',
@@ -14,22 +15,24 @@ export class MatchDetailComponent implements OnInit {
   match = {
     start_at: null,
     firstTeam: {
-      code: '?',
+      code: 'COD',
       logo: '../../../assets/images/logo-img.png',
-      score: '?'
+      score: 0
     },
     secondTeam: {
-      code: '?',
+      code: 'COD',
       logo: '../../../assets/images/logo-img.png',
-      score: '?'
+      score: 0
     }
   };
   constructor(
     private route: ActivatedRoute,
-    private api: ApiService
+    private api: ApiService,
+    private spinner: NgxSpinnerService
   ) { }
   
   ngOnInit() {
+    this.spinner.show();
     this.getMatch();
   }
   
@@ -52,6 +55,7 @@ export class MatchDetailComponent implements OnInit {
               score: data[1].score || '?'
             }
           }
+          this.spinner.hide();
         }
       });
   }

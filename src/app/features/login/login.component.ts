@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../shared/services/auth.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-login',
@@ -12,12 +13,15 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private auth: AuthService) { }
+    private auth: AuthService,
+    private spinner: NgxSpinnerService
+  ) { }
 
   ngOnInit() {
   }
-
+  
   signIn(credentials: any) {
+    this.spinner.show();
     this.auth.login(credentials)
       .subscribe(result => {
         if (result) {
@@ -26,6 +30,7 @@ export class LoginComponent implements OnInit {
         } else {
           this.invalidLogin = true;
         }
+        this.spinner.hide();
       });
   }
 }
