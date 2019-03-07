@@ -1,7 +1,7 @@
 const quarters = [
   {
     firstTeam: {
-      firstTeamId: "5c7f996b1329561d847789d1",
+      firstTeamId: "5c7f996b1329561d847789cb",
       code: "BAY",
       logo: "../../../assets/images/../../../assets/images/Bayern.png",
       score: "3",
@@ -14,7 +14,7 @@ const quarters = [
       firstTeam_score_prediction: "",
       secondTeam_score_prediction: ""
     },
-    round: 1,
+    round: 2.1,
     secondTeam: {
       secondTeamId: "5c7f996b1329561d847789d2",
       code: "LIV", logo: "../../../assets/images/../../../assets/images/Liver.png",
@@ -38,12 +38,12 @@ const quarters = [
       firstTeam_score_prediction: "",
       secondTeam_score_prediction: ""
     },
-    round: 1,
+    round: 2.2,
     secondTeam: {
       secondTeamId: "5c7f996b1329561d847789d2",
       code: "CHE", logo: "../../../assets/images/../../../assets/images/chel.png",
       score: "2",
-      winner: false
+      winner: true
     },
     start_at: "2018-12-10T11:00:00.000Z"
   },
@@ -62,7 +62,7 @@ const quarters = [
       firstTeam_score_prediction: "",
       secondTeam_score_prediction: ""
     },
-    round: 1,
+    round: 2.3,
     secondTeam: {
       secondTeamId: "5c7f996b1329561d847789d2",
       code: "PSG", logo: "../../../assets/images/../../../assets/images/Psg.png",
@@ -86,7 +86,7 @@ const quarters = [
       firstTeam_score_prediction: "",
       secondTeam_score_prediction: ""
     },
-    round: 1,
+    round: 2.4,
     secondTeam: {
       secondTeamId: "5c7f996b1329561d847789d2",
       code: "MON", logo: "../../../assets/images/../../../assets/images/Monaco.png",
@@ -99,7 +99,7 @@ const quarters = [
 const semis = [
   {
     firstTeam: {
-      firstTeamId: "5c7f996b1329561d847789d1",
+      firstTeamId: "5c7f996b1329561d847789cb",
       code: "BAY",
       logo: "../../../assets/images/../../../assets/images/Bayern.png",
       score: "1",
@@ -112,7 +112,7 @@ const semis = [
       firstTeam_score_prediction: "",
       secondTeam_score_prediction: ""
     },
-    round: 1,
+    round: 3.1,
     secondTeam: {
       secondTeamId: "5c7f996b1329561d847789d2",
       code: "CHE", logo: "../../../assets/images/../../../assets/images/chel.png",
@@ -142,7 +142,7 @@ const semis = [
       firstTeam_score_prediction: "",
       secondTeam_score_prediction: ""
     },
-    round: 1,
+    round: 3.2,
     start_at: "2018-12-14T11:00:00.000Z"
   }
 ];
@@ -162,7 +162,7 @@ const finals = [
       firstTeam_score_prediction: "",
       secondTeam_score_prediction: ""
     },
-    round: 1,
+    round: 4.1,
     secondTeam: {
       secondTeamId: "5c7f996b1329561d847789d2",
       code: "CHE", logo: "../../../assets/images/../../../assets/images/chel.png",
