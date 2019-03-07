@@ -36,7 +36,7 @@
       </p>
     </div>
     <div>
-      <button *ngIf="!auth.currentUser?.admin" class="btn btn-predict txt-bold"
+      <button *ngIf="!auth.currentUser?.admin && auth.isLoggedIn()" class="btn btn-predict txt-bold"
         (click)="openModal(match)">
         <span>
           {{ match?.prediction?.is_predicted ? 'Predicted' : 'Predict' }}
