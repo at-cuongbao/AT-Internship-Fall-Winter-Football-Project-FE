@@ -4,7 +4,7 @@ import { Team } from 'src/app/shared/models/team';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { END_POINT } from 'src/app/shared/services/api-registry';
 import { Router } from '@angular/router';
-import { NgxSpinnerService } from 'ngx-spinner';
+import swal from 'sweetalert'
 
 @Component({
   selector: 'app-tournament-registration',
@@ -32,7 +32,6 @@ export class TournamentRegistrationComponent implements DoCheck, OnInit {
   constructor(
     private apiService: ApiService,
     private renderer: Renderer,
-    private spinner: NgxSpinnerService,
     private router: Router
   ) {}
 
@@ -87,12 +86,17 @@ export class TournamentRegistrationComponent implements DoCheck, OnInit {
       },
       teams: this.teams
     };
-    alert('You have register successfully !');
-    this.spinner.show();
-    this.apiService.post([END_POINT.tournaments], data).subscribe(tournamentId => {
-      this.spinner.hide();
-      this.router.navigate(['schedules', tournamentId]);
-    });
+    if (this.isSubmited && !f.invalid) {
+      swal({
+        // buttons: false,
+        text: 'You have register successfully !',
+        icon: "success",
+        timer: 2000,
+      });
+      this.apiService.post([END_POINT.tournaments], data).subscribe(tournamentId => {
+        this.router.navigate(['schedules', tournamentId]);
+      });
+    }
   }
 
   onModalSubmit(modalForm: NgForm) {

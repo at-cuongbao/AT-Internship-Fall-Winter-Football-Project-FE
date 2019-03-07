@@ -90,7 +90,6 @@ export function tokenGetter() {
     OwlNativeDateTimeModule,
     NgxSpinnerModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
