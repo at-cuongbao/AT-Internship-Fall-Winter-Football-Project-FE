@@ -12,6 +12,7 @@ export class TournamentListComponent implements OnInit {
   tournamentList = [];
   pageActual = 1;
   @Input() flag;
+  showLoadingIndicator = true;
 
   constructor(
     private tournamentService: TournamentService,
@@ -20,7 +21,6 @@ export class TournamentListComponent implements OnInit {
   ) {}
   
   ngOnInit() {
-    this.spinner.show();
     this.getTournaments();
   }
 
@@ -30,7 +30,7 @@ export class TournamentListComponent implements OnInit {
       ? this.tournamentList = tournamentList.slice(0, 3)
       : this.tournamentList = tournamentList;
 
-      this.spinner.hide();
+      this.showLoadingIndicator = false;
     });
   }
 }

@@ -10,6 +10,7 @@ export class HomeComponent implements OnInit, DoCheck {
   matches = [];
   match = {};
   imgDefault = '../../../assets/images/default-image.png';
+  showLoadingIndicator = true;
 
   constructor(
     private scheduleService: ScheduleService,
@@ -39,7 +40,10 @@ export class HomeComponent implements OnInit, DoCheck {
               return;
             }
           });
-        } else this.match = matches[0];
+        } else {
+          this.match = matches[0];
+        }
+        this.showLoadingIndicator = false;
       });
   }
 

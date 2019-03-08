@@ -4,7 +4,7 @@ import { Team } from 'src/app/shared/models/team';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { END_POINT } from 'src/app/shared/services/api-registry';
 import { Router } from '@angular/router';
-import swal from 'sweetalert'
+import swal from 'sweetalert';
 
 @Component({
   selector: 'app-tournament-registration',
