@@ -17,7 +17,7 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
   @Output("onSubmit") sendData = new EventEmitter();
   @ViewChild("modal", { read: ElementRef }) modal: ElementRef;
   @ViewChild("elmForm", { read: NgForm }) elmForm: NgForm;
-  firstTeamPrediction_ngModel;
+  firstTeamPrediction_ngModel: Number;
   secondTeamPrediction_ngModel;
   firstTeamScore_ngModel;
   secondTeamScore_ngModel;
