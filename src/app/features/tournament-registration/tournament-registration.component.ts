@@ -14,12 +14,12 @@ import swal from 'sweetalert';
 export class TournamentRegistrationComponent implements DoCheck, OnInit {
   @ViewChild("modal", { read: ElementRef }) modal: ElementRef;
   @ViewChild("f", { read: ElementRef }) modalForm: ElementRef;
-  
+
   imageSource = '../../../assets/images/anhbongda.jpg';
   imageUrl = '../../../assets/images/default-image.png';
   imageLogo = '';
   imageCover = '';
-  numberGroup = 4;
+  numberGroup = 8;
 
   teams: Team[] = [];
   isSubmited = false;
@@ -34,7 +34,7 @@ export class TournamentRegistrationComponent implements DoCheck, OnInit {
     private apiService: ApiService,
     private renderer: Renderer,
     private router: Router
-  ) {}
+  ) { }
 
   ngDoCheck() {
     this.isSubmited = this.teams.length === (this.numberGroup * 4) ? true : false;
@@ -43,8 +43,8 @@ export class TournamentRegistrationComponent implements DoCheck, OnInit {
   ngOnInit() {
     this.initTeam();
   }
- 
-   initTeam() { 
+
+  initTeam() {
     this.tables.map(tables => {
       for (let i = 0; i < (4 * this.numberGroup); i++) {
         let team = new Team();

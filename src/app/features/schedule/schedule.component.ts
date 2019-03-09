@@ -44,6 +44,7 @@ export class ScheduleComponent implements OnInit {
     this.scheduleService.get(id)
       .subscribe(schedules => {
         this.schedules = [];
+        let knockouts = [];
         let quarters = [];
         let semis = [];
         let finals = [];
@@ -61,36 +62,29 @@ export class ScheduleComponent implements OnInit {
           });
         });
 
+        let scheduleCheck = schedules.length > 32 ? true : false;
         schedules.map(match => {
           if (match.round !== 1) {
             if (match.round < 3) {
-              quarters.push(match);
+              scheduleCheck ? knockouts.push(match) : quarters.push(match);
             } else if (match.round < 4) {
-              semis.push(match);
-            } else {
-              if (this.dem === 0) {
+              scheduleCheck ? quarters.push(match) : semis.push(match);
+            } else if (match.round < 5) {
+              if (this.dem === 0 && !scheduleCheck){
                 this.dem = 1;
                 finals.push(match);
+              } 
+              if (scheduleCheck) {
+                semis.push(match);
               }
+            }
+            if (match.round === 5.1) {
+              finals.push(match)
             }
           }
         });
-        
-        // if (id === '5c7f996b1329561d847789c8') {
-        //   quarters = [];
-        //   semis = [];
-        //   finals = [];
-        //   fake_data.quarters.map(match => {
-        //     quarters.push(match);
-        //   })
-        //   fake_data.semis.map(match => {
-        //     semis.push(match);
-        //   })
-        //   fake_data.finals.map(match => {
-        //     finals.push(match);
-        //   })
-        // }
-
+        scheduleCheck ? this.schedules.push({ groupName: 'Knockout', matches: knockouts }) : '';
+     
         this.schedules.push({
           groupName: 'Quater-final',
           matches: quarters
