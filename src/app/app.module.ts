@@ -35,6 +35,7 @@ import { MatchDetailComponent } from './features/match-detail/match-detail.compo
 import { TeamDetailComponent } from './features/team-detail/team-detail.component';
 import { AllSchedulesComponent } from './features/all-schedules/all-schedules.component';
 import { DialogEditMatchComponent } from './shared/components/dialog/dialog-edit-match/dialog-edit-match.component';
+import { DialogAddTeamComponent } from './shared/components/dialog/dialog-add-team/dialog-add-team.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -69,7 +70,8 @@ export function tokenGetter() {
     MatchDetailComponent,
     TeamDetailComponent,
     AllSchedulesComponent,
-    DialogEditMatchComponent
+    DialogEditMatchComponent,
+    DialogAddTeamComponent
   ],
   imports: [
     BrowserModule,

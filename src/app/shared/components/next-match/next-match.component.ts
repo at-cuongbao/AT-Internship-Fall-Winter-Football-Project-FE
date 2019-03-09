@@ -9,15 +9,17 @@ import { END_POINT } from 'src/app/shared/services/api-registry';
   styleUrls: ['./next-match.component.scss']
 })
 export class NextMatchComponent {
-  @Output() updateSchedule = new EventEmitter();
   @Input("match") match: any;
+  @Output() updateSchedule = new EventEmitter();
   matchData = [];
-
+  isOpen: boolean;
 
   constructor(
     private auth: AuthService,
     private router: Router
-  ) { }
+  ) {
+    this.isOpen = false;
+   }
 
   openMatch(match) {
     if (match.id) {
@@ -25,6 +27,10 @@ export class NextMatchComponent {
     } else {
       alert("Can not find match id!");
     }
+  }
+
+  open() {
+    this.isOpen = !this.isOpen;
   }
 
   openModal(match) {

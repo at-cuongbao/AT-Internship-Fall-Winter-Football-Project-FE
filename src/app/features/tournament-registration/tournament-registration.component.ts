@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, Renderer, DoCheck, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { NgForm, NgModel } from '@angular/forms';
 import { Team } from 'src/app/shared/models/team';
 import { ApiService } from 'src/app/shared/services/api.service';
@@ -12,29 +12,31 @@ import swal from 'sweetalert'
   styleUrls: ['./tournament-registration.component.scss']
 })
 export class TournamentRegistrationComponent implements DoCheck, OnInit {
-  @ViewChild("modal", { read: ElementRef }) modal: ElementRef;
-  @ViewChild("f", { read: ElementRef }) modalForm: ElementRef;
-  
+
   imageSource = '../../../assets/images/anhbongda.jpg';
   imageUrl = '../../../assets/images/default-image.png';
   imageLogo = '';
   imageCover = '';
   numberGroup = 4;
+  index: number;
 
   teams: Team[] = [];
+  team: Object;
   isSubmited = false;
   teamName = '';
   teamCode = '';
-
+  isOpenModal: boolean;
   groups = [];
   tables = ["A", "B", "C", "D", "E", "F", "G", "H"];
   errorMessage = '';
 
   constructor(
     private apiService: ApiService,
-    private renderer: Renderer,
     private router: Router
-  ) {}
+  ) {
+    this.isOpenModal = false;
+    this.imageUrl = '../../../assets/images/default-image.png';
+  }
 
   ngDoCheck() {
     this.isSubmited = this.teams.length === (this.numberGroup * 4) ? true : false;
@@ -43,11 +45,12 @@ export class TournamentRegistrationComponent implements DoCheck, OnInit {
   ngOnInit() {
     this.initTeam();
   }
- 
-   initTeam() { 
+
+  initTeam() {
+    let team: Team;
     this.tables.map(tables => {
       for (let i = 0; i < (4 * this.numberGroup); i++) {
-        let team = new Team();
+        team = new Team();
         team.name = "Team " + (i + 1);
         team.code = "Code";
         team.cover = this.imageUrl;
@@ -55,18 +58,6 @@ export class TournamentRegistrationComponent implements DoCheck, OnInit {
         this.teams[i] = team;
       }
     });
-  }
-
-  handleFileInput(file: FileList, isForLogo = true) {
-    const reader = new FileReader();
-    reader.onload = (event: any) => {
-      if (isForLogo) {
-        this.imageLogo = event.target.result;
-      } else {
-        this.imageCover = event.target.result;
-      }
-    }
-    reader.readAsDataURL(file.item(0));
   }
 
   convert(number) {
@@ -100,33 +91,17 @@ export class TournamentRegistrationComponent implements DoCheck, OnInit {
     }
   }
 
-  onModalSubmit(modalForm: NgForm) {
-    let index = +this.modal.nativeElement.getAttribute('id');
-    let team = new Team();
-    team.name = modalForm.control.value.name;
-    team.code = modalForm.control.value.code;
-    team.cover = modalForm.control.value.cover ? "../../../assets/images/" + modalForm.control.value.cover.slice(12) : this.imageUrl;
-    team.logo = modalForm.control.value.logo ? "../../../assets/images/" + modalForm.control.value.logo.slice(12) : this.imageUrl;
-    this.teams[index] = team;
-
-    this.resetForm();
-    this.closeModal();
+  onModalSubmit(team) {
+    if (team) this.teams[this.index] = team;
+    this.isOpenModal = false;
   }
 
   openModal(index) {
-    this.resetForm();
+    this.index = index;
     if (this.teams[index]) {
-      this.teamName = this.teams[index].name;
-      this.teamCode = this.teams[index].code;
-      this.imageCover = this.teams[index].cover;
-      this.imageLogo = this.teams[index].logo;
+      this.team = Object.assign({}, this.teams[index]);
     }
-    this.renderer.setElementAttribute(this.modal.nativeElement, "style", "display: block");
-    this.renderer.setElementAttribute(this.modal.nativeElement, "id", `${index}`);
-  }
-
-  closeModal() {
-    this.renderer.setElementAttribute(this.modal.nativeElement, "style", "display: none");
+    this.isOpenModal = true;
   }
 
   checkTime(input: NgModel) {
@@ -136,10 +111,5 @@ export class TournamentRegistrationComponent implements DoCheck, OnInit {
     } else {
       this.errorMessage = "";
     }
-  }
-
-  resetForm() {
-    this.modalForm.nativeElement.reset();
-    this.imageCover = this.imageLogo = this.imageUrl;
   }
 }

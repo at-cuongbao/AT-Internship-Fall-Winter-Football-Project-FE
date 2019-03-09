@@ -13,8 +13,18 @@
       </div>
       <div class="score-avatar">
         <div class="info-match txt-center">
-          <div class="info-match-time">
-            {{ match.start_at | date:'MMMM, dd | h:mm a' || 'Undefined' }}
+          <div class="info-match-time" *ngIf="!auth.currentUser?.admin">
+            <div class="info-match-time">
+              {{ match.start_at | date:'MMMM, dd | h:mm a' || 'Undefined' }}
+            </div>
+          </div>
+          <div class="info-match-time" *ngIf="auth.currentUser?.admin">
+            <input name="start_at" (ngModelChange)="checkTime(start)" ngModel #start="ngModel" required
+              [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" [(ngModel)]="start_at_ngModel" placeholder="Start Day">
+            <owl-date-time #dt1></owl-date-time>
+            <div class="alert" *ngIf="errorMessage">
+              {{ errorMessage }}
+            </div>
           </div>
         </div>
         <div class="score-prediction">
@@ -41,8 +51,7 @@
               min="0" (ngModelChange)="checkWinner()" required>
             <img *ngIf="!isWinner && match.round !==1" class="imgWinner2" [src]="imageWinner" alt="star icon">
             <!-- Choose winner -->
-            <ng-container
-              *ngIf="!disableRadio_btn">
+            <ng-container *ngIf="!disableRadio_btn">
               <div class="winner1">
                 Winner: <input type="radio" name="checkWinner" [value]="true" [(ngModel)]="isWinner"
                   (change)="changeFlag(true)">
@@ -57,7 +66,8 @@
             <img *ngIf="match.secondTeam" [src]="match.secondTeam.logo" alt="" class="logo-size">
             <p class="code-team">{{ match.secondTeam?.code | slice:0:3 }}</p>
           </div>
-          <button class="btn-prediction" [class.disabled]="elmForm.invalid" [disabled]="elmForm.invalid">Submit</button>
+          <!-- <button class="btn-prediction" [class.disabled]="elmForm.invalid" [disabled]="elmForm.invalid">Submit</button> -->
+          <button class="btn-prediction">Submit</button>
         </div>
       </div>
     </form>

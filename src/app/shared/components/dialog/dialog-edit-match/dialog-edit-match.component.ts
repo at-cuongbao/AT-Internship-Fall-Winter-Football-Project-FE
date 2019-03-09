@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef, Renderer, Input, OnChanges, Output, EventEmitter } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, NgModel } from '@angular/forms';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { END_POINT } from 'src/app/shared/services/api-registry';
 import { ApiService } from 'src/app/shared/services/api.service';
@@ -21,10 +21,12 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
   secondTeamPrediction_ngModel;
   firstTeamScore_ngModel;
   secondTeamScore_ngModel;
+  start_at_ngModel: Date;
   match: any;
   isWinner = true;
   disableRadio_btn = true;
   imageWinner = '../../../assets/images/prize.png';
+  errorMessage: String;
 
   constructor(
     private auth: AuthService,
@@ -35,6 +37,7 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
     this.match = this.matches[0];
+    this.start_at_ngModel = this.match.start_at || 'Unset';
     if (this.auth.currentUser) {
       if (this.auth.currentUser.admin) {
         this.firstTeamScore_ngModel = this.match.firstTeam.score;
@@ -51,42 +54,13 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
     if (this.match.secondTeam.winners || (this.match.firstTeam.score < this.match.secondTeam.score)) {
       this.isWinner = false;
     }
-    
+
     if (this.match.round !== 1) {
       if (this.firstTeamScore_ngModel === this.secondTeamScore_ngModel) {
         this.disableRadio_btn = false;
       }
     }
   }
-
-  onSubmit(form: NgForm, match) {
-    const data = {
-      match_id: match.id,
-      user_id: this.auth.currentUser.sub,
-      scorePrediction: [form.value.firstTeamPrediction, form.value.secondTeamPrediction],
-      tournament_team_id: [match.firstTeam.id, match.secondTeam.id],
-      winners: []
-    };
-    let url = [END_POINT.prediction + '/new'];
-    if (this.auth.currentUser.admin) {
-      url = [END_POINT.matches + '/update'];
-      data.scorePrediction = [form.value.secondTeamScoreValue, form.value.firstTeamScoreValue];
-      data.winners = [form.value.firstTeamWinner, form.value.secondTeamWinner];
-    }
-    this.apiService.post(url, data).subscribe(code => {
-      if (code === 200) {
-        this.match = match;
-      } else {
-        swal({
-          // buttons: false,
-          text: 'Time out to predict !',
-          icon: "error",
-          timer: 2000,
-        });
-      }
-      this.closeModal(match);
-    });
-  };
 
   closeModal(match) {
     this.sendData.emit(match);
@@ -110,4 +84,44 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
       }
     }
   }
+
+  checkTime(input: NgModel) {
+    let chosenTime = input.control.value;
+    if (chosenTime && new Date(chosenTime).getTime() < Date.now()) {
+      this.errorMessage = "Insert day must be greater than now !";
+    } else {
+      this.errorMessage = "";
+    }
+  }
+
+  onSubmit(form: NgForm, match) {
+    const data = {
+      match_id: match.id,
+      user_id: this.auth.currentUser.sub,
+      tournament_team_id: [match.firstTeam.firstTeamId, match.secondTeam.secondTeamId],
+      start_at: form.value.start_at,
+      scorePrediction: [form.value.firstTeamPrediction, form.value.secondTeamPrediction],
+      winners: []
+    };
+    
+    let url = [END_POINT.prediction + '/new'];
+    if (this.auth.currentUser.admin) {
+      url = [END_POINT.matches + '/update'];
+      data.scorePrediction = [form.value.firstTeamScoreValue, form.value.secondTeamScoreValue];
+      data.winners = [form.value.firstTeamWinner, form.value.secondTeamWinner];
+    }
+    this.apiService.post(url, data).subscribe(code => {
+      if (code === 200) {
+        this.match = match;
+      } else {
+        swal({
+          // buttons: false,
+          text: 'Time out to predict !',
+          icon: "error",
+          timer: 2000,
+        });
+      }
+      this.closeModal(match);
+    });
+  };
 }
