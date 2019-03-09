@@ -1,25 +1,27 @@
 <div class="container">
-  <section *ngIf="tournamentList.length" class="tournament-list" [class.display-full]="flag">
-    <ngx-spinner></ngx-spinner>
-    <div *ngIf="tournamentList.length" class="tournament-top clearfix">
-      <div *ngFor="let tour of tournamentList | paginate: { itemsPerPage: 6, currentPage: pageActual }" class="card">
-        <a routerLink="/tournament-detail/{{tour._id}}">
-          <img src="../../../assets/images/championsleaguelogo.jpg" alt="Denim Jeans" height="300">
-        </a>
-        <div class="card-wrapper">
-          <div class="date-creation">{{ tour.start_at | date:'short' }}</div>
-          <h4 class="card-title">
-            <a routerLink="/tournament-detail/{{tour._id}}">{{ tour.name || 'Unset' }}</a>
-          </h4>
-          <p class="card-content">Decription: {{ tour.desc || 'None' }}.</p>
-          <a class="read-more" routerLink="/tournament-detail/{{tour._id}}">Read more</a>
+  <section class="tournament-list" [class.display-full]="flag">
+    <div *ngIf="showLoadingIndicator" class="lds-roller" [class.position-left-30]="flag"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    <ng-container  *ngIf="tournamentList.length">
+      <div class="tournament-top clearfix">
+        <div *ngFor="let tour of tournamentList | paginate: { itemsPerPage: 6, currentPage: pageActual }" class="card">
+          <a routerLink="/tournament-detail/{{tour._id}}">
+            <img src="../../../assets/images/championsleaguelogo.jpg" alt="Denim Jeans" height="300">
+          </a>
+          <div class="card-wrapper">
+            <div class="date-creation">{{ tour.start_at | date:'short' }}</div>
+            <h4 class="card-title">
+              <a routerLink="/tournament-detail/{{tour._id}}">{{ tour.name || 'Unset' }}</a>
+            </h4>
+            <p class="card-content">Decription: {{ tour.desc || 'None' }}.</p>
+            <a class="read-more" routerLink="/tournament-detail/{{tour._id}}">Read more</a>
+          </div>
         </div>
       </div>
-    </div>
-    <div [class.display-none]="flag" class="tournament-bottom">
-      <a *ngIf="auth.isLoggedIn() && auth.currentUser.admin" routerLink="/tournament-registration" class="btn btn-success">Create</a>
-      <pagination-controls [class.display-none]="!tournamentList.length" class="pagination-control" (pageChange)="pageActual = $event"></pagination-controls>
-    </div>
+      <div [class.display-none]="flag" class="tournament-bottom">
+        <a *ngIf="auth.isLoggedIn() && auth.currentUser.admin" routerLink="/tournament-registration" class="btn btn-success">Create</a>
+        <pagination-controls [class.display-none]="!tournamentList.length" class="pagination-control" (pageChange)="pageActual = $event"></pagination-controls>
+      </div>
+    </ng-container>
   </section>
   <app-sidebar [class.display-none]="flag"></app-sidebar>
 </div>

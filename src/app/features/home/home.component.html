@@ -6,6 +6,7 @@
     <span>matches</span>
   </h4>
 </div>
+<div *ngIf="showLoadingIndicator" class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
 <div class="next-match-wrapper" *ngIf="matches.length">
   <div class="container">
     <div class="home-next-match w50 inline-block pull-left">

@@ -11,6 +11,12 @@ const POSITION = {
   tk: 8
 }
 
+const POSITION_32 = {
+  ck: 6,
+  bk: 8,
+  tk: 16
+}
+
 @Component({
   selector: 'app-tournament-detail',
   templateUrl: './tournament-detail.component.html',
@@ -23,6 +29,7 @@ export class TournamentDetailComponent implements OnInit {
   teams = [];
   id = '';
   tournaments = [];
+  flag = false;
 
   constructor(
     private matchService: MatchService,
@@ -51,16 +58,16 @@ export class TournamentDetailComponent implements OnInit {
     );
   }
 
-  generateMatches(data) {
-    Object.keys(POSITION).forEach(key => {
-      for (let i = 1; i <= POSITION[key]; i++) {
+  generateMatches(data, kind = POSITION) {
+    Object.keys(kind).forEach(key => {
+      for (let i = 1; i <= kind[key]; i++) {
         let team = data.find(value => {
           return (value.label === key && value.position === i);
         });
         this.bracketView.push({
           label: key,
           position: i,
-          logo: team && team.logo ? team.logo : '',
+          logo: team && team.logo ? team.logo : '../../../assets/images/../../../assets/images/default-image.png',
           code: team && team.code ? team.code : '?',
           score: team && team.score ? team.score : '?'
         });
@@ -69,82 +76,16 @@ export class TournamentDetailComponent implements OnInit {
   }
 
   getMatches() {
-    let tournamentId = this.route.snapshot.paramMap.get('id') || '5c4fbbaa0b614f0a24019243';
+    let tournamentId = this.route.snapshot.paramMap.get('id');
     this.matchService.get(tournamentId)
       .subscribe(data => {
-        if (tournamentId === '5c7f996b1329561d847789c8') {
-          let finals = [];
-          let match_round = {
-            code: null,
-            label: "ck",
-            logo: "../../../assets/images/default-image.png",
-            position: 1,
-            score: null
-          }
-          // fake quarters
-          let index = 0;
-          fake_data.quarters.map(match => {
-            match_round = {
-              code: match.firstTeam.code,
-              label: "tk",
-              position: ++index,
-              logo: match.firstTeam.logo,
-              score: match.firstTeam.score
-            }
-            finals.push(match_round);
-            match_round = {
-              code: match.secondTeam.code,
-              label: "tk",
-              position: ++index,
-              logo: match.secondTeam.logo,
-              score: match.secondTeam.score
-            }
-            finals.push(match_round);
-          })
-          // fake semis
-          index = 0;
-          fake_data.semis.map(match => {
-            match_round = {
-              code: match.firstTeam.code,
-              label: "bk",
-              position: ++index,
-              logo: match.firstTeam.logo,
-              score: match.firstTeam.score
-            }
-            finals.push(match_round);
-            match_round = {
-              code: match.secondTeam.code,
-              label: "bk",
-              position: ++index,
-              logo: match.secondTeam.logo,
-              score: match.secondTeam.score
-            }
-            finals.push(match_round);
-          })
-          // fake finals
-          fake_data.finals.map(match => {
-            match_round = {
-              code: match.firstTeam.code,
-              label: "ck",
-              position: 1,
-              logo: match.firstTeam.logo,
-              score: match.firstTeam.score
-            }
-            finals.push(match_round);
-            match_round = {
-              code: match.secondTeam.code,
-              label: "ck",
-              position: 2,
-              logo: match.secondTeam.logo,
-              score: match.secondTeam.score
-            }
-            finals.push(match_round);
-          })
-          this.generateMatches(finals);
-        } else {
+        console.log(data.matches)
+        if (data.matches.length < 17) {
           this.generateMatches(data.matches);
+        } else {
+          this.flag = true;
+          this.generateMatches(data.matches, POSITION_32);
         }
-
       }, error => {
         this.generateMatches([]);
       });

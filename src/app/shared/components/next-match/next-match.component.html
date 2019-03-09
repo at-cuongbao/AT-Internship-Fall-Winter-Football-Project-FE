@@ -47,6 +47,7 @@
       </button>
     </div>
   </div>
+  <div *ngIf="showLoadingIndicator" class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
 </div>
 <app-dialog-edit-match *ngIf="matchData.length" [matchData]="matchData" (onSubmit)="onSubmit($event)">
 </app-dialog-edit-match>
