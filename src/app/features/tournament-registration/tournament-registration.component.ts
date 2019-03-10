@@ -1,4 +1,4 @@
-import { Component, DoCheck, OnInit } from '@angular/core';
+import { Component, DoCheck } from '@angular/core';
 import { NgForm, NgModel } from '@angular/forms';
 import { Team } from 'src/app/shared/models/team';
 import { ApiService } from 'src/app/shared/services/api.service';
@@ -11,22 +11,15 @@ import swal from 'sweetalert'
   templateUrl: './tournament-registration.component.html',
   styleUrls: ['./tournament-registration.component.scss']
 })
-export class TournamentRegistrationComponent implements DoCheck, OnInit {
-
-  imageSource = '../../../assets/images/anhbongda.jpg';
-  imageUrl = '../../../assets/images/default-image.png';
-  imageLogo = '';
-  imageCover = '';
-  numberGroup = 4;
-  index: number;
-
-  teams: Team[] = [];
-  team: Object;
-  isSubmited = false;
-  teamName = '';
-  teamCode = '';
+export class TournamentRegistrationComponent implements DoCheck {
   isOpenModal: boolean;
-  groups = [];
+  index: number;
+  imageSource: string;
+  imageUrl: string;
+  team: Object;
+  teams: Team[];
+  isSubmited = false;
+  groups: Array<number>;
   tables = ["A", "B", "C", "D", "E", "F", "G", "H"];
   errorMessage = '';
 
@@ -35,24 +28,24 @@ export class TournamentRegistrationComponent implements DoCheck, OnInit {
     private router: Router
   ) {
     this.isOpenModal = false;
+    this.imageSource = '../../../assets/images/anhbongda.jpg';
     this.imageUrl = '../../../assets/images/default-image.png';
+    this.teams = [];
+    this.groups = [];
   }
 
   ngDoCheck() {
-    this.isSubmited = this.teams.length === (this.numberGroup * 4) ? true : false;
+    this.checkTeam();
   }
 
-  ngOnInit() {
-    this.initTeam();
-  }
-
-  initTeam() {
+  initTeam(numberGroup) {
     let team: Team;
+    let teams = numberGroup * 4;
     this.tables.map(tables => {
-      for (let i = 0; i < (4 * this.numberGroup); i++) {
+      for (let i = 0; i < teams; i++) {
         team = new Team();
-        team.name = "Team " + (i + 1);
-        team.code = "Code";
+        team.name = `Team ${i + 1}`;
+        team.code = `C${i + 1}`;
         team.cover = this.imageUrl;
         team.logo = this.imageUrl;
         this.teams[i] = team;
@@ -60,12 +53,19 @@ export class TournamentRegistrationComponent implements DoCheck, OnInit {
     });
   }
 
+  checkTeam() {
+    this.isSubmited = true;
+    this.teams.forEach(team => {
+      if (!(team.name && team.code)) return this.isSubmited = false;
+    });
+  }
+
   convert(number) {
-    this.numberGroup = number.value;
     this.groups = [];
-    for (let i = 0; i < number.value; i++) {
+    for (let i = 0; i < number; i++) {
       this.groups.push(i);
     }
+    this.initTeam(number);
   }
 
   onSubmit(f: NgForm) {
@@ -107,9 +107,9 @@ export class TournamentRegistrationComponent implements DoCheck, OnInit {
   checkTime(input: NgModel) {
     let chosenTime = input.control.value;
     if (chosenTime && new Date(chosenTime).getTime() < Date.now()) {
-      this.errorMessage = "Insert day must be greater than now !";
+      this.errorMessage = 'Insert day must be greater than now !';
     } else {
-      this.errorMessage = "";
+      this.errorMessage = '';
     }
   }
 }
