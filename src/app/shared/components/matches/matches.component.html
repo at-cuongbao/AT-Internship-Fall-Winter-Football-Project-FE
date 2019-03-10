@@ -1,5 +1,11 @@
 <div class="schedule">
   <ul *ngIf="matches" class="matches">
+    <li class="next-match-title txt-center" *ngIf="home">
+      <h4>
+        Next
+        <span>matches</span>
+      </h4>
+    </li>
     <li class="match" *ngFor="let match of matches" (click)="openMatchDetail(match)">
       <p class="match-date w25" *ngIf="home">
         <span>
@@ -39,14 +45,17 @@
         </a>
       </p>
       <p class="match-view w25" *ngIf="!auth.currentUser?.admin">
-        <button [class.disabled]="flag || match?.prediction?.isAllow || !match.firstTeam.code" *ngIf="!match.firstTeam.score && !(flag || !match.firstTeam.code || match?.prediction?.isAllow)" 
-          class="match-view-link txt-bold" (click)="open(match)" [disabled]="flag || !match.firstTeam.code || match?.prediction?.isAllow">
+        <button [class.disabled]="flag || match?.prediction?.isAllow || !match.firstTeam.code"
+          *ngIf="!match.firstTeam.score && !(flag || !match.firstTeam.code || match?.prediction?.isAllow)"
+          class="match-view-link txt-bold" (click)="open(match)"
+          [disabled]="flag || !match.firstTeam.code || match?.prediction?.isAllow">
           <ng-container *ngIf="!auth.isLoggedIn()">Predict</ng-container>
           <ng-container *ngIf="auth.isLoggedIn()">
             {{ match?.prediction?.is_predicted ? 'View Prediction' : 'Predict' }}
           </ng-container>
         </button>
-        <a *ngIf="match.firstTeam.score || (flag || !match.firstTeam.code || match?.prediction?.isAllow)" class="match-view-link txt-bold">
+        <a *ngIf="match.firstTeam.score || (flag || !match.firstTeam.code || match?.prediction?.isAllow)"
+          class="match-view-link txt-bold">
           View
         </a>
       </p>

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, Renderer, Input, OnChanges, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 import { NgForm, NgModel } from '@angular/forms';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { END_POINT } from 'src/app/shared/services/api-registry';
@@ -15,8 +15,6 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
 
   @Input("matchData") matches: any;
   @Output("onSubmit") sendData = new EventEmitter();
-  @ViewChild("modal", { read: ElementRef }) modal: ElementRef;
-  @ViewChild("elmForm", { read: NgForm }) elmForm: NgForm;
   firstTeamPrediction_ngModel;
   secondTeamPrediction_ngModel;
   firstTeamScore_ngModel;
@@ -30,7 +28,6 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
 
   constructor(
     private auth: AuthService,
-    private renderer: Renderer,
     private apiService: ApiService,
     private spinner: NgxSpinnerService
   ) { }
@@ -50,7 +47,6 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    this.renderer.setElementAttribute(this.modal.nativeElement, "style", "display: block");
     if (this.match.secondTeam.winners || (this.match.firstTeam.score < this.match.secondTeam.score)) {
       this.isWinner = false;
     }

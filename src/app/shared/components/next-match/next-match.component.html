@@ -42,27 +42,19 @@
           {{ match?.prediction?.is_predicted ? 'Predicted' : 'Predict' }}
         </span>
       </button>
-      <!-- <button *ngIf="!auth.currentUser?.admin && auth.isLoggedIn()" class="btn btn-predict txt-bold"
-        (click)="openModal(match)">
-        <span>
-          {{ match?.prediction?.is_predicted ? 'Predicted' : 'Predict' }}
-        </span>
-      </button> -->
       <button (click)="openMatch(match)" class="btn btn-predict txt-bold">
         View detail
       </button>
     </div>
-    <div *ngIf="isOpen" class="predict">
+    <form *ngIf="isOpen" class="predict" #elmForm="ngForm" (ngSubmit)="onSubmit(elmForm)">
       <div>
-        <input type="number">
-        <input type="number" >
+        <input type="number" name="firstTeamPrediction" [(ngModel)]="firstTeamPrediction">
+        <input type="number" name="secondTeamPrediction" [(ngModel)]="secondTeamPrediction">
       </div>
       <div>
         <input type="submit" class="btn btn-predict txt-bold">
         <input type="button" class="btn btn-predict txt-bold" value="Cancel" (click)="open()">
       </div>
-    </div>
+    </form>
   </div>
 </div>
-<!-- <app-dialog-edit-match *ngIf="matchData.length" [matchData]="matchData" (onSubmit)="onSubmit($event)">
-</app-dialog-edit-match> -->
