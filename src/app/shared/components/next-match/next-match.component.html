@@ -16,7 +16,7 @@
         </a>
       </p>
       <p class="match-team-code w20">
-        {{ match?.firstTeam?.code | slice:0:4 | questionMask }}
+        {{ match?.firstTeam?.code | slice:0:3 | questionMask }}
       </p>
       <p class="versus w20">
         <ng-container *ngIf="match?.firstTeam?.score">
@@ -27,7 +27,7 @@
         </ng-container>
       </p>
       <p class="match-team-code w20">
-        {{ match?.secondTeam?.code | slice:0:4 | questionMask }}
+        {{ match?.secondTeam?.code | slice:0:3 | questionMask }}
       </p>
       <p class="match-team-logo w20">
         <a routerLink="/team-detail/{{ match?.secondTeam.secondTeamId }}">
@@ -35,9 +35,9 @@
         </a>
       </p>
     </div>
-    <div>
+    <div *ngIf="!isOpen">
       <button *ngIf="!auth.currentUser?.admin && auth.isLoggedIn()" class="btn btn-predict txt-bold"
-        (click)="openModal(match)">
+        (click)="open()">
         <span>
           {{ match?.prediction?.is_predicted ? 'Predicted' : 'Predict' }}
         </span>
@@ -46,8 +46,16 @@
         View detail
       </button>
     </div>
+    <form *ngIf="isOpen" class="predict" #elmForm="ngForm" (ngSubmit)="onSubmit(elmForm)">
+      <div>
+        <input type="number" name="firstTeamPrediction" [(ngModel)]="firstTeamPrediction">
+        <input type="number" name="secondTeamPrediction" [(ngModel)]="secondTeamPrediction">
+      </div>
+      <div>
+        <input type="submit" class="btn btn-predict txt-bold">
+        <input type="button" class="btn btn-predict txt-bold" value="Cancel" (click)="open()">
+      </div>
+    </form>
   </div>
   <div *ngIf="showLoadingIndicator" class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
 </div>
-<app-dialog-edit-match *ngIf="matchData.length" [matchData]="matchData" (onSubmit)="onSubmit($event)">
-</app-dialog-edit-match>

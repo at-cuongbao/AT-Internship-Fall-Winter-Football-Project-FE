@@ -37,6 +37,7 @@ import { AllSchedulesComponent } from './features/all-schedules/all-schedules.co
 import { DialogEditMatchComponent } from './shared/components/dialog/dialog-edit-match/dialog-edit-match.component';
 import { PredictionListComponent } from './features/prediction-list/prediction-list.component';
 import { AdminPageComponent } from './features/admin-page/admin-page.component';
+import { DialogAddTeamComponent } from './shared/components/dialog/dialog-add-team/dialog-add-team.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -73,7 +74,8 @@ export function tokenGetter() {
     AllSchedulesComponent,
     DialogEditMatchComponent,
     PredictionListComponent,
-    AdminPageComponent
+    AdminPageComponent,
+    DialogAddTeamComponent
   ],
   imports: [
     BrowserModule,
