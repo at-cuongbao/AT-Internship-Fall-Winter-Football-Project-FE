@@ -30,6 +30,7 @@ export class TournamentDetailComponent implements OnInit {
   id = '';
   tournaments = [];
   flag = false;
+  topTeamFlag = false;
 
   constructor(
     private matchService: MatchService,
@@ -39,6 +40,7 @@ export class TournamentDetailComponent implements OnInit {
 
   ngOnInit() {
     this.getMatches();
+    this.getTopTeam();
     this.id = this.route.snapshot.params.id;
     let url = [END_POINT.tournamentTeams + '/' + this.id];
     this.apiService.get(url).subscribe(
@@ -75,11 +77,21 @@ export class TournamentDetailComponent implements OnInit {
     });
   }
 
+  getTopTeam() {
+    let tournamentId = this.route.snapshot.paramMap.get('id');
+    this.matchService.getTopTeams(tournamentId)
+      .subscribe(data => {
+        if (data) {
+          this.topTeamFlag = true;
+          this.teams = data;
+        }
+      })
+  }
+
   getMatches() {
     let tournamentId = this.route.snapshot.paramMap.get('id');
     this.matchService.get(tournamentId)
       .subscribe(data => {
-        console.log(data.matches)
         if (data.matches.length < 17) {
           this.generateMatches(data.matches);
         } else {
