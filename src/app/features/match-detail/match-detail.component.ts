@@ -25,6 +25,8 @@ export class MatchDetailComponent implements OnInit {
       score: 0
     }
   };
+  users = [];
+  
   constructor(
     private route: ActivatedRoute,
     private api: ApiService,
@@ -62,9 +64,9 @@ export class MatchDetailComponent implements OnInit {
   }
   getTopUser() {
     let id = this.route.snapshot.params.id;
-    this.api.get([END_POINT.matches + '/top/' + id])
+    this.api.get([END_POINT.prediction + '/top/' + id])
       .subscribe(data => {
-        console.log(data);
+        this.users = data;
       });
   }
 }

@@ -33,7 +33,7 @@
         </div>
         <div class="form-group">
           <select class="form-inline" name="number" ngModel #number="ngModel" required
-            (ngModelChange)="convert(number)">
+            (ngModelChange)="convert(number.value)">
             <option value="" disabled selected hidden><p>Number of tables</p></option>
             <option value="4">4</option>
             <option value="8">8</option>
@@ -120,46 +120,4 @@
   </div>
   <app-sidebar></app-sidebar>
 </div>
-
-<div #modal class="modal">
-  <div class="modal-content modal-content-important">
-    <span (click)="closeModal()" class="close">&times;</span>
-    <form #f="ngForm" (ngSubmit)="onModalSubmit(f)" class="team-form">
-      <div class="form-group team-name">
-        <label>Name: </label>
-        <input class="form-control team-input" type="text" placeholder="Name" name="name" [(ngModel)]="teamName"
-          #name="ngModel" ngModel required>
-        <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
-          <p *ngIf="name.errors.required">
-            (*)Name is required
-          </p>
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Code Name: </label>
-        <input class="form-control team-input" type="text" placeholder="Code Name" name="code" [(ngModel)]="teamCode"
-          #code="ngModel" ngModel required maxlength="4">
-        <div *ngIf="code.invalid && (code.dirty || code.touched)" class="alert alert-danger">
-          <p *ngIf="code.errors.required">
-            (*)Code name is required
-          </p>
-        </div>
-      </div>
-      <div class="form-group middle fileinputs">
-        <label>Cover: </label>
-        <img class="cover-img" width="60" height="60" [src]="imageCover" alt="">
-        <input class="form-control team-input input-file file" type="file" name="cover"
-          (change)="handleFileInput($event.target.files, false)" ngModel>
-      </div>
-      <div class="form-group middle fileinputs">
-        <label>Logo: </label>
-        <img class="logo-img" width="60" height="60" [src]="imageLogo" alt="">
-        <input class="form-control team-input input-file file" type="file" name="logo"
-          (change)="handleFileInput($event.target.files)" ngModel>
-      </div>
-      <div class="form-group txt-center">
-        <button type="submit" class="btn btn-success" (click)="closeModal()" [disabled]="f.invalid">Add Team</button>
-      </div>
-    </form>
-  </div>
-</div>
+<app-dialog-add-team *ngIf='isOpenModal' [team]='team' (submit)='onModalSubmit($event)'></app-dialog-add-team>

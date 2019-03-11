@@ -35,7 +35,7 @@ export class PredictionListComponent implements OnInit {
         if (returnedPredictions) {
           let group_to_values = returnedPredictions.reduce(function (obj, item) {
             obj[item.match_id.start_at] = obj[item.match_id.start_at] || [];
-            obj[item.match_id.start_at].push({ id: item.match_id._id, tournamentName: item.match_id.tournamentId.name, firstTeam: item.firstTeam, secondTeam: item.secondTeam });
+            obj[item.match_id.start_at].push({ id: item.match_id._id, prediction: item.prediction, tournamentName: item.match_id.tournamentId.name, firstTeam: item.firstTeam, secondTeam: item.secondTeam });
             return obj;
           }, {});
   
