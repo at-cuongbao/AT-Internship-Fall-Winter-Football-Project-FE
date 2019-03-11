@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild, ElementRef, Renderer, Input, OnChanges, Output, EventEmitter } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
+import { NgForm, NgModel } from '@angular/forms';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { END_POINT } from 'src/app/shared/services/api-registry';
 import { ApiService } from 'src/app/shared/services/api.service';
@@ -15,26 +15,26 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
 
   @Input("matchData") matches: any;
   @Output("onSubmit") sendData = new EventEmitter();
-  @ViewChild("modal", { read: ElementRef }) modal: ElementRef;
-  @ViewChild("elmForm", { read: NgForm }) elmForm: NgForm;
   firstTeamPrediction_ngModel;
   secondTeamPrediction_ngModel;
   firstTeamScore_ngModel;
   secondTeamScore_ngModel;
+  start_at_ngModel: Date;
   match: any;
   isWinner = true;
   disableRadio_btn = true;
   imageWinner = '../../../assets/images/prize.png';
+  errorMessage: String;
 
   constructor(
     private auth: AuthService,
-    private renderer: Renderer,
     private apiService: ApiService,
     private spinner: NgxSpinnerService
   ) { }
 
   ngOnChanges() {
     this.match = this.matches[0];
+    this.start_at_ngModel = this.match.start_at || 'Unset';
     if (this.auth.currentUser) {
       if (this.auth.currentUser.admin) {
         this.firstTeamScore_ngModel = this.match.firstTeam.score;
@@ -47,15 +47,46 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    this.renderer.setElementAttribute(this.modal.nativeElement, "style", "display: block");
-    if (this.match.secondTeam.winner || (this.match.firstTeam.score < this.match.secondTeam.score)) {
+    if (this.match.secondTeam.winners || (this.match.firstTeam.score < this.match.secondTeam.score)) {
       this.isWinner = false;
     }
-    
+
     if (this.match.round !== 1) {
       if (this.firstTeamScore_ngModel === this.secondTeamScore_ngModel) {
         this.disableRadio_btn = false;
       }
+    }
+  }
+
+  closeModal(match) {
+    this.sendData.emit(match);
+  }
+
+  changeFlag(isWinner) {
+    this.isWinner = isWinner;
+  }
+
+  checkWinner() {
+    if (this.firstTeamScore_ngModel < 0) this.firstTeamScore_ngModel = 0;
+    if (this.secondTeamScore_ngModel < 0) this.secondTeamScore_ngModel = 0;
+    this.disableRadio_btn = true;
+    if (this.match.round !== 1) {
+      if (this.firstTeamScore_ngModel < this.secondTeamScore_ngModel) {
+        this.isWinner = false;
+      } else if (this.firstTeamScore_ngModel > this.secondTeamScore_ngModel) {
+        this.isWinner = true;
+      } else {
+        this.disableRadio_btn = false;
+      }
+    }
+  }
+
+  checkTime(input: NgModel) {
+    let chosenTime = input.control.value;
+    if (chosenTime && new Date(chosenTime).getTime() < Date.now()) {
+      this.errorMessage = "Insert day must be greater than now !";
+    } else {
+      this.errorMessage = "";
     }
   }
 
@@ -65,6 +96,7 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
       user_id: this.auth.currentUser.sub,
       scorePrediction: [form.value.firstTeamPrediction, form.value.secondTeamPrediction],
       tournament_team_id: [match.firstTeam.firstTournamentTeamId, match.secondTeam.secondTournamentTeamId],
+      start_at: form.value.start_at,
       winners: []
     };
     let titleBtn = 'predicted';
@@ -95,27 +127,4 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
       });
     });
   };
-
-  closeModal(match) {
-    this.sendData.emit(match);
-  }
-
-  changeFlag(isWinner) {
-    this.isWinner = isWinner;
-  }
-
-  checkWinner() {
-    if (this.firstTeamScore_ngModel < 0) this.firstTeamScore_ngModel = 0;
-    if (this.secondTeamScore_ngModel < 0) this.secondTeamScore_ngModel = 0;
-    this.disableRadio_btn = true;
-    if (this.match.round !== 1) {
-      if (this.firstTeamScore_ngModel < this.secondTeamScore_ngModel) {
-        this.isWinner = false;
-      } else if (this.firstTeamScore_ngModel > this.secondTeamScore_ngModel) {
-        this.isWinner = true;
-      } else {
-        this.disableRadio_btn = false;
-      }
-    }
-  }
 }
