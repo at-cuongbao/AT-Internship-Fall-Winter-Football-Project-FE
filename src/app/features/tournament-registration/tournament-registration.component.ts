@@ -19,7 +19,7 @@ export class TournamentRegistrationComponent implements DoCheck, OnInit {
   imageUrl = '../../../assets/images/default-image.png';
   imageLogo = '';
   imageCover = '';
-  numberGroup = 8;
+  numberGroup = 4;
 
   teams: Team[] = [];
   isSubmited = false;

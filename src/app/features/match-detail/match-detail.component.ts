@@ -34,6 +34,7 @@ export class MatchDetailComponent implements OnInit {
   ngOnInit() {
     this.spinner.show();
     this.getMatch();
+    this.getTopUser();
   }
   
   getMatch() {
@@ -57,6 +58,13 @@ export class MatchDetailComponent implements OnInit {
           }
           this.spinner.hide();
         }
+      });
+  }
+  getTopUser() {
+    let id = this.route.snapshot.params.id;
+    this.api.get([END_POINT.matches + '/top/' + id])
+      .subscribe(data => {
+        console.log(data);
       });
   }
 }

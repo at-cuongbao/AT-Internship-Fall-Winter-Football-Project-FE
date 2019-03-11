@@ -64,7 +64,7 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
       match_id: match.id,
       user_id: this.auth.currentUser.sub,
       scorePrediction: [form.value.firstTeamPrediction, form.value.secondTeamPrediction],
-      tournament_team_id: [match.firstTeam.firstTeamId, match.secondTeam.secondTeamId],
+      tournament_team_id: [match.firstTeam.firstTournamentTeamId, match.secondTeam.secondTournamentTeamId],
       winners: []
     };
     let titleBtn = 'predicted';
