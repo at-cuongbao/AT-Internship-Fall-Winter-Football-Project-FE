@@ -4,7 +4,6 @@
   font-family: $font-body;
   .tournament-content {
     .tournament-name {
-      height: 500px;
       background-image: url('./assets/images/championsleaguelogo.jpg');
       position: relative;
       p {
@@ -86,10 +85,34 @@
             .tk8 {
               top: 370px;
             }
-            .tk1, .tk2, .tk3, .tk4 {
+            .tk9 {
+              top: 500px;
+            }
+            .tk10 {
+              top: 570px;
+            }
+            .tk11 {
+              top: 700px;
+            }
+            .tk12 {
+              top: 770px;
+            }
+            .tk13 {
+              top: 500px;
+            }
+            .tk14 {
+              top: 570px;
+            }
+            .tk15 {
+              top: 700px;
+            }
+            .tk16 {
+              top: 770px;
+            }
+            .tk1, .tk2, .tk3, .tk4, .tk9, .tk10, .tk11, .tk12 {
               left: 70px;
             }
-            .tk5, .tk6, .tk7, .tk8 {
+            .tk5, .tk6, .tk7, .tk8, .tk13, .tk14, .tk15, .tk16 {
               right: 70px;
               .code {
                 float: right;
@@ -111,10 +134,22 @@
             .bk4 {
               top: 270px;
             }
-            .bk1, .bk2 {
+            .bk5 {
+              top: 400px;
+            }
+            .bk6 {
+              top: 470px;
+            }
+            .bk7 {
+              top: 400px;
+            }
+            .bk8 {
+              top: 470px;
+            }
+            .bk1, .bk2, .bk5, .bk6 {
               left: 240px;
             }
-            .bk3, .bk4 {
+            .bk3, .bk4, .bk7, .bk8 {
               right: 240px;
               .code {
                 float: right;
@@ -130,16 +165,40 @@
             .ck2 {
               top: 370px;
             }
-            .ck1, .ck2 {
+            .ck3 {
+              top: 500px;
+            }
+            .ck4 {
+              top: 570px;
+            }
+            .ck3, .ck4 {
+              .code {
+                float: right;
+                padding-right: 12px;
+              }
+              .score {
+                float: left;
+              }
+            }
+            .ck5 {
+              top: 700px;
+            }
+            .ck6 {
+              top: 770px;
+            }
+            .ck1, .ck2, .ck3, .ck4, .ck5, .ck6 {
               left: 50%;
               transform: translate(-50%,0);
             }
-            .tk1, .tk2, .tk3, .tk4, .bk1, .bk2, .ck1, .ck2 {
+            .ck5, .ck6 {
+              left: 48%;
+            }
+            .tk1, .tk2, .tk3, .tk4, .tk9, .tk10, .tk11, .tk12, .bk1, .bk2, .bk5, .bk6 .ck1, .ck2 {
               img {
                 float: left;
               }
             }
-            .tk5, .tk6 , .tk7, .tk8, .bk3, .bk4 {
+            .tk5, .tk6 , .tk7, .tk8, .tk13, .tk14 , .tk15, .tk16, .bk3, .bk4, .bk7, .bk8, .ck3, .ck4 {
               img {
                 float: right;
               }

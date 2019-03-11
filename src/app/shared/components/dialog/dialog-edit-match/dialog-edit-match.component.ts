@@ -99,12 +99,13 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
       scorePrediction: [form.value.firstTeamPrediction, form.value.secondTeamPrediction],
       winners: []
     };
-    
+    let titleBtn = 'predicted';
     let url = [END_POINT.prediction + '/new'];
     if (this.auth.currentUser.admin) {
+      titleBtn = 'updated';
       url = [END_POINT.matches + '/update'];
       data.scorePrediction = [form.value.firstTeamScoreValue, form.value.secondTeamScoreValue];
-      data.winners = [form.value.firstTeamWinner, form.value.secondTeamWinner];
+      data.winners = [this.isWinner, !this.isWinner];
     }
     this.apiService.post(url, data).subscribe(code => {
       if (code === 200) {
@@ -118,6 +119,12 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
         });
       }
       this.closeModal(match);
+      swal({
+        // buttons: false,
+        text: `You have ${titleBtn} successfully !`,
+        icon: "success",
+        timer: 2000,
+      });
     });
   };
 }

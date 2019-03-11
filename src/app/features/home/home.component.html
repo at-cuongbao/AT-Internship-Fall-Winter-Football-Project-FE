@@ -1,5 +1,12 @@
 <app-slider></app-slider>
 <app-latest-result></app-latest-result>
+<div class="next-match-title txt-center">
+  <h4>
+    Next 
+    <span>matches</span>
+  </h4>
+</div>
+<div *ngIf="showLoadingIndicator" class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
 <div class="next-match-wrapper" *ngIf="matches.length">
   <div class="container">
     <div class="home-next-match w50 inline-block pull-left">

@@ -1,11 +1,5 @@
 <div class="schedule">
   <ul *ngIf="matches" class="matches">
-    <li class="next-match-title txt-center" *ngIf="home">
-      <h4>
-        Next
-        <span>matches</span>
-      </h4>
-    </li>
     <li class="match" *ngFor="let match of matches" (click)="openMatchDetail(match)">
       <p class="match-date w25" *ngIf="home">
         <span>

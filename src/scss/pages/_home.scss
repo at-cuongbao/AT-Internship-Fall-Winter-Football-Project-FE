@@ -13,8 +13,8 @@
   }
 }
 .next-match-title {
-  background: $color-light-black;
-  font-size: 24px;
+  margin-top: 64px;
+  font-size: 38px;
   text-transform: uppercase;
   position: relative;
   &::before {
@@ -31,8 +31,7 @@
     display: inline;
     line-height: 2;
     padding: 0 24px;
-    color: $color-white;
-    background: $color-light-black;
+    background: $color-white;
     span {
       color: $color-blue;
     }
@@ -43,7 +42,6 @@
   background-position-x: 50%;
   background-position-y: 0px;
   background-color: rgb(0, 142, 175);
-  margin-top: 64px;
   padding: 64px 0;
   .home-next-match {
     background-color: $color-white;
