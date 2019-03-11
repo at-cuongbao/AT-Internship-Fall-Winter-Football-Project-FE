@@ -14,12 +14,8 @@
 }
 .next-match-title {
   margin-top: 64px;
-  padding: 8px 0;
-  width: 100%;
-  background: $color-white;
   font-size: 38px;
   text-transform: uppercase;
-  color: $color-light-black;;
   position: relative;
   &::before {
     content: '';
@@ -31,11 +27,11 @@
     top: 50%;
   }
   h4 {
+    position: relative;
     display: inline;
     line-height: 2;
+    padding: 0 24px;
     background: $color-white;
-    padding: 0 64px;
-    position: relative;
     span {
       color: $color-blue;
     }

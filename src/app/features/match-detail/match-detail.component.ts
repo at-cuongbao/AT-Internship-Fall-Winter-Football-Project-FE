@@ -25,6 +25,8 @@ export class MatchDetailComponent implements OnInit {
       score: 0
     }
   };
+  users = [];
+  
   constructor(
     private route: ActivatedRoute,
     private api: ApiService,
@@ -34,6 +36,7 @@ export class MatchDetailComponent implements OnInit {
   ngOnInit() {
     this.spinner.show();
     this.getMatch();
+    this.getTopUser();
   }
   
   getMatch() {
@@ -57,6 +60,13 @@ export class MatchDetailComponent implements OnInit {
           }
           this.spinner.hide();
         }
+      });
+  }
+  getTopUser() {
+    let id = this.route.snapshot.params.id;
+    this.api.get([END_POINT.prediction + '/top/' + id])
+      .subscribe(data => {
+        this.users = data;
       });
   }
 }

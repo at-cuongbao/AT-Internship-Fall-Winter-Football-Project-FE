@@ -43,9 +43,9 @@ export class MatchesComponent implements OnInit {
   }
 
   open(match: any) {
-    // if (match.firstTeam.code) {
+    if (match.firstTeam.code) {
       this.isClickTagA = !this.isClickTagA;
       this.openModal.emit(match);
-    // }
+    }
   }
 }

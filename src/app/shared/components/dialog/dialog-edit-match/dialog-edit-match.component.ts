@@ -48,7 +48,7 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.renderer.setElementAttribute(this.modal.nativeElement, "style", "display: block");
-    if (this.match.secondTeam.winners || (this.match.firstTeam.score < this.match.secondTeam.score)) {
+    if (this.match.secondTeam.winner || (this.match.firstTeam.score < this.match.secondTeam.score)) {
       this.isWinner = false;
     }
     
@@ -64,14 +64,16 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
       match_id: match.id,
       user_id: this.auth.currentUser.sub,
       scorePrediction: [form.value.firstTeamPrediction, form.value.secondTeamPrediction],
-      tournament_team_id: [match.firstTeam.id, match.secondTeam.id],
+      tournament_team_id: [match.firstTeam.firstTournamentTeamId, match.secondTeam.secondTournamentTeamId],
       winners: []
     };
+    let titleBtn = 'predicted';
     let url = [END_POINT.prediction + '/new'];
     if (this.auth.currentUser.admin) {
+      titleBtn = 'updated';
       url = [END_POINT.matches + '/update'];
-      data.scorePrediction = [form.value.secondTeamScoreValue, form.value.firstTeamScoreValue];
-      data.winners = [form.value.firstTeamWinner, form.value.secondTeamWinner];
+      data.scorePrediction = [form.value.firstTeamScoreValue, form.value.secondTeamScoreValue];
+      data.winners = [this.isWinner, !this.isWinner];
     }
     this.apiService.post(url, data).subscribe(code => {
       if (code === 200) {
@@ -85,6 +87,12 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
         });
       }
       this.closeModal(match);
+      swal({
+        // buttons: false,
+        text: `You have ${titleBtn} successfully !`,
+        icon: "success",
+        timer: 2000,
+      });
     });
   };
 

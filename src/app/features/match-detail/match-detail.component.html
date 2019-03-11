@@ -5,11 +5,15 @@
   </div>
   <div class="match-content container">
     <div class="article-match clearfix">
-      <p>{{ match.firstTeam?.code | slice:0:3 }} - {{ match.secondTeam?.code | slice:0:3 }}: Choking "gunfight", peaking glory</p>
+      <p>{{ match.firstTeam?.code | slice:0:3 }} - {{ match.secondTeam?.code | slice:0:3 }}: Choking "gunfight", peaking
+        glory</p>
     </div>
     <div class="heading-match">
       <p class="match-day">{{ match.start_at }}</p>
-      <p class="match-summary"><b>Vivamus hendrerit, tortor sed luctus maximus, nunc urna hendrerit nibh, sit amet efficitur libero lorem quis mauris. Nunc a pulvinar lectus. Pellentesque aliquam justo ut rhoncus lobortis. In sed venenatis massa. Sed sodales faucibus odio, eget tempus nibh accumsan ut. Fusce tincidunt semper finibus. Nullam consequat non leo interdum pulvinar.</b></p>
+      <p class="match-summary"><b>Vivamus hendrerit, tortor sed luctus maximus, nunc urna hendrerit nibh, sit amet
+          efficitur libero lorem quis mauris. Nunc a pulvinar lectus. Pellentesque aliquam justo ut rhoncus lobortis. In
+          sed venenatis massa. Sed sodales faucibus odio, eget tempus nibh accumsan ut. Fusce tincidunt semper finibus.
+          Nullam consequat non leo interdum pulvinar.</b></p>
     </div>
     <div class="latest-middle clearfix">
       <a class="latest-team-left">
@@ -19,7 +23,8 @@
         <span class="versus-team">{{ match.firstTeam.code | slice:0:3 }}</span>
         <div class="latest-score">
           <div class="score-table clearfix">
-            <div [class.score-left]="!match.firstTeam.score" class="score-left-default txt-center">{{ match.firstTeam.score }}</div>
+            <div [class.score-left]="!match.firstTeam.score" class="score-left-default txt-center">
+              {{ match.firstTeam.score }}</div>
             <div class="score-right txt-center">{{ match.secondTeam.score }}</div>
           </div>
         </div>
@@ -29,26 +34,63 @@
         <img [src]="match.secondTeam.logo" alt="">
       </a>
     </div>
+    <table *ngIf="users.length" class="kode-table clearfix">
+      <thead>
+        <tr>
+          <th colspan="3">Top 3 Predictions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>STT</td>
+          <td>Date</td>
+          <td>Email</td>
+        </tr>
+        <tr *ngFor="let item of users, let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ (item.date | date:'MMM, dd | h:mm a') || '21/01/2019' }}</td>
+          <td>{{ item.user.email | slice:0:10 }}...</td>
+        </tr>
+      </tbody>
+    </table>
     <div class="match-content clearfix">
-      <p class="match-summary">Vivamus hendrerit, tortor sed luctus maximus, nunc urna hendrerit nibh, sit amet efficitur libero lorem quis mauris. Nunc a pulvinar lectus. Pellentesque aliquam justo ut rhoncus lobortis. In sed venenatis massa. Sed sodales faucibus odio, eget tempus nibh accumsan ut. Fusce tincidunt semper finibus. Nullam consequat non leo interdum pulvinar.</p>
-      <p>Suspendisse odio erat, suscipit vel aliquam tristique, dapibus at neque. Aliquam lectus tellus, feugiat non sodales nec, rhoncus a est. Etiam hendrerit, eros nec mollis blandit, velit sem aliquet ex, id tristique metus ligula tincidunt nisi. Ut porta augue at molestie feugiat. Donec quis neque molestie, interdum sapien at, dictum diam. Nam aliquam diam vitae purus vestibulum, sit amet rutrum tortor aliquet. Curabitur rhoncus consectetur tempor. Vivamus volutpat, mauris non auctor molestie, est ex auctor eros, vel egestas eros tellus non dui.</p>
+      <p class="match-summary">Vivamus hendrerit, tortor sed luctus maximus, nunc urna hendrerit nibh, sit amet
+        efficitur libero lorem quis mauris. Nunc a pulvinar lectus. Pellentesque aliquam justo ut rhoncus lobortis. In
+        sed venenatis massa. Sed sodales faucibus odio, eget tempus nibh accumsan ut. Fusce tincidunt semper finibus.
+        Nullam consequat non leo interdum pulvinar.</p>
+      <p>Suspendisse odio erat, suscipit vel aliquam tristique, dapibus at neque. Aliquam lectus tellus, feugiat non
+        sodales nec, rhoncus a est. Etiam hendrerit, eros nec mollis blandit, velit sem aliquet ex, id tristique metus
+        ligula tincidunt nisi. Ut porta augue at molestie feugiat. Donec quis neque molestie, interdum sapien at, dictum
+        diam. Nam aliquam diam vitae purus vestibulum, sit amet rutrum tortor aliquet. Curabitur rhoncus consectetur
+        tempor. Vivamus volutpat, mauris non auctor molestie, est ex auctor eros, vel egestas eros tellus non dui.</p>
     </div>
     <div class="video-match clearfix">
       <video class="video-item" controls>
-        <source src="./../../../assets//images/Chelsea vs Barcelona 3-2 Semi Final UEFA Champions League 20112012.mp4" type="video/mp4">
+        <source src="./../../../assets//images/Chelsea vs Barcelona 3-2 Semi Final UEFA Champions League 20112012.mp4"
+          type="video/mp4">
       </video>
     </div>
     <div class="start-lineup">
-      <p><b class="bold">Starting lineup</b> :</p>            
-      <p><b class="bold">{{ match.firstTeam.code | slice:0:3 }}:</b>  1 Kepa, 30 David Luiz, 28 Azpilicueta, 33 Emerson, 2 A. Rüdiger, 8 R. Barkley, 5 Jorginho, 7 N. Kante, 22 Willian, 10 E. Hazard, 11 Pedro</p>
-      <p><b class="bold">{{ match.secondTeam.code | slice:0:3 }}:</b>  1 M. ter Stegen, 3 Piqué, 18 Jordi Alba, 23 S. Umtiti, 2 Nélson Semedo, 4 I. Rakitić, 22 A. Vidal, 5 Sergio Busquets, 7 Philippe Coutinho, 10 L. Messi, 9 L. Suárez</p>     
+      <p><b class="bold">Starting lineup</b> :</p>
+      <p><b class="bold">{{ match.firstTeam.code | slice:0:3 }}:</b> 1 Kepa, 30 David Luiz, 28 Azpilicueta, 33 Emerson,
+        2 A. Rüdiger, 8 R. Barkley, 5 Jorginho, 7 N. Kante, 22 Willian, 10 E. Hazard, 11 Pedro</p>
+      <p><b class="bold">{{ match.secondTeam.code | slice:0:3 }}:</b> 1 M. ter Stegen, 3 Piqué, 18 Jordi Alba, 23 S.
+        Umtiti, 2 Nélson Semedo, 4 I. Rakitić, 22 A. Vidal, 5 Sergio Busquets, 7 Philippe Coutinho, 10 L. Messi, 9 L.
+        Suárez</p>
     </div>
     <div class="image-match">
-      <img src="./../../../assets/images/ChelvsBarca.jpg" >
+      <img src="./../../../assets/images/ChelvsBarca.jpg">
     </div>
     <div class="match-content clearfix">
-      <p class="match-summary">Vivamus hendrerit, tortor sed luctus maximus, nunc urna hendrerit nibh, sit amet efficitur libero lorem quis mauris. Nunc a pulvinar lectus. Pellentesque aliquam justo ut rhoncus lobortis. In sed venenatis massa. Sed sodales faucibus odio, eget tempus nibh accumsan ut. Fusce tincidunt semper finibus. Nullam consequat non leo interdum pulvinar.</p>
-      <p>Suspendisse odio erat, suscipit vel aliquam tristique, dapibus at neque. Aliquam lectus tellus, feugiat non sodales nec, rhoncus a est. Etiam hendrerit, eros nec mollis blandit, velit sem aliquet ex, id tristique metus ligula tincidunt nisi. Ut porta augue at molestie feugiat. Donec quis neque molestie, interdum sapien at, dictum diam. Nam aliquam diam vitae purus vestibulum, sit amet rutrum tortor aliquet. Curabitur rhoncus consectetur tempor. Vivamus volutpat, mauris non auctor molestie, est ex auctor eros, vel egestas eros tellus non dui.</p>
+      <p class="match-summary">Vivamus hendrerit, tortor sed luctus maximus, nunc urna hendrerit nibh, sit amet
+        efficitur libero lorem quis mauris. Nunc a pulvinar lectus. Pellentesque aliquam justo ut rhoncus lobortis. In
+        sed venenatis massa. Sed sodales faucibus odio, eget tempus nibh accumsan ut. Fusce tincidunt semper finibus.
+        Nullam consequat non leo interdum pulvinar.</p>
+      <p>Suspendisse odio erat, suscipit vel aliquam tristique, dapibus at neque. Aliquam lectus tellus, feugiat non
+        sodales nec, rhoncus a est. Etiam hendrerit, eros nec mollis blandit, velit sem aliquet ex, id tristique metus
+        ligula tincidunt nisi. Ut porta augue at molestie feugiat. Donec quis neque molestie, interdum sapien at, dictum
+        diam. Nam aliquam diam vitae purus vestibulum, sit amet rutrum tortor aliquet. Curabitur rhoncus consectetur
+        tempor. Vivamus volutpat, mauris non auctor molestie, est ex auctor eros, vel egestas eros tellus non dui.</p>
     </div>
     <table class="kode-table clearfix">
       <thead>
@@ -83,7 +125,7 @@
           <td>2</td>
           <td>0</td>
           <td>8</td>
-        </tr>          
+        </tr>
       </tbody>
     </table>
   </div>

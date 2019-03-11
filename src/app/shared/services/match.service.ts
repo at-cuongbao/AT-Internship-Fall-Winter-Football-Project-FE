@@ -13,4 +13,9 @@ export class MatchService {
     let url = [`${END_POINT.matches}/tournament/${schedule_id}`];
     return this.apiService.get(url);
   }
+
+  getTopTeams(tournamentId) {
+    let url = [`${END_POINT.matches}/showTopTeams/${tournamentId}`];
+    return this.apiService.get(url);
+  }
 }

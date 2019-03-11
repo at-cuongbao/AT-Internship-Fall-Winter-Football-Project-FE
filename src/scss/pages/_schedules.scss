@@ -20,10 +20,9 @@
     }
   }
 }
-
+ư
 /* The Modal (background) */
 .modal {
-  display: none;
   position: fixed;
   animation: 400s all;
   z-index: 2;
@@ -47,7 +46,7 @@
         margin-right: 10px;
       }
     }
-    .close {
+    .close-x {
       position: absolute;
       right: 10px;
       top: 0px;
@@ -108,7 +107,8 @@
         left: 50%;
         transform: translate(-50%, 0);
         .prediction {
-          border: none;
+          outline: 0;
+          border: 0;
           border-bottom: 2px solid $color-bold-blue;
           height: 50px;
           width: 50px;

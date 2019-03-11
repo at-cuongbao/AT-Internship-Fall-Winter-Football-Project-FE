@@ -15,6 +15,7 @@ export class AllSchedulesComponent implements OnInit {
   pageActual = 1;
   matchData = [];
   isClickTagA = false;
+  showLoadingIndicator = true;
 
   constructor(
     private apiService: ApiService, 
@@ -24,7 +25,6 @@ export class AllSchedulesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.spinner.show();
     this.getSchedule();
   }
 
@@ -42,7 +42,7 @@ export class AllSchedulesComponent implements OnInit {
         });
 
         this.schedules = groups.sort((a, b) => a.group > b.group ? 1 : -1);
-        this.spinner.hide();
+        this.showLoadingIndicator = false;
       })
     
   }
