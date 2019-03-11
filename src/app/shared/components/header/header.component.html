@@ -44,8 +44,8 @@
             </a>
             <div class="dropdown-content dropdown-right">
               <a class="sub-link">{{ auth.currentUser.name || 'Username' }}</a>
+              <a class="sub-link" routerLink="/prediction-list">Prediction list</a>
               <a class="sub-link">Profile</a>
-              <a class="sub-link">Languages</a>
               <a (click)="logout()" class="sub-link">Log out</a>
             </div>
           </ng-container>

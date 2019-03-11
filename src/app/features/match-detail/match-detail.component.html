@@ -29,6 +29,20 @@
         <img [src]="match.secondTeam.logo" alt="">
       </a>
     </div>
+    <table class="kode-table clearfix">
+      <thead>
+        <tr>
+          <th colspan="3">Top 3 Predictions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ match.firstTeam.code | slice:0:3 }}</td>
+          <td>3</td>
+          <td>40%</td>
+        </tr>          
+      </tbody>
+    </table>
     <div class="match-content clearfix">
       <p class="match-summary">Vivamus hendrerit, tortor sed luctus maximus, nunc urna hendrerit nibh, sit amet efficitur libero lorem quis mauris. Nunc a pulvinar lectus. Pellentesque aliquam justo ut rhoncus lobortis. In sed venenatis massa. Sed sodales faucibus odio, eget tempus nibh accumsan ut. Fusce tincidunt semper finibus. Nullam consequat non leo interdum pulvinar.</p>
       <p>Suspendisse odio erat, suscipit vel aliquam tristique, dapibus at neque. Aliquam lectus tellus, feugiat non sodales nec, rhoncus a est. Etiam hendrerit, eros nec mollis blandit, velit sem aliquet ex, id tristique metus ligula tincidunt nisi. Ut porta augue at molestie feugiat. Donec quis neque molestie, interdum sapien at, dictum diam. Nam aliquam diam vitae purus vestibulum, sit amet rutrum tortor aliquet. Curabitur rhoncus consectetur tempor. Vivamus volutpat, mauris non auctor molestie, est ex auctor eros, vel egestas eros tellus non dui.</p>
