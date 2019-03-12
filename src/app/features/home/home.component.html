@@ -1,2 +1,29 @@
 <app-slider></app-slider>
-<app-schedule></app-schedule>
+<app-latest-result></app-latest-result>
+<div class="next-match-title txt-center">
+  <h4>
+    Next 
+    <span>match</span>
+  </h4>
+</div>
+<div class="next-match-wrapper" *ngIf="matches.length">
+  <div class="container">
+    <div class="home-next-match w50 inline-block pull-left">
+      <app-next-match [match]="match"></app-next-match>
+    </div>
+    <div class="home-schedule w50 inline-block">
+      <app-matches [matches]="matches" (getNextMatch)="getNextMatch($event)"></app-matches>
+    </div>
+  </div>
+</div>
+<div class="our-tour txt-center container">
+  <h3 class="our-tour-title">Our
+    <span>Tournaments</span>
+  </h3>
+  <div class="our-tour-text">Nullam quis eros tellus. Duis sit amet neque nec orci feugiat tincidunt. Lorem ipsum dolor
+    sit amet,
+    <br> consectetur adipiscing elit. Nulla sed turpis aliquet, pharetra enim sit amet, congue erat.
+  </div>
+  <app-tournament-list [flag]="true"></app-tournament-list>
+</div>
+<app-football-images></app-football-images>

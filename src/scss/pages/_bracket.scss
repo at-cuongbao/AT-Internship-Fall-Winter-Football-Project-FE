@@ -1,11 +1,12 @@
 .bracket-wrapper {
-  margin-top: 70px;
+  font-family: $font-body;
   width: 100%;
   text-align: center;
+  background-color: $color-blue;
   p {
     padding: 20px;
     text-transform: uppercase;
-    font-size: 24px;
+    font-size: 32px;
     font-weight: bold;
   }
   .auto-justify {
@@ -19,7 +20,6 @@
       position: absolute;
       top: 0;
       left: 0;
-      background: url('https://media.gettyimages.com/photos/germanys-midfielder-toni-kroos-shoots-a-corner-kick-during-the-russia-picture-id982169104');
       background-size: cover;
       width: 100%;
       height: 100%;
@@ -28,6 +28,8 @@
     }
     .panel-center {
       img {
+        height: 280px;
+        width: 300px;
         position: relative;
         top: -120px;
       }
@@ -117,6 +119,10 @@
       }
       .team-name {
         position: absolute;
+        img {
+          width: 50px;
+          height: 50px;
+        }
         span {
           font-size: 26px;
           font-weight: bold;
@@ -251,7 +257,8 @@
     }
   }
 }
-@media screen and (max-width: 479px) {
+
+@media screen and (max-width: 767px) {
   .bracket-wrapper {
     display: none;
   }

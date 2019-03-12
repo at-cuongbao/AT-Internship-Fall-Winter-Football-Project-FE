@@ -1,0 +1,67 @@
+<div class="next-match txt-center">
+  <div class="next-match-content">
+    <div class="match-date">
+      {{ match.start_at | date:'MMMM, dd, y | h:mm a' }}
+    </div>
+    <div class="match-location">
+      {{ match?.location || 'Location: ?' }}
+    </div>
+    <div class="match-team">
+      <p class="match-team-logo w20">
+        <img [src]="match?.firstTeam?.logo" class="img-size" alt="logo team1">
+      </p>
+      <p class="match-team-code w20">
+        {{ match?.firstTeam?.code | slice:0:6 | questionMask }}
+      </p>
+      <p class="versus w20">
+        VS
+      </p>
+      <p class="match-team-code w20">
+        {{ match?.secondTeam?.code | slice:0:6 | questionMask }}
+      </p>
+      <p class="match-team-logo w20">
+        <img [src]="match?.secondTeam?.logo" class="img-size" alt="logo team2">
+      </p>
+    </div>
+    <div>
+      <button *ngIf="!match.firstTeam.score" class="btn btn-predict txt-bold" (click)="openModal(match)">
+        {{ match?.prediction?.is_predicted ? 'Predicted' : 'Predict' }}
+      </button>
+    </div>
+  </div>
+</div>
+<div #modal class="prediction-page modal txt-bold">
+  <div class="modal-content">
+    <span (click)="closeModal()" class="close txt-bold">&times;</span>
+    <form class="prediction-form" #elmForm="ngForm" (ngSubmit)="submit(elmForm, _match)">
+      <div class="prediction-heading txt-center">
+        <p>
+          Predict Match
+        </p>
+      </div>
+      <div class="score-avatar" [style.backgroundImage]="'url('+ imageSource +')'">
+        <div class="info-match txt-center">
+          <div class="info-match-time">
+            {{ _match.start_at | date:'MMMM, dd | h:mm a' || 'Undefined' }}
+          </div>
+        </div>
+        <div class="score-prediction">
+          <div class="name-team-1">
+            <img *ngIf="_match.firstTeam" [src]="_match.firstTeam.logo" alt="" class="logo-size">
+            <p class="code-team">{{ _match.firstTeam?.code | slice:0:6 }}</p>
+          </div>
+          <div class="prediction-middle">
+            <input type="number" value="{{ _match?.prediction?.is_predicted.firstTeam_score_prediction }}" name="firstPrediction" class="prediction" min="0" required>
+            <div class="cross">-</div>
+            <input type="number" value="{{ _match?.prediction?.is_predicted.secondTeam_score_prediction }}" name="secondPrediction" class="prediction" min="0" required>
+          </div>
+          <div class="name-team-2">
+            <img *ngIf="_match.secondTeam" [src]="_match.secondTeam.logo" alt="" class="logo-size">
+            <p class="code-team">{{ _match.secondTeam?.code | slice:0:6 }}</p>
+          </div>
+          <button class="btn-prediction" [disabled]="elmForm.invalid">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

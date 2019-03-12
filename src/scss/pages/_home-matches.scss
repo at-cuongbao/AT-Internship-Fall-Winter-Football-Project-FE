@@ -1,0 +1,93 @@
+.match {
+  width: 100%;
+  background: $color-light-black;
+  color: $color-white;
+  border-bottom: 1px solid $color-grey;
+  &:hover {
+    background: $color-grey;
+    cursor: pointer;
+  }
+  > * {
+    text-align: center;
+    padding: 4px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .img-size {
+    vertical-align: middle;
+    width: 40px;
+    height: 40px;
+  }
+  .border-left {
+    border-left: 1px solid $color-grey;
+  }
+  &-date {
+    .short-date {
+      display: none;
+    }
+  }
+  &-score {
+    color: $color-blue;
+  }
+  &-view {
+    &-link {
+      line-height: 30px;
+      color: $color-white;
+      width: 100%;
+      background-color: $color-black;
+      display: block;
+      font-size: 12px;
+      transition: 400ms all;
+      -webkit-transition: 400ms all;
+      text-transform: uppercase;
+      border: 1px solid $color-blue;
+      &:hover {
+        background: $color-blue;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .match {
+    & &-date {
+      width: 23%;
+      span {
+        display: none;
+      }
+      .short-date {
+        display: inline;
+      }
+    }
+    & &-score {
+      width: 14%;
+    }
+    & &-view {
+      width: 23%;
+    }
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .match {
+    padding: 0 2px;
+    p {
+      padding: 4px 0;
+    }
+    & &-team-logo {
+      width: 17%;
+    }
+    & &-team-code {
+      display: none;
+    }
+    & &-score {
+      width: 16%;
+    }
+    & &-date {
+      width: 25%;
+    }
+    & &-view {
+      width: 25%;
+    }
+  }
+}

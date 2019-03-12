@@ -1,0 +1,42 @@
+.next-match {
+  &-content {
+    padding: 64px 0;
+    > * {
+      vertical-align: middle;
+    }
+    .match-team {
+      padding: 8px 0;
+      > * {
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      &-logo {
+        .img-size {
+          vertical-align: middle;
+          width: 60px;
+          height: 60px;
+        }
+      }
+    }
+
+    .versus {
+      background: $color-blue;
+      width: 40px;
+      line-height: 30px;
+      font-size: 16px;
+      color: $color-light-black;
+      text-transform: uppercase;
+    }
+
+    .match-date {
+      line-height: 2;
+      color: $color-blue;
+    }
+
+    .match-location {
+      line-height: 30px;
+      color: $color-light-black;
+    }
+  }
+}

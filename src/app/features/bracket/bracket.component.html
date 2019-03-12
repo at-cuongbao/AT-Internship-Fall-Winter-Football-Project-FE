@@ -1,12 +1,12 @@
-<div class="row bracket-wrapper">
+<div class="row bracket-wrapper" [style.backgroundImage]="'url('+ src +')'">
   <p>Knockout stage: {{ tournamentName }}</p>
   <div class="col-12 auto-justify">
     <div class="panel-default panel-center">
-      <img src="../../../assets/images/50823683_389556591806206_1449730283363368960_n.png" alt="" width="250" height="250">
+      <img src="../../../assets/images/50823683_389556591806206_1449730283363368960_n.png" alt="panel default">
     </div>
     <div class="match-result" *ngFor='let team of bracketView'>
       <div class="{{ team.label + team.position}} team-name">
-        <img src="../../../assets/images/mai.png" alt="" width="60" height="60">
+        <img src="../../../assets/images/logo-img.png" alt="team logo">
         <span class="code">{{ team.code }}</span>
         <span class="score">{{ team.score }}</span>
       </div>

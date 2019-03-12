@@ -5,6 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { AppRoutingModule } from './app-routing.module';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { SlideshowModule } from 'ng-simple-slideshow';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
 import { AppComponent } from './app.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
@@ -19,11 +21,18 @@ import { PredictionComponent } from './features/prediction/prediction.component'
 import { SliderComponent } from './shared/components/slider/slider.component';
 import { RegisterComponent } from './features/register/register.component';
 import { ScheduleComponent } from './features/schedule/schedule.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from '../app/shared/components/page-not-found/page-not-found.component';
 import { QuestionMaskPipe } from './shared/pipes/question-mask.pipe';
 import { DateDefaultPipe } from './shared/pipes/date-default.pipe';
 import { TournamentListComponent } from './features/tournament-list/tournament-list.component';
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
+import { FootballImagesComponent } from './features/home/football-images/football-images.component';
+import { LatestResultComponent } from './shared/components/latest-result/latest-result.component';
+import { MatchesComponent } from './shared/components/matches/matches.component';
+import { NextMatchComponent } from './shared/components/next-match/next-match.component';
+import { TournamentDetailComponent } from './features/tournament-detail/tournament-detail.component';
+import { MatchDetailComponent } from './features/match-detail/match-detail.component';
+import { TeamDetailComponent } from './features/team-detail/team-detail.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -47,13 +56,24 @@ export function tokenGetter() {
     QuestionMaskPipe, 
     DateDefaultPipe, 
     TournamentListComponent, 
-    SidebarComponent 
+    SidebarComponent,
+    PageNotFoundComponent, 
+    QuestionMaskPipe, 
+    DateDefaultPipe, 
+    TournamentDetailComponent,
+    FootballImagesComponent, 
+    LatestResultComponent,
+    MatchesComponent,
+    NextMatchComponent,
+    MatchDetailComponent,
+    TeamDetailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    NgxPaginationModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
@@ -62,7 +82,9 @@ export function tokenGetter() {
       }
     }),
     BrowserAnimationsModule,
-    NgxPaginationModule
+    SlideshowModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

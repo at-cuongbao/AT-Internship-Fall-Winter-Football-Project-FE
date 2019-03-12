@@ -8,8 +8,14 @@ import { RegisterComponent } from 'src/app/features/register/register.component'
 import { PredictionComponent } from 'src/app/features/prediction/prediction.component';
 import { BracketComponent } from 'src/app/features/bracket/bracket.component';
 import { HomeComponent } from './features/home/home.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from '../app/shared/components/page-not-found/page-not-found.component';
 import { TournamentListComponent } from 'src/app/features/tournament-list/tournament-list.component';
+import { AuthGuardService } from 'src/app/shared/services/auth-guard.service';
+import { AdminAuthGuardService } from 'src/app/shared/services/admin-auth-guard.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { TournamentDetailComponent } from './features/tournament-detail/tournament-detail.component';
+import { MatchDetailComponent } from './features/match-detail/match-detail.component';
+import { TeamDetailComponent } from './features/team-detail/team-detail.component';
 
 const routes: Routes = [
   {
@@ -17,12 +23,17 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
+    path: 'home',
+    component: HomeComponent
+  },
+  {
     path: '',
     component: FeaturesComponent,
     children: [
       {
-        path: 'tournament-registration',
-        component: TournamentRegistrationComponent
+        path: 'tournament-registration', 
+        component: TournamentRegistrationComponent,
+        canActivate: [ AuthGuardService, AdminAuthGuardService ]
       },
       {
         path: 'tournaments',
@@ -30,17 +41,22 @@ const routes: Routes = [
       },
       {
         path: 'prediction/:id',
-        component: PredictionComponent
+        component: PredictionComponent,
+        canActivate: [ AuthGuardService ]
       },
       {
         path: 'schedules/:id',
-        component: ScheduleComponent
+        component: ScheduleComponent,
       },
       {
         path: 'bracket/:id',
         component: BracketComponent
       },
     ]
+  },
+  {
+    path: 'tournament-detail/:id',
+    component: TournamentDetailComponent
   },
   {
     path: 'login',
@@ -51,8 +67,20 @@ const routes: Routes = [
     component: RegisterComponent
   },
   {
-    path: '**',
+    path: 'error/:num',
     component: PageNotFoundComponent
+  },
+  {
+    path: 'match-detail/:id',
+    component: MatchDetailComponent
+  },
+  {
+    path: 'team-detail/:id',
+    component: TeamDetailComponent
+  },
+  {
+    path: '**',
+    redirectTo: '/error/404',
   },
 ];
 

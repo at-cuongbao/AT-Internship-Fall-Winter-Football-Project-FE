@@ -3,48 +3,51 @@
     <div class="bottom-nav clearfix">
       <a routerLink="/" class="bottom-nav-left pull-left">
         <img class="bottom-nav-logo" src="../../../../assets/images/logo-img.png">
-        <span class="bottom-nav-brand">Sport
-          <em>.clc</em>
-        </span>
+        <span class="bottom-nav-brand">Sport<em>.clc</em></span>
       </a>
-      <div [ngClass]="{'responsive': isClick}" class="bottom-nav-right pull-right">
-        <a routerLink="/news" class="main-link">News</a>
-        <div class="dropdown clearfix">
-          <ng-container>
-            <button class="dropbtn">Schedule
-              <span class="fa fa-caret-down"></span>
-            </button>
-            <div class="dropdown-content">
-              <ng-container *ngFor="let tournament of tournaments">
-                <a routerLink="/schedules/{{ tournament.id }}" class="sub-link">{{ tournament.name || 'Undefined' }}</a>
-              </ng-container>
-            </div>
-          </ng-container>
+      <div [class.responsive]="isClick" class="bottom-nav-right pull-right">
+        <a routerLink="/home" class="main-link" routerLinkActive="active">
+          Home
+        </a>
+        <div class="dropdown pull-left clearfix">
+          <a routerLink="/tournaments" routerLinkActive="active" class="dropbtn main-link">
+            Tournements
+            <span class="fa fa-caret-down dropdown-ic"></span>
+          </a>
+          <div class="dropdown-content">
+            <ng-container *ngFor="let tournament of tournaments">
+              <a routerLink="/schedules/{{ tournament.id }}" class="sub-link">
+                {{ tournament.name || 'Unset name' }}
+              </a>
+            </ng-container>
+          </div>
         </div>
-        <a routerLink="/bracket/5c4fbbaa0b614f0a24019243" class="main-link" class="active">Bracket</a>
-        <div *ngIf="auth.isLoggedIn()" class="dropdown clearfix">
+        <div *ngIf="auth.isLoggedIn()" class="dropdown dropdown-image inline-block clearfix">
           <ng-container *ngIf="auth.currentUser.admin">
-            <button class="dropbtn">{{ auth.currentUser.name || 'Username' }}
-              <span class="fa fa-caret-down"></span>
-            </button>
-            <div class="dropdown-content">
-              <a routerLink="/tounament-registration" class="sub-link">Create tournament</a>
+            <a class="dropbtn">{{ auth.currentUser.name || 'Username' }}
+              <span class="fa fa-caret-down dropdown-ic"></span>
+            </a>
+            <div class="dropdown-content dropdown-right">
+              <a class="sub-link">{{ auth.currentUser.name || 'Username' }}</a>
+              <a routerLink="/tournament-registration" class="sub-link">Create tournament</a>
               <a routerLink="/info/{{ auth.currentUser.sub }}" class="sub-link">Information</a>
               <a (click)="logout()" class="sub-link">Log out</a>
             </div>
           </ng-container>
           <ng-container *ngIf="!auth.currentUser.admin">
-            <button class="dropbtn">{{ auth.currentUser.name || 'Username' }}
-              <span class="fa fa-caret-down"></span>
-            </button>
-            <div class="dropdown-content">
-              <a class="sub-link">Link 2</a>
-              <a class="sub-link">Link 3</a>
+            <a class="dropbtn btn-image">
+              <img src="../../../../assets/images/T7Z35JWLQ-U9R5N05T7-e955542bf924-48.jpg" alt="user-image">
+              <span class="fa fa-caret-down dropdown-ic"></span>
+            </a>
+            <div class="dropdown-content dropdown-right">
+              <a class="sub-link">{{ auth.currentUser.name || 'Username' }}</a>
+              <a class="sub-link">Profile</a>
+              <a class="sub-link">Languages</a>
               <a (click)="logout()" class="sub-link">Log out</a>
             </div>
           </ng-container>
         </div>
-        <a routerLink="/login" *ngIf="!auth.isLoggedIn()" class="main-link">Log in</a>
+        <a routerLink="/login" *ngIf="!auth.isLoggedIn()" class="main-link" routerLinkActive="active">Log in</a>
         <a class="icon" (click)="createResponsive()">&#9776;</a>
       </div>
     </div>

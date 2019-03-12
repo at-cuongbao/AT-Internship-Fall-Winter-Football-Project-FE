@@ -1,0 +1,141 @@
+<div class="tournament-detail">
+  <div class="tournament-content">
+    <img src="./../../../assets/images/championsleaguelogo.jpg" alt="Championsleague-Logo">
+    <div class="article-wrap container">
+      <div class="article-tournament clearfix">
+        <p>
+          Vivamus hendrerit, tortor sed luctus maximus, nunc urna hendrerit nibh, sit amet efficitur libero lorem quis mauris. Nunc a pulvinar lectus. Pellentesque aliquam justo ut rhoncus lobortis. In sed venenatis massa. Sed sodales faucibus odio, eget tempus nibh accumsan ut. Fusce tincidunt semper finibus. Nullam consequat non leo interdum pulvinar.
+        </p>
+      </div>
+      <div class="special-detail">
+        <div class="tournament-bracket">
+          <marquee class="bracket-link">
+            <span><a routerLink="/bracket/{{id}}">This is the link of the tournament bracket. Click it !</a></span>
+          </marquee> 
+        </div>
+      </div>
+      <div class="article-tournament clearfix">
+        <p>
+          Suspendisse odio erat, suscipit vel aliquam tristique, dapibus at neque. Aliquam lectus tellus, feugiat non sodales nec, rhoncus a est. Etiam hendrerit, eros nec mollis blandit, velit sem aliquet ex, id tristique metus ligula tincidunt nisi. Ut porta augue at molestie feugiat. Donec quis neque molestie, interdum sapien at, dictum diam. Nam aliquam diam vitae purus vestibulum, sit amet rutrum tortor aliquet. Curabitur rhoncus consectetur tempor. Vivamus volutpat, mauris non auctor molestie, est ex auctor eros, vel egestas eros tellus non dui.
+        </p>
+      </div>
+      <div class="tournament-image">
+        <img src="./../../../assets//images/UEFA.jpg">
+      </div>
+      <div class="article-tournament clearfix">
+        <p>
+          Vivamus hendrerit, tortor sed luctus maximus, nunc urna hendrerit nibh, sit amet efficitur libero lorem quis mauris. Nunc a pulvinar lectus. Pellentesque aliquam justo ut rhoncus lobortis. In sed venenatis massa. Sed sodales faucibus odio, eget tempus nibh accumsan ut. Fusce tincidunt semper finibus. Nullam consequat non leo interdum pulvinar.
+        </p>
+        <br>
+        <p>
+          Suspendisse odio erat, suscipit vel aliquam tristique, dapibus at neque. Aliquam lectus tellus, feugiat non sodales nec, rhoncus a est. Etiam hendrerit, eros nec mollis blandit, velit sem aliquet ex, id tristique metus ligula tincidunt nisi. Ut porta augue at molestie feugiat. Donec quis neque molestie, interdum sapien at, dictum diam. Nam aliquam diam vitae purus vestibulum, sit amet rutrum tortor aliquet. Curabitur rhoncus consectetur tempor. Vivamus volutpat, mauris non auctor molestie, est ex auctor eros, vel egestas eros tellus non dui.
+        </p>
+      </div>
+      <table>
+        <tr class="heading txt-center">
+          <th>Table A</th>
+          <th>Table B</th>
+          <th>Table C</th>
+          <th>Table D</th>
+        </tr>
+        <tr>
+          <td>
+            <a routerLink="/team-detail/{{ teams[0]?.team_id._id }}"><img src="{{ teams[0]?.team_id.logo }}"><span>{{ teams[0]?.team_id.name }}</span></a>
+          </td>
+          <td>
+            <a routerLink="/team-detail/{{ teams[4]?.team_id._id }}"><img src="{{ teams[4]?.team_id.logo }}"><span>{{ teams[4]?.team_id.name }}</span></a>
+          </td>
+          <td>
+            <a routerLink="/team-detail/{{ teams[8]?.team_id._id }}"><img src="{{ teams[8]?.team_id.logo }}"><span>{{ teams[8]?.team_id.name }}</span></a>
+          </td>
+          <td>
+            <a routerLink="/team-detail/{{ teams[12]?.team_id._id }}"><img src="{{ teams[12]?.team_id.logo }}"><span>{{ teams[12]?.team_id.name }}</span></a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <a routerLink="/team-detail/{{ teams[1]?.team_id._id }}"><img src="{{ teams[1]?.team_id.logo }}"><span>{{ teams[1]?.team_id.name }}</span></a>
+          </td>
+          <td>
+            <a routerLink="/team-detail/{{ teams[5]?.team_id._id }}"><img src="{{ teams[5]?.team_id.logo }}"><span>{{ teams[5]?.team_id.name }}</span></a>
+          </td>
+          <td>
+            <a routerLink="/team-detail/{{ teams[9]?.team_id._id }}"><img src="{{ teams[9]?.team_id.logo }}"><span>{{ teams[9]?.team_id.name }}</span></a>
+          </td>
+          <td>
+            <a routerLink="/team-detail/{{ teams[13]?.team_id._id }}"><img src="{{ teams[13]?.team_id.logo }}"><span>{{ teams[13]?.team_id.name }}</span></a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <a routerLink="/team-detail/{{ teams[2]?.team_id._id }}"><img src="{{ teams[2]?.team_id.logo }}"><span>{{ teams[2]?.team_id.name }}</span></a>
+          </td>
+          <td>
+            <a routerLink="/team-detail/{{ teams[6]?.team_id._id }}"><img src="{{ teams[6]?.team_id.logo }}"><span>{{ teams[6]?.team_id.name }}</span></a>
+          </td>
+          <td>
+            <a routerLink="/team-detail/{{ teams[10]?.team_id._id }}"><img src="{{ teams[10]?.team_id.logo }}"><span>{{ teams[10]?.team_id.name }}</span></a>
+          </td>
+          <td>
+            <a routerLink="/team-detail/{{ teams[14]?.team_id._id }}"><img src="{{ teams[14]?.team_id.logo }}"><span>{{ teams[14]?.team_id.name }}</span></a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <a routerLink="/team-detail/{{ teams[3]?.team_id._id }}"><img src="{{ teams[3]?.team_id.logo }}"><span>{{ teams[3]?.team_id.name }}</span></a>
+          </td>
+          <td>
+            <a routerLink="/team-detail/{{ teams[7]?.team_id._id }}"><img src="{{ teams[7]?.team_id.logo }}"><span>{{ teams[7]?.team_id.name }}</span></a>
+          </td>
+          <td>
+            <a routerLink="/team-detail/{{ teams[11]?.team_id._id }}"><img src="{{ teams[11]?.team_id.logo }}"><span>{{ teams[11]?.team_id.name }}</span></a>
+          </td>
+          <td>
+            <a routerLink="/team-detail/{{ teams[15]?.team_id._id }}"><img src="{{ teams[15]?.team_id.logo }}"><span>{{ teams[15]?.team_id.name }}</span></a>
+          </td>
+        </tr>
+      </table>
+      <div class="tournament-schedules">
+        <a routerLink="/schedules/{{id}}">This is the link of the tournament schedule. Click it !</a>
+      </div> 
+    </div>
+    <div class="container">
+      <div class="other-tournament clearfix">
+        <div class="other-post-title">
+          <h3>Other <span>Posts</span></h3>
+        </div>
+        <div class="tournament-wrap">
+          <ul class="tournament-list"> 
+            <li class="tournament-item">
+              <div class="tournament-block">
+                <img src="./../../../assets/images/championsleaguelogo.jpg" alt="Championsleague-Logo"/>
+                <div class="tournament-infor">
+                  <p class="tournament-date txt-center">November 19, 2018</p>
+                  <p class="tournament-desc txt-center"><a routerLink="/team-detail/{{ teams[1]?.team_id }}">Nunc in interdum neque. Mauris tincidunt molestie felis</a></p>
+                </div>
+              </div>
+            </li>
+            <li class="tournament-item">
+              <div class="tournament-block">
+                <img src="./../../../assets/images/Premier_League_Logo.png" alt="Premier_League_Logo"/>
+                <div class="tournament-infor">
+                  <p class="tournament-date txt-center">November 20, 2018</p>
+                  <p class="tournament-desc txt-center"><a routerLink="/team-detail/{{ teams[1]?.team_id }}">Nunc in interdum neque. Mauris tincidunt molestie felis</a></p>
+                </div>
+              </div>
+            </li>
+            <li class="tournament-item">
+              <div class="tournament-block">
+                <img src="./../../../assets/images/Laliga.jpg" alt="Laliga-Logo"/>
+                <div class="tournament-infor">
+                  <p class="tournament-date txt-center">November 21, 2018</p>
+                  <p class="tournament-desc txt-center"><a routerLink="/team-detail/{{ teams[1]?.team_id }}">Nunc in interdum neque. Mauris tincidunt molestie felis</a></p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

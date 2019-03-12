@@ -1,94 +1,64 @@
-<div class="schedule-block container">
-  <section class="group-block" *ngFor="let item of schedules">
-    <ng-container *ngIf="item.matches.length">
-      <h4 class="group-title txt-center">Group {{item.groupName}}</h4>
-      <table class="schedule-match txt-center">
-        <ng-container *ngFor="let match of item.matches">
-          <thead>
-            <tr *ngIf="match.round === 4.1">
-              <th *ngIf="!auth.isLoggedIn()" class="final-title" colspan="3">Final</th>
-              <th *ngIf="auth.isLoggedIn() && !auth.currentUser.admin" class="final-title" colspan="4">Final</th>
-            </tr>
-            <tr *ngIf="match.round === 4.2">
-              <th *ngIf="!auth.isLoggedIn()" colspan="3" class="final-title">Final</th>
-              <th *ngIf="auth.isLoggedIn() && !auth.currentUser.admin" colspan="4" class="final-title">Third and four
-              </th>
-            </tr>
-          </thead>
-          <tr class="match-item">
-            <td class="team team1 w20">
-              <img [src]="match?.firstTeam.logo" alt="logo team1">
-              <span>
-                {{ match?.firstTeam.code | questionMask }}
-              </span>
-            </td>
-            <td class="date-start middle w40">
-              <p>
-                {{ match.firstTeam.score | questionMask }} : {{ match.secondTeam.score | questionMask }}
-              </p>
-              <p>
-                {{ match.start_at || 'date start'}}
-              </p>
-            </td>
-            <td class="team team2 w20">
-              <span>
-                {{ match?.secondTeam.code | questionMask }}
-              </span>
-              <img [src]="match?.secondTeam.logo" alt="logo team2">
-            </td>
-            <td class="center w20" *ngIf="auth.isLoggedIn() && !auth.currentUser.admin">
-              <a *ngIf="match.firstTeam.code && !match.firstTeam.score && !match.prediction?.is_predicted" (click)="openModal(match)">
-                <img src="../../../assets/images/predict-icon.png" alt="predict-icon">
-              </a>
-              <div *ngIf="match.prediction?.is_predicted">
-                <div>
-                  Predicted:
-                </div>
-                <div>
-                  {{ match.prediction.firstTeam_score_prediction }} : {{ match.prediction.secondTeam_score_prediction }}
-                </div>
-              </div>
-            </td>
-            <td class="center w20" *ngIf="auth.isLoggedIn() && auth.currentUser.admin">
-              <a (click)="openModal(match)">
-                <img src="../../../assets/images/edit-icon.png" alt="edit-icon">
-              </a>
-            </td>
-          </tr>
-        </ng-container>
-      </table>
-    </ng-container>
-  </section>
+<div class="container">
+  <div class="schedule-block">
+    <section class="group-block" *ngFor="let item of schedules">
+      <ng-container *ngIf="item.matches.length">
+        <h4 class="group-title txt-center">Group {{item.groupName}}</h4>
+        <div *ngIf="item.matches.round === 4.2">
+          <span *ngIf="!auth.isLoggedIn()" colspan="3" class="final-title">
+            Final
+          </span>
+          <span *ngIf="auth.isLoggedIn() && !auth.currentUser.admin" colspan="4" class="final-title">
+            Third and four
+          </span>
+        </div>
+        <app-matches [matches]="item.matches" [home]="false" [flag]="flag" (openModal)="openModal($event)"></app-matches>
+      </ng-container>
+    </section>
+  </div>
+  <app-sidebar></app-sidebar>
 </div>
-
 <div #modal class="prediction-page modal txt-bold">
   <div class="modal-content">
     <span (click)="closeModal()" class="close txt-bold">&times;</span>
     <form class="prediction-form" #elmForm="ngForm" (ngSubmit)="submit(elmForm, _match)">
       <div class="prediction-heading txt-center">
-        <p><b>Prediction Match</b></p>
+        <p>
+          <b *ngIf="auth.isLoggedIn() && !auth.currentUser.admin">
+            Predict Match
+          </b>
+          <b *ngIf="auth.isLoggedIn() && auth.currentUser.admin">
+            Edit Match
+          </b>
+        </p>
       </div>
       <div class="score-avatar" [style.backgroundImage]="'url('+ imageSource +')'">
         <div class="info-match txt-center">
-          <div class="info-match-time">{{ _match.start_at  || 'Undefined' }}</div>
+          <div class="info-match-time">
+            {{ _match.start_at | date:'MMMM, dd | h:mm a' || 'Undefined' }}
+          </div>
         </div>
         <div class="score-prediction">
           <div class="name-team-1">
             <img *ngIf="_match.firstTeam" [src]="_match.firstTeam.logo" alt="" class="logo-size">
             <p class="code-team">{{ _match.firstTeam?.code }}</p>
           </div>
-          <div class="prediction-middle">
-            <input type="number" value="{{ _match.firstTeam?.score }}" name="firstPrediction" class="prediction" ngModel
-              #firstPrediction="ngModel" min="0" required />
+          <div class="prediction-middle" *ngIf="_match?.prediction?.is_predicted && !auth.currentUser.admin">
+            <input type="number" [(ngModel)]="firstPredictionValue" name="firstPrediction" class="prediction" min="0" required>
             <div class="cross">-</div>
-            <input type="number" value="{{ _match.secondTeam?.score }}" name="secondPrediction" class="prediction"
-              ngModel #secondPrediction="ngModel" min="0" required />
+            <input type="number" [(ngModel)]="secondPredictionValue" name="secondPrediction" class="prediction" min="0" required>
+          </div>
+          <div class="prediction-middle" *ngIf="!_match?.prediction?.is_predicted || auth.currentUser.admin">
+            <input type="number" [(ngModel)]="firstTeamScoreValue"  name="firstTeamScore" class="prediction"
+              #firstPrediction min="0" required>
+            <div class="cross">-</div>
+            <input type="number" [(ngModel)]="secondTeamScoreValue"  name="secondTeamScore" class="prediction"
+              #secondPrediction min="0" required>
           </div>
           <div class="name-team-2">
             <img *ngIf="_match.secondTeam" [src]="_match.secondTeam.logo" alt="" class="logo-size">
             <p class="code-team">{{ _match.secondTeam?.code }}</p>
           </div>
-          <button class="btn-prediction">Submit</button>
+          <button class="btn-prediction" [disabled]="elmForm.invalid">Submit</button>
         </div>
       </div>
     </form>

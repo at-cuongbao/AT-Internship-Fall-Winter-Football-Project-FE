@@ -1,0 +1,87 @@
+<div class="match-detail">
+  <img class="logo" src="./../../../assets/images/championsleaguelogo.jpg" alt="Championsleague-Logo">
+  <div class="match-content container">
+    <div class="article-match clearfix">
+      <p>{{ match.firstTeam?.code }} - {{ match.secondTeam?.code }}: Choking "gunfight", peaking glory</p>
+    </div>
+    <div class="heading-match">
+      <p class="match-day">{{ match.start_at }}</p>
+      <p class="match-summary"><b>Vivamus hendrerit, tortor sed luctus maximus, nunc urna hendrerit nibh, sit amet efficitur libero lorem quis mauris. Nunc a pulvinar lectus. Pellentesque aliquam justo ut rhoncus lobortis. In sed venenatis massa. Sed sodales faucibus odio, eget tempus nibh accumsan ut. Fusce tincidunt semper finibus. Nullam consequat non leo interdum pulvinar.</b></p>
+    </div>
+    <div class="latest-middle clearfix">
+      <a class="latest-team-left">
+        <img [src]="match.firstTeam.cover" alt="Chel">
+      </a>
+      <div class="latest-versus txt-center">
+        <span class="versus-team">{{ match.firstTeam.code }}</span>
+        <div class="latest-score">
+          <div class="score-table clearfix">
+            <div class="score-left txt-center">{{ match.firstTeam.score }}</div>
+            <div class="score-right txt-center">{{ match.secondTeam.score }}</div>
+          </div>
+        </div>
+        <span class="versus-team versus-team-right">{{ match.secondTeam.code }}</span>
+      </div>
+      <a class="latest-team-right">
+        <img [src]="match.secondTeam.cover" alt="">
+      </a>
+    </div>
+    <div class="match-content clearfix">
+      <p class="match-summary">Vivamus hendrerit, tortor sed luctus maximus, nunc urna hendrerit nibh, sit amet efficitur libero lorem quis mauris. Nunc a pulvinar lectus. Pellentesque aliquam justo ut rhoncus lobortis. In sed venenatis massa. Sed sodales faucibus odio, eget tempus nibh accumsan ut. Fusce tincidunt semper finibus. Nullam consequat non leo interdum pulvinar.</p>
+      <p>Suspendisse odio erat, suscipit vel aliquam tristique, dapibus at neque. Aliquam lectus tellus, feugiat non sodales nec, rhoncus a est. Etiam hendrerit, eros nec mollis blandit, velit sem aliquet ex, id tristique metus ligula tincidunt nisi. Ut porta augue at molestie feugiat. Donec quis neque molestie, interdum sapien at, dictum diam. Nam aliquam diam vitae purus vestibulum, sit amet rutrum tortor aliquet. Curabitur rhoncus consectetur tempor. Vivamus volutpat, mauris non auctor molestie, est ex auctor eros, vel egestas eros tellus non dui.</p>
+    </div>
+    <div class="video-match clearfix">
+      <video class="video-item" controls>
+        <source src="./../../../assets//images/Chelsea vs Barcelona 3-2 Semi Final UEFA Champions League 20112012.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="start-lineup">
+      <p><b class="bold">Starting lineup</b> :</p>            
+      <p><b class="bold">{{ match.firstTeam.code }}:</b>  1 Kepa, 30 David Luiz, 28 Azpilicueta, 33 Emerson, 2 A. Rüdiger, 8 R. Barkley, 5 Jorginho, 7 N. Kante, 22 Willian, 10 E. Hazard, 11 Pedro</p>
+      <p><b class="bold">{{ match.secondTeam.code }}:</b>  1 M. ter Stegen, 3 Piqué, 18 Jordi Alba, 23 S. Umtiti, 2 Nélson Semedo, 4 I. Rakitić, 22 A. Vidal, 5 Sergio Busquets, 7 Philippe Coutinho, 10 L. Messi, 9 L. Suárez</p>     
+    </div>
+    <div class="image-match">
+      <img src="./../../../assets/images/ChelvsBarca.jpg" >
+    </div>
+    <div class="match-content clearfix">
+      <p class="match-summary">Vivamus hendrerit, tortor sed luctus maximus, nunc urna hendrerit nibh, sit amet efficitur libero lorem quis mauris. Nunc a pulvinar lectus. Pellentesque aliquam justo ut rhoncus lobortis. In sed venenatis massa. Sed sodales faucibus odio, eget tempus nibh accumsan ut. Fusce tincidunt semper finibus. Nullam consequat non leo interdum pulvinar.</p>
+      <p>Suspendisse odio erat, suscipit vel aliquam tristique, dapibus at neque. Aliquam lectus tellus, feugiat non sodales nec, rhoncus a est. Etiam hendrerit, eros nec mollis blandit, velit sem aliquet ex, id tristique metus ligula tincidunt nisi. Ut porta augue at molestie feugiat. Donec quis neque molestie, interdum sapien at, dictum diam. Nam aliquam diam vitae purus vestibulum, sit amet rutrum tortor aliquet. Curabitur rhoncus consectetur tempor. Vivamus volutpat, mauris non auctor molestie, est ex auctor eros, vel egestas eros tellus non dui.</p>
+    </div>
+    <table class="kode-table clearfix">
+      <thead>
+        <tr>
+          <th>Teams</th>
+          <th>Goals</th>
+          <th>Control Time</th>
+          <th>SHORTS ON TARGET</th>
+          <th>Corner Kicks</th>
+          <th>Yellow Cards</th>
+          <th>Red Cards</th>
+          <th>Offside</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ match.firstTeam.code }}</td>
+          <td>3</td>
+          <td>40%</td>
+          <td>14(6)</td>
+          <td>10</td>
+          <td>3</td>
+          <td>0</td>
+          <td>5</td>
+        </tr>
+        <tr>
+          <td>{{ match.secondTeam.code }}</td>
+          <td>5</td>
+          <td>60%</td>
+          <td>18(9)</td>
+          <td>12</td>
+          <td>2</td>
+          <td>0</td>
+          <td>8</td>
+        </tr>          
+      </tbody>
+    </table>
+  </div>
+</div>

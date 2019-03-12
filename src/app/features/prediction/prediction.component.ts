@@ -10,7 +10,7 @@ import { ApiService } from './../../shared/services/api.service';
   styleUrls: ['./prediction.component.scss']
 })
 export class PredictionComponent implements OnInit {
-  imageSource = '../../../assets/images/avatar-image.jpg';
+  imageSource = '../../../assets/images/tr.png';
  
   constructor(
     private apiService: ApiService,

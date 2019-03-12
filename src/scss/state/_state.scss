@@ -12,7 +12,6 @@
 }
 .alert {
   padding: 10px;
-  margin-bottom: 15px;
   border-radius: 0  0 4px 4px;
   border: 1px solid transparent;
 }
@@ -27,9 +26,41 @@
 .txt-center {
   text-align: center;
 }
+.txt-left {
+  text-align: left !important;
+}
+.txt-right {
+  text-align: right;
+}
 .txt-bold {
   font-weight: 600;
 }
 .display-none {
   display: none !important;
+}
+.display-full {
+  width: 100% !important;
+}
+.notification {
+  font-size: 33px;
+  color: $color-blue;
+  margin-bottom: 20px;
+}
+input.file {
+  position: relative;
+	-moz-opacity: 0;
+	opacity: 0;
+	z-index: 2;
+}
+.fileinputs {
+	position: relative;
+}
+.fakefile {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 1;
+}
+.disabled-li {
+  pointer-events: none;
 }

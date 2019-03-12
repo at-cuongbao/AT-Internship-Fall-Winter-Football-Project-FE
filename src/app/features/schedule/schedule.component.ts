@@ -1,11 +1,10 @@
 import { Component, OnInit, ViewChild, ElementRef, Renderer } from '@angular/core';
 import { ScheduleService } from 'src/app/shared/services/schedule.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { END_POINT } from 'src/app/shared/services/api-registry';
 import { ApiService } from 'src/app/shared/services/api.service';
-import { map } from 'rxjs/operators';
 
 const GROUPS = ["A", "B", "C", "D", "E", "F", "G", "H"];
 
@@ -18,14 +17,22 @@ export class ScheduleComponent implements OnInit {
   schedules = [];
   _match = {};
   @ViewChild("modal", { read: ElementRef }) modal: ElementRef;
-  imageSource = '../../../assets/images/avatar-image.jpg';
+  @ViewChild("elmForm", { read: ElementRef }) elmForm: ElementRef
+  imageSource = '../../../assets/images/tr.png';
   imgDefault = '../../../assets/images/default-image.png';
+  firstPredictionValue: Number;
+  secondPredictionValue: Number;
+  firstTeamScoreValue: Number;
+  secondTeamScoreValue: Number;
+  indexMatch: number;
+  flag = true;
 
   constructor(
     private scheduleService: ScheduleService,
     private auth: AuthService,
     private apiService: ApiService,
     private route: ActivatedRoute,
+    private router: Router,
     private renderer: Renderer
   ) { }
 
@@ -50,7 +57,7 @@ export class ScheduleComponent implements OnInit {
               logo: this.imgDefault,
               score: null
             },
-            start_at: null,
+            start_at: '1/1',
             round: 1
           }
         );
@@ -69,11 +76,12 @@ export class ScheduleComponent implements OnInit {
     });
     this.scheduleService.get(id)
       .subscribe(schedules => {
+        this.flag = false;
         this.schedules = [];
         let quarters = [];
         let semis = [];
         let finals = [];
-
+        
         GROUPS.map(group => {
           let tables = [];
           schedules.map(match => {
@@ -124,25 +132,40 @@ export class ScheduleComponent implements OnInit {
       scorePrediction: [f.value.firstPrediction, f.value.secondPrediction],
       tournament_team_id: [match.firstTeam.firstTeamId, match.secondTeam.secondTeamId]
     };
-
     let url = [END_POINT.prediction + '/new'];
-    this.apiService.post(url, data).pipe(
-      map(response => {
-        if (response) {
-          return response ? true : false;
-        }
-      })
-    ).subscribe(
-      value => { value }
-    );
+    if (this.auth.currentUser.admin) {
+      url = [END_POINT.matches + '/update'];
+    }
+    this.apiService.post(url, data).subscribe(code => {
+      if (code === 200) {
+        this.closeModal();
+        this.getSchedule();
+      } else {
+        alert("Time out to predict !");
+      }
+    });
   };
 
   openModal(match) {
+    if (!this.auth.isLoggedIn()) {
+      return this.router.navigate(['/login'], { queryParams: {
+        returnUrl: this.router.url
+      }})
+    }
     this._match = match;
+    this.firstPredictionValue = match.prediction.firstTeam_score_prediction;
+    this.secondPredictionValue = match.prediction.secondTeam_score_prediction;
+    this.firstTeamScoreValue = match.firstTeam.score;
+    this.secondTeamScoreValue = match.secondTeam.score;
     this.renderer.setElementAttribute(this.modal.nativeElement, "style", "display: block");
   }
 
   closeModal() {
+    this.resetForm();
     this.renderer.setElementAttribute(this.modal.nativeElement, "style", "display: none");
+  }
+
+  resetForm() {
+    this.elmForm.nativeElement.reset();
   }
 }
