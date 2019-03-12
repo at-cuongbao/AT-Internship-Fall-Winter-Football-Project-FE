@@ -11,9 +11,9 @@ import { END_POINT } from '../../services/api-registry';
 export class MatchesComponent implements OnInit {
   @Input() matches: any;
   @Input() home = true;
+  @Input() flag = true;
   @Output() openModal = new EventEmitter<any>();
   @Output() getNextMatch = new EventEmitter<any>();
-  @Input() flag = true;
   isClickTagA = false;
 
   constructor(

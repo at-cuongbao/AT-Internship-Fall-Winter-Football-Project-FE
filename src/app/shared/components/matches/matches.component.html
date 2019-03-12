@@ -55,8 +55,8 @@
       </p>
       <p class="match-view w25" *ngIf="auth.isLoggedIn() && auth.currentUser.admin">
         <button class="match-view-link txt-bold" (click)="open(match)" 
-          [class.disabled]="!match?.prediction?.isAllow || (!flag && !match.firstTeam.code)" 
-          [disabled]="!match?.prediction?.isAllow || (!flag && !match.firstTeam.code)"
+          [class.disabled]="!match.firstTeam.code" 
+          [disabled]="!match.firstTeam.code"
         >
           Edit
         </button>

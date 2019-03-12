@@ -35,7 +35,7 @@ export class PredictionListComponent implements OnInit {
         if (returnedPredictions) {
           let group_to_values = returnedPredictions.reduce(function (obj, item) {
             obj[item.match_id.start_at] = obj[item.match_id.start_at] || [];
-            obj[item.match_id.start_at].push({ id: item.match_id._id, tournamentName: item.match_id.tournamentId.name, firstTeam: item.firstTeam, secondTeam: item.secondTeam });
+            obj[item.match_id.start_at].push({ start_at: item.match_id.start_at, id: item.match_id._id, prediction: item.prediction, tournamentName: item.match_id.tournamentId.name, firstTeam: item.firstTeam, secondTeam: item.secondTeam });
             return obj;
           }, {});
   
@@ -50,10 +50,17 @@ export class PredictionListComponent implements OnInit {
   }
 
   openMatchDetail(match: any) {
-    this.router.navigate([END_POINT.match_detail + '/' + match.id]);
+    if (match.firstTeam.code && match.secondTeam.code) {
+      if (!this.isClickTagA && match.id) {
+        this.router.navigate([END_POINT.match_detail + '/' + match.id]);
+      }
+      // Handle when clicking a button in a li tag.
+      this.isClickTagA = !this.isClickTagA;
+    }
   }
 
   openModal(match) {
+    this.isClickTagA = !this.isClickTagA;
     if (!this.auth.isLoggedIn()) {
       return this.router.navigate(['/login'], { queryParams: {
         returnUrl: this.router.url
