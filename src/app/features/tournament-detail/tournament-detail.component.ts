@@ -3,19 +3,18 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { END_POINT } from './../../shared/services/api-registry';
 import { ApiService } from './../../shared/services/api.service';
-import { fake_data } from '../../../assets/mock-match';
 
 const POSITION = {
   ck: 2,
   bk: 4,
   tk: 8
 }
-
 const POSITION_32 = {
   ck: 6,
   bk: 8,
   tk: 16
 }
+const tablesGroup = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
 
 @Component({
   selector: 'app-tournament-detail',
@@ -30,7 +29,7 @@ export class TournamentDetailComponent implements OnInit {
   id = '';
   tournaments = [];
   flag = false;
-  topTeamFlag = false;
+  topTeamFlag = 0;
 
   constructor(
     private matchService: MatchService,
@@ -79,11 +78,25 @@ export class TournamentDetailComponent implements OnInit {
 
   getTopTeam() {
     let tournamentId = this.route.snapshot.paramMap.get('id');
+    let transformedData = [];
+
     this.matchService.getTopTeams(tournamentId)
       .subscribe(data => {
         if (data) {
-          this.topTeamFlag = true;
-          this.teams = data;
+          let dataLength = data.length;
+          let tables = tablesGroup.slice(0, dataLength / 4);
+
+          transformedData.push(tables);
+
+          for (let i = 0; i < 4; i++) {
+            let rowData = []
+            for (let j = i; j < dataLength; j += 4) {
+              rowData.push(data[j]);
+            }
+            transformedData.push(rowData);
+          }
+          this.teams = transformedData;
+          this.topTeamFlag = dataLength / 4;
         }
       })
   }

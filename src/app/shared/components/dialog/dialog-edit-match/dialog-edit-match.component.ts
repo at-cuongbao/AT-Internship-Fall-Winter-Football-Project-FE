@@ -3,8 +3,8 @@ import { NgForm, NgModel } from '@angular/forms';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { END_POINT } from 'src/app/shared/services/api-registry';
 import { ApiService } from 'src/app/shared/services/api.service';
-import { NgxSpinnerService } from 'ngx-spinner';
 import swal from 'sweetalert';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-dialog-edit-match',
@@ -12,7 +12,6 @@ import swal from 'sweetalert';
   styleUrls: ['./dialog-edit-match.component.scss']
 })
 export class DialogEditMatchComponent implements OnInit, OnChanges {
-
   @Input("matchData") matches: any;
   @Output("onSubmit") sendData = new EventEmitter();
   firstTeamPrediction_ngModel;
@@ -29,7 +28,7 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
   constructor(
     private auth: AuthService,
     private apiService: ApiService,
-    private spinner: NgxSpinnerService
+    private route: ActivatedRoute
   ) { }
 
   ngOnChanges() {
@@ -91,14 +90,17 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
   }
 
   onSubmit(form: NgForm, match) {
+    let tournamentId = this.route.snapshot.paramMap.get('id');
     const data = {
       match_id: match.id,
       user_id: this.auth.currentUser.sub,
-      scorePrediction: [form.value.firstTeamPrediction, form.value.secondTeamPrediction],
       tournament_team_id: [match.firstTeam.firstTournamentTeamId, match.secondTeam.secondTournamentTeamId],
       start_at: form.value.start_at,
-      winners: []
+      scorePrediction: [form.value.firstTeamPrediction, form.value.secondTeamPrediction],
+      winners: [],
+      tournament_id: ''
     };
+    
     let titleBtn = 'predicted';
     let url = [END_POINT.prediction + '/new'];
     if (this.auth.currentUser.admin) {
@@ -106,6 +108,7 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
       url = [END_POINT.matches + '/update'];
       data.scorePrediction = [form.value.firstTeamScoreValue, form.value.secondTeamScoreValue];
       data.winners = [this.isWinner, !this.isWinner];
+      data.tournament_id = tournamentId;
     }
     this.apiService.post(url, data).subscribe(code => {
       if (code === 200) {
