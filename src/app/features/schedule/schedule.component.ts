@@ -70,7 +70,7 @@ export class ScheduleComponent implements OnInit {
             } else if (match.round < 4) {
               scheduleCheck ? quarters.push(match) : semis.push(match);
             } else if (match.round < 5) {
-              if (this.dem === 0 && !scheduleCheck){
+              if (this.dem === 0 && match.round === 4.1 && !scheduleCheck){
                 this.dem = 1;
                 finals.push(match);
               } 
