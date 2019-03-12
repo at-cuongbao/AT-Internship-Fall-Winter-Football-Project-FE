@@ -9,6 +9,7 @@
   margin: 0px auto;
   .left-content {
     float: right;
+    width: 86%;
     .header-main {
       padding: 1em 2em 0;
       .header-left {
@@ -112,7 +113,6 @@
         }
       }
     }
-  
     .inner-block {
       padding: 8em 2em 4em 2em;
       background: #fafafa;
@@ -241,6 +241,71 @@
       padding: 1.5em 1em;
       text-align: center;
       box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.15)
+    }
+  }
+  .sidebar-menu {
+    width: 14%;
+    position: absolute;
+    float: left;
+    width: 220px;
+    top: 0px;
+    left: 0px;
+    bottom: 0;
+    background-color: #202121;
+    color: #aaabae;
+    z-index: 999;
+    .logo {
+      width: 22%;
+      box-sizing: border-box;
+      position: absolute;
+      top: 20px;
+      left: 170px;
+      .sidebar-icon {
+        position: relative;
+        float: left;
+        text-align: center;
+        line-height: 1;
+        font-size: 18px;
+        padding: 6px 8px;
+        border-radius: 3px;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        -o-border-radius: 3px;
+        color: #FFF;
+        background-clip: padding-box;
+        background: #68AE00;
+      } 
+    }
+    .menu {
+      padding: 4.2em 0em 0em 0em;
+      #menu {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        margin-bottom: 20px;
+        li {
+          position: relative;
+          margin: 0;
+          font-size: 12px;
+          padding: 0;
+          a {
+            position: relative;
+            display: block;
+            padding: 13px 20px;
+            color: #FFFFFF;
+            white-space: nowrap;
+            z-index: 2;
+            font-size: 1.12em;
+            text-align: center;
+            font-family: 'Carrois Gothic', sans-serif;
+            .fa {
+              margin-bottom: 3px;
+              font-size: 1.5em;
+              display: block; 
+            } 
+          }
+        }
+      }
     }
   }
 }
