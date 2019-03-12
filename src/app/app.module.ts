@@ -22,6 +22,8 @@ import { ScheduleComponent } from './features/schedule/schedule.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { QuestionMaskPipe } from './shared/pipes/question-mask.pipe';
 import { DateDefaultPipe } from './shared/pipes/date-default.pipe';
+import { TournamentDetailComponent } from './features/tournament-detail/tournament-detail.component';
+import { FootballImagesComponent } from './features/home/football-images/football-images.component';
 import { TournamentListComponent } from './features/tournament-list/tournament-list.component';
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 
@@ -43,17 +45,24 @@ export function tokenGetter() {
     SliderComponent,
     RegisterComponent,
     PredictionComponent, 
+    SidebarComponent,
     PageNotFoundComponent, 
     QuestionMaskPipe, 
     DateDefaultPipe, 
     TournamentListComponent, 
-    SidebarComponent 
+    SidebarComponent,
+    PageNotFoundComponent, 
+    QuestionMaskPipe, 
+    DateDefaultPipe, 
+    FootballImagesComponent,
+    TournamentDetailComponent  
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    NgxPaginationModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
@@ -61,8 +70,7 @@ export function tokenGetter() {
         blacklistedRoutes: ['http://localhost:3000/api/authenticate']
       }
     }),
-    BrowserAnimationsModule,
-    NgxPaginationModule
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

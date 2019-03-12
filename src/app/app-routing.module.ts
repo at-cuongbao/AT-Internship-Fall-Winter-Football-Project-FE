@@ -10,6 +10,7 @@ import { BracketComponent } from 'src/app/features/bracket/bracket.component';
 import { HomeComponent } from './features/home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TournamentListComponent } from 'src/app/features/tournament-list/tournament-list.component';
+import { TournamentDetailComponent } from './features/tournament-detail/tournament-detail.component';
 
 const routes: Routes = [
   {
@@ -51,9 +52,13 @@ const routes: Routes = [
     component: RegisterComponent
   },
   {
+    path: 'tournament-detail',
+    component: TournamentDetailComponent
+  },
+  {
     path: '**',
     component: PageNotFoundComponent
-  },
+  }
 ];
 
 @NgModule({
