@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { END_POINT } from './../../shared/services/api-registry';
 import { ApiService } from './../../shared/services/api.service';
+import { fake_data } from '../../../assets/mock-match';
 
 const POSITION = {
   ck: 2,
@@ -71,7 +72,79 @@ export class TournamentDetailComponent implements OnInit {
     let tournamentId = this.route.snapshot.paramMap.get('id') || '5c4fbbaa0b614f0a24019243';
     this.matchService.get(tournamentId)
       .subscribe(data => {
-        this.generateMatches(data.matches);
+        if (tournamentId === '5c7f996b1329561d847789c8') {
+          let finals = [];
+          let match_round = {
+            code: null,
+            label: "ck",
+            logo: "../../../assets/images/default-image.png",
+            position: 1,
+            score: null
+          }
+          // fake quarters
+          let index = 0;
+          fake_data.quarters.map(match => {
+            match_round = {
+              code: match.firstTeam.code,
+              label: "tk",
+              position: ++index,
+              logo: match.firstTeam.logo,
+              score: match.firstTeam.score
+            }
+            finals.push(match_round);
+            match_round = {
+              code: match.secondTeam.code,
+              label: "tk",
+              position: ++index,
+              logo: match.secondTeam.logo,
+              score: match.secondTeam.score
+            }
+            finals.push(match_round);
+          })
+          // fake semis
+          index = 0;
+          fake_data.semis.map(match => {
+            match_round = {
+              code: match.firstTeam.code,
+              label: "bk",
+              position: ++index,
+              logo: match.firstTeam.logo,
+              score: match.firstTeam.score
+            }
+            finals.push(match_round);
+            match_round = {
+              code: match.secondTeam.code,
+              label: "bk",
+              position: ++index,
+              logo: match.secondTeam.logo,
+              score: match.secondTeam.score
+            }
+            finals.push(match_round);
+          })
+          // fake finals
+          fake_data.finals.map(match => {
+            match_round = {
+              code: match.firstTeam.code,
+              label: "ck",
+              position: 1,
+              logo: match.firstTeam.logo,
+              score: match.firstTeam.score
+            }
+            finals.push(match_round);
+            match_round = {
+              code: match.secondTeam.code,
+              label: "ck",
+              position: 2,
+              logo: match.secondTeam.logo,
+              score: match.secondTeam.score
+            }
+            finals.push(match_round);
+          })
+          this.generateMatches(finals);
+        } else {
+          this.generateMatches(data.matches);
+        }
+
       }, error => {
         this.generateMatches([]);
       });

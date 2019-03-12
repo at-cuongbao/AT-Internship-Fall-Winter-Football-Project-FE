@@ -3,6 +3,7 @@ import { ScheduleService } from 'src/app/shared/services/schedule.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { ActivatedRoute, ParamMap, Router, NavigationEnd } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { fake_data } from '../../../assets/mock-match';
 
 const GROUPS = ["A", "B", "C", "D", "E", "F", "G", "H"];
 
@@ -16,6 +17,181 @@ export class ScheduleComponent implements OnInit {
   matchData = [];
   imageSource = '../../../assets/images/tr.png';
   imgDefault = '../../../assets/images/default-image.png';
+  data4 = [
+    {
+      firstTeam: {
+        firstTeamId: "5c7f996b1329561d847789d1",
+        code: "BAY",
+        logo: "../../../assets/images/../../../assets/images/Bayern.png",
+        score: "3",
+        winner: false
+      },
+      group: "C",
+      id: "5c7f996c1329561d847789f5",
+      prediction: {
+        isAllow: true, is_predicted: false,
+        firstTeam_score_prediction: "",
+        secondTeam_score_prediction: ""
+      },
+      round: 1,
+      secondTeam: {
+        secondTeamId: "5c7f996b1329561d847789d2",
+        code: "LIV", logo: "../../../assets/images/../../../assets/images/Liver.png",
+        score: "1",
+        winner: false
+      },
+      start_at: "2018-12-11T11:00:00.000Z"
+    },
+    {
+      firstTeam: {
+        firstTeamId: "5c7f996b1329561d847789d1",
+        code: "DOR",
+        logo: "../../../assets/images/../../../assets/images/Dortmund.png",
+        score: "1",
+        winner: false
+      },
+      group: "C",
+      id: "5c7f996c1329561d847789f5",
+      prediction: {
+        isAllow: true, is_predicted: false,
+        firstTeam_score_prediction: "",
+        secondTeam_score_prediction: ""
+      },
+      round: 1,
+      secondTeam: {
+        secondTeamId: "5c7f996b1329561d847789d2",
+        code: "CHE", logo: "../../../assets/images/../../../assets/images/chel.png",
+        score: "2",
+        winner: false
+      },
+      start_at: "2018-12-10T11:00:00.000Z"
+    },
+    {
+      firstTeam: {
+        firstTeamId: "5c7f996b1329561d847789d1",
+        code: "MU",
+        logo: "../../../assets/images/../../../assets/images/Mu.png",
+        score: "2",
+        winner: false
+      },
+      group: "C",
+      id: "5c7f996c1329561d847789f5",
+      prediction: {
+        isAllow: true, is_predicted: false,
+        firstTeam_score_prediction: "",
+        secondTeam_score_prediction: ""
+      },
+      round: 1,
+      secondTeam: {
+        secondTeamId: "5c7f996b1329561d847789d2",
+        code: "PSG", logo: "../../../assets/images/../../../assets/images/Psg.png",
+        score: "2",
+        winner: true
+      },
+      start_at: "2018-12-09T11:00:00.000Z"
+    },
+    {
+      firstTeam: {
+        firstTeamId: "5c7f996b1329561d847789d1",
+        code: "REA",
+        logo: "../../../assets/images/../../../assets/images/Real.png",
+        score: "3",
+        winner: false
+      },
+      group: "C",
+      id: "5c7f996c1329561d847789f5",
+      prediction: {
+        isAllow: true, is_predicted: false,
+        firstTeam_score_prediction: "",
+        secondTeam_score_prediction: ""
+      },
+      round: 1,
+      secondTeam: {
+        secondTeamId: "5c7f996b1329561d847789d2",
+        code: "MON", logo: "../../../assets/images/../../../assets/images/Monaco.png",
+        score: "4",
+        winner: false
+      },
+      start_at: "2018-12-08T11:00:00.000Z"
+    }
+  ];
+  data2 = [
+    {
+      firstTeam: {
+        firstTeamId: "5c7f996b1329561d847789d1",
+        code: "MON",
+        logo: "../../../assets/images/../../../assets/images/Monaco.png",
+        score: "3",
+        winner: false
+      },
+      group: "C",
+      id: "5c7f996c1329561d847789f5",
+      prediction: {
+        isAllow: true, is_predicted: false,
+        firstTeam_score_prediction: "",
+        secondTeam_score_prediction: ""
+      },
+      round: 1,
+      secondTeam: {
+        secondTeamId: "5c7f996b1329561d847789d2",
+        code: "PSG", logo: "../../../assets/images/../../../assets/images/Psg.png",
+        score: "1",
+        winner: false
+      },
+      start_at: "2018-12-14T11:00:00.000Z"
+    },
+    {
+      firstTeam: {
+        firstTeamId: "5c7f996b1329561d847789d1",
+        code: "BAY",
+        logo: "../../../assets/images/../../../assets/images/Bayern.png",
+        score: "1",
+        winner: false
+      },
+      group: "C",
+      id: "5c7f996c1329561d847789f5",
+      prediction: {
+        isAllow: true, is_predicted: false,
+        firstTeam_score_prediction: "",
+        secondTeam_score_prediction: ""
+      },
+      round: 1,
+      secondTeam: {
+        secondTeamId: "5c7f996b1329561d847789d2",
+        code: "CHE", logo: "../../../assets/images/../../../assets/images/chel.png",
+        score: "2",
+        winner: false
+      },
+      start_at: "2018-12-12T11:00:00.000Z"
+    }
+  ];
+  data1 = [
+    {
+      firstTeam: {
+        firstTeamId: "5c7f996b1329561d847789d1",
+        code: "MON",
+        logo: "../../../assets/images/../../../assets/images/Monaco.png",
+        score: "3",
+        winner: false
+      },
+      group: "C",
+      id: "5c7f996c1329561d847789f5",
+      prediction: {
+        isAllow: true, is_predicted: false,
+        firstTeam_score_prediction: "",
+        secondTeam_score_prediction: ""
+      },
+      round: 1,
+      secondTeam: {
+        secondTeamId: "5c7f996b1329561d847789d2",
+        code: "CHE", logo: "../../../assets/images/../../../assets/images/chel.png",
+        score: "2",
+        winner: false
+      },
+      start_at: "2018-12-12T11:00:00.000Z"
+    }
+  ];
+  dem = 0;
 
   constructor(
     private scheduleService: ScheduleService,
@@ -38,6 +214,7 @@ export class ScheduleComponent implements OnInit {
 
   getSchedule(): void {
     let id: string;
+    this.dem = 0;
     this.route.paramMap.subscribe((params: ParamMap) => {
       id = params.get('id') || '';
     });
@@ -68,10 +245,28 @@ export class ScheduleComponent implements OnInit {
             } else if (match.round < 4) {
               semis.push(match);
             } else {
-              finals.push(match);
+              if (this.dem === 0) {
+                this.dem = 1;
+                finals.push(match);
+              }
             }
           }
         });
+        
+        if (id === '5c7f996b1329561d847789c8') {
+          quarters = [];
+          semis = [];
+          finals = [];
+          fake_data.quarters.map(match => {
+            quarters.push(match);
+          })
+          fake_data.semis.map(match => {
+            semis.push(match);
+          })
+          fake_data.finals.map(match => {
+            finals.push(match);
+          })
+        }
 
         this.schedules.push({
           groupName: 'Quater-final',
@@ -80,10 +275,9 @@ export class ScheduleComponent implements OnInit {
           groupName: 'Semi-final',
           matches: semis
         }, {
-          groupName: 'Final and third',
+          groupName: 'Final',
           matches: finals
         });
-
         this.spinner.hide();
       })
   }

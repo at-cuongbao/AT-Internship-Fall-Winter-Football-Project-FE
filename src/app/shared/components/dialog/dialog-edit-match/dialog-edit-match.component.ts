@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 import { END_POINT } from 'src/app/shared/services/api-registry';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import swal from 'sweetalert';
 
 @Component({
   selector: 'app-dialog-edit-match',
@@ -50,6 +51,7 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
     if (this.match.secondTeam.winners || (this.match.firstTeam.score < this.match.secondTeam.score)) {
       this.isWinner = false;
     }
+    
     if (this.match.round !== 1) {
       if (this.firstTeamScore_ngModel === this.secondTeamScore_ngModel) {
         this.disableRadio_btn = false;
@@ -74,10 +76,15 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
     this.apiService.post(url, data).subscribe(code => {
       if (code === 200) {
         this.match = match;
-        this.closeModal(match);
       } else {
-        alert("Time out to predict !");
+        swal({
+          // buttons: false,
+          text: 'Time out to predict !',
+          icon: "error",
+          timer: 2000,
+        });
       }
+      this.closeModal(match);
     });
   };
 
@@ -90,14 +97,16 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
   }
 
   checkWinner() {
+    if (this.firstTeamScore_ngModel < 0) this.firstTeamScore_ngModel = 0;
+    if (this.secondTeamScore_ngModel < 0) this.secondTeamScore_ngModel = 0;
     this.disableRadio_btn = true;
     if (this.match.round !== 1) {
       if (this.firstTeamScore_ngModel < this.secondTeamScore_ngModel) {
         this.isWinner = false;
-      } else if (this.firstTeamScore_ngModel === this.secondTeamScore_ngModel) {
-        this.disableRadio_btn = false;
-      } else {
+      } else if (this.firstTeamScore_ngModel > this.secondTeamScore_ngModel) {
         this.isWinner = true;
+      } else {
+        this.disableRadio_btn = false;
       }
     }
   }

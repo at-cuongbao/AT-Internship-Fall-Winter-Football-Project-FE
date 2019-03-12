@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild, Renderer, DoCheck, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, NgModel } from '@angular/forms';
 import { Team } from 'src/app/shared/models/team';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { END_POINT } from 'src/app/shared/services/api-registry';
@@ -28,6 +28,7 @@ export class TournamentRegistrationComponent implements DoCheck, OnInit {
 
   groups = [];
   tables = ["A", "B", "C", "D", "E", "F", "G", "H"];
+  errorMessage = '';
 
   constructor(
     private apiService: ApiService,
@@ -47,7 +48,7 @@ export class TournamentRegistrationComponent implements DoCheck, OnInit {
     this.tables.map(tables => {
       for (let i = 0; i < (4 * this.numberGroup); i++) {
         let team = new Team();
-        team.name = "Name Team " + (i + 1);
+        team.name = "Team " + (i + 1);
         team.code = "Code";
         team.cover = this.imageUrl;
         team.logo = this.imageUrl;
@@ -128,8 +129,17 @@ export class TournamentRegistrationComponent implements DoCheck, OnInit {
     this.renderer.setElementAttribute(this.modal.nativeElement, "style", "display: none");
   }
 
+  checkTime(input: NgModel) {
+    let chosenTime = input.control.value;
+    if (chosenTime && new Date(chosenTime).getTime() < Date.now()) {
+      this.errorMessage = "Insert day must be greater than now !";
+    } else {
+      this.errorMessage = "";
+    }
+  }
+
   resetForm() {
-    this.modalForm.nativeElement.reset()
+    this.modalForm.nativeElement.reset();
     this.imageCover = this.imageLogo = this.imageUrl;
   }
 }
