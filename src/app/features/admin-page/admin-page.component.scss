@@ -131,9 +131,9 @@
     }
   }
   .sidebar-menu {
-    height: fit-content;
+    height: 100vh;
     width: 14%;
-    position: absolute;
+    position: fixed;
     float: left;
     top: 0px;
     left: 0px;
