@@ -8,5 +8,6 @@ export const END_POINT = {
   register: 'register',
   prediction: 'predictions',
   tournamentTeams: 'tournamentTeams',
+  statistics: 'statistics',
   match_detail: 'match-detail'
 }

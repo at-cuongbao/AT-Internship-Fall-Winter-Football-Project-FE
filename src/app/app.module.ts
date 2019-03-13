@@ -38,6 +38,8 @@ import { DialogEditMatchComponent } from './shared/components/dialog/dialog-edit
 import { PredictionListComponent } from './features/prediction-list/prediction-list.component';
 import { AdminPageComponent } from './features/admin-page/admin-page.component';
 import { DialogAddTeamComponent } from './shared/components/dialog/dialog-add-team/dialog-add-team.component';
+import { ChartsModule } from 'ng2-charts';
+import { StatisticsComponent } from './features/admin-page/statistics/statistics.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -75,7 +77,8 @@ export function tokenGetter() {
     DialogEditMatchComponent,
     PredictionListComponent,
     AdminPageComponent,
-    DialogAddTeamComponent
+    DialogAddTeamComponent,
+    StatisticsComponent
   ],
   imports: [
     BrowserModule,
@@ -96,6 +99,7 @@ export function tokenGetter() {
     SlideshowModule,
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
+    ChartsModule,
     NgxSpinnerModule
   ],
   bootstrap: [AppComponent]
