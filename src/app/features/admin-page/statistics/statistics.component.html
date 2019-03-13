@@ -1,0 +1,16 @@
+<!-- Statistics predicted rate -->
+<div class="grouped-bars">
+  <div class="span-2c">
+    <h4 class="grouped-bars--title">
+      Predicted analytics
+    </h4>
+    <canvas id="bar" height="300" width="485" style="width: 485px; height: 300px;"
+    baseChart
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [legend]="barChartLegend"
+            [chartType]="barChartType">
+    </canvas>
+  </div>
+</div>

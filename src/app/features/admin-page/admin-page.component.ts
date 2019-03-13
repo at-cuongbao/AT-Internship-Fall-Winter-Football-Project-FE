@@ -12,7 +12,6 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 export class AdminPageComponent implements OnInit {
   isClick = false;
   tournaments = [];
-  
 
   constructor(
     private auth: AuthService,
@@ -36,7 +35,6 @@ export class AdminPageComponent implements OnInit {
     });   
   }
 
-
   createResponsive() {
     this.isClick = !this.isClick;
   }
@@ -45,5 +43,4 @@ export class AdminPageComponent implements OnInit {
     this.auth.logout();
     this.router.navigate(['/']);
   }
-
 }

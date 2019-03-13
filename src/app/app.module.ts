@@ -38,6 +38,8 @@ import { DialogEditMatchComponent } from './shared/components/dialog/dialog-edit
 import { PredictionListComponent } from './features/prediction-list/prediction-list.component';
 import { AdminPageComponent } from './features/admin-page/admin-page.component';
 import { DialogAddTeamComponent } from './shared/components/dialog/dialog-add-team/dialog-add-team.component';
+import { ChartsModule } from 'ng2-charts';
+import { StatisticsComponent } from './features/admin-page/statistics/statistics.component';
 import { AdminHomeComponent } from './features/admin-page/admin-home/admin-home.component';
 
 export function tokenGetter() {
@@ -77,6 +79,7 @@ export function tokenGetter() {
     PredictionListComponent,
     AdminPageComponent,
     DialogAddTeamComponent,
+    StatisticsComponent,
     AdminHomeComponent
   ],
   imports: [
@@ -88,6 +91,8 @@ export function tokenGetter() {
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
+        // whitelistedDomains: ['http://172.18.19.83:3000'],
+        // blacklistedRoutes: ['http://172.18.19.83:3000/api/authenticate']
         whitelistedDomains: ['http://localhost:3000'],
         blacklistedRoutes: ['http://localhost:3000/api/authenticate']
       }
@@ -96,6 +101,7 @@ export function tokenGetter() {
     SlideshowModule,
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
+    ChartsModule,
     NgxSpinnerModule
   ],
   bootstrap: [AppComponent]
