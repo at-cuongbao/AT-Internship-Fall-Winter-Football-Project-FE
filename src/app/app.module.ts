@@ -79,11 +79,8 @@ export function tokenGetter() {
     PredictionListComponent,
     AdminPageComponent,
     DialogAddTeamComponent,
-<<<<<<< HEAD
-    StatisticsComponent
-=======
+    StatisticsComponent,
     AdminHomeComponent
->>>>>>> 07acad946b38dc78d7a646464c2b84546cf23ccc
   ],
   imports: [
     BrowserModule,
