@@ -17,6 +17,7 @@ import { TeamDetailComponent } from './features/team-detail/team-detail.componen
 import { AllSchedulesComponent } from './features/all-schedules/all-schedules.component';
 import { PredictionListComponent } from './features/prediction-list/prediction-list.component';
 import { AdminPageComponent } from './features/admin-page/admin-page.component';
+import { AdminHomeComponent } from './features/admin-page/admin-home/admin-home.component';
 
 const routes: Routes = [
   {
@@ -31,11 +32,6 @@ const routes: Routes = [
     path: '',
     component: FeaturesComponent,
     children: [
-      {
-        path: 'tournament-registration', 
-        component: TournamentRegistrationComponent,
-        canActivate: [ AuthGuardService, AdminAuthGuardService ]
-      },
       {
         path: 'tournaments',
         component: TournamentListComponent
@@ -61,6 +57,18 @@ const routes: Routes = [
   {
     path: 'admin',
     component: AdminPageComponent,
+    children: [
+      {
+        path: '',
+        component: AdminHomeComponent,
+        canActivate: [ AuthGuardService, AdminAuthGuardService]
+      },
+      {
+        path: 'tournament-registration', 
+        component: TournamentRegistrationComponent,
+        canActivate: [ AuthGuardService, AdminAuthGuardService ]
+      },
+    ],
     canActivate: [ AuthGuardService, AdminAuthGuardService]
   },
   {

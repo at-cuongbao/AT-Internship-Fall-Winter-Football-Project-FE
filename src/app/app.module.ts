@@ -38,6 +38,7 @@ import { DialogEditMatchComponent } from './shared/components/dialog/dialog-edit
 import { PredictionListComponent } from './features/prediction-list/prediction-list.component';
 import { AdminPageComponent } from './features/admin-page/admin-page.component';
 import { DialogAddTeamComponent } from './shared/components/dialog/dialog-add-team/dialog-add-team.component';
+import { AdminHomeComponent } from './features/admin-page/admin-home/admin-home.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -75,7 +76,8 @@ export function tokenGetter() {
     DialogEditMatchComponent,
     PredictionListComponent,
     AdminPageComponent,
-    DialogAddTeamComponent
+    DialogAddTeamComponent,
+    AdminHomeComponent
   ],
   imports: [
     BrowserModule,
