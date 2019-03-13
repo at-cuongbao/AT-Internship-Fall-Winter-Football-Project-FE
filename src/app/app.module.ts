@@ -40,6 +40,7 @@ import { AdminPageComponent } from './features/admin-page/admin-page.component';
 import { DialogAddTeamComponent } from './shared/components/dialog/dialog-add-team/dialog-add-team.component';
 import { ChartsModule } from 'ng2-charts';
 import { StatisticsComponent } from './features/admin-page/statistics/statistics.component';
+import { AdminHomeComponent } from './features/admin-page/admin-home/admin-home.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -78,7 +79,11 @@ export function tokenGetter() {
     PredictionListComponent,
     AdminPageComponent,
     DialogAddTeamComponent,
+<<<<<<< HEAD
     StatisticsComponent
+=======
+    AdminHomeComponent
+>>>>>>> 07acad946b38dc78d7a646464c2b84546cf23ccc
   ],
   imports: [
     BrowserModule,

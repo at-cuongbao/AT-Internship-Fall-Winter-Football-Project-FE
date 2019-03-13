@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from 'src/app/shared/services/api.service';
-import { END_POINT } from '../../shared/services/api-registry';
+import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
+import { TournamentService } from 'src/app/shared/services/tournament.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-admin-page',
@@ -8,40 +10,37 @@ import { END_POINT } from '../../shared/services/api-registry';
   styleUrls: ['./admin-page.component.scss']
 })
 export class AdminPageComponent implements OnInit {
-
-  CurrntMonth = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December",];
+  isClick = false;
+  tournaments = [];
 
   constructor(
-    private api: ApiService
+    private auth: AuthService,
+    private tournamentService: TournamentService,
+    private router: Router
   ) { }
 
   ngOnInit() {
-    this.getStatistics();
-  }
-  
-  public barChartOptions = {
-    scaleShowVerticalLines: false,
-    responsive: false
-  };
-  public barChartLabels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
-  public barChartType = 'bar';
-  public barChartLegend = true;
-  public barChartData = [
-    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
-    {data: [28, 48, 40, 19, 86, 27, 900], label: 'Series B'}
-  ];
-  
-  getStatistics() {
-    this.api.get([END_POINT.statistics])
-    .subscribe(
-      res => {
-        
-        this.showGroupBars();
-      }
-    );
+    this.getTournaments();
   }
 
-  showGroupBars() {
+  getTournaments() {
+    this.tournamentService.get().pipe(map(res => {
+      let tournaments = [];
+      res.map(tour => {
+        tournaments.push({ id: tour._id, name: tour.name });
+      })
+      return tournaments;
+    })).subscribe(data => {
+      this.tournaments = data;
+    });   
+  }
 
+  createResponsive() {
+    this.isClick = !this.isClick;
+  }
+
+  logout() {
+    this.auth.logout();
+    this.router.navigate(['/']);
   }
 }
