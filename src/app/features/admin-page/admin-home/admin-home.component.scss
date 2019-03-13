@@ -4,6 +4,10 @@
   .market-update-gd {
     &:nth-child(3) {
       padding-right: 29px;
+      h4 {
+        font-size: 1em !important;
+        line-height: 1.34em;
+      }
     }
     float: left;
     padding-right: 30px;
