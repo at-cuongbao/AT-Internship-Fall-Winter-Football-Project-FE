@@ -68,6 +68,26 @@ const routes: Routes = [
         component: TournamentRegistrationComponent,
         canActivate: [ AuthGuardService, AdminAuthGuardService ]
       },
+      {
+        path: 'tournaments',
+        component: TournamentListComponent
+      },
+      {
+        path: 'schedules/:id',
+        component: ScheduleComponent,
+      },
+      {
+        path: 'bracket/:id',
+        component: BracketComponent
+      },
+      {
+        path: 'all-schedules',
+        component: AllSchedulesComponent
+      },
+      {
+        path: 'prediction-list',
+        component: PredictionListComponent
+      }
     ],
     canActivate: [ AuthGuardService, AdminAuthGuardService]
   },
