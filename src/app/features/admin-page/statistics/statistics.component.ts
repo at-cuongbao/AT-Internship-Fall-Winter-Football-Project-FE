@@ -9,7 +9,7 @@ import { ApiService } from 'src/app/shared/services/api.service';
 })
 export class StatisticsComponent implements OnInit {
 
-  CurrntMonth = ["January", "February", "March", "April", "May", "June"];
+  CurrntMonth = ["March", "April", "May", "June"];
 
   constructor(
     private api: ApiService
@@ -36,6 +36,7 @@ export class StatisticsComponent implements OnInit {
     this.api.get([END_POINT.statistics])
     .subscribe(
       res => {
+        for(let i = 0; i < 2; i++) res.shift();
         this.barChartData = [
           {
             data: res, label: 'Match'
