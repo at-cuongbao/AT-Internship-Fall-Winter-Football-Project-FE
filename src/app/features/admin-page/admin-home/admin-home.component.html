@@ -49,25 +49,16 @@
         <div class="chit-chat-heading">
           Recent Tournaments
         </div>
-        <div *ngIf="showLoadingIndicator" class="lds-roller">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
         <div class="table-responsive">
           <table class="table table-hover">
             <thead>
               <tr>
                 <th>#</th>
                 <th>Tournaments</th>
-                <th>Created date</th>
+                <th>Start at</th>
                 <th>Status</th>
                 <th>Progress</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -79,9 +70,21 @@
                     [ngClass]="tour.status ? 'btn-success' : 'btn-danger'">{{ tour.status ? 'Done' : 'In progress' }}</span>
                 </td>
                 <td><span class="badge badge-info">{{ tour.percent }}%</span></td>
+                <td><a class="btn btn-danger" (click)="deleteTournament(tour._id)">Delete</a></td>
               </tr>
             </tbody>
           </table>
+          <p class="txt-center">{{ message }}</p>
+          <div *ngIf="showLoadingIndicator" class="lds-roller">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
         </div>
       </div>
     </div>

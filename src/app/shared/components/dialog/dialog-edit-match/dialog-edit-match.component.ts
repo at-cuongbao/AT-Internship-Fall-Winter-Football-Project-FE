@@ -113,7 +113,9 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
     this.apiService.post(url, data).subscribe(code => {
       if (code === 200) {
         this.match = match;
+        this.closeModal(match);
       } else {
+        this.closeModal(match);
         swal({
           // buttons: false,
           text: 'Time out to predict !',
@@ -121,7 +123,6 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
           timer: 2000,
         });
       }
-      this.closeModal(match);
       swal({
         // buttons: false,
         text: `You have ${titleBtn} successfully !`,

@@ -5,6 +5,7 @@ import { ApiService } from 'src/app/shared/services/api.service';
 import { END_POINT } from 'src/app/shared/services/api-registry';
 import { Router } from '@angular/router';
 import swal from 'sweetalert';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-tournament-registration',
@@ -25,7 +26,8 @@ export class TournamentRegistrationComponent implements DoCheck {
 
   constructor(
     private apiService: ApiService,
-    private router: Router
+    private router: Router,
+    private auth: AuthService
   ) {
     this.isOpenModal = false;
     this.imageSource = '../../../assets/images/anhbongda.jpg';
@@ -86,7 +88,7 @@ export class TournamentRegistrationComponent implements DoCheck {
         timer: 2000,
       });
       this.apiService.post([END_POINT.tournaments], data).subscribe(tournamentId => {
-        this.router.navigate(['schedules', tournamentId]);
+        this.auth.currentUser ? this.router.navigate(['/admin/schedules', tournamentId]) : this.router.navigate(['schedules', tournamentId]);
       });
     }
   }

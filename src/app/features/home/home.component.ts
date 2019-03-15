@@ -1,5 +1,7 @@
 import { Component, OnInit, ElementRef, DoCheck } from '@angular/core';
 import { ScheduleService } from 'src/app/shared/services/schedule.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -14,10 +16,15 @@ export class HomeComponent implements OnInit, DoCheck {
 
   constructor(
     private scheduleService: ScheduleService,
-    private elem: ElementRef
+    private elem: ElementRef,
+    private auth: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit() {
+    if (this.auth.currentUser && this.auth.currentUser.admin) {
+      return this.router.navigate(['/admin'])
+    }
     this.getMatches();
   }
 

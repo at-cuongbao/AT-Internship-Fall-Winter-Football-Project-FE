@@ -49,7 +49,7 @@
       <ul id="menu">
         <li id="menu-home"><a routerLink="/admin"><i class="fa fa-tachometer"></i><span>Dashboard</span></a></li>
         <li>
-          <a routerLink="/tournaments" routerLinkActive="active">
+          <a routerLink="/admin/tournaments" routerLinkActive="active">
             <i class="fa fa-cogs"></i>
             <span>Tournaments</span><span class="fa fa-angle-right" style="float: right"></span>
           </a>
@@ -57,11 +57,11 @@
             <li id="menu-academico-boletim"><a routerLink="tournament-registration" >Create tournament</a></li>
           </ul>
         </li>
-        <li id="menu-comunicacao"><a routerLink="/all-schedules" routerLinkActive="active" ><i class="fa fa-book nav_icon"></i><span>Schedules</span><span
+        <li id="menu-comunicacao"><a routerLink="/admin/all-schedules" routerLinkActive="active" ><i class="fa fa-book nav_icon"></i><span>Schedules</span><span
               class="fa fa-angle-right" style="float: right"></span></a>
           <ul id="menu-comunicacao-sub">
             <li *ngFor="let tournament of tournaments" id="menu-mensagens" style="width: 120px">
-                <a routerLink="/schedules/{{ tournament.id }}">
+                <a routerLink="/admin/schedules/{{ tournament.id }}">
                   {{ tournament.name || 'Unset name' }}
                 </a>
             </li>

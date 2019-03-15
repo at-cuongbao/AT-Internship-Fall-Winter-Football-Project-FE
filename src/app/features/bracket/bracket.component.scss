@@ -1,0 +1,361 @@
+.bracket-wrapper {
+  width: 100%;
+  text-align: center;
+  background-color: #00afd8;
+  p {
+    padding: 20px;
+    text-transform: uppercase;
+    font-size: 32px;
+    font-weight: bold;
+  }
+  .auto-justify {
+    padding-bottom: 32px;
+    position: relative;
+    color: #fff;
+    padding: 10%;
+    padding-bottom: 56px;
+    &:after {
+      content : '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-size: cover;
+      width: 100%;
+      height: 100%;
+      opacity : 0.5;
+      z-index: -1;
+    }
+    .panel-center {
+      img {
+        height: 410px;
+        width: 395px;
+        position: relative;
+        top: -120px;
+      }
+    }
+    .match-result {
+      .tk1 {
+        top: 50px;
+      }
+      .tk2 {
+        top: 120px;
+      }
+      .tk3 {
+        top: 250px;
+      }
+      .tk4 {
+        top: 320px;
+      }
+      .tk9 {
+        top: 50px;
+      }
+      .tk10 {
+        top: 120px;
+      }
+      .tk11 {
+        top: 250px;
+      }
+      .tk12 {
+        top: 320px;
+      }
+      .tk5 {
+        top: 450px;
+      }
+      .tk6 {
+        top: 520px;
+      }
+      .tk7 {
+        top: 650px;
+      }
+      .tk8 {
+        top: 720px;
+      }
+      .tk13 {
+        top: 450px;
+      }
+      .tk14 {
+        top: 520px;
+      }
+      .tk15 {
+        top: 650px;
+      }
+      .tk16 {
+        top: 720px;
+      }
+      .tk1, .tk2, .tk3, .tk4, .tk5, .tk6, .tk7, .tk8 {
+        left: 20px;
+        .code {
+          float: left;
+          padding-right: 12px;
+        }
+        .score {
+          float: left;
+        }
+      }
+      .tk9, .tk10, .tk11, .tk12, .tk13, .tk14, .tk15, .tk16 {
+        right: 20px;
+        .code {
+          float: right;
+          padding-right: 12px;
+        }
+        .score {
+          float: right;
+        }
+      }
+      .bk1 {
+        top: 150px;
+      }
+      .bk2 {
+        top: 220px;
+      }
+      .bk6 {
+        top: 150px;
+      }
+      .bk5 {
+        top: 220px;
+      }
+      .bk3 {
+        top: 540px;
+      }
+      .bk4 {
+        top: 610px;
+      }
+      .bk7 {
+        top: 540px;
+      }
+      .bk8 {
+        top: 610px;
+      }
+      .bk1, .bk2, .bk3, .bk4 {
+        left: 175px;
+        .code {
+          float: left;
+          padding-right: 12px;
+        }
+        .score {
+          float: left;
+        }
+      }
+      .bk5, .bk6, .bk7, .bk8 {
+        right: 175px;
+        .code {
+          float: right;
+          padding-right: 12px;
+        }
+        .score {
+          float: right;
+        }
+      }
+      .ck5 {
+        top: 420px;
+      }
+      .ck6 {
+        top: 490px;
+      }
+      .ck4 {
+        right: 270px;
+        top: 330px;
+      }
+      .ck3 {
+        right: 270px;
+        top: 400px;
+      }
+      .ck3, .ck4 {
+        .code {
+          float: right;
+          padding-right: 12px;
+        }
+        .score {
+          float: left;
+        }
+      }
+      .ck1 {
+        left: 330px;
+        top: 330px;
+      }
+      .ck2 {
+        left: 330px;
+        top: 400px;
+      }
+      .ck5, .ck6  {
+        left: 50%;
+        transform: translate(-50%,0);
+      }
+      .tk1, .tk2, .tk3, .tk4, .tk5, .tk6, .tk7, .tk8, .bk1, .bk2, .bk3, .bk4, .ck1, .ck2 , .ck5, .ck6{
+        img {
+          float: left;
+        }
+      }
+      .tk9, .tk10 , .tk11, .tk12, .tk13, .tk14 , .tk15, .tk16, .bk5, .bk6, .bk7, .bk8, .ck3, .ck4 {
+        img {
+          float: right;
+        }
+      }
+      .team-name {
+        position: absolute;
+        img {
+          width: 55px;
+          height: 55px;
+        }
+        span {
+          font-size: 26px;
+          font-weight: bold;
+          padding: 12px 0 12px 10px;
+          display: inline-block;
+        }
+        span.code {
+          width: 50px;
+          padding-right: 48px;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 1000px) {
+  .tournament-detail {
+    .tournament-content {
+      .article-wrap {
+        .bracket-wrapper {
+          .auto-justify {
+            .panel-center {
+              img {
+                height: 380px;
+                width: 380px;
+                position: relative;
+                top: -100px;
+              }
+            }
+            .match-result {
+              .tk1 {
+                top: 50px;
+              }
+              .tk2 {
+                top: 110px;
+              }
+              .tk3 {
+                top: 230px;
+              }
+              .tk4 {
+                top: 290px;
+              }
+              .tk9 {
+                top: 50px;
+              }
+              .tk10 {
+                top: 110px;
+              }
+              .tk11 {
+                top: 230px;
+              }
+              .tk12 {
+                top: 290px;
+              }
+              .tk5 {
+                top: 410px;
+              }
+              .tk6 {
+                top: 470px;
+              }
+              .tk7 {
+                top: 590px;
+              }
+              .tk8 {
+                top: 650px;
+              }
+              .tk13 {
+                top: 410px;
+              }
+              .tk14 {
+                top: 470px;
+              }
+              .tk15 {
+                top: 590px;
+              }
+              .tk16 {
+                top: 650px;
+              }
+              .bk1 {
+                top: 140px;
+              }
+              .bk2 {
+                top: 200px;
+              }
+              .bk6 {
+                top: 140px;
+              }
+              .bk5 {
+                top: 200px;
+              }
+              .bk3 {
+                top: 500px;
+              }
+              .bk4 {
+                top: 560px;
+              }
+              .bk7 {
+                top: 500px;
+              }
+              .bk8 {
+                top: 560px;
+              }
+              .ck5 {
+                top: 380px;
+              }
+              .ck6 {
+                top: 440px;
+              }
+              .ck4 {
+                top: 310px;
+              }
+              .ck3 {
+                top: 370px;
+              }
+              .ck1 {
+                top: 310px;
+              }
+              .ck2 {
+                top: 370px;
+              }
+              .team-name {
+                img {
+                  height: 50px;
+                  width: 50px;
+                }
+                span {
+                  font-size: 18px;
+                  padding: 10px 0 10px 10px;
+                }
+              } 
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 928px) {
+  .bracket-wrapper {
+    .auto-justify {
+      .match-result {
+        .bk1, .bk2, .bk3, .bk4 {
+          left: 145px;
+        }
+        .bk5, .bk6, .bk7, .bk8 {
+          right: 145px;
+        }
+        .ck1, .ck2 {
+          left: 215px;
+        }
+        .ck3, .ck4 {
+          right: 215px;
+        }
+      }
+    } 
+  }
+}
+@media screen and (max-width: 810px) {
+  .bracket-wrapper {
+    display: none;
+  }
+}
