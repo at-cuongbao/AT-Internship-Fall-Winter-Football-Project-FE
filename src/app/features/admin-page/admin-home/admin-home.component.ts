@@ -14,6 +14,7 @@ export class AdminHomeComponent implements OnInit {
   tournaments = [];
   predictedMatchesLength = 0;
   showLoadingIndicator = true;
+  message = '';
 
   constructor(private api: ApiService, private tournamentService: TournamentService) { }
 
@@ -32,10 +33,13 @@ export class AdminHomeComponent implements OnInit {
 
   getAllTournaments() {
     this.api.get([END_POINT.matches + '/showDonePercentMatches']).subscribe(tours => {
-      
-      tours.sort((a, b) => a.start_at < b.start_at ? 1 : -1);
-      this.tournaments = tours;
-      this.tournamentsLength = tours.length;
+      if (tours) {
+        tours.sort((a, b) => a.start_at < b.start_at ? 1 : -1);
+        this.tournaments = tours;
+        this.tournamentsLength = tours.length;
+      } else {
+        this.message = 'No tournaments!'
+      }
       this.showLoadingIndicator = false;
     });
   }
@@ -44,5 +48,15 @@ export class AdminHomeComponent implements OnInit {
     this.api.get([END_POINT.prediction]).subscribe(predictions => {
       this.predictedMatchesLength = predictions.length / 2;
     })
+  }
+
+  deleteTournament(_id) {
+    if (confirm('Are you sure ?')) {
+      this.api.delete([END_POINT.matches + '/' + _id]).subscribe(data => this.showLoadingIndicator = false);
+      swal({
+        text: 'You have register successfully !',
+        icon: "success",
+      });
+    }
   }
 }

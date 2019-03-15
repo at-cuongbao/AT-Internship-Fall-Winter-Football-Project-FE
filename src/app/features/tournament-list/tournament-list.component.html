@@ -1,5 +1,5 @@
 <div class="container">
-  <section class="tournament-list" [class.display-full]="flag">
+  <section class="tournament-list" [class.display-full]="flag" [ngClass]="{'w100': auth.currentUser?.admin}">
     <div *ngIf="showLoadingIndicator" class="lds-roller" [class.position-left-30]="flag"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
     <ng-container  *ngIf="tournamentList.length">
       <div class="tournament-top clearfix">

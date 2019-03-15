@@ -191,9 +191,6 @@
           text-transform: uppercase;
         }
       }
-      thead:hover {
-        background-color: $color-grey;
-      }
       tbody {
         tr {
           background-color: $color-black;
@@ -206,7 +203,7 @@
             vertical-align: middle;
           }
         }
-        tr:last-child {
+        tr:first-child {
           background-color: $color-light-black;
         }
         tr td:last-child {
