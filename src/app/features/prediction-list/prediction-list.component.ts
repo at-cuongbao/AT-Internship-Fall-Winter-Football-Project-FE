@@ -30,7 +30,8 @@ export class PredictionListComponent implements OnInit {
 
   getSchedule(): void {
     let userId = this.auth.currentUser.sub;
-    this.apiService.get([`${END_POINT.prediction}/${userId}`])
+    let url = (this.auth.currentUser && this.auth.currentUser.admin) ? `${END_POINT.prediction}/showAdmin` : `${END_POINT.prediction}/${userId}`
+    this.apiService.get([url])
       .subscribe(returnedPredictions => {
         if (returnedPredictions) {
           let group_to_values = returnedPredictions.reduce(function (obj, item) {
