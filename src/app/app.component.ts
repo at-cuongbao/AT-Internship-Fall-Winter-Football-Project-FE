@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { AuthService } from './shared/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,11 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 export class AppComponent {
   title = 'AT-Internship-Fall-Winter-Football-Project-FE';
-  constructor(private router: Router) { }
+
+  constructor(
+    private router: Router,
+    private auth: AuthService
+  ) { }
 
   ngOnInit() {
     this.router.events.subscribe((evt) => {

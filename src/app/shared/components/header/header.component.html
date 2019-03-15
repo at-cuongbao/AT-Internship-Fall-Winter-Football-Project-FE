@@ -1,12 +1,19 @@
 <header class="header sticky">
   <div class="container">
     <div class="bottom-nav clearfix">
-      <a routerLink="/" class="bottom-nav-left pull-left">
+      <a *ngIf="!auth?.currentUser?.admin" routerLink="/" class="bottom-nav-left pull-left">
+        <img class="bottom-nav-logo" src="../../../../assets/images/logo-img.png">
+        <span class="bottom-nav-brand">Sport<em>.clc</em></span>
+      </a>
+      <a *ngIf="auth?.currentUser?.admin" routerLink="/admin" class="bottom-nav-left pull-left">
         <img class="bottom-nav-logo" src="../../../../assets/images/logo-img.png">
         <span class="bottom-nav-brand">Sport<em>.clc</em></span>
       </a>
       <div [class.responsive]="isClick" class="bottom-nav-right pull-right">
-        <a routerLink="/home" class="main-link" routerLinkActive="active">
+        <a *ngIf="!auth?.currentUser?.admin" routerLink="/home" class="main-link" routerLinkActive="active">
+          Home
+        </a>
+        <a *ngIf="auth?.currentUser?.admin" routerLink="/admin" class="main-link" routerLinkActive="active">
           Home
         </a>
         <a routerLink="/tournaments" routerLinkActive="active" class="main-link">

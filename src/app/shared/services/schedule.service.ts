@@ -15,6 +15,6 @@ export class ScheduleService {
   }
 
   getNextMatch() {
-    return this.apiService.get([END_POINT.matches + '/next-match']);
+    return this.apiService.get([`${END_POINT.matches}/next-match`]);
   }
 }

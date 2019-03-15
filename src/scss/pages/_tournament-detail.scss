@@ -4,6 +4,7 @@
   font-family: $font-body;
   .tournament-content {
     .tournament-name {
+      height: 500px;
       background-image: url('./assets/images/championsleaguelogo.jpg');
       position: relative;
       p {
@@ -17,6 +18,12 @@
       }
     }
     .article-wrap {
+      table {
+        .heading-table {
+          background-color: $color-blue;
+          color: $color-white;
+        }
+      }
       padding-bottom: 32px;
       .article-tournament {
         margin: 32px 0 32px;
@@ -217,6 +224,10 @@
                 padding: 12px 0 12px 10px;
                 display: inline-block;
               }
+              span.code {
+                width: 50px;
+                padding-right: 48px;
+              }
             }
           }
         }
@@ -344,7 +355,7 @@
             .tournament-infor {
               background-color: $color-white;
               .tournament-desc {
-                padding: 10px 0 8px;
+                padding: 10px 8px;
                 a:hover {
                   color: $color-blue;
                 }
@@ -358,8 +369,6 @@
       }
     }
   }
-}
-
 @media screen and (max-width: 1000px) {
   .tournament-detail {
     .tournament-content {
@@ -578,4 +587,5 @@
       }
     }
   }
+}
 }

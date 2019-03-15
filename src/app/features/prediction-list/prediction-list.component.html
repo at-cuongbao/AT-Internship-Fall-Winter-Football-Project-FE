@@ -16,7 +16,7 @@
         <div class="schedule">
           <h4 class="group-title-date txt-center">Date: {{item.group | date:'MMM, dd | h:mm a'}}</h4>
           <ul class="matches">
-            <li class="match" *ngFor="let match of item.data">
+            <li class="match" *ngFor="let match of item.data" (click)="openMatchDetail(match)">
               <p class="match-date w25">
                 <span class="tournament-name">
                   {{ match.tournamentName }}

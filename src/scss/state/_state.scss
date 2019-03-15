@@ -48,18 +48,18 @@
 }
 input.file {
   position: relative;
-	-moz-opacity: 0;
-	opacity: 0;
-	z-index: 2;
+    -moz-opacity: 0;
+    opacity: 0;
+    z-index: 2;
 }
 .fileinputs {
-	position: relative;
+    position: relative;
 }
 .fakefile {
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	z-index: 1;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
 }
 .disabled-li {
   pointer-events: none;

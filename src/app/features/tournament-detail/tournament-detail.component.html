@@ -109,42 +109,14 @@
           </td>
         </tr>
       </table>
-      <table *ngIf="topTeamFlag">
+      <table *ngIf="topTeamFlag !== 0">
         <thead class="heading txt-center">
-          <th colspan="4">Top Teams Of Each Table</th>
+          <th [attr.colspan]="topTeamFlag">Top Teams Of Each Table</th>
         </thead>
-        <tr class="heading txt-center">
-          <th>Table A</th>
-          <th>Table B</th>
-          <th>Table C</th>
-          <th>Table D</th>
-        </tr>
-        <tr>
-          <td>
-            <a routerLink="/team-detail/{{ teams[0]?.tournamentTeamId.team_id._id }}"><img src="{{ teams[0]?.tournamentTeamId.team_id.logo }}"><span>{{ teams[0]?.tournamentTeamId.team_id.name }}</span></a>
-          </td>
-          <td>
-            <a routerLink="/team-detail/{{ teams[2]?.tournamentTeamId.team_id._id }}"><img src="{{ teams[2]?.tournamentTeamId.team_id.logo }}"><span>{{ teams[2]?.tournamentTeamId.team_id.name }}</span></a>
-          </td>
-          <td>
-            <a routerLink="/team-detail/{{ teams[4]?.tournamentTeamId.team_id._id }}"><img src="{{ teams[4]?.tournamentTeamId.team_id.logo }}"><span>{{ teams[4]?.tournamentTeamId.team_id.name }}</span></a>
-          </td>
-          <td>
-            <a routerLink="/team-detail/{{ teams[6]?.tournamentTeamId.team_id._id }}"><img src="{{ teams[6]?.tournamentTeamId.team_id.logo }}"><span>{{ teams[6]?.tournamentTeamId.team_id.name }}</span></a>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <a routerLink="/team-detail/{{ teams[1]?.tournamentTeamId.team_id._id }}"><img src="{{ teams[1]?.tournamentTeamId.team_id.logo }}"><span>{{ teams[1]?.tournamentTeamId.team_id.name }}</span></a>
-          </td>
-          <td>
-            <a routerLink="/team-detail/{{ teams[3]?.tournamentTeamId.team_id._id }}"><img src="{{ teams[3]?.tournamentTeamId.team_id.logo }}"><span>{{ teams[3]?.tournamentTeamId.team_id.name }}</span></a>
-          </td>
-          <td>
-            <a routerLink="/team-detail/{{ teams[5]?.tournamentTeamId.team_id._id }}"><img src="{{ teams[5]?.tournamentTeamId.team_id.logo }}"><span>{{ teams[5]?.tournamentTeamId.team_id.name }}</span></a>
-          </td>
-          <td>
-            <a routerLink="/team-detail/{{ teams[7]?.tournamentTeamId.team_id._id }}"><img src="{{ teams[7]?.tournamentTeamId.team_id.logo }}"><span>{{ teams[7]?.tournamentTeamId.team_id.name }}</span></a>
+        <tr *ngFor="let row of teams, let i = index" [class.txt-center]="!i" [class.heading-table]="!i">
+          <td *ngFor="let team of row">
+            <ng-container *ngIf="!i">{{ team }}</ng-container>
+            <a *ngIf="i !== 0" routerLink="/team-detail/{{ team?.tournamentTeamId.team_id._id }}"><img src="{{ team?.tournamentTeamId.team_id.logo }}"><span>{{ team?.tournamentTeamId.team_id.name }} ({{ team.points }} pts)</span></a>
           </td>
         </tr>
       </table>
@@ -155,7 +127,7 @@
     <div class="container">
       <div class="other-tournament clearfix">
         <div class="other-post-title">
-          <h3>Other <span>Posts</span></h3>
+          <h3>Other <span>Tournaments</span></h3>
         </div>
         <div class="tournament-wrap">
           <ul class="tournament-list"> 

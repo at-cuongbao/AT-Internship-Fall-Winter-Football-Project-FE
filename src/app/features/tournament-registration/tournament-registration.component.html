@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container container-regis">
   <div class="tournament-register">
     <div class="register" [style.backgroundImage]="'url('+ imageSource +')'">
       <div class="heading">
@@ -118,6 +118,5 @@
       </form>
     </div>
   </div>
-  <app-sidebar></app-sidebar>
 </div>
 <app-dialog-add-team *ngIf='isOpenModal' [team]='team' (submit)='onModalSubmit($event)'></app-dialog-add-team>

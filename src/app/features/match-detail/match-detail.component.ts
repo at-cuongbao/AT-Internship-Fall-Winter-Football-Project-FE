@@ -66,7 +66,9 @@ export class MatchDetailComponent implements OnInit {
     let id = this.route.snapshot.params.id;
     this.api.get([END_POINT.prediction + '/top/' + id])
       .subscribe(data => {
-        this.users = data;
-      });
+        if (data) {
+          this.users = data;
+        }
+      })
   }
 }

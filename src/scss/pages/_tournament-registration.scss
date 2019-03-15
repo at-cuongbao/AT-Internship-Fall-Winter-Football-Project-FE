@@ -1,13 +1,14 @@
+.container-regis {
+  padding-right: 6px;
+}
 .tournament-register {
-  width: 75%;
+  width: 104%;
   float: right;
   background-size: cover;
-  padding-left: 20px;
   border-radius: 8px;
+  margin-top: 110px;
+  margin-bottom: 35px;
   .register {
-    width: 100%;
-    margin: 0 auto;
-    max-width: 1023px;
     min-height: 720px;
     font-weight: 700;
     background-color: $color-white;

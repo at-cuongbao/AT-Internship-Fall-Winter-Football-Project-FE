@@ -1,201 +1,89 @@
 <div class="page-container clearfix">
-  <div class="left-content">
-    <header class="header-main clearfix">
-      <div class="header-left">
-        <div class="logo-name">
-          <a href="">
-            <h1>Shoppy</h1>
-          </a>
-        </div>
-        <div class="search-box">
-          <form action="">
-            <input type="text" placeholder="Search..." required>
-            <button>Find</button>
-          </form>
+  <header class="header sticky">
+    <div class="container">
+      <div class="bottom-nav clearfix">
+        <a *ngIf="!auth?.currentUser?.admin" routerLink="/" class="bottom-nav-left pull-left">
+          <img class="bottom-nav-logo" src="../../../../assets/images/logo-img.png">
+          <span class="bottom-nav-brand">Sport<em>.clc</em></span>
+        </a>
+        <a *ngIf="auth?.currentUser?.admin" routerLink="/admin" class="bottom-nav-left pull-left">
+          <img class="bottom-nav-logo" src="../../../../assets/images/logo-img.png">
+          <span class="bottom-nav-brand">Sport<em>.clc</em></span>
+        </a>
+        <div [class.responsive]="isClick" class="bottom-nav-right pull-right">
+          <div *ngIf="auth.isLoggedIn()" class="dropdown dropdown-image inline-block clearfix">
+            <ng-container *ngIf="auth.currentUser.admin">
+              <a class="dropbtn">{{ auth.currentUser.name || 'Username' }}
+                <span class="fa fa-caret-down dropdown-ic"></span>
+              </a>
+              <div class="dropdown-content dropdown-right">
+                <a (click)="logout()" class="sub-link">Log out</a>
+              </div>
+            </ng-container>
+            <ng-container *ngIf="!auth.currentUser.admin">
+              <a class="dropbtn btn-image">
+                <img src="../../../../assets/images/T7Z35JWLQ-U9R5N05T7-e955542bf924-48.jpg" alt="user-image">
+                <span class="fa fa-caret-down dropdown-ic"></span>
+              </a>
+              <div class="dropdown-content dropdown-right">
+                <a class="sub-link">{{ auth.currentUser.name || 'Username' }}</a>
+                <a class="sub-link" routerLink="/prediction-list">Prediction list</a>
+                <a class="sub-link">Profile</a>
+                <a (click)="logout()" class="sub-link">Log out</a>
+              </div>
+            </ng-container>
+          </div>
+          <a routerLink="/login" *ngIf="!auth.isLoggedIn()" class="main-link" routerLinkActive="active">Log in</a>
+          <a class="icon" (click)="createResponsive()">&#9776;</a>
         </div>
       </div>
-      <div class="header-right clearfix">
-        <div class="profile_details_left">
-          <!--notifications of menu start -->
-          <ul class="nofitications-dropdown">
-            <li class="dropdown head-dpdn">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                <i class="fa fa-envelope"></i><span class="badge">3</span>
-              </a>
-            </li>
-            <li class="dropdown head-dpdn">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                <i class="fa fa-bell"></i><span class="badge badge-blue">3</span>
-              </a>
-            </li>
-            <li class="dropdown head-dpdn">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                <i class="fa fa-tasks"></i><span class="badge badge-green">3</span>
-              </a>
-            </li>
-          </ul>
-          <div class="clearfix"> </div>
-        </div>
-        <!--notification menu end -->
-        <div class="profile_details">
-          <ul>
-            <li class="dropdown profile_details_drop">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                <div class="profile_img">
-                  <span class="prfil-img"><img src="../../../assets/images/Mu.png" width="50px" height="50px"
-                      alt=""></span>
-                  <div class="user-name">
-                    <p>Malorum</p>
-                    <span>Administrator</span>
-                  </div>
-                  <i class="fa fa-angle-down lnr"></i>
-                  <div class="clearfix"></div>
-                </div>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </header>
-    <main class="inner-block">
-      <div class="market-updates">
-        <div class="col-4 market-update-gd">
-          <div class="market-update-block clr-block-1">
-            <div class="col-8 market-update-left">
-              <h3>83</h3>
-              <h4>Registered User</h4>
-              <p>Other hand, we denounce</p>
-            </div>
-            <div class="col-4 market-update-right">
-              <i class="fa fa-file-text-o"> </i>
-            </div>
-            <div class="clearfix"> </div>
-          </div>
-        </div>
-  
-        <div class="col-4 market-update-gd">
-          <div class="market-update-block clr-block-2">
-            <div class="col-8 market-update-left">
-              <h3>135</h3>
-              <h4>Daily Visitors</h4>
-              <p>Other hand, we denounce</p>
-            </div>
-            <div class="col-4 market-update-right">
-              <i class="fa fa-eye"> </i>
-            </div>
-            <div class="clearfix"> </div>
-          </div>
-        </div>
-        <div class="col-4 market-update-gd">
-          <div class="market-update-block clr-block-3">
-            <div class="col-8 market-update-left">
-              <h3>23</h3>
-              <h4>New Messages</h4>
-              <p>Other hand, we denounce</p>
-            </div>
-            <div class="col-4 market-update-right">
-              <i class="fa fa-envelope-o"> </i>
-            </div>
-            <div class="clearfix"> </div>
-          </div>
-        </div>
-        <div class="clearfix"> </div>
-      </div>
-  
-      <div class="chit-chat-layer1">
-        <div class="col-12 chit-chat-layer1-left">
-          <div class="work-progres">
-            <div class="chit-chat-heading">
-              Recent Followers
-            </div>
-            <div class="table-responsive">
-              <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Project</th>
-                    <th>Manager</th>
-                    <th>Status</th>
-                    <th>Progress</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Face book</td>
-                    <td>Malorum</td>
-                    <td><span class="btn btn-danger">in progress</span></td>
-                    <td><span class="badge badge-info">50%</span></td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Twitter</td>
-                    <td>Evan</td>
-                    <td><span class="btn btn-success">completed</span></td>
-                    <td><span class="badge badge-success">100%</span></td>
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>Google</td>
-                    <td>John</td>
-                    <td><span class="btn btn-warning">in progress</span></td>
-                    <td><span class="badge badge-warning">75%</span></td>
-                  </tr>
-                  <tr>
-                    <td>4</td>
-                    <td>LinkedIn</td>
-                    <td>Danial</td>
-                    <td><span class="btn btn-info">in progress</span></td>
-                    <td><span class="badge badge-info">65%</span></td>
-                  </tr>
-                  <tr>
-                    <td>5</td>
-                    <td>Tumblr</td>
-                    <td>David</td>
-                    <td><span class="btn btn-warning">in progress</span></td>
-                    <td><span class="badge badge-danger">95%</span></td>
-                  </tr>
-                  <tr>
-                    <td>6</td>
-                    <td>Tesla</td>
-                    <td>Mickey</td>
-                    <td><span class="btn btn-info">in progress</span></td>
-                    <td><span class="badge badge-success">95%</span></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-        <div class="clearfix"></div>
-      </div>
-    </main>
-  </div>
-  <div class="sidebar-menu">
-    <div class="logo"> 
-      <a href="#" class="sidebar-icon"> 
-        <span class="fa fa-bars"></span> 
-      </a>
-      <a href="#"> 
-        <span id="logo"></span>
-      </a> 
     </div>
+  </header>
+
+  <div class="left-content">
+    <router-outlet></router-outlet>
+  </div>
+
+  <div class="sidebar-menu">
     <div class="menu">
       <ul id="menu">
-        <li id="menu-home">
-          <a href="index.html">
-            <i class="fa fa-tachometer"></i><span>Dashboard</span>
-          </a>
-        </li>
+        <li id="menu-home"><a routerLink="/admin"><i class="fa fa-tachometer"></i><span>Dashboard</span></a></li>
         <li>
-          <a href="#">
+          <a routerLink="/admin/tournaments" routerLinkActive="active">
             <i class="fa fa-cogs"></i>
-            <span>Components</span>
-            <span class="fa fa-angle-right" style="float: right"></span>
+            <span>Tournaments</span><span class="fa fa-angle-right" style="float: right"></span>
           </a>
-          <ul>
-            <li><a href="grids.html">Grids</a></li>
-            <li><a href="portlet.html">Portlets</a></li>
+          <ul id="menu-academico-sub">
+            <li id="menu-academico-boletim"><a routerLink="tournament-registration" >Create tournament</a></li>
+          </ul>
+        </li>
+        <li id="menu-comunicacao"><a routerLink="/all-schedules" routerLinkActive="active" ><i class="fa fa-book nav_icon"></i><span>Schedules</span><span
+              class="fa fa-angle-right" style="float: right"></span></a>
+          <ul id="menu-comunicacao-sub">
+            <li *ngFor="let tournament of tournaments" id="menu-mensagens" style="width: 120px">
+                <a routerLink="/schedules/{{ tournament.id }}">
+                  {{ tournament.name || 'Unset name' }}
+                </a>
+            </li>
+          </ul>
+        </li>
+        <li><a href="maps.html"><i class="fa fa-map-marker"></i><span>Maps</span></a></li>
+        <li id="menu-academico">
+          <a><i class="fa fa-file-text"></i><span>Pages</span><span class="fa fa-angle-right"
+              style="float: right"></span>
+          </a>
+          <ul id="menu-academico-sub">
+            <li id="menu-academico-boletim"><a>Login</a></li>
+            <li id="menu-academico-avaliacoes"><a>Sign Up</a></li>
+          </ul>
+        </li>
+
+        <li><a><i class="fa fa-bar-chart"></i><span>Charts</span></a></li>
+        <li><a><i class="fa fa-envelope"></i><span>Mailbox</span><span class="fa fa-angle-right"
+              style="float: right"></span></a>
+          <ul id="menu-academico-sub">
+            <li id="menu-academico-avaliacoes"><a href="inbox.html">Inbox</a></li>
+            <li id="menu-academico-boletim"><a href="inbox-details.html">Compose email</a></li>
           </ul>
         </li>
       </ul>
