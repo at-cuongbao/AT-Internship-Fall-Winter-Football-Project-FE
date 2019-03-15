@@ -65,12 +65,12 @@
               <tr *ngFor="let tour of tournaments, let i = index">
                 <td>{{ i + 1}}</td>
                 <td>{{ tour.name }}</td>
-                <td>{{ tour.start_at | date:'MMM, dd | h:mm a' }}</td>
-                <td><span class="btn"
-                    [ngClass]="tour.status ? 'btn-success' : 'btn-danger'">{{ tour.status ? 'Done' : 'In progress' }}</span>
+                <td>{{ tour.start_at | date:'MMM, dd' }}</td>
+                <td><span class="btn btn-sm"
+                    [ngClass]="tour.status ? 'btn-success' : 'btn-info'">{{ tour.status ? 'Done' : 'In progress' }}</span>
                 </td>
                 <td><span class="badge badge-info">{{ tour.percent }}%</span></td>
-                <td><a class="btn btn-danger" (click)="deleteTournament(tour._id)">Delete</a></td>
+                <td><a class="btn btn-danger btn-sm" (click)="deleteTournament(tour._id)">Delete</a></td>
               </tr>
             </tbody>
           </table>
