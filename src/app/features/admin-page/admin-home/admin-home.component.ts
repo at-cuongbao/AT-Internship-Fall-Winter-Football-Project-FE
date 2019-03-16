@@ -51,7 +51,7 @@ export class AdminHomeComponent implements OnInit {
   }
 
   deleteTournament(_id) {
-    if (confirm('Are you sure ?')) {
+    if (confirm('Are you sure to delete?')) {
       this.api.delete([END_POINT.matches + '/' + _id]).subscribe(data => this.showLoadingIndicator = false);
       swal({
         text: 'You have register successfully !',

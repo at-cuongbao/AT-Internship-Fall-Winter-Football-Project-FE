@@ -28,7 +28,7 @@ export class StatisticsComponent implements OnInit {
   public barChartLegend = true;
   public barChartData = [
     {
-      data: [65, 59, 80, 81, 56, 55], label: 'Match'
+      data: [65, 59, 80, 81, 56, 55], label: 'Matches'
     }
   ];
   
@@ -39,7 +39,7 @@ export class StatisticsComponent implements OnInit {
         for(let i = 0; i < 2; i++) res.shift();
         this.barChartData = [
           {
-            data: res, label: 'Match'
+            data: res, label: 'Matches'
           }
         ];
       }
