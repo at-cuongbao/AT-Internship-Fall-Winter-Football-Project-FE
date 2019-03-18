@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, Renderer } from '@angular/core';
 import { ScheduleService } from 'src/app/shared/services/schedule.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router, NavigationStart } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { END_POINT } from 'src/app/shared/services/api-registry';
 import { ApiService } from 'src/app/shared/services/api.service';
@@ -31,7 +31,13 @@ export class ScheduleComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private renderer: Renderer
-  ) { }
+  ) { 
+    router.events.forEach((event) => {
+      if(event instanceof NavigationStart) {
+        this.getSchedule();
+      }
+    });
+  }
 
   ngOnInit() {
     this.init();
@@ -67,7 +73,7 @@ export class ScheduleComponent implements OnInit {
   }
 
   getSchedule(): void {
-    let id;
+    let id: string;
     this.route.paramMap.subscribe((params: ParamMap) => {
       id = params.get('id') || '5c4fbbaa0b614f0a24019243';
     });
