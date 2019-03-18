@@ -4,7 +4,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 import { ActivatedRoute, ParamMap, Router, NavigationEnd } from '@angular/router';
 import { fake_data } from '../../../assets/mock-match';
 
-const GROUPS = ["A", "B", "C", "D", "E", "F", "G", "H"];
+const GROUPS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
 
 @Component({
   selector: 'app-schedule',
@@ -89,14 +89,14 @@ export class ScheduleComponent implements OnInit {
           groupName: 'Quater-final',
           matches: quarters
         }, {
-          groupName: 'Semi-final',
+          groupName: 'emi-final',
           matches: semis
         }, {
           groupName: 'Final',
           matches: finals
         });
         this.showLoadingIndicator = false;
-      })
+      }, error => console.log(error))
   }
 
   openModal(match) {
