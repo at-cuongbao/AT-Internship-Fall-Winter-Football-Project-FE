@@ -123,7 +123,6 @@ export class ScheduleComponent implements OnInit {
 
   submit(f: NgForm, match) {
     const data = {
-      date: new Date().getTime(),
       match_id: match.id,
       user_id: this.auth.currentUser.sub,
       scorePrediction: [f.value.firstPrediction, f.value.secondPrediction],
