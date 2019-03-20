@@ -23,7 +23,6 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
   isWinner = true;
   disableRadio_btn = true;
   imageWinner = '../../../assets/images/prize.png';
-  
   errorMessage: String;
 
   constructor(

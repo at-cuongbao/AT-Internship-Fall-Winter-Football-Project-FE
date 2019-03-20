@@ -33,6 +33,7 @@
       }
       .bracket-wrapper {
         font-family: $font-body;
+        min-height: 600px;
         width: 100%;
         text-align: center;
         background-color: $color-blue;
@@ -62,68 +63,68 @@
           }
           .panel-center {
             img {
-              height: 410px;
-              width: 395px;
+              height: 255px;
+              width: 280px;
               position: relative;
               top: -120px;
             }
           }
           .match-result {
             .tk1 {
-              top: 50px;
+              top: 100px;
             }
             .tk2 {
-              top: 120px;
+              top: 170px;
             }
             .tk3 {
-              top: 250px;
+              top: 300px;
             }
             .tk4 {
-              top: 320px;
+              top: 370px;
             }
             .tk5 {
-              top: 50px;
+              top: 100px;
             }
             .tk6 {
-              top: 120px;
+              top: 170px;
             }
             .tk7 {
-              top: 250px;
+              top: 300px;
             }
             .tk8 {
-              top: 320px;
+              top: 370px;
             }
             .tk9 {
-              top: 450px;
+              top: 500px;
             }
             .tk10 {
-              top: 520px;
+              top: 570px;
             }
             .tk11 {
-              top: 650px;
+              top: 700px;
             }
             .tk12 {
-              top: 720px;
+              top: 770px;
             }
             .tk13 {
-              top: 450px;
+              top: 500px;
             }
             .tk14 {
-              top: 520px;
+              top: 570px;
             }
             .tk15 {
-              top: 650px;
+              top: 700px;
             }
             .tk16 {
-              top: 720px;
+              top: 770px;
             }
             .tk5 .code, .tk6 .code, .tk7 .code, .tk8 .code {
               margin-right: 15px;
             }
-            .tk1, .tk2, .tk3, .tk4, .tk9, .tk10, .tk11, .tk12 {
+            .tk1, .tk2, .tk3, .tk4 {
               left: 20px;
             }
-            .tk5, .tk6, .tk7, .tk8, .tk13, .tk14, .tk15, .tk16 {
+            .tk5, .tk6, .tk7, .tk8 {
               right: 20px;
               .code {
                 float: right;
@@ -134,36 +135,36 @@
               }
             }
             .bk2 {
-              top: 150px;
+              top: 200px;
             }
             .bk1 {
-              top: 220px;
+              top: 270px;
             }
             .bk3 {
-              top: 220px;
+              top: 270px;
             }
             .bk4 {
-              top: 150px;
+              top: 200px;
             }
             .bk6 {
-              top: 540px;
+              top: 590px;
             }
             .bk5 {
-              top: 610px;
+              top: 660px;
             }
             .bk7 {
-              top: 540px;
+              top: 590px;
             }
             .bk8 {
-              top: 610px;
+              top: 660px;
             }
-            .bk1, .bk2, .bk5, .bk6 {
+            .bk1, .bk2 {
               left: 175px;
             }
             .bk3 .code, .bk4 .code{
               margin-right: 15px;
             }
-            .bk3, .bk4, .bk7, .bk8 {
+            .bk3, .bk4 {
               right: 175px;
               .code {
                 float: right;
@@ -174,46 +175,25 @@
               }
             }
             .ck1 {
-              top: 420px;
+              top: 235px;
+              right: 40%;
             }
             .ck2 {
-              top: 490px;
-            }
-            .ck3 {
-              right: 270px;
-              top: 330px;
-            }
-            .ck4 {
-              right: 270px;
-              top: 400px;
-            }
-            .ck3, .ck4 {
-              .code {
-                float: right;
-                padding-right: 12px;
-              }
-              .score {
-                float: left;
-              }
-            }
-            .ck5 {
-              left: 270px;
-              top: 330px;
-            }
-            .ck6 {
-              left: 270px;
-              top: 400px;
+              top: 235px;
+              left: 40%;
             }
             .ck1, .ck2  {
-              left: 50%;
-              transform: translate(-50%,0);
+              img{
+                display: block;
+                margin-left: 16px;
+              }
             }
-            .tk1, .tk2, .tk3, .tk4, .tk9, .tk10, .tk11, .tk12, .bk1, .bk2, .bk5, .bk6, .ck1, .ck2 , .ck5, .ck6{
+            .tk1, .tk2, .tk3, .tk4, .bk1, .bk2 {
               img {
                 float: left;
               }
             }
-            .tk5, .tk6 , .tk7, .tk8, .tk13, .tk14 , .tk15, .tk16, .bk3, .bk4, .bk7, .bk8, .ck3, .ck4 {
+            .tk5, .tk6 , .tk7, .tk8, .bk3, .bk4 {
               img {
                 float: right;
               }
@@ -234,6 +214,23 @@
                 width: 50px;
                 padding-right: 48px;
               }
+            }
+          }
+          .winner {
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%,0);
+            img {
+              height: 100px;
+              width: 100px;
+              display: block;
+              margin-left: 10px;
+            }
+            span {
+              font-size: 32px;
+              font-weight: bold;
+              padding: 12px 0 12px 10px;
+              display: inline-block;
             }
           }
         }
@@ -467,18 +464,6 @@
               }
               .ck2 {
                 top: 440px;
-              }
-              .ck3 {
-                top: 310px;
-              }
-              .ck4 {
-                top: 370px;
-              }
-              .ck5 {
-                top: 310px;
-              }
-              .ck6 {
-                top: 370px;
               }
               .team-name {
                 img {

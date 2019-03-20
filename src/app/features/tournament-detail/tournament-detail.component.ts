@@ -73,6 +73,8 @@ export class TournamentDetailComponent implements OnInit {
           score: team && team.score ? team.score : '?'
         });
       }
+      console.log(this.winner);
+      
     });
   }
 
