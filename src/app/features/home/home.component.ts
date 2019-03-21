@@ -54,23 +54,7 @@ export class HomeComponent implements OnInit, DoCheck {
     this.scheduleService.getNextMatch()
       .subscribe(matches => {
         this.matches = matches;
-        this.matches.sort((a, b) => (a.start_at > b.start_at) ? 1 : -1);
-        if (match_id) {
-          matches.forEach(element => {
-            if (element.id === match_id) {
-              this.match = element;
-              return;
-            }
-          });
-        } else {
-          this.match = matches[0];
-        }
         this.showLoadingIndicator = false;
       });
   }
-
-  getNextMatch(match: any) {
-    this.match = match;
-  }
-
 }
