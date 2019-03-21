@@ -30,6 +30,7 @@ export class TournamentDetailComponent implements OnInit {
   tournaments = [];
   flag = false;
   topTeamFlag = 0;
+  winner = {};
 
   constructor(
     private matchService: MatchService,
@@ -72,9 +73,7 @@ export class TournamentDetailComponent implements OnInit {
           code: team && team.code ? team.code : '?',
           score: team && team.score ? team.score : '?'
         });
-      }
-      console.log(this.winner);
-      
+      }      
     });
   }
 
@@ -107,6 +106,7 @@ export class TournamentDetailComponent implements OnInit {
     let tournamentId = this.route.snapshot.paramMap.get('id');
     this.matchService.get(tournamentId)
       .subscribe(data => {
+        this.winner = data.winner;
         if (data.matches.length < 17) {
           this.generateMatches(data.matches);
         } else {

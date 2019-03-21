@@ -1,6 +1,7 @@
 export const END_POINT = {
   authenticate: 'authenticate',
   users: 'users',
+  home: 'home',
   tournaments: 'tournaments',
   matches: 'matches',
   teams: 'teams',
@@ -9,5 +10,5 @@ export const END_POINT = {
   prediction: 'predictions',
   tournamentTeams: 'tournamentTeams',
   statistics: 'statistics',
-  match_detail: 'match-detail'
+  match_detail: 'match-detail',
 }

@@ -2,7 +2,8 @@ import { Component, OnInit, ElementRef, DoCheck } from '@angular/core';
 import { ScheduleService } from 'src/app/shared/services/schedule.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { Router } from '@angular/router';
-
+import { ApiService } from 'src/app/shared/services/api.service';
+import { END_POINT } from 'src/app/shared/services/api-registry';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -13,19 +14,33 @@ export class HomeComponent implements OnInit, DoCheck {
   match = {};
   imgDefault = '../../../assets/images/default-image.png';
   showLoadingIndicator = true;
+  latestResult: any;
 
   constructor(
     private scheduleService: ScheduleService,
     private elem: ElementRef,
     private auth: AuthService,
-    private router: Router
+    private router: Router,
+    private api: ApiService
   ) { }
 
   ngOnInit() {
     if (this.auth.currentUser && this.auth.currentUser.admin) {
       return this.router.navigate(['/admin'])
     }
+    this.getLatestResultOfMatch();
     this.getMatches();
+  }
+
+  getLatestResultOfMatch(): any {
+    this.api.get([END_POINT.home])
+      .subscribe(matches => {
+        if (matches) {
+          this.latestResult = matches;
+        } else {
+          this.latestResult = [{id: 0}];
+        }
+      });
   }
 
   ngDoCheck() {
