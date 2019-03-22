@@ -11,9 +11,8 @@ import { ApiService } from 'src/app/shared/services/api.service';
   styleUrls: ['./next-match.component.scss']
 })
 export class NextMatchComponent implements OnChanges {
-  @Input("match") match: any;
+  @Input() match: any;
   @Output() updateSchedule = new EventEmitter();
-  matchData = [];
   isOpen: boolean;
   firstTeamPrediction: number;
   secondTeamPrediction: number;

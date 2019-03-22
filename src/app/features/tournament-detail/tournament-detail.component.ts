@@ -73,7 +73,11 @@ export class TournamentDetailComponent implements OnInit {
           code: team && team.code ? team.code : '?',
           score: team && team.score ? team.score : '?'
         });
+<<<<<<< HEAD
       }
+=======
+      }      
+>>>>>>> 6694b1e68eaa2bc6a3d7a85fd298d9ace9518177
     });
   }
 

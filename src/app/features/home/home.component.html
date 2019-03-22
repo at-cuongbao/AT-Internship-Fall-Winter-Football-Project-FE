@@ -1,5 +1,5 @@
 <app-slider></app-slider>
-<app-latest-result></app-latest-result>
+<app-latest-result [match]="latestResult"></app-latest-result>
 <div class="next-match-title txt-center">
   <h4>
     Next 
@@ -10,7 +10,7 @@
 <div class="next-match-wrapper" *ngIf="matches.length">
   <div class="container">
     <div class="home-next-match w50 inline-block pull-left">
-      <app-next-match (updateSchedule)="getMatches($event)" [match]="match"></app-next-match>
+      <app-next-match (updateSchedule)="getMatches($event)" [match]="matches[0]"></app-next-match>
     </div>
     <div class="home-schedule w50 inline-block">
       <app-matches [matches]="matches" (getNextMatch)="getNextMatch($event)"></app-matches>

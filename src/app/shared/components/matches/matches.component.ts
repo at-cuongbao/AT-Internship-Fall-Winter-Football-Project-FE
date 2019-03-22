@@ -30,9 +30,9 @@ export class MatchesComponent implements OnInit {
   }
 
   openMatchDetail(match: any) {
-    if (this.home) {
-      this.getNextMatch.emit(match);
-    } 
+    // if (this.home) {
+    //   this.getNextMatch.emit(match);
+    // } 
     if (!this.home && match.firstTeam.code && match.secondTeam.code) {
       if (!this.isClickTagA && match.id) {
         this.router.navigate([END_POINT.match_detail + '/' + match.id]);

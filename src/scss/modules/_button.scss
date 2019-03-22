@@ -20,10 +20,10 @@
 }
 .btn-primary {
   color: $color-white;
-  background-color: #337ab7;
+  background-color: $color-blue;
   border-color: #2e6da4;
   &:hover {
-    background-color: #204d74;
+    background-color: #2e6da4;
     border-color: #122b40;
   }
 }

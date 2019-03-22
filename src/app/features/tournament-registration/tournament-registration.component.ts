@@ -21,7 +21,7 @@ export class TournamentRegistrationComponent implements DoCheck {
   teams: Team[];
   isSubmited = false;
   groups: Array<number>;
-  tables = ["A", "B", "C", "D", "E", "F", "G", "H"];
+  tables = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
   errorMessage = '';
 
   constructor(
