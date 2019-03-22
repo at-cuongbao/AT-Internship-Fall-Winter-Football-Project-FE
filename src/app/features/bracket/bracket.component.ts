@@ -11,6 +11,7 @@ export class BracketComponent implements OnInit {
   tournamentName: string;
   _src = "../../../assets/images/tr.png";
   @Input() bracketView = [];
+  @Input() winner = {};
 
   constructor() { }
 
