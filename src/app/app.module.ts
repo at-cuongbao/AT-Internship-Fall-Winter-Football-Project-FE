@@ -41,6 +41,7 @@ import { DialogAddTeamComponent } from './shared/components/dialog/dialog-add-te
 import { ChartsModule } from 'ng2-charts';
 import { StatisticsComponent } from './features/admin-page/statistics/statistics.component';
 import { AdminHomeComponent } from './features/admin-page/admin-home/admin-home.component';
+import { CountdownTimerComponent } from './shared/components/countdown-timer/countdown-timer.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -80,7 +81,8 @@ export function tokenGetter() {
     AdminPageComponent,
     DialogAddTeamComponent,
     StatisticsComponent,
-    AdminHomeComponent
+    AdminHomeComponent,
+    CountdownTimerComponent
   ],
   imports: [
     BrowserModule,
@@ -102,7 +104,7 @@ export function tokenGetter() {
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
     ChartsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
   ],
   bootstrap: [AppComponent]
 })

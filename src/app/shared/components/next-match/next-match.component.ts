@@ -4,11 +4,13 @@ import { Router } from '@angular/router';
 import { END_POINT } from 'src/app/shared/services/api-registry';
 import { NgForm } from '@angular/forms';
 import { ApiService } from 'src/app/shared/services/api.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-next-match',
   templateUrl: './next-match.component.html',
-  styleUrls: ['./next-match.component.scss']
+  styleUrls: ['./next-match.component.scss'],
+  providers: [DatePipe]
 })
 export class NextMatchComponent implements OnChanges {
   @Input() match: any;
@@ -16,17 +18,23 @@ export class NextMatchComponent implements OnChanges {
   isOpen: boolean;
   firstTeamPrediction: number;
   secondTeamPrediction: number;
+  time;
+  messageTimer = '';
 
   constructor(
     private auth: AuthService,
     private router: Router,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private datePipe: DatePipe
   ) {
     this.isOpen = false;
    }
 
    ngOnChanges() {
      this.isOpen = false;
+     if (this.match && this.match.start_at) {
+       this.countDown();
+     }
    }
 
   openMatch(match) {
@@ -81,4 +89,22 @@ export class NextMatchComponent implements OnChanges {
       this.updateSchedule.emit();
     });
   };
+
+  countDown() {
+    const TwoHour = 1000 * 3600 * 2;
+    const now = Date.now();
+    this.time = new Date(this.match.start_at).getTime();
+    if (now > this.time + TwoHour) {
+      this.time = 0;
+      this.messageTimer = this.match.start_at;
+    } else if (now > this.time) {
+      this.time = 0;
+      this.messageTimer = 'Trận đấu đang xảy ra!';
+    }
+    if (this.time) {
+      this.time = this.datePipe.transform(
+        this.match.start_at, 'y-M-dd HH:mm:ss'
+      );
+    }
+  }
 }

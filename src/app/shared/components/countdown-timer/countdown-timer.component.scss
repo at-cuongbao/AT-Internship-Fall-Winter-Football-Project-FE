@@ -1,0 +1,28 @@
+.countdown-timer {
+  display: inherit;
+  font-size: 24px;
+}
+
+li {
+  display: inline-block;
+  list-style-type: none;
+  padding: 0 16px;
+  text-transform: uppercase;
+}
+
+li span {
+  display: inline-block;
+  padding: 0 4px;
+  min-width: 36px;
+}
+
+.countdown-timer-home {
+  font-size: 20px;
+  li {
+    padding: 0 8px;
+    span {
+      padding: 0 2px;
+      min-width: 24px;
+    }
+  }
+}
