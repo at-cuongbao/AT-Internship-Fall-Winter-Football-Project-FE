@@ -9,74 +9,18 @@
           Vivamus hendrerit, tortor sed luctus maximus, nunc urna hendrerit nibh, sit amet efficitur libero lorem quis mauris. Nunc a pulvinar lectus. Pellentesque aliquam justo ut rhoncus lobortis. In sed venenatis massa. Sed sodales faucibus odio, eget tempus nibh accumsan ut. Fusce tincidunt semper finibus. Nullam consequat non leo interdum pulvinar.
         </p>
       </div>
-      <div class="special-detail">
+      <div class="special-detail clearfix">
         <div class="tournament-bracket">
           <marquee class="bracket-link">
             <span> Vivamus hendrerit, tortor sed luctus maximus, nunc urna hendrerit nibh !</span>
           </marquee> 
         </div>
       </div>
-      <table *ngIf="!topTeamFlag">
-        <tr class="heading txt-center">
-          <th>Table A</th>
-          <th>Table B</th>
-          <th>Table C</th>
-          <th>Table D</th>
-        </tr>
-        <tr>
-          <td>
-            <a routerLink="/team-detail/{{ teams[0]?.team_id._id }}"><img src="{{ teams[0]?.team_id.logo }}"><span>{{ teams[0]?.team_id.name }}</span></a>
-          </td>
-          <td>
-            <a routerLink="/team-detail/{{ teams[4]?.team_id._id }}"><img src="{{ teams[4]?.team_id.logo }}"><span>{{ teams[4]?.team_id.name }}</span></a>
-          </td>
-          <td>
-            <a routerLink="/team-detail/{{ teams[8]?.team_id._id }}"><img src="{{ teams[8]?.team_id.logo }}"><span>{{ teams[8]?.team_id.name }}</span></a>
-          </td>
-          <td>
-            <a routerLink="/team-detail/{{ teams[12]?.team_id._id }}"><img src="{{ teams[12]?.team_id.logo }}"><span>{{ teams[12]?.team_id.name }}</span></a>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <a routerLink="/team-detail/{{ teams[1]?.team_id._id }}"><img src="{{ teams[1]?.team_id.logo }}"><span>{{ teams[1]?.team_id.name }}</span></a>
-          </td>
-          <td>
-            <a routerLink="/team-detail/{{ teams[5]?.team_id._id }}"><img src="{{ teams[5]?.team_id.logo }}"><span>{{ teams[5]?.team_id.name }}</span></a>
-          </td>
-          <td>
-            <a routerLink="/team-detail/{{ teams[9]?.team_id._id }}"><img src="{{ teams[9]?.team_id.logo }}"><span>{{ teams[9]?.team_id.name }}</span></a>
-          </td>
-          <td>
-            <a routerLink="/team-detail/{{ teams[13]?.team_id._id }}"><img src="{{ teams[13]?.team_id.logo }}"><span>{{ teams[13]?.team_id.name }}</span></a>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <a routerLink="/team-detail/{{ teams[2]?.team_id._id }}"><img src="{{ teams[2]?.team_id.logo }}"><span>{{ teams[2]?.team_id.name }}</span></a>
-          </td>
-          <td>
-            <a routerLink="/team-detail/{{ teams[6]?.team_id._id }}"><img src="{{ teams[6]?.team_id.logo }}"><span>{{ teams[6]?.team_id.name }}</span></a>
-          </td>
-          <td>
-            <a routerLink="/team-detail/{{ teams[10]?.team_id._id }}"><img src="{{ teams[10]?.team_id.logo }}"><span>{{ teams[10]?.team_id.name }}</span></a>
-          </td>
-          <td>
-            <a routerLink="/team-detail/{{ teams[14]?.team_id._id }}"><img src="{{ teams[14]?.team_id.logo }}"><span>{{ teams[14]?.team_id.name }}</span></a>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <a routerLink="/team-detail/{{ teams[3]?.team_id._id }}"><img src="{{ teams[3]?.team_id.logo }}"><span>{{ teams[3]?.team_id.name }}</span></a>
-          </td>
-          <td>
-            <a routerLink="/team-detail/{{ teams[7]?.team_id._id }}"><img src="{{ teams[7]?.team_id.logo }}"><span>{{ teams[7]?.team_id.name }}</span></a>
-          </td>
-          <td>
-            <a routerLink="/team-detail/{{ teams[11]?.team_id._id }}"><img src="{{ teams[11]?.team_id.logo }}"><span>{{ teams[11]?.team_id.name }}</span></a>
-          </td>
-          <td>
-            <a routerLink="/team-detail/{{ teams[15]?.team_id._id }}"><img src="{{ teams[15]?.team_id.logo }}"><span>{{ teams[15]?.team_id.name }}</span></a>
+      <table *ngIf="topTeamFlag == 0">
+        <tr *ngFor="let row of _teams, let i = index" [class.txt-center]="!i" [class.heading-table]="!i">
+          <td *ngFor="let team of row">
+            <ng-container *ngIf="!i">{{ team }}</ng-container>
+            <a *ngIf="i !== 0" routerLink="/team-detail/{{ team.team_id._id }}"><img src="{{ team.team_id.logo }}"><span>{{ team.team_id.name }}</span></a>
           </td>
         </tr>
       </table>
@@ -117,7 +61,7 @@
             </div>
           </div>
           <div class="winner">
-            <img src = '{{ winner.logo }}'>
+            <img src="{{ winner.logo || '../../../assets/images/default-image.png' }}">
             <span>Winner</span>
           </div>
         </div>
