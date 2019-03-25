@@ -39,6 +39,7 @@ export class TournamentDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {  
+    
     this.getMatches();
     this.getTopTeam();
     this.id = this.route.snapshot.params.id;
@@ -51,7 +52,7 @@ export class TournamentDetailComponent implements OnInit {
         this.teams = value;
       }
     );
-
+      
     let urls = [END_POINT.tournaments + '/' + this.id];
     this.apiService.get(urls).subscribe(
       value => {
@@ -73,11 +74,7 @@ export class TournamentDetailComponent implements OnInit {
           code: team && team.code ? team.code : '?',
           score: team && team.score ? team.score : '?'
         });
-<<<<<<< HEAD
       }
-=======
-      }      
->>>>>>> 6694b1e68eaa2bc6a3d7a85fd298d9ace9518177
     });
   }
 
@@ -88,6 +85,7 @@ export class TournamentDetailComponent implements OnInit {
     this.matchService.getTopTeams(tournamentId)
       .subscribe(data => {
         if (data) {
+          
           let dataLength = data.length;
           let tables = tablesGroup.slice(0, dataLength / 4);
 
