@@ -1,0 +1,56 @@
+<div #modal class="prediction-page modal txt-bold">
+  <div class="modal-content">
+    <span (click)="closeModal()" class="close txt-bold">&times;</span>
+    <form class="prediction-form" #elmForm="ngForm" (ngSubmit)="onSubmit(ngForm)">
+      <div class="prediction-heading txt-center">
+        <b>
+          Set Knockout of Group {{tableData[0].tournamentTeamId.groupName}}
+        </b>
+      </div>
+      <ul class="matches">
+        <li class="match th-knockout">
+          <p class="w40">
+            Team
+          </p>
+          <p class="w20 border-left">
+            Point
+          </p>
+          <p class="w20 border-left">
+            Number of goal
+          </p>
+          <p class="w20 border-left">
+            Position
+          </p>
+        </li>
+        <li class="match" *ngFor="let item of tableData; let i = index">
+          <p class="match-team-logo w20 border-left">
+            <a routerLink="/team-detail/{{item.tournamentTeamId.team_id._id}}" target="_blank">
+              <img [src]="item.tournamentTeamId.team_id.logo" class="img-size" alt="logo team1">
+            </a>
+          </p>
+          <p class="match-team-code w20">
+            {{ item.tournamentTeamId.team_id.code | slice:0:3 | questionMask }}
+          </p>
+          <p class="match-score w20 border-left">
+            {{ item.points | questionMask }}
+          </p>
+          <p class="match-score w20 border-left">
+            {{ item.goals | questionMask }}
+          </p>
+          <div class="dropdown-set-knockout w20 border-left">
+            <select [(ngModel)]="selectedOption[i]" name="first{{i}}" (change)="changeSelected($event.target.value)">
+              <option *ngFor="let position of positions" [value]="position">
+                {{position}}
+              </option>
+            </select>
+          </div>
+        </li>
+      </ul>
+      <p class="match-view txt-center">
+        <button class="btn-primary txt-bold w20" [class.disabled]="isDisabledSubmit_btn" [disabled]="isDisabledSubmit_btn">
+          Submit
+        </button>
+      </p>
+    </form>
+  </div>
+</div>

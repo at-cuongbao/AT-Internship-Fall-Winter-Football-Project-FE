@@ -1,11 +1,11 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges, OnDestroy, DoCheck } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-countdown-timer',
   templateUrl: './countdown-timer.component.html',
   styleUrls: ['./countdown-timer.component.scss']
 })
-export class CountdownTimerComponent implements OnInit, OnChanges, OnDestroy, DoCheck {
+export class CountdownTimerComponent implements OnInit, OnChanges, OnDestroy {
   @Input() end: any;
   @Input() isHomePage = false;
   @Output() finished = new EventEmitter();
@@ -18,14 +18,7 @@ export class CountdownTimerComponent implements OnInit, OnChanges, OnDestroy, Do
   }
 
   ngOnChanges() {
-    console.log('ngOnChanges', this.dayLeft);
-
     this.coutdown(new Date(this.end).getTime());
-  }
-
-  ngDoCheck() {
-    console.log('ngDoCheck', this.dayLeft);
-    
   }
 
   ngOnInit() {

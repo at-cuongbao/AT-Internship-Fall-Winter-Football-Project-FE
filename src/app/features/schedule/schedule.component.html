@@ -1,10 +1,13 @@
 <div class="container">
   <div class="schedule-block" [ngClass]="{'w100 pl0': auth.currentUser?.admin}">
-    <section class="group-block" *ngFor="let item of schedules">
+    <section class="group-block" *ngFor="let item of schedules; let i = index">
       <ng-container *ngIf="item.matches.length">
         <h4 class="group-title txt-center">Group {{item.groupName}}</h4>
         <app-matches [matches]="item.matches" [home]="false" [flag]="flag" (openModal)="openModal($event)">
         </app-matches>
+        <div *ngIf="item.matches.length === 6 && groupData[4 * i].points" class="txt-center pt10">
+          <input type="button" value="Set knockout" class="btn-primary" (click)="onSetKnockout(i)">
+        </div>
       </ng-container>
     </section>
     <div *ngIf="showLoadingIndicator" class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
@@ -12,3 +15,4 @@
   <app-sidebar></app-sidebar>
 </div>
 <app-dialog-edit-match *ngIf="matchData.length" [matchData]="matchData" (onSubmit)="onSubmit($event)"></app-dialog-edit-match>
+<app-select-winner-table *ngIf="isOpenSetKnockout" [tableData]="knockoutData" (close)="closeModal()"></app-select-winner-table>
