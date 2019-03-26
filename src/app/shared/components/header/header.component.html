@@ -28,6 +28,9 @@
             <span class="fa fa-caret-down dropdown-ic"></span>
           </a>
           <div class="dropdown-content">
+            <a routerLink="/current-date-schedule" class="sub-link">
+              Current Date
+            </a>
             <ng-container *ngFor="let tournament of tournaments">
               <a routerLink="/schedules/{{ tournament.id }}" class="sub-link">
                 {{ tournament.name || 'Unset name' }}
