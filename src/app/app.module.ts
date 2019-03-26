@@ -41,6 +41,7 @@ import { DialogAddTeamComponent } from './shared/components/dialog/dialog-add-te
 import { ChartsModule } from 'ng2-charts';
 import { StatisticsComponent } from './features/admin-page/statistics/statistics.component';
 import { AdminHomeComponent } from './features/admin-page/admin-home/admin-home.component';
+import { CurrentDateScheduleComponent } from './features/current-date-schedule/current-date-schedule.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -81,6 +82,7 @@ export function tokenGetter() {
     DialogAddTeamComponent,
     StatisticsComponent,
     AdminHomeComponent,
+    CurrentDateScheduleComponent,
   ],
   imports: [
     BrowserModule,

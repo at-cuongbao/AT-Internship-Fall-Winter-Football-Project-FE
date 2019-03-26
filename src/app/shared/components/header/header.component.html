@@ -16,11 +16,14 @@
         <a *ngIf="auth?.currentUser?.admin" routerLink="/admin" class="main-link" routerLinkActive="active">
           Home
         </a>
-        <a routerLink="/tournaments" routerLinkActive="active" class="main-link">
-          Tournaments
+        <a routerLink="/results" routerLinkActive="active" class="main-link">
+          Results
+        </a>
+        <a routerLink="/tables" routerLinkActive="active" class="main-link">
+          Tables
         </a>
         <div class="dropdown pull-left clearfix">
-          <a routerLink="/all-schedules" routerLinkActive="active" class="dropbtn main-link">
+          <a routerLink="/current-date-schedule" routerLinkActive="active" class="dropbtn main-link">
             Schedules
             <span class="fa fa-caret-down dropdown-ic"></span>
           </a>
