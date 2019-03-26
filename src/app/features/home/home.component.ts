@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit, DoCheck {
     private auth: AuthService,
     private router: Router,
     private api: ApiService
+    
   ) { }
 
   ngOnInit() {

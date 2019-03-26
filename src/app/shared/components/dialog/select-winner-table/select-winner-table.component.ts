@@ -14,9 +14,7 @@ export class SelectWinnerTableComponent implements OnInit {
   selectedOption = [];
   positions = [1, 2, 3, 4];
   isDisabledSubmit_btn = false;
-  constructor(
-    private apiService: ApiService,
-  ) {
+  constructor(private apiService: ApiService) {
     for (let index = 0; index < 4; index++) {
       this.selectedOption[index] = index + 1;
     }
