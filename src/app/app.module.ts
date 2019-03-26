@@ -43,6 +43,7 @@ import { StatisticsComponent } from './features/admin-page/statistics/statistics
 import { AdminHomeComponent } from './features/admin-page/admin-home/admin-home.component';
 import { CountdownTimerComponent } from './shared/components/countdown-timer/countdown-timer.component';
 import { SelectWinnerTableComponent } from './shared/components/dialog/select-winner-table/select-winner-table.component';
+// import { CurrentDateScheduleComponent } from './features/current-date-schedule/current-date-schedule.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -84,7 +85,8 @@ export function tokenGetter() {
     StatisticsComponent,
     AdminHomeComponent,
     CountdownTimerComponent,
-    SelectWinnerTableComponent
+    SelectWinnerTableComponent,
+    // CurrentDateScheduleComponent,
   ],
   imports: [
     BrowserModule,

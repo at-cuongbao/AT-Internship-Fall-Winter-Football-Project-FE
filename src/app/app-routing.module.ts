@@ -18,6 +18,7 @@ import { AllSchedulesComponent } from './features/all-schedules/all-schedules.co
 import { PredictionListComponent } from './features/prediction-list/prediction-list.component';
 import { AdminPageComponent } from './features/admin-page/admin-page.component';
 import { AdminHomeComponent } from './features/admin-page/admin-home/admin-home.component';
+import { CurrentDateScheduleComponent } from './features/current-date-schedule/current-date-schedule.component';
 
 const routes: Routes = [
   {
@@ -33,7 +34,7 @@ const routes: Routes = [
     component: FeaturesComponent,
     children: [
       {
-        path: 'tournaments',
+        path: 'tables',
         component: TournamentListComponent
       },
       {
@@ -45,8 +46,12 @@ const routes: Routes = [
         component: BracketComponent
       },
       {
-        path: 'all-schedules',
+        path: 'results',
         component: AllSchedulesComponent
+      },
+      {
+        path: 'current-date-schedule',
+        component: CurrentDateScheduleComponent
       },
       {
         path: 'prediction-list',
@@ -92,7 +97,7 @@ const routes: Routes = [
     canActivate: [ AuthGuardService, AdminAuthGuardService]
   },
   {
-    path: 'tournament-detail/:id',
+    path: 'tables/:id',
     component: TournamentDetailComponent
   },
   {

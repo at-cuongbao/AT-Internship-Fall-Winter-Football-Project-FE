@@ -10,10 +10,10 @@
           <div class="card-wrapper">
             <div class="date-creation">{{ tour.start_at | date:'short' }}</div>
             <h4 class="card-title">
-              <a routerLink="/tournament-detail/{{tour._id}}">{{ tour.name || 'Unset' }}</a>
+              <a routerLink="/tables/{{tour._id}}">{{ tour.name || 'Unset' }}</a>
             </h4>
             <p class="card-content">Decription: {{ tour.desc || 'None' }}.</p>
-            <a class="read-more" routerLink="/tournament-detail/{{tour._id}}">Read more</a>
+            <a class="read-more" routerLink="/tables/{{tour._id}}">Read more</a>
           </div>
         </div>
       </div>
