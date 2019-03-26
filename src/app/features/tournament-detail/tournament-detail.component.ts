@@ -40,10 +40,12 @@ export class TournamentDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {  
+    
     this.getMatches();
     this.getTeams();
     this.getTournament();
     this.getTopTeam();
+    
   }
 
   generateMatches(data, kind = POSITION) {
@@ -94,7 +96,7 @@ export class TournamentDetailComponent implements OnInit {
         let _data = data ? data : this.teams;
         let dataLength = _data.length;
         let tables = tablesGroup.slice(0, dataLength / 4);
-
+    
         transformedData.push(tables);
 
         for (let i = 0; i < 4; i++) {

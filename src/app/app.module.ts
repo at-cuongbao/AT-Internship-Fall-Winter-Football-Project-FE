@@ -80,7 +80,7 @@ export function tokenGetter() {
     AdminPageComponent,
     DialogAddTeamComponent,
     StatisticsComponent,
-    AdminHomeComponent
+    AdminHomeComponent,
   ],
   imports: [
     BrowserModule,
