@@ -67,6 +67,8 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
   }
 
   checkWinner(isUser?: boolean) {
+    console.log(this.firstTeamPrediction_ngModel);
+    console.log(Number.isInteger(this.firstTeamPrediction_ngModel));
     if (isUser) {
       if (!Number.isInteger(this.firstTeamPrediction_ngModel)) {
         this.firstTeamPrediction_ngModel = null;

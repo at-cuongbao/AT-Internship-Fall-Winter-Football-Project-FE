@@ -130,6 +130,8 @@ export class ScheduleComponent implements OnInit {
     this.matchService.getTopTeams(tournamentId)
       .subscribe(data => {
         if (data) {
+          console.log('data', data);
+          
           this.groupData = data;
         }
       })
