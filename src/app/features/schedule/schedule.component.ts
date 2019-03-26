@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ScheduleService } from 'src/app/shared/services/schedule.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { ActivatedRoute, ParamMap, Router, NavigationEnd } from '@angular/router';
-import { fake_data } from '../../../assets/mock-match';
+import { MatchService } from 'src/app/shared/services/match.service';
 
 const GROUPS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
 
@@ -14,17 +14,21 @@ const GROUPS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
 export class ScheduleComponent implements OnInit {
   schedules = [];
   matchData = [];
+  groupData= [];
   imageSource = '../../../assets/images/tr.png';
   imgDefault = '../../../assets/images/default-image.png';
   showLoadingIndicator = true;
   dem = 0;
+  knockoutData = null;
+  isOpenSetKnockout = false;
 
   constructor(
     private scheduleService: ScheduleService,
     private auth: AuthService,
     private route: ActivatedRoute,
-    private router: Router
-  ) { 
+    private router: Router,
+    private matchService: MatchService,
+  ) {
     router.events.forEach((event) => {
       if (event instanceof NavigationEnd) {
         this.showLoadingIndicator = true;
@@ -33,7 +37,7 @@ export class ScheduleComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   getSchedule(): void {
     let id: string;
@@ -48,7 +52,7 @@ export class ScheduleComponent implements OnInit {
         let quarters = [];
         let semis = [];
         let finals = [];
-        
+
         GROUPS.map(group => {
           let tables = [];
           schedules.map(match => {
@@ -70,10 +74,10 @@ export class ScheduleComponent implements OnInit {
             } else if (match.round < 4) {
               scheduleCheck ? quarters.push(match) : semis.push(match);
             } else if (match.round < 5) {
-              if (this.dem === 0 && match.round === 4.1 && !scheduleCheck){
+              if (this.dem === 0 && match.round === 4.1 && !scheduleCheck) {
                 this.dem = 1;
                 finals.push(match);
-              } 
+              }
               if (scheduleCheck) {
                 semis.push(match);
               }
@@ -84,26 +88,31 @@ export class ScheduleComponent implements OnInit {
           }
         });
         scheduleCheck ? this.schedules.push({ groupName: 'Knockout', matches: knockouts }) : '';
-     
+
         this.schedules.push({
           groupName: 'Quater-final',
           matches: quarters
         }, {
-          groupName: 'emi-final',
-          matches: semis
-        }, {
-          groupName: 'Final',
-          matches: finals
-        });
+            groupName: 'emi-final',
+            matches: semis
+          }, {
+            groupName: 'Final',
+            matches: finals
+          });
+          
         this.showLoadingIndicator = false;
-      }, error => console.log(error))
+      }, error => console.log(error));
+
+      this.getTopTeam();
   }
 
   openModal(match) {
     if (!this.auth.isLoggedIn()) {
-      return this.router.navigate(['/login'], { queryParams: {
-        returnUrl: this.router.url
-      }})
+      return this.router.navigate(['/login'], {
+        queryParams: {
+          returnUrl: this.router.url
+        }
+      })
     }
     this.matchData.push(match);
   }
@@ -111,7 +120,37 @@ export class ScheduleComponent implements OnInit {
   onSubmit(match: any) {
     if (match) {
       this.getSchedule();
-    } 
+    }
     this.matchData = [];
   }
+
+  getTopTeam() {
+    let tournamentId = this.route.snapshot.paramMap.get('id');
+
+    this.matchService.getTopTeams(tournamentId)
+      .subscribe(data => {
+        if (data) {
+          this.groupData = data;
+        }
+      })
+  }
+
+  onSetKnockout(groupIndex: number) {
+    this.knockoutData = [];
+    const teamNumber = 4 * groupIndex + 4;
+    for (let index = 4 * groupIndex; index < teamNumber; index++) {
+      this.knockoutData.push(this.groupData[index]);
+    }
+    // console.log(this.knockoutData);
+    this.isOpenSetKnockout = true;
+  }
+
+  closeModal() {
+    this.isOpenSetKnockout = false;
+  }
+
+  isFinished() {
+
+  }
+  
 }

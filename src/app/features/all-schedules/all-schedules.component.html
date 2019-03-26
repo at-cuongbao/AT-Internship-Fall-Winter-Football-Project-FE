@@ -37,19 +37,19 @@
                   <img [src]="match?.secondTeam.logo" class="img-size" alt="logo team2">
                 </a>
               </p>
-              <p class="match-view w25" *ngIf="!auth.currentUser?.admin">
-                <button [class.disabled]="flag || match?.prediction?.isAllow || !match.firstTeam.code"
-                  *ngIf="!match.firstTeam.score" class="match-view-link txt-bold" (click)="openModal(match)"
-                  [disabled]="flag || !match.firstTeam.code || match?.prediction?.isAllow">
-                  <ng-container *ngIf="!auth.isLoggedIn()">Predict</ng-container>
-                  <ng-container *ngIf="auth.isLoggedIn()">
-                    {{ match?.prediction?.is_predicted ? 'View Prediction' : 'Predict' }}
-                  </ng-container>
-                </button>
-                <a *ngIf="match.firstTeam.score" class="match-view-link txt-bold">
-                  View
-                </a>
-              </p>
+                <p class="match-view w25" *ngIf="!auth.currentUser?.admin">
+                  <button [class.disabled]="flag || match?.prediction?.isAllow || !match.firstTeam.code"
+                    *ngIf="!match.firstTeam.score" class="match-view-link txt-bold" (click)="openModal(match)"
+                    [disabled]="flag || !match.firstTeam.code || match?.prediction?.isAllow">
+                    <ng-container *ngIf="!auth.isLoggedIn()">Predict</ng-container>
+                    <ng-container *ngIf="auth.isLoggedIn()">
+                      {{ match?.prediction?.is_predicted ? 'View Prediction' : 'Predict' }}
+                    </ng-container>
+                  </button>
+                  <a *ngIf="match.firstTeam.score" class="match-view-link txt-bold">
+                    View
+                  </a>
+                </p>
               <p class="match-view w25" *ngIf="auth.isLoggedIn() && auth.currentUser.admin">
                 <button class="match-view-link txt-bold" (click)="openModal(match)"
                   [disabled]="!flag && !match.firstTeam.code">

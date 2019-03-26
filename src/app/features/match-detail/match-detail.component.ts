@@ -3,11 +3,13 @@ import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { END_POINT } from 'src/app/shared/services/api-registry';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-match-detail',
   templateUrl: './match-detail.component.html',
-  styleUrls: ['./match-detail.component.scss']
+  styleUrls: ['./match-detail.component.scss'],
+  providers: [DatePipe]
 })
 export class MatchDetailComponent implements OnInit {
   id = '';
@@ -26,19 +28,22 @@ export class MatchDetailComponent implements OnInit {
     }
   };
   users = [];
-  
+  time;
+  messageTimer = '';
+
   constructor(
     private route: ActivatedRoute,
     private api: ApiService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private datePipe: DatePipe
   ) { }
-  
+
   ngOnInit() {
     this.spinner.show();
     this.getMatch();
     this.getTopUser();
   }
-  
+
   getMatch() {
     let id = this.route.snapshot.params.id;
     this.api.get([END_POINT.matches + '/' + id])
@@ -60,8 +65,29 @@ export class MatchDetailComponent implements OnInit {
           }
           this.spinner.hide();
         }
+        this.countDown();
+
       });
   }
+
+  countDown() {
+    const TwoHour = 1000 * 3600 * 2;
+    const now = Date.now();
+    this.time = new Date(this.match.start_at).getTime();
+    if (now > this.time + TwoHour) {
+      this.time = 0;
+      this.messageTimer = this.match.start_at;
+    } else if (now > this.time) {
+      this.time = 0;
+      this.messageTimer = 'Trận đấu đang xảy ra!';
+    }
+    if (this.time) {
+      this.time = this.datePipe.transform(
+        this.match.start_at, 'y-M-dd HH:mm:ss'
+      );
+    }
+  }
+
   getTopUser() {
     let id = this.route.snapshot.params.id;
     this.api.get([END_POINT.prediction + '/top/' + id])
@@ -70,5 +96,9 @@ export class MatchDetailComponent implements OnInit {
           this.users = data;
         }
       })
+  }
+
+  onFinishedCountDown() {
+    this.messageTimer = 'Trận đấu đang xảy ra!!!';
   }
 }
