@@ -26,6 +26,7 @@ export class TournamentDetailComponent implements OnInit {
   _src = "../../../assets/images/tr.png";
   bracketView = [];
   teams = [];
+  _teams = [];
   id = '';
   tournaments = [];
   flag = false;
@@ -38,26 +39,13 @@ export class TournamentDetailComponent implements OnInit {
     private apiService: ApiService,
   ) { }
 
-  ngOnInit() {
+  ngOnInit() {  
+    
     this.getMatches();
+    this.getTeams();
+    this.getTournament();
     this.getTopTeam();
-    this.id = this.route.snapshot.params.id;
-    let url = [END_POINT.tournamentTeams + '/' + this.id];
-    this.apiService.get(url).subscribe(
-      value => {
-        value.sort((a, b) => {
-          return (a.groupName > b.groupName) ? 1 : -1;
-        })
-        this.teams = value;
-      }
-    );
-
-    let urls = [END_POINT.tournaments + '/' + this.id];
-    this.apiService.get(urls).subscribe(
-      value => {
-        this.tournaments = value;
-      }
-    );
+    
   }
 
   generateMatches(data, kind = POSITION) {
@@ -77,28 +65,49 @@ export class TournamentDetailComponent implements OnInit {
     });
   }
 
+  getTournament() {
+    let urls = [END_POINT.tournaments + '/' + this.id];
+    this.apiService.get(urls).subscribe(
+      value => {
+        this.tournaments = value;
+      }
+    );
+  }
+
+  getTeams() {
+    this.id = this.route.snapshot.params.id;
+    let url = [END_POINT.tournamentTeams + '/' + this.id];
+    this.apiService.get(url).subscribe(
+      value => {
+        value.sort((a, b) => {
+          return (a.groupName > b.groupName) ? 1 : -1;
+        })
+        this.teams = value;
+      }
+    );
+  }
+
   getTopTeam() {
     let tournamentId = this.route.snapshot.paramMap.get('id');
     let transformedData = [];
 
     this.matchService.getTopTeams(tournamentId)
       .subscribe(data => {
-        if (data) {
-          let dataLength = data.length;
-          let tables = tablesGroup.slice(0, dataLength / 4);
+        let _data = data ? data : this.teams;
+        let dataLength = _data.length;
+        let tables = tablesGroup.slice(0, dataLength / 4);
+    
+        transformedData.push(tables);
 
-          transformedData.push(tables);
-
-          for (let i = 0; i < 4; i++) {
-            let rowData = []
-            for (let j = i; j < dataLength; j += 4) {
-              rowData.push(data[j]);
-            }
-            transformedData.push(rowData);
+        for (let i = 0; i < 4; i++) {
+          let rowData = []
+          for (let j = i; j < dataLength; j += 4) {
+            rowData.push(_data[j]);
           }
-          this.teams = transformedData;
-          this.topTeamFlag = dataLength / 4;
+          transformedData.push(rowData);
         }
+        data ? this.teams = transformedData : this._teams = transformedData;
+        this.topTeamFlag = data ? dataLength / 4 : 0;
       })
   }
 

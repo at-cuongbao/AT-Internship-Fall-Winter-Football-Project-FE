@@ -28,6 +28,13 @@
         libero lorem quis mauris. Nunc a pulvinar lectus. Pellentesque aliquam justo ut rhoncus lobortis. In sed
         venenatis
         massa. Sed </p>
+      <br>
+      <div class="txt-center">
+        <h3 class="latest-date">Top Users</h3><br>
+        <p *ngFor="let item of users">
+          {{ item.user.email | slice:0:10 }}...
+        </p>
+      </div>
       <div class="latest-btn">
         <a routerLink="/match-detail/{{ latestResult.id }}" class="btn btn-success btn-more-info">More info</a>
       </div>

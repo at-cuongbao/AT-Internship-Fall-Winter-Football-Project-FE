@@ -372,113 +372,10 @@
       }
     }
   }
+}
 @media screen and (max-width: 1000px) {
   .tournament-detail {
     .tournament-content {
-      .article-wrap {
-        .bracket-wrapper {
-          .auto-justify {
-            .panel-center {
-              img {
-                height: 380px;
-                width: 380px;
-                position: relative;
-                top: -100px;
-              }
-            }
-            .match-result {
-              .tk1 {
-                top: 50px;
-              }
-              .tk2 {
-                top: 110px;
-              }
-              .tk3 {
-                top: 230px;
-              }
-              .tk4 {
-                top: 290px;
-              }
-              .tk5 {
-                top: 50px;
-              }
-              .tk6 {
-                top: 110px;
-              }
-              .tk7 {
-                top: 230px;
-              }
-              .tk8 {
-                top: 290px;
-              }
-              .tk9 {
-                top: 410px;
-              }
-              .tk10 {
-                top: 470px;
-              }
-              .tk11 {
-                top: 590px;
-              }
-              .tk12 {
-                top: 650px;
-              }
-              .tk13 {
-                top: 410px;
-              }
-              .tk14 {
-                top: 470px;
-              }
-              .tk15 {
-                top: 590px;
-              }
-              .tk16 {
-                top: 650px;
-              }
-              .bk2 {
-                top: 140px;
-              }
-              .bk1 {
-                top: 200px;
-              }
-              .bk3 {
-                top: 140px;
-              }
-              .bk4 {
-                top: 200px;
-              }
-              .bk6 {
-                top: 500px;
-              }
-              .bk5 {
-                top: 560px;
-              }
-              .bk7 {
-                top: 500px;
-              }
-              .bk8 {
-                top: 560px;
-              }
-              .ck1 {
-                top: 380px;
-              }
-              .ck2 {
-                top: 440px;
-              }
-              .team-name {
-                img {
-                  height: 50px;
-                  width: 50px;
-                }
-                span {
-                  font-size: 18px;
-                  padding: 10px 0 10px 10px;
-                }
-              } 
-            }
-          }
-        }
-      }
       table {
         .heading {
           th {
@@ -515,16 +412,10 @@
           .auto-justify {
             .match-result {
               .bk1, .bk2, .bk5, .bk6 {
-                left: 145px;
+                left: 165px;
               }
               .bk3, .bk4, .bk7, .bk8 {
-                right: 145px;
-              }
-              .ck5, .ck6 {
-                left: 215px;
-              }
-              .ck3, .ck4 {
-                right: 215px;
+                right: 165px;
               }
             }
           }
@@ -578,5 +469,4 @@
       }
     }
   }
-}
 }

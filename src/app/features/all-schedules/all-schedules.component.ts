@@ -30,7 +30,7 @@ export class AllSchedulesComponent implements OnInit {
 
   getSchedule(): void {
     this.apiService.get([END_POINT.matches])
-      .subscribe(returnedSchedules => {
+      .subscribe((returnedSchedules: Array<any>) => {
         let group_to_values = returnedSchedules.reduce(function (obj, item) {
           obj[item.start_at] = obj[item.start_at] || [];
           obj[item.start_at].push({ id: item.id, tournamentName: item.tournamentName, firstTeam: item.firstTeam, secondTeam: item.secondTeam });
@@ -41,10 +41,9 @@ export class AllSchedulesComponent implements OnInit {
           return { group: key, data: group_to_values[key] };
         });
 
-        this.schedules = groups.sort((a, b) => a.group > b.group ? 1 : -1);
+        this.schedules = groups.sort((a, b) => a.group < b.group ? 1 : -1);
         this.showLoadingIndicator = false;
       })
-    
   }
 
   openMatchDetail(match: any) {

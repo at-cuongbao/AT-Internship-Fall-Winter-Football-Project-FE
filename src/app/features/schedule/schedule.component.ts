@@ -46,7 +46,9 @@ export class ScheduleComponent implements OnInit {
       id = params.get('id') || '';
     });
     this.scheduleService.get(id)
-      .subscribe(schedules => {
+      .subscribe(schedulesTotal => {
+        let [schedules, tablesFlags] = schedulesTotal;
+
         this.schedules = [];
         let knockouts = [];
         let quarters = [];
@@ -130,8 +132,6 @@ export class ScheduleComponent implements OnInit {
     this.matchService.getTopTeams(tournamentId)
       .subscribe(data => {
         if (data) {
-          console.log('data', data);
-          
           this.groupData = data;
         }
       })

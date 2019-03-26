@@ -1,4 +1,4 @@
-<div class="row bracket-wrapper height-1000" [style.backgroundImage]="'url('+ _src +')'">
+<div class="bracket-wrapper height-1000" [style.backgroundImage]="'url('+ _src +')'">
   <p>Knockout stage: {{ tournamentName }}</p>
   <div class="col-12 auto-justify">
     <div class="panel-default panel-center">
@@ -10,6 +10,11 @@
         <span class="code">{{ team.code | slice:0:3 }}</span>
         <span class="score">{{ team.score }}</span>
       </div>
+    </div>
+    <div class="winner">
+      <!-- <img src = "{{ winner.logo }}"> -->
+      <img src = "../../../assets/images/50823683_389556591806206_1449730283363368960_n.png">
+      <span>Winner</span>
     </div>
   </div>
 </div>

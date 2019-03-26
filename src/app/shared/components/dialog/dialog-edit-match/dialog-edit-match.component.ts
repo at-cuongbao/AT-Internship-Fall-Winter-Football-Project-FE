@@ -67,22 +67,17 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
   }
 
   checkWinner(isUser?: boolean) {
-    console.log(this.firstTeamPrediction_ngModel);
-    console.log(Number.isInteger(this.firstTeamPrediction_ngModel));
     if (isUser) {
-      if (!Number.isInteger(this.firstTeamPrediction_ngModel)) {
-        this.firstTeamPrediction_ngModel = null;
+      if (!Number.isInteger(this.firstTeamPrediction_ngModel) || !Number.isInteger(this.secondTeamPrediction_ngModel)) {
+        this.disabledSubmit_btn = true;
+        return;
       }
-      if (!Number.isInteger(this.secondTeamPrediction_ngModel)) {
-        this.secondTeamPrediction_ngModel = null;
-      }
-      return;
+      this.disabledSubmit_btn = false;
     } else {
-      if (!Number.isInteger(this.firstTeamScore_ngModel)) {
-        this.firstTeamScore_ngModel = null;
-      }
-      if (!Number.isInteger(this.secondTeamScore_ngModel)) {
-        this.secondTeamScore_ngModel = null;
+      if (!Number.isInteger(this.firstTeamScore_ngModel) || !Number.isInteger(this.secondTeamScore_ngModel)) {
+        this.disabledSubmit_btn = true;
+      } else {
+        this.disabledSubmit_btn = false;
       }
       if (this.firstTeamScore_ngModel < 0) this.firstTeamScore_ngModel = 0;
       if (this.secondTeamScore_ngModel < 0) this.secondTeamScore_ngModel = 0;
@@ -109,6 +104,9 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
   }
 
   onSubmit(form: NgForm, match) {
+    if (this.disabledSubmit_btn) {
+      return;
+    }
     let tournamentId = this.route.snapshot.paramMap.get('id');
     const data = {
       match_id: match.id,
