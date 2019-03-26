@@ -91,7 +91,7 @@ export class TournamentDetailComponent implements OnInit {
 
     this.matchService.getTopTeams(tournamentId)
       .subscribe(data => {
-        let _data = data ? data.length : this.teams;
+        let _data = data ? data : this.teams;
         let dataLength = _data.length;
         let tables = tablesGroup.slice(0, dataLength / 4);
 
@@ -105,7 +105,7 @@ export class TournamentDetailComponent implements OnInit {
           transformedData.push(rowData);
         }
         data ? this.teams = transformedData : this._teams = transformedData;
-        this.topTeamFlag = data ? 1 : 0;
+        this.topTeamFlag = data ? dataLength / 4 : 0;
       })
   }
 

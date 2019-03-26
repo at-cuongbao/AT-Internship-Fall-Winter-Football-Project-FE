@@ -68,6 +68,14 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
   checkWinner() {
     if (this.firstTeamScore_ngModel < 0) this.firstTeamScore_ngModel = 0;
     if (this.secondTeamScore_ngModel < 0) this.secondTeamScore_ngModel = 0;
+    
+    if ((this.firstTeamScore_ngModel !== parseInt(this.firstTeamScore_ngModel, 10))) {
+      this.firstTeamScore_ngModel = Math.floor(this.firstTeamScore_ngModel);
+    }
+    if (this.secondTeamScore_ngModel !== parseInt(this.secondTeamScore_ngModel, 10)) {
+      this.secondTeamScore_ngModel = Math.floor(this.secondTeamScore_ngModel);
+    }
+
     this.disableRadio_btn = true;
     if (this.match.round !== 1) {
       if (this.firstTeamScore_ngModel < this.secondTeamScore_ngModel) {
