@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="all-schedule-block">
+    <div *ngIf="showLoadingIndicator" class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    <section class="group-block-schedules"
+      *ngFor="let item of schedules | paginate: { itemsPerPage: 6, currentPage: pageActual }">
+      <ng-container>
+        <div class="schedule">
+          <h4 class="group-title-date txt-center">Date: {{item.group | date:'MMM, dd | h:mm a'}}</h4>
+          <ul class="matches">
+            <li class="match" *ngFor="let match of item.data" (click)="openMatchDetail(match)">
+              <p class="match-date w25">
+                <span class="tournament-name">
+                  {{ match.tournamentName }}
+                </span>
+              </p>
+              <p class="match-team-logo w10 border-left">
+                <a routerLink="/team-detail/{{ match?.firstTeam.id }}">
+                  <img [src]="match?.firstTeam.logo" class="img-size" alt="logo team1">
+                </a>
+              </p>
+              <p class="match-team-code w10">
+                {{ match?.firstTeam.code | slice:0:4 | questionMask }}
+              </p>
+              <p class="match-score w10">
+                <ng-container *ngIf="match.firstTeam.score">
+                  {{ match.firstTeam.score }} : {{ match.secondTeam.score | questionMask }}
+                </ng-container>
+                <ng-container *ngIf="!match.firstTeam.score">
+                  VS
+                </ng-container>
+              </p>
+              <p class="match-team-code w10">
+                {{ match?.secondTeam.code | slice:0:4 | questionMask }}
+              </p>
+              <p class="match-team-logo w10">
+                <a routerLink="/team-detail/{{ match?.secondTeam.id }}">
+                  <img [src]="match?.secondTeam.logo" class="img-size" alt="logo team2">
+                </a>
+              </p>
+              <p class="match-view w25" *ngIf="!auth.currentUser?.admin">
+                <button [class.disabled]="flag || match?.prediction?.isAllow || !match.firstTeam.code"
+                  *ngIf="!match.firstTeam.score" class="match-view-link txt-bold" (click)="openModal(match)"
+                  [disabled]="flag || !match.firstTeam.code || match?.prediction?.isAllow">
+                  <ng-container *ngIf="!auth.isLoggedIn()">Predict</ng-container>
+                  <ng-container *ngIf="auth.isLoggedIn()">
+                    {{ match?.prediction?.is_predicted ? 'View Prediction' : 'Predict' }}
+                  </ng-container>
+                </button>
+                <a *ngIf="match.firstTeam.score" class="match-view-link txt-bold">
+                  View
+                </a>
+              </p>
+              <p class="match-view w25" *ngIf="auth.isLoggedIn() && auth.currentUser.admin">
+                <button class="match-view-link txt-bold" (click)="openModal(match)"
+                  [disabled]="!flag && !match.firstTeam.code">
+                  View
+                </button>
+              </p>
+            </li>
+          </ul>
+        </div>
+      </ng-container>
+    </section>
+    <div [class.display-none]="flag" class="txt-center">
+      <pagination-controls [class.display-none]="!schedules.length" class="pagination-control"
+        (pageChange)="pageActual = $event"></pagination-controls>
+    </div>
+  </div>
+</div>
+<app-dialog-edit-match *ngIf="matchData.length" [matchData]="matchData" (onSubmit)="onSubmit($event)"></app-dialog-edit-match>
+

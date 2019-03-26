@@ -1,0 +1,41 @@
+<ng-container *ngIf="isHomePage; then home else match_detail"></ng-container>
+<ng-template #home>
+  <ul class="countdown-timer-home">
+    <li>
+      <span id="days">{{ dayLeft }}</span>
+      <span class="label-home">Days</span>
+    </li>:
+    <li>
+      <span id="hours">{{ hrsLeft }}</span>
+      <span class="label-home">Hrs</span>
+    </li>:
+    <li>
+      <span id="minutes">{{ minLeft }}</span>
+      <span class="label-home">Min</span>
+    </li>:
+    <li>
+      <span id="seconds">{{ secLeft }}</span>
+      <span class="label-home">Sec</span>
+    </li>
+  </ul>
+</ng-template>
+<ng-template #match_detail>
+    <ul class="countdown-timer">
+      <li>
+        <span id="days">{{ dayLeft }}</span>
+        <span class="label">Days</span>
+      </li>:
+      <li>
+        <span id="hours">{{ hrsLeft }}</span>
+        <span class="label">Hours</span>
+      </li>:
+      <li>
+        <span id="minutes">{{ minLeft }}</span>
+        <span class="label">Minutes</span>
+      </li>:
+      <li>
+        <span id="seconds">{{ secLeft }}</span>
+        <span class="label">Seconds</span>
+      </li>
+    </ul>
+  </ng-template>
