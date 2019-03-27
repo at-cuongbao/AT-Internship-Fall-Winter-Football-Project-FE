@@ -18,7 +18,7 @@ import { AllSchedulesComponent } from './features/all-schedules/all-schedules.co
 import { PredictionListComponent } from './features/prediction-list/prediction-list.component';
 import { AdminPageComponent } from './features/admin-page/admin-page.component';
 import { AdminHomeComponent } from './features/admin-page/admin-home/admin-home.component';
-import { CurrentDateScheduleComponent } from './features/current-date-schedule/current-date-schedule.component';
+// import { CurrentDateScheduleComponent } from './features/current-date-schedule/current-date-schedule.component';
 
 const routes: Routes = [
   {
@@ -49,10 +49,10 @@ const routes: Routes = [
         path: 'results',
         component: AllSchedulesComponent
       },
-      {
-        path: 'current-date-schedule',
-        component: CurrentDateScheduleComponent
-      },
+      // {
+      //   path: 'current-date-schedule',
+      //   component: CurrentDateScheduleComponent
+      // },
       {
         path: 'prediction-list',
         component: PredictionListComponent

@@ -13,6 +13,7 @@ const GROUPS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
 })
 export class ScheduleComponent implements OnInit {
   schedules = [];
+  tablesFlags = [];
   matchData = [];
   groupData= [];
   imageSource = '../../../assets/images/tr.png';
@@ -48,6 +49,7 @@ export class ScheduleComponent implements OnInit {
     this.scheduleService.get(id)
       .subscribe(schedulesTotal => {
         let [schedules, tablesFlags] = schedulesTotal;
+        this.tablesFlags = tablesFlags;
 
         this.schedules = [];
         let knockouts = [];
@@ -143,7 +145,6 @@ export class ScheduleComponent implements OnInit {
     for (let index = 4 * groupIndex; index < teamNumber; index++) {
       this.knockoutData.push(this.groupData[index]);
     }
-    // console.log(this.knockoutData);
     this.isOpenSetKnockout = true;
   }
 

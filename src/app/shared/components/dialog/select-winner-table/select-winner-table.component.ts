@@ -28,34 +28,32 @@ export class SelectWinnerTableComponent implements OnInit {
   }
 
   onSubmit(form) {
-    this.tableData.map((x, i) => {
-      // x.position = this.selectedOption[i];
+    this.tableData.map((x: { position: null }, i) => {
+      x.position = this.selectedOption[i];
     });
-    console.log(this.tableData);
-    
-    // if (!this.isDisabledSubmit_btn) {
-    //   let url = [END_POINT.schedules + '/set-knockout'];
-    //   this.apiService.post(url, this.selectedOption)
-    //     .subscribe(code => {
-    //       if (code === 200) {
-    //         this.closeModal();
-    //       } else {
-    //         this.closeModal();
-    //         swal({
-    //           // buttons: false,
-    //           text: 'Time out to Set knockout!',
-    //           icon: "error",
-    //           timer: 2000,
-    //         });
-    //       }
-    //       swal({
-    //         // buttons: false,
-    //         text: `You have submit successfully !`,
-    //         icon: "success",
-    //         timer: 2000,
-    //       });
-    //     });
-    // }
+    if (!this.isDisabledSubmit_btn) {
+      let url = [END_POINT.schedules + '/set-knockout'];
+      this.apiService.post(url, this.tableData)
+        .subscribe(code => {
+          if (code === 200) {
+            this.closeModal();
+          } else {
+            this.closeModal();
+            swal({
+              // buttons: false,
+              text: 'Time out to Set knockout!',
+              icon: "error",
+              timer: 2000,
+            });
+          }
+          swal({
+            // buttons: false,
+            text: `You have submit successfully !`,
+            icon: "success",
+            timer: 2000,
+          });
+        });
+    }
   }
 
   changeSelected(value: number | string) {

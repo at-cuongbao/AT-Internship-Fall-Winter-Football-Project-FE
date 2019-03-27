@@ -5,7 +5,7 @@
         <h4 class="group-title txt-center">Group {{item.groupName}}</h4>
         <app-matches [matches]="item.matches" [home]="false" [flag]="flag" (openModal)="openModal($event)">
         </app-matches>
-        <div *ngIf="item.matches.length === 6 && groupData[4 * i]?.points" class="txt-center pt10">
+        <div *ngIf="auth.currentUser?.admin && tablesFlags[i]?.finished" class="txt-center pt10">
           <input type="button" value="Set knockout" class="btn-primary" (click)="onSetKnockout(i)">
         </div>
       </ng-container>

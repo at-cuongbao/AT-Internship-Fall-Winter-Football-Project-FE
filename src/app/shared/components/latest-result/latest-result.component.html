@@ -24,12 +24,7 @@
       </a>
     </div>
     <div class="latest-bottom txt-center clearfix">
-      <p class="latest-desc">Vivamus hendrerit, tortor sed luctus maximus, nunc urna hendrerit nibh, sit amet efficitur
-        libero lorem quis mauris. Nunc a pulvinar lectus. Pellentesque aliquam justo ut rhoncus lobortis. In sed
-        venenatis
-        massa. Sed </p>
-      <br>
-      <div class="txt-center">
+      <div *ngIf="users.length" class="txt-center">
         <h3 class="latest-date">Top Users</h3><br>
         <p *ngFor="let item of users">
           {{ item.user.email | slice:0:10 }}...
