@@ -18,7 +18,7 @@ export class NextMatchComponent implements OnChanges {
   isOpen: boolean;
   firstTeamPrediction: number;
   secondTeamPrediction: number;
-  time;
+  time: any;
   messageTimer = '';
 
   constructor(
@@ -28,14 +28,14 @@ export class NextMatchComponent implements OnChanges {
     private datePipe: DatePipe
   ) {
     this.isOpen = false;
-   }
+  }
 
-   ngOnChanges() {
-     this.isOpen = false;
-     if (this.match && this.match.start_at) {
-       this.countDown();
-     }
-   }
+  ngOnChanges() {
+    this.isOpen = false;
+    if (this.match && this.match.start_at) {
+      this.countDown();
+    }
+  }
 
   openMatch(match) {
     if (match.id) {
@@ -66,7 +66,7 @@ export class NextMatchComponent implements OnChanges {
       scorePrediction: [this.firstTeamPrediction, this.secondTeamPrediction],
       winners: []
     };
-    
+
     let url = [END_POINT.prediction + '/new'];
 
     this.apiService.post(url, data).subscribe(code => {

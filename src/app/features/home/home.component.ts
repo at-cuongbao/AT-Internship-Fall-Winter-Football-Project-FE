@@ -10,11 +10,11 @@ import { END_POINT } from 'src/app/shared/services/api-registry';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit, DoCheck {
+  showLoadingIndicator = true;
+  latestResult = [];
   matches = [];
   match = {};
   imgDefault = '../../../assets/images/default-image.png';
-  showLoadingIndicator = true;
-  latestResult: any;
 
   constructor(
     private scheduleService: ScheduleService,
@@ -22,18 +22,17 @@ export class HomeComponent implements OnInit, DoCheck {
     private auth: AuthService,
     private router: Router,
     private api: ApiService
-    
   ) { }
 
   ngOnInit() {
     if (this.auth.currentUser && this.auth.currentUser.admin) {
-      return this.router.navigate(['/admin'])
+      return this.router.navigate(['/admin']);
     }
     this.getLatestResultOfMatch();
     this.getMatches();
   }
 
-  getLatestResultOfMatch(): any {
+  getLatestResultOfMatch(): void {
     this.api.get([END_POINT.home])
       .subscribe(matches => {
         if (matches) {

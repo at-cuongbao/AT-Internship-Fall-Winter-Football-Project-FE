@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ScheduleService } from 'src/app/shared/services/schedule.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
-import { ActivatedRoute, ParamMap, Router, NavigationEnd } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { MatchService } from 'src/app/shared/services/match.service';
 
 const GROUPS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
@@ -14,12 +14,12 @@ const GROUPS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
 export class ScheduleComponent implements OnInit {
   schedules = [];
   matchData = [];
-  groupData= [];
+  groupData = [];
+  knockoutData = [];
   imageSource = '../../../assets/images/tr.png';
   imgDefault = '../../../assets/images/default-image.png';
+  count = 0;
   showLoadingIndicator = true;
-  dem = 0;
-  knockoutData = null;
   isOpenSetKnockout = false;
 
   constructor(
@@ -28,27 +28,21 @@ export class ScheduleComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private matchService: MatchService,
-  ) {
-    router.events.forEach((event) => {
-      if (event instanceof NavigationEnd) {
-        this.showLoadingIndicator = true;
-        this.getSchedule();
-      }
-    });
-  }
+  ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.getSchedule();
+  }
 
   getSchedule(): void {
     let id: string;
-    this.dem = 0;
+    this.count = 0;
     this.route.paramMap.subscribe((params: ParamMap) => {
       id = params.get('id') || '';
     });
     this.scheduleService.get(id)
       .subscribe(schedulesTotal => {
         let [schedules, tablesFlags] = schedulesTotal;
-
         this.schedules = [];
         let knockouts = [];
         let quarters = [];
@@ -76,8 +70,8 @@ export class ScheduleComponent implements OnInit {
             } else if (match.round < 4) {
               scheduleCheck ? quarters.push(match) : semis.push(match);
             } else if (match.round < 5) {
-              if (this.dem === 0 && match.round === 4.1 && !scheduleCheck) {
-                this.dem = 1;
+              if (this.count === 0 && match.round === 4.1 && !scheduleCheck) {
+                this.count = 1;
                 finals.push(match);
               }
               if (scheduleCheck) {
@@ -91,21 +85,23 @@ export class ScheduleComponent implements OnInit {
         });
         scheduleCheck ? this.schedules.push({ groupName: 'Knockout', matches: knockouts }) : '';
 
-        this.schedules.push({
-          groupName: 'Quater-final',
-          matches: quarters
-        }, {
+        this.schedules.push(
+          {
+            groupName: 'Quater-final',
+            matches: quarters
+          },
+          {
             groupName: 'emi-final',
             matches: semis
-          }, {
+          },
+          {
             groupName: 'Final',
             matches: finals
-          });
-          
+          }
+        );
         this.showLoadingIndicator = false;
       }, error => console.log(error));
-
-      this.getTopTeam();
+    this.getTopTeam();
   }
 
   openModal(match) {
@@ -128,7 +124,6 @@ export class ScheduleComponent implements OnInit {
 
   getTopTeam() {
     let tournamentId = this.route.snapshot.paramMap.get('id');
-
     this.matchService.getTopTeams(tournamentId)
       .subscribe(data => {
         if (data) {
@@ -143,7 +138,6 @@ export class ScheduleComponent implements OnInit {
     for (let index = 4 * groupIndex; index < teamNumber; index++) {
       this.knockoutData.push(this.groupData[index]);
     }
-    // console.log(this.knockoutData);
     this.isOpenSetKnockout = true;
   }
 
@@ -154,5 +148,5 @@ export class ScheduleComponent implements OnInit {
   isFinished() {
 
   }
-  
+
 }

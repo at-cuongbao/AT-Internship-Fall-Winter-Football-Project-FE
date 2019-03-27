@@ -22,15 +22,15 @@ const tablesGroup = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
   styleUrls: ['./tournament-detail.component.scss']
 })
 export class TournamentDetailComponent implements OnInit {
-  tournamentName: string;
+  flag = false;
+  topTeamFlag = 0;
+  id = '';
+  tournamentName = '';
   _src = "../../../assets/images/tr.png";
   bracketView = [];
   teams = [];
   _teams = [];
-  id = '';
   tournaments = [];
-  flag = false;
-  topTeamFlag = 0;
   winner = {};
 
   constructor(
@@ -40,12 +40,10 @@ export class TournamentDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {  
-    
     this.getMatches();
     this.getTeams();
     this.getTournament();
     this.getTopTeam();
-    
   }
 
   generateMatches(data, kind = POSITION) {

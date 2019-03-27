@@ -76,6 +76,7 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
     } else {
       if (!Number.isInteger(this.firstTeamScore_ngModel) || !Number.isInteger(this.secondTeamScore_ngModel)) {
         this.disabledSubmit_btn = true;
+        return;
       } else {
         this.disabledSubmit_btn = false;
       }
@@ -97,9 +98,9 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
   checkTime(input: NgModel) {
     let chosenTime = input.control.value;
     if (chosenTime && new Date(chosenTime).getTime() < Date.now()) {
-      this.errorMessage = "Insert day must be greater than now !";
+      this.errorMessage = 'Insert day must be greater than now !';
     } else {
-      this.errorMessage = "";
+      this.errorMessage = '';
     }
   }
 

@@ -2,14 +2,16 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { END_POINT } from 'src/app/shared/services/api-registry';
 
+interface TournamentTeam {
+  position: string
+}
 @Component({
   selector: 'app-select-winner-table',
   templateUrl: './select-winner-table.component.html',
   styleUrls: ['./select-winner-table.component.scss']
 })
 export class SelectWinnerTableComponent implements OnInit {
-
-  @Input() tableData: [];
+  @Input() tableData: TournamentTeam[];
   @Output() close = new EventEmitter();
   selectedOption = [];
   positions = [1, 2, 3, 4];
@@ -21,8 +23,6 @@ export class SelectWinnerTableComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.tableData);
-    
   }
 
   closeModal() {
@@ -30,16 +30,11 @@ export class SelectWinnerTableComponent implements OnInit {
   }
 
   onSubmit(form) {
-    // if (this.tableData.length) {
-    //   this.tableData.map((x, i) => {
-    //     x.position = this.selectedOption[i];
-    //   });
-    // }
-    this.tableData.map((x, i) => {
-      // x.position = this.selectedOption[i];
-    });
-    console.log(this.tableData);
-    
+    if (this.tableData.length) {
+      this.tableData.map((x, i) => {
+        x.position = this.selectedOption[i];
+      });
+    }
     if (!this.isDisabledSubmit_btn) {
       let url = [END_POINT.schedules + '/set-knockout'];
       this.apiService.post(url, this.tableData)
