@@ -11,7 +11,7 @@ import { END_POINT } from 'src/app/shared/services/api-registry';
 })
 export class HomeComponent implements OnInit, DoCheck {
   showLoadingIndicator = true;
-  latestResult = [];
+  latestResult: any;
   matches = [];
   match = {};
   imgDefault = '../../../assets/images/default-image.png';

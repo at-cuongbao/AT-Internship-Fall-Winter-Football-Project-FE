@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ScheduleService } from 'src/app/shared/services/schedule.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router, NavigationEnd } from '@angular/router';
 import { MatchService } from 'src/app/shared/services/match.service';
 
 const GROUPS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
@@ -28,10 +28,16 @@ export class ScheduleComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private matchService: MatchService,
-  ) { }
+  ) {
+    router.events.forEach((event) => {
+      if (event instanceof NavigationEnd) {
+        this.showLoadingIndicator = true;
+        this.getSchedule();
+      }
+    });
+  }
 
   ngOnInit() {
-    this.getSchedule();
   }
 
   getSchedule(): void {
@@ -141,12 +147,10 @@ export class ScheduleComponent implements OnInit {
     this.isOpenSetKnockout = true;
   }
 
-  closeModal() {
+  closeModal(event: any) {
+    if (event.action == 'submit') {
+      this.getSchedule();
+    }
     this.isOpenSetKnockout = false;
   }
-
-  isFinished() {
-
-  }
-
 }
