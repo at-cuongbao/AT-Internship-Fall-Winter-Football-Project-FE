@@ -149,7 +149,10 @@ export class ScheduleComponent {
     this.isOpenSetKnockout = true;
   }
 
-  closeModal() {
+  closeModal(event: any) {
+    if (event.action == 'submit') {
+      this.getSchedule();
+    }
     this.isOpenSetKnockout = false;
   }
 }

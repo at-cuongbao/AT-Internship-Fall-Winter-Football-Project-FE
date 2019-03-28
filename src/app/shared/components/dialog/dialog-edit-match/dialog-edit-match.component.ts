@@ -105,6 +105,7 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
   }
 
   onSubmit(form: NgForm, match) {
+    console.log(match);
     if (this.disabledSubmit_btn) {
       return;
     }
@@ -116,7 +117,8 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
       start_at: form.value.start_at,
       scorePrediction: [form.value.firstTeamPrediction, form.value.secondTeamPrediction],
       winners: [],
-      tournament_id: ''
+      tournament_id: '',
+      groupName: Math.ceil(match.round)
     };
 
     let titleBtn = 'predicted';

@@ -3,7 +3,12 @@ import { ApiService } from 'src/app/shared/services/api.service';
 import { END_POINT } from 'src/app/shared/services/api-registry';
 
 interface TournamentTeam {
-  position: string
+  position: string,
+  isKnockoutSet: boolean,
+  tournamentTeamId: {
+    position: string,
+    groupName: string,
+  }
 }
 @Component({
   selector: 'app-select-winner-table',
@@ -23,18 +28,27 @@ export class SelectWinnerTableComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.tableData.map(
+      (x, i) => {
+        this.selectedOption[i] = x.position;
+      }
+    )
   }
 
   closeModal() {
-    this.close.emit();
+    this.close.emit({
+      action: 'close',
+    });
   }
 
   onSubmit(form) {
     if (this.tableData.length) {
       this.tableData.map((x, i) => {
         x.position = this.selectedOption[i];
+        x.isKnockoutSet = true;
       });
     }
+    this.tableData.sort((a, b) => +a.position - +b.position);
     if (!this.isDisabledSubmit_btn) {
       let url = [END_POINT.schedules + '/set-knockout'];
       this.tableData.sort((a, b) => {
@@ -43,7 +57,9 @@ export class SelectWinnerTableComponent implements OnInit {
       this.apiService.post(url, this.tableData)
         .subscribe(code => {
           if (code === 200) {
-            this.closeModal();
+            this.close.emit({
+              action: 'submit',
+            });
           } else {
             this.closeModal();
             swal({
