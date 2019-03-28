@@ -46,9 +46,7 @@ export class ScheduleComponent implements OnInit {
       id = params.get('id') || '';
     });
     this.scheduleService.get(id)
-      .subscribe(schedulesTotal => {
-        let [schedules, tablesFlags] = schedulesTotal;
-
+      .subscribe(schedules => {
         this.schedules = [];
         let knockouts = [];
         let quarters = [];

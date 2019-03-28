@@ -23,21 +23,33 @@
           <th [attr.colspan]="topTeamFlag">Top Teams Of Each Table</th>
         </thead>
         <tr *ngFor="let row of teams, let i = index" [class.txt-center]="!i" [class.heading-table]="!i">
-          <td *ngFor="let team of row">
+          <td *ngFor="let team of row.slice(0,4)">
             <ng-container *ngIf="!i">{{ team }}</ng-container>
             <a *ngIf="i !== 0" routerLink="/team-detail/{{ team?.tournamentTeamId.team_id._id }}"><img src="{{ team?.tournamentTeamId.team_id.logo }}"><span>{{ team?.tournamentTeamId.team_id.name }} ({{ team.points }} pts)</span></a>
           </td>
         </tr>
+        <tr *ngFor="let row of teams, let i = index" [class.txt-center]="!i" [class.heading-table]="!i">
+            <td *ngFor="let team of row.slice(-4)">
+              <ng-container *ngIf="!i">{{ team }}</ng-container>
+              <a *ngIf="i !== 0" routerLink="/team-detail/{{ team?.tournamentTeamId.team_id._id }}"><img src="{{ team?.tournamentTeamId.team_id.logo }}"><span>{{ team?.tournamentTeamId.team_id.name }} ({{ team.points }} pts)</span></a>
+            </td>
+          </tr>
       </table>
       
       <!-- This is for unresulted table -->
       <table *ngIf="topTeamFlag == 0">
         <tr *ngFor="let row of _teams, let i = index" [class.txt-center]="!i" [class.heading-table]="!i">
-          <td *ngFor="let team of row">
+          <td *ngFor="let team of row.slice(0,4)">
             <ng-container *ngIf="!i">{{ team }}</ng-container>
             <a *ngIf="i !== 0" routerLink="/team-detail/{{ team.team_id._id }}"><img src="{{ team.team_id.logo }}"><span>{{ team.team_id.name }}</span></a>
           </td>
         </tr>
+        <tr *ngFor="let row of _teams, let i = index" [class.txt-center]="!i" [class.heading-table]="!i">
+            <td *ngFor="let team of row.slice(-4)">
+              <ng-container *ngIf="!i">{{ team }}</ng-container>
+              <a *ngIf="i !== 0" routerLink="/team-detail/{{ team.team_id._id }}"><img src="{{ team.team_id.logo }}"><span>{{ team.team_id.name }}</span></a>
+            </td>
+          </tr>
       </table>
 
       <div class="tournament-schedules">
@@ -66,7 +78,7 @@
             </div>
           </div>
           <div class="winner">
-            <img src="{{ winner.logo || '../../../assets/images/default-image.png' }}">
+            <img src="{{ winner?.logo || '../../../assets/images/default-image.png' }}">
             <span>Winner</span>
           </div>
         </div>

@@ -4,7 +4,7 @@
     <form class="prediction-form" #elmForm="ngForm" (ngSubmit)="onSubmit(ngForm)">
       <div class="prediction-heading txt-center">
         <b>
-          Set Knockout of Group {{tableData[0].tournamentTeamId.groupName}}
+          Set Knockout Of Group {{tableData[0].tournamentTeamId.groupName}}
         </b>
       </div>
       <ul class="matches">
@@ -23,12 +23,12 @@
           </p>
         </li>
         <li class="match" *ngFor="let item of tableData; let i = index">
-          <p class="match-team-logo w20 border-left">
+          <p class="match-team-logo w10 border-left">
             <a routerLink="/team-detail/{{item.tournamentTeamId.team_id._id}}" target="_blank">
               <img [src]="item.tournamentTeamId.team_id.logo" class="img-size" alt="logo team1">
             </a>
           </p>
-          <p class="match-team-code w20">
+          <p class="match-team-code w30">
             {{ item.tournamentTeamId.team_id.code | slice:0:3 | questionMask }}
           </p>
           <p class="match-score w20 border-left">

@@ -82,9 +82,9 @@ export class TournamentRegistrationComponent implements DoCheck {
     };
     if (this.isSubmited && !f.invalid) {
       swal({
-        // buttons: false,
         text: 'You have register successfully !',
         icon: "success",
+        buttons: [false],
         timer: 2000,
       });
       this.apiService.post([END_POINT.tournaments], data).subscribe(tournamentId => {
