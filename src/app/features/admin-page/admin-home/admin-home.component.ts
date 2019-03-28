@@ -57,6 +57,7 @@ export class AdminHomeComponent implements OnInit {
         text: 'You have register successfully !',
         icon: "success",
       });
+      this.getAllTournaments();
     }
   }
 }

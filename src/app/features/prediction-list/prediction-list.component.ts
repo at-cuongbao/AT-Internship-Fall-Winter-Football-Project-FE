@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { END_POINT } from 'src/app/shared/services/api-registry';
+import { Match } from 'src/app/shared/models/match';
 
 @Component({
   selector: 'app-prediction-list',
@@ -28,9 +29,12 @@ export class PredictionListComponent implements OnInit {
     this.getSchedule();
   }
 
-  getSchedule(): void {
+  getSchedule() {
     let userId = this.auth.currentUser.sub;
-    let url = (this.auth.currentUser && this.auth.currentUser.admin) ? `${END_POINT.prediction}/showAdmin` : `${END_POINT.prediction}/${userId}`
+    let url = (this.auth.currentUser && 
+      this.auth.currentUser.admin) ? `${END_POINT.prediction}/showAdmin` : 
+      `${END_POINT.prediction}/${userId}`;
+
     this.apiService.get([url])
       .subscribe(returnedPredictions => {
         if (returnedPredictions) {
@@ -47,7 +51,6 @@ export class PredictionListComponent implements OnInit {
         }
         this.showLoadingIndicator = false;
       })
-    
   }
 
   openMatchDetail(match: any) {
@@ -60,7 +63,7 @@ export class PredictionListComponent implements OnInit {
     }
   }
 
-  openModal(match) {
+  openModal(match: Match) {
     this.isClickTagA = !this.isClickTagA;
     if (!this.auth.isLoggedIn()) {
       return this.router.navigate(['/login'], { queryParams: {
@@ -70,7 +73,7 @@ export class PredictionListComponent implements OnInit {
     this.matchData.push(match);
   }
 
-  onSubmit(match: any) {
+  onSubmit(match: Match) {
     if (match) {
       this.spinner.show();
       this.getSchedule();

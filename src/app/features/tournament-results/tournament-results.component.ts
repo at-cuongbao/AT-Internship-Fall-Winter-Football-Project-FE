@@ -1,29 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ScheduleService } from 'src/app/shared/services/schedule.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { ActivatedRoute, ParamMap, Router, NavigationEnd } from '@angular/router';
 import { MatchService } from 'src/app/shared/services/match.service';
-import { Match } from '../../shared/models/match';
 
 const GROUPS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
 
 @Component({
-  selector: 'app-schedule',
-  templateUrl: './schedule.component.html',
-  styleUrls: ['./schedule.component.scss']
+  selector: 'app-tournament-results',
+  templateUrl: './tournament-results.component.html',
+  styleUrls: ['./tournament-results.component.scss']
 })
-export class ScheduleComponent {
-  schedules = [];
-  tablesFlags = [];
-  matchData = [];
-  groupData = [];
-  knockoutData = [];
+export class TournamentResultsComponent implements OnInit {
 
-  // Default images.
+  schedules = [];
+  matchData = [];
+  groupData= [];
   imageSource = '../../../assets/images/tr.png';
   imgDefault = '../../../assets/images/default-image.png';
-
   showLoadingIndicator = true;
+  dem = 0;
+  knockoutData = null;
   isOpenSetKnockout = false;
 
   constructor(
@@ -39,23 +36,27 @@ export class ScheduleComponent {
         this.getSchedule();
       }
     });
-   }
+  }
+
+  ngOnInit() { }
 
   getSchedule(): void {
     let id: string;
-    let count = 0;
-
-    this.route.paramMap.subscribe((params: ParamMap) => (id = params.get('id')));
+    this.dem = 0;
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      id = params.get('id') || '';
+    });
     this.scheduleService.get(id)
-      .subscribe(schedulesTotal => {
-        let [schedules, tablesFlags] = schedulesTotal;
+      .subscribe(_schedules => {
+        let schedules = _schedules.filter(match => {
+          return match.firstTeam.score !== null
+        });
+        this.schedules = [];
+        
         let knockouts = [];
         let quarters = [];
         let semis = [];
         let finals = [];
-
-        this.tablesFlags = tablesFlags;
-        this.schedules = [];
 
         GROUPS.map(group => {
           let tables = [];
@@ -78,8 +79,8 @@ export class ScheduleComponent {
             } else if (match.round < 4) {
               scheduleCheck ? quarters.push(match) : semis.push(match);
             } else if (match.round < 5) {
-              if (count === 0 && match.round === 4.1 && !scheduleCheck) {
-                count = 1;
+              if (this.dem === 0 && match.round === 4.1 && !scheduleCheck) {
+                this.dem = 1;
                 finals.push(match);
               }
               if (scheduleCheck) {
@@ -93,66 +94,31 @@ export class ScheduleComponent {
         });
         scheduleCheck ? this.schedules.push({ groupName: 'Knockout', matches: knockouts }) : '';
 
-        this.schedules.push(
-          {
-            groupName: 'Quater-final',
-            matches: quarters
-          },
-          {
-            groupName: 'Semi-final',
+        this.schedules.push({
+          groupName: 'Quater-final',
+          matches: quarters
+        }, {
+            groupName: 'emi-final',
             matches: semis
-          },
-          {
+          }, {
             groupName: 'Final',
             matches: finals
-          }
-        );
+          });
+          
         this.showLoadingIndicator = false;
       }, error => console.log(error));
-    this.getTopTeam();
-  }
 
-  openModal(match: Match) {
-    if (!this.auth.isLoggedIn()) {
-      return this.router.navigate(['/login'], {
-        queryParams: {
-          returnUrl: this.router.url
-        }
-      })
-    }
-    this.matchData.push(match);
-  }
-
-  onSubmit(match: Match) {
-    if (match) {
-      this.getSchedule();
-    }
-    this.matchData = [];
+      this.getTopTeam();
   }
 
   getTopTeam() {
     let tournamentId = this.route.snapshot.paramMap.get('id');
+
     this.matchService.getTopTeams(tournamentId)
       .subscribe(data => {
         if (data) {
           this.groupData = data;
         }
       })
-  }
-
-  onSetKnockout(groupIndex: number) {
-    this.knockoutData = [];
-    const teamNumber = 4 * groupIndex + 4;
-    for (let index = 4 * groupIndex; index < teamNumber; index++) {
-      this.knockoutData.push(this.groupData[index]);
-    }
-    this.isOpenSetKnockout = true;
-  }
-
-  closeModal(event: any) {
-    if (event.action == 'submit') {
-      this.getSchedule();
-    }
-    this.isOpenSetKnockout = false;
   }
 }

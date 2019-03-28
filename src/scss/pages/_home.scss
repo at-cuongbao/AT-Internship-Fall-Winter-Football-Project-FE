@@ -49,20 +49,24 @@
   }
   .home-schedule {
     .match {
+      &-date {
+        width: 20%;
+      }
       &-team-logo {
         width: 15%;
       }
       &-score {
-        width: 15%;
+        // width: 15%;
       }
       &-team-code {
-        width: 15%;
+        // width: 15%;
       }
       &-location {
         display: none;
       }
       &-view {
-        display: none;
+        width: 20%;
+        // display: none;
       }
     }
   }

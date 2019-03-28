@@ -2,14 +2,21 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ApiService } from 'src/app/shared/services/api.service';
 import { END_POINT } from 'src/app/shared/services/api-registry';
 
+interface TournamentTeam {
+  position: string,
+  isKnockoutSet: boolean,
+  tournamentTeamId: {
+    position: string,
+    groupName: string,
+  }
+}
 @Component({
   selector: 'app-select-winner-table',
   templateUrl: './select-winner-table.component.html',
   styleUrls: ['./select-winner-table.component.scss']
 })
 export class SelectWinnerTableComponent implements OnInit {
-
-  @Input() tableData: [];
+  @Input() tableData: TournamentTeam[];
   @Output() close = new EventEmitter();
   selectedOption = [];
   positions = [1, 2, 3, 4];
@@ -21,41 +28,55 @@ export class SelectWinnerTableComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.tableData.map(
+      (x, i) => {
+        this.selectedOption[i] = x.position;
+      }
+    )
   }
 
   closeModal() {
-    this.close.emit();
+    this.close.emit({
+      action: 'close',
+    });
   }
 
   onSubmit(form) {
-    this.tableData.map((x, i) => {
-      // x.position = this.selectedOption[i];
-    });
-    console.log(this.tableData);
-    
-    // if (!this.isDisabledSubmit_btn) {
-    //   let url = [END_POINT.schedules + '/set-knockout'];
-    //   this.apiService.post(url, this.selectedOption)
-    //     .subscribe(code => {
-    //       if (code === 200) {
-    //         this.closeModal();
-    //       } else {
-    //         this.closeModal();
-    //         swal({
-    //           // buttons: false,
-    //           text: 'Time out to Set knockout!',
-    //           icon: "error",
-    //           timer: 2000,
-    //         });
-    //       }
-    //       swal({
-    //         // buttons: false,
-    //         text: `You have submit successfully !`,
-    //         icon: "success",
-    //         timer: 2000,
-    //       });
-    //     });
-    // }
+    if (this.tableData.length) {
+      this.tableData.map((x, i) => {
+        x.position = this.selectedOption[i];
+        x.isKnockoutSet = true;
+      });
+    }
+    this.tableData.sort((a, b) => +a.position - +b.position);
+    if (!this.isDisabledSubmit_btn) {
+      let url = [END_POINT.schedules + '/set-knockout'];
+      this.tableData.sort((a, b) => {
+        return +a.position - +b.position;
+      });
+      this.apiService.post(url, this.tableData)
+        .subscribe(code => {
+          if (code === 200) {
+            this.close.emit({
+              action: 'submit',
+            });
+          } else {
+            this.closeModal();
+            swal({
+              // buttons: false,
+              text: 'Time out to Set knockout!',
+              icon: "error",
+              timer: 2000,
+            });
+          }
+          swal({
+            // buttons: false,
+            text: `You have submit successfully !`,
+            icon: "success",
+            timer: 2000,
+          });
+        });
+    }
   }
 
   changeSelected(value: number | string) {

@@ -1,0 +1,85 @@
+.results{ 
+  .football-results {
+    margin: 50px 0 50px;
+    .football-top {
+      width: 75%;
+      float: right;
+      padding-left: 10px;
+      .results-top {
+        margin-bottom: 380px;
+        .results-left {
+          float: left;
+          background-image: url('./assets/images/thumbnail.jpg');
+          width: 70%;
+          height: 350px;
+          p a {
+            background-color: rgba(0, 0, 0, 0.35);
+            display: block;
+            padding: 320px 8px 0;
+            text-transform: uppercase;
+            color: $color-white;
+            font-size: 20px;
+            font-weight: 700;
+          }
+        }
+        .results-right {
+          padding-left: 8px;
+          float: right;
+          width: 30%;
+          .first {
+            padding: 150px 8px 0;
+            background-image: url('./assets/images/thumbnail1.jpg');
+            height: 173px;
+            margin-bottom: 4px;
+          }
+          .second {
+            background-image: url('./assets/images/thumbnail2.jpg');
+            padding: 150px 8px 0;
+            height: 173px;
+          }
+          p a {
+            background-color: rgba(0, 0, 0, 0.5);
+            text-transform: uppercase;
+            color: $color-white;
+            font-size: 12px;
+            font-weight: 550;
+          }
+          p:last-child {
+            margin-bottom: 0px;
+          }
+        }
+        .results-right, .results-left {
+          display: inline-block;
+        }
+      }
+      .results-bot {
+        .result-items {
+          width: 50%;
+          display: inline-block;
+          padding: 4px;
+          margin-top: 8px;
+          float: left;
+          .title {
+            font-weight: 600;
+            font-size: 18px;
+            padding-bottom: 6px;
+          }
+          img {
+            height: 100px;
+            width: 100px;
+          }
+          .content, img {
+            display: inline-block;
+            position: relative;
+            top: 0;
+          }
+          .content {
+            padding-bottom: 10px;
+            vertical-align: top;
+            padding: 4px;
+          }
+        }
+      }
+    }
+  }
+}

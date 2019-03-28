@@ -21,6 +21,7 @@ import { AdminHomeComponent } from './features/admin-page/admin-home/admin-home.
 import { CurrentDateScheduleComponent } from './features/current-date-schedule/current-date-schedule.component';
 import { FootballResultsComponent } from './features/football-results/football-results.component';
 import { TournamentResultsComponent } from './features/tournament-results/tournament-results.component';
+// import { CurrentDateScheduleComponent } from './features/current-date-schedule/current-date-schedule.component';
 
 const routes: Routes = [
   {
@@ -55,10 +56,10 @@ const routes: Routes = [
         path: 'football-results',
         component: FootballResultsComponent
       },
-      {
-        path: 'current-date-schedule',
-        component: CurrentDateScheduleComponent
-      },
+      // {
+      //   path: 'current-date-schedule',
+      //   component: CurrentDateScheduleComponent
+      // },
       {
         path: 'prediction-list',
         component: PredictionListComponent

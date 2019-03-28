@@ -9,8 +9,8 @@ import { NavigationEnd } from '@angular/router';
   styleUrls: ['./features.component.scss']
 })
 export class FeaturesComponent {
+  pageName = '';
   imageSource = '../../../assets/images/head-bg.jpg';
-  pageName: string = '';
   
   constructor(private router: Router) {
     this.getUrl();

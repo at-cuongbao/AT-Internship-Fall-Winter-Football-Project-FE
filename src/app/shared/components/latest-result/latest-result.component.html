@@ -1,46 +1,41 @@
 <section class="latest-result container">
-  <ng-container *ngIf="match && latestResult.id">
+  <ng-container *ngIf="matches && latestResult?.id">
     <div class="latest-top txt-center clearfix">
       <h3 class="latest-heading">Latest <span>Result</span></h3>
-      <address class="latest-position">{{ latestResult.tournamentName }}</address>
-      <p class="latest-date">{{ latestResult.start_at | date:'MMMM, dd, y | h:mm a' }}</p>
+      <address class="latest-position">{{ latestResult?.tournamentName }}</address>
+      <p class="latest-date">{{ latestResult?.start_at | date:'MMMM, dd, y | h:mm a' }}</p>
     </div>
     <div class="latest-middle clearfix">
       <a class="latest-team-left">
-        <img src="{{ latestResult.firstTeam.logo }}" alt="logo team">
+        <img src="{{ latestResult?.firstTeam.logo }}" alt="logo team">
       </a>
       <div class="latest-versus txt-center">
-        <span class="versus-team">{{ latestResult.firstTeam.code }}</span>
+        <span class="versus-team">{{ latestResult?.firstTeam.code }}</span>
         <div class="latest-score">
           <div class="score-table clearfix">
-            <div class="score-left-default txt-center">{{ latestResult.firstTeam.score || '?' }}</div>
-            <div class="score-right txt-center">{{ latestResult.secondTeam.score || '?' }}</div>
+            <div class="score-left-default txt-center">{{ latestResult?.firstTeam.score || '?' }}</div>
+            <div class="score-right txt-center">{{ latestResult?.secondTeam.score || '?' }}</div>
           </div>
         </div>
-        <span class="versus-team versus-team-right">{{ latestResult.secondTeam.code }}</span>
+        <span class="versus-team versus-team-right">{{ latestResult?.secondTeam.code }}</span>
       </div>
       <a class="latest-team-right">
-        <img src="{{ latestResult.secondTeam.logo }}" alt="logo team">
+        <img src="{{ latestResult?.secondTeam.logo }}" alt="logo team">
       </a>
     </div>
     <div class="latest-bottom txt-center clearfix">
-      <p class="latest-desc">Vivamus hendrerit, tortor sed luctus maximus, nunc urna hendrerit nibh, sit amet efficitur
-        libero lorem quis mauris. Nunc a pulvinar lectus. Pellentesque aliquam justo ut rhoncus lobortis. In sed
-        venenatis
-        massa. Sed </p>
-      <br>
-      <div class="txt-center">
+      <div *ngIf="users.length" class="txt-center">
         <h3 class="latest-date">Top Users</h3><br>
         <p *ngFor="let item of users">
           {{ item.user.email | slice:0:10 }}...
         </p>
       </div>
       <div class="latest-btn">
-        <a routerLink="/match-detail/{{ latestResult.id }}" class="btn btn-success btn-more-info">More info</a>
+        <a routerLink="/match-detail/{{ latestResult?.id }}" class="btn btn-success btn-more-info">More info</a>
       </div>
     </div>
   </ng-container>
-  <ng-container *ngIf="match && !latestResult.id">
+  <ng-container *ngIf="matches && !latestResult?.id">
     <div class="latest-top txt-center clearfix">
       <h3 class="latest-heading">Latest <span>Result</span></h3>
     </div>
@@ -52,7 +47,7 @@
     <div class="latest-bottom txt-center clearfix">
     </div>
   </ng-container>
-  <ng-container *ngIf="!match">
+  <ng-container *ngIf="!matches">
     <div class="latest-top txt-center clearfix">
       <h3 class="latest-heading">Latest <span>Result</span></h3>
     </div>
