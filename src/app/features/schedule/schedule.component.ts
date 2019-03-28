@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ScheduleService } from 'src/app/shared/services/schedule.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { ActivatedRoute, ParamMap, Router, NavigationEnd } from '@angular/router';
 import { MatchService } from 'src/app/shared/services/match.service';
+import { Match } from '../../shared/models/match';
 
 const GROUPS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
 
@@ -11,16 +12,18 @@ const GROUPS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
   templateUrl: './schedule.component.html',
   styleUrls: ['./schedule.component.scss']
 })
-export class ScheduleComponent implements OnInit {
+export class ScheduleComponent {
   schedules = [];
   tablesFlags = [];
   matchData = [];
-  groupData= [];
+  groupData = [];
+  knockoutData = [];
+
+  // Default images.
   imageSource = '../../../assets/images/tr.png';
   imgDefault = '../../../assets/images/default-image.png';
+
   showLoadingIndicator = true;
-  dem = 0;
-  knockoutData = null;
   isOpenSetKnockout = false;
 
   constructor(
@@ -36,26 +39,23 @@ export class ScheduleComponent implements OnInit {
         this.getSchedule();
       }
     });
-  }
-
-  ngOnInit() { }
+   }
 
   getSchedule(): void {
     let id: string;
-    this.dem = 0;
-    this.route.paramMap.subscribe((params: ParamMap) => {
-      id = params.get('id') || '';
-    });
+    let count = 0;
+
+    this.route.paramMap.subscribe((params: ParamMap) => (id = params.get('id')));
     this.scheduleService.get(id)
       .subscribe(schedulesTotal => {
         let [schedules, tablesFlags] = schedulesTotal;
-        this.tablesFlags = tablesFlags;
-
-        this.schedules = [];
         let knockouts = [];
         let quarters = [];
         let semis = [];
         let finals = [];
+
+        this.tablesFlags = tablesFlags;
+        this.schedules = [];
 
         GROUPS.map(group => {
           let tables = [];
@@ -78,8 +78,8 @@ export class ScheduleComponent implements OnInit {
             } else if (match.round < 4) {
               scheduleCheck ? quarters.push(match) : semis.push(match);
             } else if (match.round < 5) {
-              if (this.dem === 0 && match.round === 4.1 && !scheduleCheck) {
-                this.dem = 1;
+              if (count === 0 && match.round === 4.1 && !scheduleCheck) {
+                count = 1;
                 finals.push(match);
               }
               if (scheduleCheck) {
@@ -93,24 +93,26 @@ export class ScheduleComponent implements OnInit {
         });
         scheduleCheck ? this.schedules.push({ groupName: 'Knockout', matches: knockouts }) : '';
 
-        this.schedules.push({
-          groupName: 'Quater-final',
-          matches: quarters
-        }, {
-            groupName: 'emi-final',
+        this.schedules.push(
+          {
+            groupName: 'Quater-final',
+            matches: quarters
+          },
+          {
+            groupName: 'Semi-final',
             matches: semis
-          }, {
+          },
+          {
             groupName: 'Final',
             matches: finals
-          });
-          
+          }
+        );
         this.showLoadingIndicator = false;
       }, error => console.log(error));
-
-      this.getTopTeam();
+    this.getTopTeam();
   }
 
-  openModal(match) {
+  openModal(match: Match) {
     if (!this.auth.isLoggedIn()) {
       return this.router.navigate(['/login'], {
         queryParams: {
@@ -121,7 +123,7 @@ export class ScheduleComponent implements OnInit {
     this.matchData.push(match);
   }
 
-  onSubmit(match: any) {
+  onSubmit(match: Match) {
     if (match) {
       this.getSchedule();
     }
@@ -130,7 +132,6 @@ export class ScheduleComponent implements OnInit {
 
   getTopTeam() {
     let tournamentId = this.route.snapshot.paramMap.get('id');
-
     this.matchService.getTopTeams(tournamentId)
       .subscribe(data => {
         if (data) {
@@ -151,9 +152,4 @@ export class ScheduleComponent implements OnInit {
   closeModal() {
     this.isOpenSetKnockout = false;
   }
-
-  isFinished() {
-
-  }
-  
 }

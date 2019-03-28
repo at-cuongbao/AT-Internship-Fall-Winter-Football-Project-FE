@@ -14,5 +14,4 @@ export class Team {
       this.logo = team.logo;
     }
   }
-
 }

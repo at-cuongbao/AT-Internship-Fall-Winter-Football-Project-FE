@@ -4,6 +4,7 @@ import { ApiService } from 'src/app/shared/services/api.service';
 import { END_POINT } from 'src/app/shared/services/api-registry';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { DatePipe } from '@angular/common';
+import { Match } from 'src/app/shared/models/match';
 
 @Component({
   selector: 'app-match-detail',
@@ -12,24 +13,11 @@ import { DatePipe } from '@angular/common';
   providers: [DatePipe]
 })
 export class MatchDetailComponent implements OnInit {
-  id = '';
   tournament = '';
-  match = {
-    start_at: null,
-    firstTeam: {
-      code: 'COD',
-      logo: '../../../assets/images/logo-img.png',
-      score: 0
-    },
-    secondTeam: {
-      code: 'COD',
-      logo: '../../../assets/images/logo-img.png',
-      score: 0
-    }
-  };
-  users = [];
-  time;
   messageTimer = '';
+  time: number | string;
+  users = [];
+  match: Match;
 
   constructor(
     private route: ActivatedRoute,
@@ -50,31 +38,30 @@ export class MatchDetailComponent implements OnInit {
       .subscribe(data => {
         if (data != 404) {
           this.tournament = data[0];
-          this.match = {
-            start_at: new Date(data[0].match_id.start_at).toLocaleString(),
-            firstTeam: {
+          this.match = new Match(
+            new Date(data[0].match_id.start_at).toLocaleString(),
+            {
               code: data[0].tournament_team_id.team_id.code,
               logo: data[0].tournament_team_id.team_id.logo,
-              score: data[0].score || '?'
+              score: data[0].score || '?',
             },
-            secondTeam: {
+            {
               code: data[1].tournament_team_id.team_id.code,
               logo: data[1].tournament_team_id.team_id.logo,
-              score: data[1].score || '?'
+              score: data[1].score || '?',
             }
-          }
+          );
           this.spinner.hide();
+          this.countDown();
         }
-        this.countDown();
-
       });
   }
 
   countDown() {
-    const TwoHour = 1000 * 3600 * 2;
+    const twoHour = 1000 * 3600 * 2;
     const now = Date.now();
     this.time = new Date(this.match.start_at).getTime();
-    if (now > this.time + TwoHour) {
+    if (now > this.time + twoHour) {
       this.time = 0;
       this.messageTimer = this.match.start_at;
     } else if (now > this.time) {

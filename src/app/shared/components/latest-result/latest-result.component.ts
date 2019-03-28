@@ -1,35 +1,31 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { matchesElement } from '@angular/animations/browser/src/render/shared';
+import { Component, Input, OnChanges } from '@angular/core';
 import { END_POINT } from '../../services/api-registry';
 import { ApiService } from '../../services/api.service';
+import { Match } from '../../models/match';
 
 @Component({
   selector: 'app-latest-result',
   templateUrl: './latest-result.component.html',
   styleUrls: ['./latest-result.component.scss']
 })
-export class LatestResultComponent implements OnInit, OnChanges {
+export class LatestResultComponent implements OnChanges {
+  @Input() matches: Match[];
   users = [];
-  @Input() match: any;
-  latestResult: any;
+  latestResult: Match;
   
   constructor(private api: ApiService) { }
 
   ngOnChanges() {
-    if (this.match) {
-      this.latestResult = this.match[0];
-      this.getTopUser(this.match[0].id);
+    if (this.matches.length) {
+      this.latestResult = this.matches[0];
+      this.getTopUser(this.matches[0].id);
     }
-  }
-
-  ngOnInit() {
   }
 
   getTopUser(id) {
     this.api.get([END_POINT.prediction + '/top/' + id])
       .subscribe(data => {
         if (data) {
-          console.log(data);
           this.users = data;
         }
       })

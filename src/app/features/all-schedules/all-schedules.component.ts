@@ -1,9 +1,10 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { ApiService } from 'src/app/shared/services/api.service';
-import { END_POINT } from 'src/app/shared/services/api-registry';
-import { AuthService } from 'src/app/shared/services/auth.service';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { END_POINT } from 'src/app/shared/services/api-registry';
+import { ApiService } from 'src/app/shared/services/api.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { Match } from 'src/app/shared/models/match';
 
 @Component({
   selector: 'app-all-schedules',
@@ -11,8 +12,8 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styleUrls: ['./all-schedules.component.scss']
 })
 export class AllSchedulesComponent implements OnInit {
-  schedules = [];
   pageActual = 1;
+  schedules = [];
   matchData = [];
   isClickTagA = false;
   showLoadingIndicator = true;
@@ -28,7 +29,7 @@ export class AllSchedulesComponent implements OnInit {
     this.getSchedule();
   }
 
-  getSchedule(): void {
+  getSchedule() {
     this.apiService.get([END_POINT.matches])
       .subscribe((returnedSchedules: Array<any>) => {
         let group_to_values = returnedSchedules.reduce(function (obj, item) {
@@ -46,11 +47,11 @@ export class AllSchedulesComponent implements OnInit {
       })
   }
 
-  openMatchDetail(match: any) {
+  openMatchDetail(match: Match) {
     this.router.navigate([END_POINT.match_detail + '/' + match.id]);
   }
 
-  openModal(match) {
+  openModal(match: Match) {
     if (!this.auth.isLoggedIn()) {
       return this.router.navigate(['/login'], { queryParams: {
         returnUrl: this.router.url
@@ -59,7 +60,7 @@ export class AllSchedulesComponent implements OnInit {
     this.matchData.push(match);
   }
 
-  onSubmit(match: any) {
+  onSubmit(match: Match) {
     if (match) {
       this.spinner.show();
       this.getSchedule();

@@ -65,7 +65,7 @@
             <img *ngIf="match.secondTeam" [src]="match.secondTeam.logo" alt="" class="logo-size">
             <p class="code-team">{{ match.secondTeam?.code | slice:0:3 }}</p>
           </div>
-          <button class="btn-prediction" [class.disabled]="elmForm.invalid" [disabled]="elmForm.invalid">Submit</button>
+          <button class="btn-prediction" [class.disabled]="elmForm.invalid || disabledSubmit_btn" [disabled]="elmForm.invalid || disabledSubmit_btn">Submit</button>
         </div>
       </div>
     </form>
