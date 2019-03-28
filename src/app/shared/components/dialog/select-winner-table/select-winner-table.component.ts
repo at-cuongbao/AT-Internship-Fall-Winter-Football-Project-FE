@@ -4,6 +4,7 @@ import { END_POINT } from 'src/app/shared/services/api-registry';
 
 interface TournamentTeam {
   position: string,
+  isKnockoutSet: boolean,
   tournamentTeamId: {
     position: string,
     groupName: string,
