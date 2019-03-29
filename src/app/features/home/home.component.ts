@@ -12,7 +12,7 @@ import { Match } from 'src/app/shared/models/match';
 })
 export class HomeComponent implements OnInit, DoCheck {
   showLoadingIndicator = true;
-  latestResult: any;
+  latestResult = [];
   matches = [];
   match = {};
   imgDefault = '../../../assets/images/default-image.png';

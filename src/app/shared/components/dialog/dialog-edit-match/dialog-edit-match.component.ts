@@ -68,18 +68,19 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
 
   checkWinner(isUser?: boolean) {
     if (isUser) {
-      if (!Number.isInteger(this.firstTeamPrediction_ngModel) || !Number.isInteger(this.secondTeamPrediction_ngModel)) {
+      if (!Number.isInteger(+this.firstTeamPrediction_ngModel) || !Number.isInteger(+this.secondTeamPrediction_ngModel)) {
         this.disabledSubmit_btn = true;
         return;
       }
       this.disabledSubmit_btn = false;
+      if (this.firstTeamPrediction_ngModel < 0) this.firstTeamScore_ngModel = 0;
+      if (this.secondTeamPrediction_ngModel < 0) this.secondTeamScore_ngModel = 0;
     } else {
-      if (!Number.isInteger(this.firstTeamScore_ngModel) || !Number.isInteger(this.secondTeamScore_ngModel)) {
+      if (!Number.isInteger(+this.firstTeamScore_ngModel) || !Number.isInteger(+this.secondTeamScore_ngModel)) {
         this.disabledSubmit_btn = true;
         return;
-      } else {
-        this.disabledSubmit_btn = false;
       }
+      this.disabledSubmit_btn = false;
       if (this.firstTeamScore_ngModel < 0) this.firstTeamScore_ngModel = 0;
       if (this.secondTeamScore_ngModel < 0) this.secondTeamScore_ngModel = 0;
       this.disabledRadio_btn = true;
@@ -105,7 +106,6 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
   }
 
   onSubmit(form: NgForm, match) {
-    console.log(match);
     if (this.disabledSubmit_btn) {
       return;
     }

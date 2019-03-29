@@ -55,8 +55,8 @@
       </p>
       <p class="match-view w25" *ngIf="auth.isLoggedIn() && auth.currentUser.admin">
         <button class="match-view-link txt-bold" (click)="open(match)" 
-          [class.disabled]="!match.firstTeam.code || (match.isKnockoutSet && match.round == 1)" 
-          [disabled]="!match.firstTeam.code || (match.isKnockoutSet && match.round == 1)">
+          [class.disabled]="!match.firstTeam.code || !match.secondTeam.code || (match.isKnockoutSet && match.round == 1)" 
+          [disabled]="!match.firstTeam.code || !match.secondTeam.code || (match.isKnockoutSet && match.round == 1)">
           Edit
         </button>
       </p>

@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  // api: 'http://localhost:3000/api',
-  api: 'http://172.18.19.86:3000/api'
+  api: 'http://localhost:3000/api',
+  // api: 'http://172.18.19.86:3000/api'
 };
 
 /*
