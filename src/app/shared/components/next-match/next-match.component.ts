@@ -18,7 +18,7 @@ export class NextMatchComponent implements OnChanges {
   isOpen: boolean;
   firstTeamPrediction: number;
   secondTeamPrediction: number;
-  time: any;
+  time: number | string;
   messageTimer = '';
 
   constructor(
@@ -99,7 +99,7 @@ export class NextMatchComponent implements OnChanges {
       this.messageTimer = this.match.start_at;
     } else if (now > this.time) {
       this.time = 0;
-      this.messageTimer = 'Trận đấu đang xảy ra!';
+      this.messageTimer = 'The match is playing!';
     }
     if (this.time) {
       this.time = this.datePipe.transform(

@@ -43,7 +43,7 @@ export class TournamentRegistrationComponent implements DoCheck {
   initTeam(numberGroup) {
     let team: Team;
     let teams = numberGroup * 4;
-    this.tables.map(tables => {
+    this.tables.map(_ => {
       for (let i = 0; i < teams; i++) {
         team = new Team();
         team.name = `Team ${i + 1}`;

@@ -1,65 +1,67 @@
 <div class="schedule">
   <ul *ngIf="matches" class="matches">
-    <li class="match" *ngFor="let match of matches" (click)="openMatchDetail(match)">
-      <p class="match-date w25" *ngIf="home">
-        <span>
-          {{ match.start_at | date:'MMMM dd' }}
-        </span>
-      </p>
-      <p class="match-date w25" *ngIf="!home">
-        <span class="short-date">
-          {{ match.start_at | date:'MMM, dd' }}
-        </span>
-        <span>
-          {{ match.start_at | date:'MMM, dd | h:mm a' }}
-        </span>
-      </p>
-      <p class="match-team-logo w10 border-left">
-        <a routerLink="/team-detail/{{ match?.firstTeam.firstTeamId }}">
-          <img [src]="match?.firstTeam.logo" class="img-size" alt="logo team1">
-        </a>
-      </p>
-      <p class="match-team-code w10">
-        {{ match?.firstTeam.code | slice:0:3 | questionMask }}
-      </p>
-      <p class="match-score w10">
-        <ng-container *ngIf="match.firstTeam.score">
-          {{ match.firstTeam.score }} : {{ match.secondTeam.score | questionMask }}
-        </ng-container>
-        <ng-container *ngIf="!match.firstTeam.score">
-          VS
-        </ng-container>
-      </p>
-      <p class="match-team-code w10">
-        {{ match?.secondTeam.code | slice:0:3 | questionMask }}
-      </p>
-      <p class="match-team-logo w10">
-        <a routerLink="/team-detail/{{ match?.secondTeam.secondTeamId }}">
-          <img [src]="match?.secondTeam.logo" class="img-size" alt="logo team2">
-        </a>
-      </p>
-      <p class="match-view w25" *ngIf="!auth.currentUser?.admin">
-        <button [class.disabled]="match?.prediction?.isAllow || !match.firstTeam.code"
-          *ngIf="!match.firstTeam.score && !(!match.firstTeam.code || match?.prediction?.isAllow)"
-          class="match-view-link txt-bold" (click)="open(match)"
-          [disabled]="!match.firstTeam.code || match?.prediction?.isAllow">
-          <ng-container *ngIf="!auth.isLoggedIn()">Predict</ng-container>
-          <ng-container *ngIf="auth.isLoggedIn()">
-            {{ match?.prediction?.is_predicted ? 'View Prediction' : 'Predict' }}
+    <ng-container *ngFor="let match of matches, let i = index">
+      <li class="match" *ngIf="i" (click)="openMatchDetail(match)">
+        <p class="match-date w25" *ngIf="home">
+          <span>
+            {{ match.start_at | date:'MMMM dd' }}
+          </span>
+        </p>
+        <p class="match-date w25" *ngIf="!home">
+          <span class="short-date">
+            {{ match.start_at | date:'MMM, dd' }}
+          </span>
+          <span>
+            {{ match.start_at | date:'MMM, dd | h:mm a' }}
+          </span>
+        </p>
+        <p class="match-team-logo w10 border-left">
+          <a routerLink="/team-detail/{{ match?.firstTeam.firstTeamId }}">
+            <img [src]="match?.firstTeam.logo" class="img-size" alt="logo team1">
+          </a>
+        </p>
+        <p class="match-team-code w10">
+          {{ match?.firstTeam.code | slice:0:3 | questionMask }}
+        </p>
+        <p class="match-score w10">
+          <ng-container *ngIf="match.firstTeam.score">
+            {{ match.firstTeam.score }} : {{ match.secondTeam.score | questionMask }}
           </ng-container>
-        </button>
-        <a *ngIf="match.firstTeam.score || (!match.firstTeam.code || match?.prediction?.isAllow)"
-          class="match-view-link txt-bold">
-          View
-        </a>
-      </p>
-      <p class="match-view w25" *ngIf="auth.isLoggedIn() && auth.currentUser.admin">
-        <button class="match-view-link txt-bold" (click)="open(match)" 
-          [class.disabled]="!match.firstTeam.code || (match.isKnockoutSet && match.round == 1)" 
-          [disabled]="!match.firstTeam.code || (match.isKnockoutSet && match.round == 1)">
-          Edit
-        </button>
-      </p>
-    </li>
+          <ng-container *ngIf="!match.firstTeam.score">
+            VS
+          </ng-container>
+        </p>
+        <p class="match-team-code w10">
+          {{ match?.secondTeam.code | slice:0:3 | questionMask }}
+        </p>
+        <p class="match-team-logo w10">
+          <a routerLink="/team-detail/{{ match?.secondTeam.secondTeamId }}">
+            <img [src]="match?.secondTeam.logo" class="img-size" alt="logo team2">
+          </a>
+        </p>
+        <p class="match-view w25" *ngIf="!auth.currentUser?.admin">
+          <button [class.txt-dm]="home && match?.prediction?.is_predicted" [class.disabled]="match?.prediction?.isAllow || !match.firstTeam.code"
+            *ngIf="!match.firstTeam.score && !(!match.firstTeam.code || match?.prediction?.isAllow)"
+            class="match-view-link txt-bold" (click)="open(match)"
+            [disabled]="!match.firstTeam.code || match?.prediction?.isAllow">
+            <ng-container *ngIf="!auth.isLoggedIn()">Predict</ng-container>
+            <ng-container *ngIf="auth.isLoggedIn()">
+              {{ match?.prediction?.is_predicted ? 'View Prediction' : 'Predict' }}
+            </ng-container>
+          </button>
+          <a *ngIf="match.firstTeam.score || (!match.firstTeam.code || match?.prediction?.isAllow)"
+            class="match-view-link txt-bold">
+            View
+          </a>
+        </p>
+        <p class="match-view w25" *ngIf="auth.isLoggedIn() && auth.currentUser.admin">
+          <button class="match-view-link txt-bold" (click)="open(match)" 
+            [class.disabled]="!match.firstTeam.code || (match.isKnockoutSet && match.round == 1)" 
+            [disabled]="!match.firstTeam.code || (match.isKnockoutSet && match.round == 1)">
+            Edit
+          </button>
+        </p>
+      </li>
+    </ng-container>
   </ul>
 </div>
