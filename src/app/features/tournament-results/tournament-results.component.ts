@@ -49,7 +49,7 @@ export class TournamentResultsComponent implements OnInit {
     });
     this.scheduleService.get(id)
       .subscribe(_schedules => {
-        let schedules = _schedules[0].filter(match => {
+        let schedules = _schedules[1].filter(match => {
           return match.firstTeam.score !== null
         });
         if(schedules.length === 0) this.flag = false

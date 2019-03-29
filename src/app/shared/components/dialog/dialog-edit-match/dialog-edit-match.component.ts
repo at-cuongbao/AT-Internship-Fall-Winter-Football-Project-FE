@@ -137,14 +137,14 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
       } else {
         this.closeModal(match);
         swal({
-          // buttons: false,
+          buttons: [false],
           text: 'Time out to predict !',
           icon: "error",
           timer: 2000,
         });
       }
       swal({
-        // buttons: false,
+        buttons: [false],
         text: `You have ${titleBtn} successfully !`,
         icon: "success",
         timer: 2000,

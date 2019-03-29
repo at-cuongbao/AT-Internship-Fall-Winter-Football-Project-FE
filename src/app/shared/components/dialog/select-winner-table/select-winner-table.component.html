@@ -32,10 +32,10 @@
             {{ item.tournamentTeamId.team_id.code | slice:0:3 | questionMask }}
           </p>
           <p class="match-score w20 border-left">
-            {{ item.points | questionMask }}
+            {{ item.points }}
           </p>
           <p class="match-score w20 border-left">
-            {{ item.goals | questionMask }}
+            {{ item.goals }}
           </p>
           <div class="dropdown-set-knockout w20 border-left">
             <select [(ngModel)]="selectedOption[i]" name="first{{i}}" (change)="changeSelected($event.target.value)">
