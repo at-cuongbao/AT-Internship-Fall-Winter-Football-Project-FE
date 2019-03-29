@@ -63,6 +63,9 @@
             font-weight: 600;
             font-size: 18px;
             padding-bottom: 6px;
+            b a:hover {
+              color: $color-bold-blue;
+            }
           }
           img {
             height: 100px;

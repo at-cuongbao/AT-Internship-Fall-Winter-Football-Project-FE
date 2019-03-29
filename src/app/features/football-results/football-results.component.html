@@ -14,7 +14,7 @@
         <div *ngIf="i>2" class="result-items">
           <p class="title"><b><a routerLink="/tournament-results/{{tournamentList[i]?._id}}">Football result of {{ tournamentList[i].name}}</a></b></p>
           <img src="./../../../assets/images/thumbnail3.jpg">
-          <span class="content">Nguyen Thanh Long</span>
+          <span class="content">{{item.desc}}</span>
         </div>
       </div>
     </div>
