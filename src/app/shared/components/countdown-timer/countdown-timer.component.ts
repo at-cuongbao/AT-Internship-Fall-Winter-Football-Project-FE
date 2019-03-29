@@ -18,7 +18,7 @@ export class CountdownTimerComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnChanges() {
-    
+    this.coutdown(new Date(this.end).getTime());
   }
 
   ngOnInit() {
