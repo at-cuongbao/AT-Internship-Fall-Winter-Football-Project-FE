@@ -1,0 +1,14 @@
+<div class="tournament-results container">
+  <div class="schedule-block" [ngClass]="{'w100 pl0': auth.currentUser?.admin}">
+    <ng-container *ngIf="!flag">This tournament has not yet taken place</ng-container>
+    <section class="group-block" *ngFor="let item of schedules; let i = index">
+      <ng-container *ngIf="item.matches.length > 0">
+        <h4 class="group-title txt-center">Group {{item.groupName}}</h4>
+        <app-matches [matches]="item.matches" [home]="false" [flag]="flag">
+        </app-matches>
+      </ng-container>
+    </section>
+    <div *ngIf="showLoadingIndicator" class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+  </div>
+  <app-sidebar></app-sidebar>
+</div>

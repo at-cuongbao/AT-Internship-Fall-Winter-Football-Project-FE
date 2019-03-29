@@ -44,6 +44,8 @@ import { AdminHomeComponent } from './features/admin-page/admin-home/admin-home.
 import { CurrentDateScheduleComponent } from './features/current-date-schedule/current-date-schedule.component';
 import { CountdownTimerComponent } from './shared/components/countdown-timer/countdown-timer.component';
 import { SelectWinnerTableComponent } from './shared/components/dialog/select-winner-table/select-winner-table.component';
+import { FootballResultsComponent } from './features/football-results/football-results.component';
+import { TournamentResultsComponent } from './features/tournament-results/tournament-results.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -86,7 +88,9 @@ export function tokenGetter() {
     AdminHomeComponent,
     CurrentDateScheduleComponent,
     CountdownTimerComponent,
-    SelectWinnerTableComponent
+    SelectWinnerTableComponent,
+    FootballResultsComponent,
+    TournamentResultsComponent
   ],
   imports: [
     BrowserModule,

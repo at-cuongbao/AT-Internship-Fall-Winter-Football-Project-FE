@@ -13,7 +13,7 @@
       left: 0;
       right: 0;
       top: 16px;
-      bottom: 0;
+      bottom: -26px;
     }
     .latest-heading {
       padding: 0 65px;
@@ -27,12 +27,12 @@
       }
     }
     .latest-position {
-      padding: 20px 0;
+      padding: 5px 0;
       font-size: 20px;
     }
   }
   .latest-middle {
-    margin: 32px 0;
+    margin: 30px 0px 40px;
     position: relative;
     background: $color-dark-white;
     border: 1px solid $color-white;
@@ -153,7 +153,7 @@
       border-width: 0 1px 1px 1px;
       position: absolute;
       left: 0;
-      top: 0;
+      top: -36px;
       right: 0;
       bottom: 18px;
     }

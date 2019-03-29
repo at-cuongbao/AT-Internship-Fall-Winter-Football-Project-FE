@@ -1,14 +1,39 @@
 .match > * {
   line-height: 3;
 }
+.prediction-form {
+  background-color: #00afd8;
+  .prediction-heading {
+    padding: 20px;
+    b {
+      color: #fff;
+    }
+  }
+  .matches {
+    .match {
+      background-color: #fff;
+      text-align: inherit;
+      p {
+        color: #000;
+      }
+      .match-team-code {
+        text-align: inherit;
+      }
+    }
+    .th-knockout {
+      font-weight: 600;
+      font-size: 16px;
+    }
+  }
+}
 .match {
   cursor: auto;
   select {
     cursor: pointer;
     outline: 0;
     text-align-last: center;
-    width: 100%;
-    height: 48px;
+    width: 65%;
+    height: 40px;
     margin-block-end: 2px;
     border-radius: 20px;
     option {
@@ -27,12 +52,13 @@
   outline: 0;
   border-radius: 20px;
   height: 38px;
+  border: 0px;
+  background-color: #000;
+  &:hover {
+    background-color: #3E3838;
+  }
 }
 .match-view {
   padding: 8px;
 }
-.th-knockout {
-  &:hover {
-    background: #2d2525 !important;
-  }
-}
+

@@ -18,6 +18,9 @@ import { AllSchedulesComponent } from './features/all-schedules/all-schedules.co
 import { PredictionListComponent } from './features/prediction-list/prediction-list.component';
 import { AdminPageComponent } from './features/admin-page/admin-page.component';
 import { AdminHomeComponent } from './features/admin-page/admin-home/admin-home.component';
+import { CurrentDateScheduleComponent } from './features/current-date-schedule/current-date-schedule.component';
+import { FootballResultsComponent } from './features/football-results/football-results.component';
+import { TournamentResultsComponent } from './features/tournament-results/tournament-results.component';
 // import { CurrentDateScheduleComponent } from './features/current-date-schedule/current-date-schedule.component';
 
 const routes: Routes = [
@@ -46,13 +49,17 @@ const routes: Routes = [
         component: BracketComponent
       },
       {
-        path: 'results',
-        component: AllSchedulesComponent
+        path: 'tournament-results/:id',
+        component: TournamentResultsComponent
       },
-      // {
-      //   path: 'current-date-schedule',
-      //   component: CurrentDateScheduleComponent
-      // },
+      {
+        path: 'football-results',
+        component: FootballResultsComponent
+      },
+      {
+        path: 'current-date-schedule',
+        component: CurrentDateScheduleComponent
+      },
       {
         path: 'prediction-list',
         component: PredictionListComponent
