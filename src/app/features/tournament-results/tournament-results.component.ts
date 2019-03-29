@@ -15,13 +15,14 @@ export class TournamentResultsComponent implements OnInit {
 
   schedules = [];
   matchData = [];
-  groupData= [];
+  groupData = [];
   imageSource = '../../../assets/images/tr.png';
   imgDefault = '../../../assets/images/default-image.png';
   showLoadingIndicator = true;
   dem = 0;
   knockoutData = null;
   isOpenSetKnockout = false;
+  flag = true;
 
   constructor(
     private scheduleService: ScheduleService,
@@ -48,11 +49,11 @@ export class TournamentResultsComponent implements OnInit {
     });
     this.scheduleService.get(id)
       .subscribe(_schedules => {
-        let schedules = _schedules.filter(match => {
+        let schedules = _schedules[0].filter(match => {
           return match.firstTeam.score !== null
         });
+        if(schedules.length === 0) this.flag = false
         this.schedules = [];
-        
         let knockouts = [];
         let quarters = [];
         let semis = [];

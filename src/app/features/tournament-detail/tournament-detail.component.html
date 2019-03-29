@@ -29,7 +29,7 @@
           </td>
         </tr>
         <tr *ngFor="let row of teams, let i = index" [class.txt-center]="!i" [class.heading-table]="!i">
-            <td *ngFor="let team of row.slice(-4)">
+            <td *ngFor="let team of row.slice(4,8)">
               <ng-container *ngIf="!i">{{ team }}</ng-container>
               <a *ngIf="i !== 0" routerLink="/team-detail/{{ team?.tournamentTeamId.team_id._id }}"><img src="{{ team?.tournamentTeamId.team_id.logo }}"><span>{{ team?.tournamentTeamId.team_id.name }} ({{ team.points }} pts)</span></a>
             </td>

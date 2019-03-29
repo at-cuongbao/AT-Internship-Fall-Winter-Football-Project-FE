@@ -18,7 +18,7 @@ export class CountdownTimerComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnChanges() {
-    this.coutdown(new Date(this.end).getTime());
+    
   }
 
   ngOnInit() {
@@ -29,6 +29,7 @@ export class CountdownTimerComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   coutdown(end: any) {
+    console.log(end)
     const second = 1000,
       minute = second * 60,
       hour = minute * 60,
@@ -50,7 +51,6 @@ export class CountdownTimerComponent implements OnInit, OnChanges, OnDestroy {
       if (Math.floor((distance % (minute)) / second) < 10) {
         this.secLeft = '0' + this.secLeft;
       }
-
       //do something later when date is reached
       if (distance < 0) {
         clearInterval(x);

@@ -56,10 +56,10 @@ const routes: Routes = [
         path: 'football-results',
         component: FootballResultsComponent
       },
-      // {
-      //   path: 'current-date-schedule',
-      //   component: CurrentDateScheduleComponent
-      // },
+      {
+        path: 'current-date-schedule',
+        component: CurrentDateScheduleComponent
+      },
       {
         path: 'prediction-list',
         component: PredictionListComponent

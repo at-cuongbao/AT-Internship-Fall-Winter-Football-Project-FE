@@ -16,8 +16,6 @@ export class LatestResultComponent implements OnChanges {
   constructor(private api: ApiService) { }
 
   ngOnChanges() {
-    console.log(this.matches);
-    
     if (this.matches) {
       this.latestResult = this.matches[0];
       this.getTopUser(this.matches[0].id);
