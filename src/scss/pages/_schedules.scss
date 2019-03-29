@@ -2,6 +2,13 @@
   width: 75%;
   float: right;
   padding-left: 2%;
+  .tournament-title {
+    font-size: 180%;
+    background: $color-blue;
+    height: 50px;
+    line-height: 50px;
+    margin-bottom: 50px;
+  }
   .group-block {
     margin: 0 0 20px;
     .group-title {

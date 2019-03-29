@@ -18,6 +18,7 @@ export class ScheduleComponent {
   matchData = [];
   groupData = [];
   knockoutData = [];
+  tournamentName = '';
 
   // Default images.
   imageSource = '../../../assets/images/tr.png';
@@ -48,7 +49,7 @@ export class ScheduleComponent {
     this.route.paramMap.subscribe((params: ParamMap) => (id = params.get('id')));
     this.scheduleService.get(id)
       .subscribe(schedulesTotal => {
-        let [schedules, tablesFlags] = schedulesTotal;
+        let [tournamentName, schedules, tablesFlags] = schedulesTotal;
         let knockouts = [];
         let quarters = [];
         let semis = [];
@@ -56,6 +57,7 @@ export class ScheduleComponent {
 
         this.tablesFlags = tablesFlags;
         this.schedules = [];
+        this.tournamentName = tournamentName;
 
         GROUPS.map(group => {
           let tables = [];
@@ -125,6 +127,7 @@ export class ScheduleComponent {
 
   onSubmit(match: Match) {
     if (match) {
+      this.getSchedule();
       this.getSchedule();
     }
     this.matchData = [];

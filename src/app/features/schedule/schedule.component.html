@@ -1,5 +1,6 @@
 <div class="container">
   <div class="schedule-block" [ngClass]="{'w100 pl0': auth.currentUser?.admin}">
+    <h2 class="tournament-title txt-center">{{ tournamentName }}</h2>
     <section class="group-block" *ngFor="let item of schedules; let i = index">
       <ng-container *ngIf="item.matches.length">
         <h4 class="group-title txt-center">Group {{item.groupName}}</h4>
