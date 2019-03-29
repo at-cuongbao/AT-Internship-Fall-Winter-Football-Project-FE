@@ -23,6 +23,7 @@ const tablesGroup = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
 })
 export class TournamentDetailComponent implements OnInit {
   flag = false;
+  loading = true;
   topTeamFlag = 0;
   id = '';
   tournamentName = '';
@@ -91,6 +92,7 @@ export class TournamentDetailComponent implements OnInit {
 
     this.matchService.getTopTeams(tournamentId)
       .subscribe(data => {
+        this.loading = false;
         let _data = data ? data : this.teams;
         let dataLength = _data.length;
         let tables = tablesGroup.slice(0, dataLength / 4);

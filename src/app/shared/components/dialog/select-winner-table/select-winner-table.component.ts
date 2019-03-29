@@ -63,14 +63,14 @@ export class SelectWinnerTableComponent implements OnInit {
           } else {
             this.closeModal();
             swal({
-              // buttons: false,
+              buttons: [false],
               text: 'Time out to Set knockout!',
               icon: "error",
               timer: 2000,
             });
           }
           swal({
-            // buttons: false,
+            buttons: [false],
             text: `You have submit successfully !`,
             icon: "success",
             timer: 2000,

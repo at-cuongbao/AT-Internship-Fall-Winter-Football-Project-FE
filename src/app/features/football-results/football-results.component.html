@@ -6,14 +6,14 @@
           <p><a routerLink="/tournament-results/{{tournamentList[0]?._id}}">Football result of {{ tournamentList[0]?.name}}</a></p>
         </div>
         <div class="results-right">
-          <p *ngIf="length>1" class="first"><a routerLink="/tournament-results/{{tournamentList[1]?._id}}">Football result of {{ tournamentList[1]?.name}}</a></p>
-          <p *ngIf="length>2" class="second"><a routerLink="/tournament-results/{{tournamentList[2]?._id}}">Football result of {{ tournamentList[2]?.name}}</a></p>
+          <p *ngIf="length>1" class="first"><a class="txt-center" routerLink="/tournament-results/{{tournamentList[1]?._id}}">{{ tournamentList[1]?.name}}</a></p>
+          <p *ngIf="length>2" class="second"><a class="txt-center" routerLink="/tournament-results/{{tournamentList[2]?._id}}">{{ tournamentList[2]?.name}}</a></p>
         </div>
       </div>
       <div class="results-bot" *ngFor="let item of tournamentList, let i = index">
         <div *ngIf="i>2" class="result-items">
-          <p class="title"><b><a routerLink="/tournament-results/{{tournamentList[i]?._id}}">Football result of {{ tournamentList[i].name}}</a></b></p>
-          <img src="./../../../assets/images/thumbnail3.jpg">
+          <p class="title"><a routerLink="/tournament-results/{{tournamentList[i]?._id}}"><b>Football result of {{ tournamentList[i].name}}</b></a></p>
+          <img routerLink="/tournament-results/{{tournamentList[i]?._id}}" src="./../../../assets/images/thumbnail3.jpg">
           <span class="content">{{item.desc}}</span>
         </div>
       </div>

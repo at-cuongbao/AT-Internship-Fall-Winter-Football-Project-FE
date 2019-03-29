@@ -99,7 +99,11 @@ const routes: Routes = [
       {
         path: 'prediction-list',
         component: PredictionListComponent
-      }
+      },
+      {
+        path: 'tables/:id',
+        component: TournamentDetailComponent
+      },
     ],
     canActivate: [ AuthGuardService, AdminAuthGuardService]
   },

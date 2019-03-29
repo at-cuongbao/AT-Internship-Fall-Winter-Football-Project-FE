@@ -13,6 +13,7 @@ import { Match } from 'src/app/shared/models/match';
 export class HomeComponent implements OnInit, DoCheck {
   showLoadingIndicator = true;
   latestResult: any;
+  matchData = [];
   matches = [];
   match = {};
   imgDefault = '../../../assets/images/default-image.png';
@@ -57,5 +58,25 @@ export class HomeComponent implements OnInit, DoCheck {
         this.matches = matches;
         this.showLoadingIndicator = false;
       });
+  }
+
+  openModal(match: Match) {
+    if (!this.auth.isLoggedIn()) {
+      return this.router.navigate(['/login'], {
+        queryParams: {
+          returnUrl: this.router.url
+        }
+      })
+    }
+    this.matchData.push(match);
+  }
+
+  onSubmit(match: Match) {
+    console.log(match);
+    
+    if (match) {
+      this.getMatches();
+    }
+    this.matchData = [];
   }
 }

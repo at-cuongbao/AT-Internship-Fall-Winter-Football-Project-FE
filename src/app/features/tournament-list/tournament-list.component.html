@@ -4,7 +4,7 @@
     <ng-container  *ngIf="tournamentList.length">
       <div class="tournament-top clearfix">
         <div *ngFor="let tour of tournamentList | paginate: { itemsPerPage: 6, currentPage: pageActual }" class="card">
-          <a routerLink="/tournament-detail/{{tour._id}}">
+          <a routerLink="/tables/{{tour._id}}">
             <img src="../../../assets/images/championsleaguelogo.jpg" alt="Denim Jeans" height="300">
           </a>
           <div class="card-wrapper">
@@ -13,7 +13,8 @@
               <a routerLink="/tables/{{tour._id}}">{{ tour.name || 'Unset' }}</a>
             </h4>
             <p class="card-content">Decription: {{ tour.desc || 'None' }}.</p>
-            <a class="read-more" routerLink="/tables/{{tour._id}}">Read more</a>
+            <a *ngIf="!auth.currentUser?.admin" class="read-more" routerLink="/tables/{{tour._id}}">Read more</a>
+            <a *ngIf="auth.currentUser?.admin" class="read-more" routerLink="/admin/tables/{{tour._id}}">Read more</a>
           </div>
         </div>
       </div>
