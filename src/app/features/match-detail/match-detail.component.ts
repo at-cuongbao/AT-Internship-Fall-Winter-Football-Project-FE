@@ -61,12 +61,13 @@ export class MatchDetailComponent implements OnInit {
     const twoHour = 1000 * 3600 * 2;
     const now = Date.now();
     this.time = new Date(this.match.start_at).getTime();
+    console.log(this.time, this.match.start_at);
     if (now > this.time + twoHour) {
       this.time = 0;
       this.messageTimer = this.match.start_at;
     } else if (now > this.time) {
       this.time = 0;
-      this.messageTimer = 'Trận đấu đang xảy ra!';
+      this.messageTimer = 'The match is playing !';
     }
     if (this.time) {
       this.time = this.datePipe.transform(

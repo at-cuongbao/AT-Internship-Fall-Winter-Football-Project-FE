@@ -18,10 +18,10 @@ export class CountdownTimerComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnChanges() {
-    this.coutdown(new Date(this.end).getTime());
   }
-
+  
   ngOnInit() {
+    this.coutdown(new Date(this.end).getTime());
   }
 
   ngOnDestroy() {
@@ -29,7 +29,6 @@ export class CountdownTimerComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   coutdown(end: any) {
-    console.log(end)
     const second = 1000,
       minute = second * 60,
       hour = minute * 60,

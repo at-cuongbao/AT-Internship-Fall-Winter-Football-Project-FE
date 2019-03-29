@@ -72,8 +72,6 @@ export class HomeComponent implements OnInit, DoCheck {
   }
 
   onSubmit(match: Match) {
-    console.log(match);
-    
     if (match) {
       this.getMatches();
     }

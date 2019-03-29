@@ -9,10 +9,10 @@
 <div *ngIf="showLoadingIndicator" class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
 <div class="next-match-wrapper" *ngIf="matches.length">
   <div class="container">
-    <div class="home-next-match w50 inline-block pull-left">
+    <div class="home-next-match w40 inline-block pull-left">
       <app-next-match (updateSchedule)="getMatches($event)" [match]="matches[0]"></app-next-match>
     </div>
-    <div class="home-schedule w50 inline-block">
+    <div class="home-schedule w60 inline-block">
       <app-matches [matches]="matches" (getNextMatch)="getNextMatch($event)" (openModal)="openModal($event)"></app-matches>
     </div>
   </div>
