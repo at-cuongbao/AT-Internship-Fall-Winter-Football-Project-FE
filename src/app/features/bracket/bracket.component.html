@@ -1,4 +1,4 @@
-<div class="bracket-wrapper height-1000" [style.backgroundImage]="'url('+ imageSource +')'">
+<div *ngIf="bracketView.length" class="bracket-wrapper height-1000" [style.backgroundImage]="'url('+ imageSource +')'">
   <p>Knockout stage: {{ tournamentName }}</p>
   <div class="col-12 auto-justify">
     <div class="panel-default panel-center">
@@ -18,3 +18,4 @@
     </div>
   </div>
 </div>
+<div *ngIf="!bracketView.length" class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>

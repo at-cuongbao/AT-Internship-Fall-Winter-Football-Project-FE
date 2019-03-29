@@ -35,7 +35,9 @@
             </td>
           </tr>
       </table>
-      
+
+      <div *ngIf="loading" class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+
       <!-- This is for unresulted table -->
       <table *ngIf="topTeamFlag == 0">
         <tr *ngFor="let row of _teams, let i = index" [class.txt-center]="!i" [class.heading-table]="!i">

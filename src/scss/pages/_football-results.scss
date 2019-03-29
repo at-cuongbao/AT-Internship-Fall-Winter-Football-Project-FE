@@ -27,15 +27,23 @@
           float: right;
           width: 30%;
           .first {
-            padding: 150px 8px 0;
+            // padding: 150px 8px 0;
             background-image: url('./assets/images/thumbnail1.jpg');
             height: 173px;
             margin-bottom: 4px;
+            a {
+              display: block;
+              padding: 150px 5px 5px;
+            }
           }
           .second {
             background-image: url('./assets/images/thumbnail2.jpg');
-            padding: 150px 8px 0;
+            // padding: 150px 8px 0;
             height: 173px;
+            a {
+              display: block;
+              padding: 150px 5px 5px;
+            }
           }
           p a {
             background-color: rgba(0, 0, 0, 0.5);

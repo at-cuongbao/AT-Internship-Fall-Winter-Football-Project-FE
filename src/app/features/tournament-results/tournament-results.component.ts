@@ -12,7 +12,7 @@ const GROUPS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
   styleUrls: ['./tournament-results.component.scss']
 })
 export class TournamentResultsComponent implements OnInit {
-
+  tournamentName = '';
   schedules = [];
   matchData = [];
   groupData = [];
@@ -49,6 +49,7 @@ export class TournamentResultsComponent implements OnInit {
     });
     this.scheduleService.get(id)
       .subscribe(_schedules => {
+        this.tournamentName = _schedules[0];
         let schedules = _schedules[1].filter(match => {
           return match.firstTeam.score !== null
         });

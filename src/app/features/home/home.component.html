@@ -13,7 +13,7 @@
       <app-next-match (updateSchedule)="getMatches($event)" [match]="matches[0]"></app-next-match>
     </div>
     <div class="home-schedule w50 inline-block">
-      <app-matches [matches]="matches" (getNextMatch)="getNextMatch($event)"></app-matches>
+      <app-matches [matches]="matches" (getNextMatch)="getNextMatch($event)" (openModal)="openModal($event)"></app-matches>
     </div>
   </div>
 </div>
@@ -28,3 +28,4 @@
   <app-tournament-list [flag]="true"></app-tournament-list>
 </div>
 <app-football-images></app-football-images>
+<app-dialog-edit-match *ngIf="matchData.length" [matchData]="matchData" (onSubmit)="onSubmit($event)"></app-dialog-edit-match>

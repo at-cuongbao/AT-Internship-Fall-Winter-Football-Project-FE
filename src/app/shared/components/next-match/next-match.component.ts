@@ -72,14 +72,14 @@ export class NextMatchComponent implements OnChanges {
     this.apiService.post(url, data).subscribe(code => {
       if (code === 200) {
         swal({
-          // buttons: false,
+          buttons: [false],
           text: 'Predict Success !',
           icon: "success",
           timer: 2000,
         });
       } else {
         swal({
-          // buttons: false,
+          buttons: [false],
           text: 'Time out to predict !',
           icon: "error",
           timer: 2000,

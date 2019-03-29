@@ -105,7 +105,6 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
   }
 
   onSubmit(form: NgForm, match) {
-    console.log(match);
     if (this.disabledSubmit_btn) {
       return;
     }
