@@ -37,11 +37,10 @@ export class CountdownTimerComponent implements OnInit, OnChanges, OnDestroy {
       minute = second * 60,
       hour = minute * 60,
       day = hour * 24;
-    let distance;
-    let now = new Date().getTime();
-    this.clock = setInterval(() => {
-      now += second;
+    let now = new Date().getTime(),
       distance = end - now;
+    this.clock = setInterval(() => {
+      distance -= second;
       this.dayLeft = '' + Math.floor(distance / (day));
       this.hrsLeft = '' + Math.floor((distance % (day)) / (hour));
       this.minLeft = '' + Math.floor((distance % (hour)) / (minute));
