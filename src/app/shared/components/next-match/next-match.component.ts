@@ -85,22 +85,4 @@ export class NextMatchComponent implements OnChanges {
       this.updateSchedule.emit();
     });
   };
-
-  // countDown() {
-  //   const TwoHour = 1000 * 3600 * 2;
-  //   const now = Date.now();
-  //   this.time = new Date(this.match.start_at).getTime();
-  //   if (now > this.time + TwoHour) {
-  //     this.time = 0;
-  //     this.messageTimer = this.match.start_at;
-  //   } else if (now > this.time) {
-  //     this.time = 0;
-  //     this.messageTimer = 'The match is playing!';
-  //   }
-  //   if (this.time) {
-  //     this.time = this.datePipe.transform(
-  //       this.match.start_at, 'y-M-dd HH:mm:ss'
-  //     );
-  //   }
-  // }
 }
