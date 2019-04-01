@@ -37,17 +37,11 @@ export class CountdownTimerComponent implements OnInit, OnChanges, OnDestroy {
       minute = second * 60,
       hour = minute * 60,
       day = hour * 24;
-    let now = Date.now();
-    if (now > this.end + TwoHour) {
-      this.end = 0;
-      this.messageTimer = this.end;
-    } else if (now > this.end) {
-      this.end = 0;
-      this.messageTimer = 'The match is playing!';
-    }
+    let distance;
+    let now = new Date().getTime();
     this.clock = setInterval(() => {
-      let now = new Date().getTime(),
-        distance = end - now;
+      now -= second;
+      distance = end - now;
       this.dayLeft = '' + Math.floor(distance / (day));
       this.hrsLeft = '' + Math.floor((distance % (day)) / (hour));
       this.minLeft = '' + Math.floor((distance % (hour)) / (minute));
@@ -64,6 +58,11 @@ export class CountdownTimerComponent implements OnInit, OnChanges, OnDestroy {
       }
       //do something later when date is reached
       if (distance < 0) {
+        if (distance > -TwoHour) {
+          this.messageTimer = 'The match is playing!';
+        } else {
+          this.messageTimer = this.end;
+        }
         clearInterval(this.clock);
         this.finished.emit();
       }

@@ -12,7 +12,6 @@ import { Match } from 'src/app/shared/models/match';
 })
 export class MatchDetailComponent implements OnInit {
   tournament = '';
-  messageTimer = '';
   time: number | string;
   users = [];
   match: Match;
@@ -65,6 +64,6 @@ export class MatchDetailComponent implements OnInit {
   }
 
   onFinishedCountDown() {
-    this.messageTimer = 'Trận đấu đang xảy ra!!!';
+    // Do something
   }
 }

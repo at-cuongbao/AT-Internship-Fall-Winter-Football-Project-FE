@@ -12,7 +12,7 @@ export class DateTransformPipe implements PipeTransform {
 
   transform(value: any, args?: any): any {
     return this.datePipe.transform(
-        value, 'dd/M/y | HH:mm'
+        value, 'dd/M/y | HH:mm a'
       ) || '';
   }
 

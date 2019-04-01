@@ -7,7 +7,6 @@
     <div class="heading-match middle txt-center">
       <div *ngIf="time; then countDown else dayStart"></div>
       <ng-template #countDown>
-        <span class="mesageTimer">{{ messageTimer }}</span>
         <app-countdown-timer *ngIf="time" [end]="time" (finished)="onFinishedCountDown()"></app-countdown-timer>
       </ng-template>
       <ng-template #dayStart>
