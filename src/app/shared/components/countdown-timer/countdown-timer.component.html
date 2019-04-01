@@ -20,6 +20,7 @@
   </ul>
 </ng-template>
 <ng-template #match_detail>
+    <span class="mesageTimer">{{ messageTimer | dateTransform }}</span>
     <ul class="countdown-timer">
       <li>
         <span id="days">{{ dayLeft }}</span>
