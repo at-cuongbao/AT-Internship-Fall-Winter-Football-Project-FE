@@ -40,7 +40,7 @@ export class CountdownTimerComponent implements OnInit, OnChanges, OnDestroy {
     let distance;
     let now = new Date().getTime();
     this.clock = setInterval(() => {
-      now -= second;
+      now += second;
       distance = end - now;
       this.dayLeft = '' + Math.floor(distance / (day));
       this.hrsLeft = '' + Math.floor((distance % (day)) / (hour));
