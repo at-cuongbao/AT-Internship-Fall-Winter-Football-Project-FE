@@ -92,13 +92,11 @@ export class TournamentDetailComponent implements OnInit {
 
     this.matchService.getTopTeams(tournamentId)
       .subscribe(data => {
-        this.loading = false;
         let _data = data ? data : this.teams;
+        this.loading = false;
         let dataLength = _data.length;
         let tables = tablesGroup.slice(0, dataLength / 4);
-    
         transformedData.push(tables);
-
         for (let i = 0; i < 4; i++) {
           let rowData = []
           for (let j = i; j < dataLength; j += 4) {
@@ -106,8 +104,8 @@ export class TournamentDetailComponent implements OnInit {
           }
           transformedData.push(rowData);
         }
-        data ? this.teams = transformedData : this._teams = transformedData;
-        this.topTeamFlag = data ? dataLength / 4 : 0;
+        data ? ( this.teams = transformedData ) : ( this._teams = transformedData );
+        this.topTeamFlag = ( data ? dataLength / 4 : 0 );
       })
   }
 
