@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 import { ActivatedRoute, ParamMap, Router, NavigationEnd } from '@angular/router';
 import { MatchService } from 'src/app/shared/services/match.service';
 import { Match } from '../../shared/models/match';
+import { TransportService } from 'src/app/shared/services/transport.service';
 
 const GROUPS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
 
@@ -33,6 +34,7 @@ export class ScheduleComponent {
     private route: ActivatedRoute,
     private router: Router,
     private matchService: MatchService,
+    private grab: TransportService,
   ) {
     router.events.forEach((event) => {
       if (event instanceof NavigationEnd) {
@@ -57,8 +59,8 @@ export class ScheduleComponent {
 
         this.tablesFlags = tablesFlags;
         this.schedules = [];
-        this.tournamentName = tournamentName;
-
+        // this.tournamentName = tournamentName;
+        this.grab.send(tournamentName);
         GROUPS.map(group => {
           let tables = [];
           schedules.map(match => {
