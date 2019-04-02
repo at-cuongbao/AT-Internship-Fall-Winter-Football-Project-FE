@@ -1,5 +1,11 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges, OnDestroy } from '@angular/core';
 
+const second = 1000,
+  minute = second * 60,
+  hour = minute * 60,
+  day = hour * 24,
+  TwoHour = hour * 2,
+  now = new Date().getTime();
 @Component({
   selector: 'app-countdown-timer',
   templateUrl: './countdown-timer.component.html',
@@ -15,6 +21,7 @@ export class CountdownTimerComponent implements OnInit, OnChanges, OnDestroy {
   secLeft;
   messageTimer = '';
   clock;
+  hide = true;
 
   constructor() {
   }
@@ -32,13 +39,7 @@ export class CountdownTimerComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   countdown(end: any) {
-    const TwoHour = 1000 * 3600 * 2;
-    const second = 1000,
-      minute = second * 60,
-      hour = minute * 60,
-      day = hour * 24;
-    let now = new Date().getTime(),
-      distance = end - now;
+    let distance = end - now;
     this.clock = setInterval(() => {
       distance -= second;
       this.dayLeft = '' + Math.floor(distance / (day));
@@ -65,6 +66,8 @@ export class CountdownTimerComponent implements OnInit, OnChanges, OnDestroy {
         clearInterval(this.clock);
         this.finished.emit();
       }
+      // hide countdown
+      this.hide = false;
     }, second)
   }
 }
