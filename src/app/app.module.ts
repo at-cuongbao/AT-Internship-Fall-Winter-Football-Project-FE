@@ -101,10 +101,10 @@ export function tokenGetter() {
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        // whitelistedDomains: ['http://172.18.19.45:3000'],
-        // blacklistedRoutes: ['http://172.18.19.45:3000/api/authenticate']
-        whitelistedDomains: ['http://localhost:3000'],
-        blacklistedRoutes: ['http://localhost:3000/api/authenticate']
+        whitelistedDomains: ['http://172.18.19.45:3000'],
+        blacklistedRoutes: ['http://172.18.19.45:3000/api/authenticate']
+        // whitelistedDomains: ['http://localhost:3000'],
+        // blacklistedRoutes: ['http://localhost:3000/api/authenticate']
       }
     }),
     BrowserAnimationsModule,
