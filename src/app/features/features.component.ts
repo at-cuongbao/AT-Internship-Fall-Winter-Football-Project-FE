@@ -29,6 +29,7 @@ export class FeaturesComponent implements OnInit {
 
   getUrl() {
     this.router.events.subscribe((event) => {
+      
       if (event instanceof NavigationEnd) {
         this.pageName = event.url;
         this.pageName = this.pageName.replace('/', '').replace('-', ' ');
@@ -37,13 +38,15 @@ export class FeaturesComponent implements OnInit {
       if (index !== -1) {
         this.tournamentId = this.pageName.slice(index + 1);
         this.pageName = this.pageName.slice(0, index);
-        if (this.tournamentId) {
+        if (this.tournamentId && this.pageName == 'schedules') {
           this.api.get([END_POINT.tournaments, this.tournamentId]).subscribe(
             data => {
               this.tournamentName = data[0].name;
             }
           )
         }
+      } else {
+        this.tournamentName = '';
       }
     })
   }

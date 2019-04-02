@@ -11,6 +11,7 @@ export class DateTransformPipe implements PipeTransform {
   ) {}
 
   transform(value: any, args?: any): any {
+    if (value == 'The match is playing!') return value;
     return this.datePipe.transform(
         value, 'dd/M/y | HH:mm a'
       ) || '';
