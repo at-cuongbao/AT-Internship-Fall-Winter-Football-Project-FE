@@ -62,6 +62,8 @@ export class TournamentDetailComponent implements OnInit {
         });
       }      
     });
+    console.log(this.bracketView);
+    
   }
 
   getTournament() {
@@ -113,10 +115,11 @@ export class TournamentDetailComponent implements OnInit {
     let tournamentId = this.route.snapshot.paramMap.get('id');
     this.matchService.get(tournamentId)
       .subscribe(data => {
+        console.log(data);
         this.winner = data.winner;
         if (data.matches.length < 17) {
-          this.generateMatches(data.matches);
-        } else {
+          this.generateMatches(data.matches);   
+        } else {  
           this.flag = true;
           this.generateMatches(data.matches, POSITION_32);
         }
