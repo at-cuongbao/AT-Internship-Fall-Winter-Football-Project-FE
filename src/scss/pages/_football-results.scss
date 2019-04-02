@@ -4,7 +4,7 @@
     .football-top {
       width: 75%;
       float: right;
-      padding-left: 10px;
+      padding-left: 36px;
       .results-top {
         margin-bottom: 380px;
         .results-left {
@@ -65,12 +65,14 @@
           width: 50%;
           display: inline-block;
           padding: 4px;
-          margin-top: 8px;
           float: left;
           .title {
             font-weight: 600;
             font-size: 18px;
             padding-bottom: 6px;
+            a b:hover {
+              color: $color-bold-blue;
+            }
           }
           img {
             height: 100px;
