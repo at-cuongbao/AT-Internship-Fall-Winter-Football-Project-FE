@@ -3,6 +3,7 @@ import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { TournamentService } from '../../services/tournament.service';
 import { map } from 'rxjs/operators';
+import { TransportService } from '../../services/transport.service';
 
 @Component({
   selector: 'app-header',
@@ -16,7 +17,8 @@ export class HeaderComponent implements OnInit {
   constructor(
     private auth: AuthService,
     private tournamentService: TournamentService,
-    private router: Router
+    private router: Router,
+    private grab: TransportService,
   ) { }
 
   ngOnInit() {
@@ -37,6 +39,10 @@ export class HeaderComponent implements OnInit {
 
   createResponsive() {
     this.isClick = !this.isClick;
+  }
+
+  onClick(data) {
+    this.grab.send(data);
   }
 
   logout() {

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavigationStart } from '@angular/router';
 import { NavigationEnd } from '@angular/router';
+import { TransportService } from '../shared/services/transport.service';
 
 @Component({
   selector: 'app-features',
@@ -9,20 +10,25 @@ import { NavigationEnd } from '@angular/router';
   styleUrls: ['./features.component.scss']
 })
 export class FeaturesComponent {
+  tournamentName = '';
   pageName = '';
   imageSource = '../../../assets/images/head-bg.jpg';
-  
-  constructor(private router: Router) {
+
+  constructor(
+    private router: Router,
+    private grab: TransportService,
+  ) {
     this.getUrl();
+    this.tournamentName = this.grab.receive();
   }
 
   getUrl() {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        this.pageName =  event.url;
+        this.pageName = event.url;
         this.pageName = this.pageName.replace('/', '').replace('-', ' ');
       }
-      
+
       let index = this.pageName.search('/');
       if (index !== -1) {
         this.pageName = this.pageName.slice(0, index);
