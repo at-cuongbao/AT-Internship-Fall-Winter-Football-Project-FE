@@ -59,8 +59,7 @@ export class ScheduleComponent {
 
         this.tablesFlags = tablesFlags;
         this.schedules = [];
-        // this.tournamentName = tournamentName;
-        this.grab.send(tournamentName);
+        this.tournamentName = tournamentName;
         GROUPS.map(group => {
           let tables = [];
           schedules.map(match => {
