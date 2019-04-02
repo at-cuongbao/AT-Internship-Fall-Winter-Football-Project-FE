@@ -23,7 +23,7 @@ import { RegisterComponent } from './features/register/register.component';
 import { ScheduleComponent } from './features/schedule/schedule.component';
 import { PageNotFoundComponent } from '../app/shared/components/page-not-found/page-not-found.component';
 import { QuestionMaskPipe } from './shared/pipes/question-mask.pipe';
-import { DateDefaultPipe } from './shared/pipes/date-default.pipe';
+import { DateTransformPipe } from './shared/pipes/dateTransform.pipe';
 import { TournamentListComponent } from './features/tournament-list/tournament-list.component';
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 import { FootballImagesComponent } from './features/home/football-images/football-images.component';
@@ -46,6 +46,7 @@ import { CountdownTimerComponent } from './shared/components/countdown-timer/cou
 import { SelectWinnerTableComponent } from './shared/components/dialog/select-winner-table/select-winner-table.component';
 import { FootballResultsComponent } from './features/football-results/football-results.component';
 import { TournamentResultsComponent } from './features/tournament-results/tournament-results.component';
+import { DatePipe } from '@angular/common';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -66,12 +67,9 @@ export function tokenGetter() {
     RegisterComponent,
     PageNotFoundComponent, 
     QuestionMaskPipe, 
-    DateDefaultPipe, 
+    DateTransformPipe, 
     TournamentListComponent, 
     SidebarComponent,
-    PageNotFoundComponent, 
-    QuestionMaskPipe, 
-    DateDefaultPipe, 
     TournamentDetailComponent,
     FootballImagesComponent, 
     LatestResultComponent,
@@ -113,6 +111,9 @@ export function tokenGetter() {
     OwlNativeDateTimeModule,
     ChartsModule,
     NgxSpinnerModule,
+  ],
+  providers: [
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

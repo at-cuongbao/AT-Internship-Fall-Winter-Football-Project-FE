@@ -3,7 +3,7 @@ import { Component, OnInit, Input, Output, EventEmitter, OnChanges, OnDestroy } 
 @Component({
   selector: 'app-countdown-timer',
   templateUrl: './countdown-timer.component.html',
-  styleUrls: ['./countdown-timer.component.scss']
+  styleUrls: ['./countdown-timer.component.scss'],
 })
 export class CountdownTimerComponent implements OnInit, OnChanges, OnDestroy {
   @Input() end: any;
@@ -13,29 +13,34 @@ export class CountdownTimerComponent implements OnInit, OnChanges, OnDestroy {
   hrsLeft;
   minLeft;
   secLeft;
+  messageTimer = '';
+  clock;
 
   constructor() {
   }
 
   ngOnChanges() {
+    clearInterval(this.clock);
+    this.countdown(new Date(this.end).getTime());
   }
-  
+
   ngOnInit() {
-    this.coutdown(new Date(this.end).getTime());
   }
 
   ngOnDestroy() {
     this.end = null;
   }
 
-  coutdown(end: any) {
+  countdown(end: any) {
+    const TwoHour = 1000 * 3600 * 2;
     const second = 1000,
       minute = second * 60,
       hour = minute * 60,
       day = hour * 24;
-    let x = setInterval(() => {
-      let now = new Date().getTime(),
-        distance = end - now;
+    let now = new Date().getTime(),
+      distance = end - now;
+    this.clock = setInterval(() => {
+      distance -= second;
       this.dayLeft = '' + Math.floor(distance / (day));
       this.hrsLeft = '' + Math.floor((distance % (day)) / (hour));
       this.minLeft = '' + Math.floor((distance % (hour)) / (minute));
@@ -52,10 +57,14 @@ export class CountdownTimerComponent implements OnInit, OnChanges, OnDestroy {
       }
       //do something later when date is reached
       if (distance < 0) {
-        clearInterval(x);
+        if (distance > -TwoHour) {
+          this.messageTimer = 'The match is playing!';
+        } else {
+          this.messageTimer = this.end;
+        }
+        clearInterval(this.clock);
         this.finished.emit();
       }
     }, second)
   }
-
 }

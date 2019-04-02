@@ -1,7 +1,6 @@
 <div class="next-match txt-center">
   <div class="next-match-content">
     <div class="match-date">
-      <span class="mesageTimer">{{ messageTimer }}</span>
       <app-countdown-timer [isHomePage]="true" *ngIf="time" [end]="time" (finished)="onFinishedCountDown()"></app-countdown-timer>
     </div>
     <div class="match-location middle">

@@ -21,22 +21,23 @@
   </ul>
 </ng-template>
 <ng-template #match_detail>
-    <ul class="countdown-timer">
-      <li>
-        <span id="days">{{ dayLeft }}</span>
-        <span class="label">Days</span>
-      </li>:
-      <li>
-        <span id="hours">{{ hrsLeft }}</span>
-        <span class="label">Hours</span>
-      </li>:
-      <li>
-        <span id="minutes">{{ minLeft }}</span>
-        <span class="label">Minutes</span>
-      </li>:
-      <li>
-        <span id="seconds">{{ secLeft }}</span>
-        <span class="label">Seconds</span>
-      </li>
-    </ul>
-  </ng-template>
+  <span class="mesageTimer">{{ messageTimer | dateTransform }}</span>
+  <ul *ngIf="!messageTimer" class="countdown-timer">
+    <li>
+      <span id="days">{{ dayLeft }}</span>
+      <span class="label">Days</span>
+    </li>:
+    <li>
+      <span id="hours">{{ hrsLeft }}</span>
+      <span class="label">Hours</span>
+    </li>:
+    <li>
+      <span id="minutes">{{ minLeft }}</span>
+      <span class="label">Minutes</span>
+    </li>:
+    <li>
+      <span id="seconds">{{ secLeft }}</span>
+      <span class="label">Seconds</span>
+    </li>
+  </ul>
+</ng-template>
