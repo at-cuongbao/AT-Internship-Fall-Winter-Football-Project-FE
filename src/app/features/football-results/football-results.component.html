@@ -10,13 +10,13 @@
           <p *ngIf="length>2" class="second"><a class="txt-center" routerLink="/tournament-results/{{tournamentList[2]?._id}}">{{ tournamentList[2]?.name}}</a></p>
         </div>
       </div>
-      <div class="results-bot" *ngFor="let item of tournamentList, let i = index">
-        <div *ngIf="i>2" class="result-items">
+      <ng-container class="results-bot clearfix" *ngFor="let item of tournamentList, let i = index">
+        <div *ngIf="i > 2" class="result-items">
           <p class="title"><a routerLink="/tournament-results/{{tournamentList[i]?._id}}"><b>Football result of {{ tournamentList[i].name}}</b></a></p>
           <img routerLink="/tournament-results/{{tournamentList[i]?._id}}" src="./../../../assets/images/thumbnail3.jpg">
           <span class="content">Nguyen Thanh Long</span>
         </div>
-      </div>
+      </ng-container>
     </div>
     <app-sidebar [class.display-none]="flag"></app-sidebar>
   </div>
