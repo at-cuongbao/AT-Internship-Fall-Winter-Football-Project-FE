@@ -40,7 +40,7 @@
           </a>
         </p>
         <p class="match-view w25" *ngIf="!auth.currentUser?.admin">
-          <button [class.txt-dm]="home && match?.prediction?.is_predicted" [class.disabled]="match?.prediction?.isAllow || !match.firstTeam.code"
+          <button [class.txt-dm]="home && match?.prediction?.is_predicted && auth.currentUser?.sub" [class.disabled]="match?.prediction?.isAllow || !match.firstTeam.code"
             *ngIf="!match.firstTeam.score && !(!match.firstTeam.code || match?.prediction?.isAllow)"
             class="match-view-link txt-bold" (click)="open(match)"
             [disabled]="!match.firstTeam.code || match?.prediction?.isAllow">
