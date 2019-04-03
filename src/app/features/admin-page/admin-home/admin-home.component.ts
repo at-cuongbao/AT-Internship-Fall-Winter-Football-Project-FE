@@ -25,9 +25,8 @@ export class AdminHomeComponent implements OnInit {
   }
 
   getAllUsers() {
-    this.api.get([END_POINT.users]).subscribe(users => {
-      let _users = users.filter(user => user.is_admin !== true);
-      this.usersLength = _users.length;
+    this.api.get([END_POINT.users]).subscribe(usersLength => {
+      this.usersLength = usersLength - 1;
     })
   }
 
