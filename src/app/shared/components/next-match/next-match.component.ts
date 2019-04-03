@@ -1,16 +1,14 @@
-import { Component, Input, EventEmitter, Output, OnChanges } from '@angular/core';
+import { Component, Input, EventEmitter, Output, OnChanges, AfterContentInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { END_POINT } from 'src/app/shared/services/api-registry';
 import { NgForm } from '@angular/forms';
 import { ApiService } from 'src/app/shared/services/api.service';
-import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-next-match',
   templateUrl: './next-match.component.html',
   styleUrls: ['./next-match.component.scss'],
-  providers: [DatePipe]
 })
 export class NextMatchComponent implements OnChanges {
   @Input() match: any;
@@ -19,13 +17,11 @@ export class NextMatchComponent implements OnChanges {
   firstTeamPrediction: number;
   secondTeamPrediction: number;
   time: number | string;
-  messageTimer = '';
 
   constructor(
     private auth: AuthService,
     private router: Router,
-    private apiService: ApiService,
-    private datePipe: DatePipe
+    private apiService: ApiService
   ) {
     this.isOpen = false;
   }
@@ -33,7 +29,7 @@ export class NextMatchComponent implements OnChanges {
   ngOnChanges() {
     this.isOpen = false;
     if (this.match && this.match.start_at) {
-      this.countDown();
+      this.time = this.match.start_at;
     }
   }
 
@@ -89,22 +85,4 @@ export class NextMatchComponent implements OnChanges {
       this.updateSchedule.emit();
     });
   };
-
-  countDown() {
-    const TwoHour = 1000 * 3600 * 2;
-    const now = Date.now();
-    this.time = new Date(this.match.start_at).getTime();
-    if (now > this.time + TwoHour) {
-      this.time = 0;
-      this.messageTimer = this.match.start_at;
-    } else if (now > this.time) {
-      this.time = 0;
-      this.messageTimer = 'The match is playing!';
-    }
-    if (this.time) {
-      this.time = this.datePipe.transform(
-        this.match.start_at, 'y-M-dd HH:mm:ss'
-      );
-    }
-  }
 }

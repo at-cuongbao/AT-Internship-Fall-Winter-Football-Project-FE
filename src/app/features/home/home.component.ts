@@ -54,7 +54,7 @@ export class HomeComponent implements OnInit, DoCheck {
 
   getMatches(): void {
     this.scheduleService.getNextMatch()
-      .subscribe(matches => {
+      .subscribe(matches => {      
         this.matches = matches;
         this.showLoadingIndicator = false;
       });

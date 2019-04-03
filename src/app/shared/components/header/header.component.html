@@ -32,7 +32,7 @@
               Current Date
             </a>
             <ng-container *ngFor="let tournament of tournaments">
-              <a routerLink="/schedules/{{ tournament.id }}" class="sub-link">
+              <a routerLink="/schedules/{{ tournament.id }}" (click)="onClick(tournament.name)" class="sub-link">
                 {{ tournament.name || 'Unset name' }}
               </a>
             </ng-container>

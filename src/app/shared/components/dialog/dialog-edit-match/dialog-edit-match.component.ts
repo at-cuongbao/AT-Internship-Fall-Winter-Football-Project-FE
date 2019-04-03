@@ -14,15 +14,14 @@ import { ActivatedRoute } from '@angular/router';
 export class DialogEditMatchComponent implements OnInit, OnChanges {
   @Input("matchData") matches: any;
   @Output("onSubmit") sendData = new EventEmitter();
-  firstTeamPrediction_ngModel: number;
-  secondTeamPrediction_ngModel: number;
-  firstTeamScore_ngModel: number;
-  secondTeamScore_ngModel: number;
+  firstTeamScore: number;
+  secondTeamScore: number;
   start_at_ngModel: Date;
   match: any;
   isWinner = true;
   imageWinner = '../../../assets/images/prize.png';
   errorMessage: String;
+  isAdmin = false;
   disabledRadio_btn = true;
   disabledSubmit_btn = false;
 
@@ -37,22 +36,26 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
     this.start_at_ngModel = this.match.start_at || 'Unset';
     if (this.auth.currentUser) {
       if (this.auth.currentUser.admin) {
-        this.firstTeamScore_ngModel = this.match.firstTeam.score;
-        this.secondTeamScore_ngModel = this.match.secondTeam.score;
+        this.firstTeamScore = this.match.firstTeam.score;
+        this.secondTeamScore = this.match.secondTeam.score;
       } else {
-        this.firstTeamPrediction_ngModel = this.match.prediction.firstTeam_score_prediction;
-        this.secondTeamPrediction_ngModel = this.match.prediction.secondTeam_score_prediction;
+        this.firstTeamScore = this.match.prediction.firstTeam_score_prediction;
+        this.secondTeamScore = this.match.prediction.secondTeam_score_prediction;
       }
     }
   }
 
   ngOnInit() {
+    // Check role is admin or user
+    if (this.auth.currentUser && this.auth.currentUser.admin) {
+      this.isAdmin = true;
+    }
+
     if (this.match.secondTeam.winners || (this.match.firstTeam.score < this.match.secondTeam.score)) {
       this.isWinner = false;
     }
-
     if (this.match.round !== 1) {
-      if (this.firstTeamScore_ngModel === this.secondTeamScore_ngModel) {
+      if (this.firstTeamScore === this.secondTeamScore) {
         this.disabledRadio_btn = false;
       }
     }
@@ -66,27 +69,23 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
     this.isWinner = isWinner;
   }
 
-  checkWinner(isUser?: boolean) {
-    if (isUser) {
-      if (!Number.isInteger(this.firstTeamPrediction_ngModel) || !Number.isInteger(this.secondTeamPrediction_ngModel)) {
-        this.disabledSubmit_btn = true;
-        return;
-      }
+  checkWinner() {
+    if (
+      Number.isInteger(+this.firstTeamScore) && Number.isInteger(+this.secondTeamScore)
+      && this.firstTeamScore >= 0 && this.firstTeamScore < 100
+      && this.secondTeamScore >= 0 && this.secondTeamScore < 100
+    ) {
       this.disabledSubmit_btn = false;
     } else {
-      if (!Number.isInteger(this.firstTeamScore_ngModel) || !Number.isInteger(this.secondTeamScore_ngModel)) {
-        this.disabledSubmit_btn = true;
-        return;
-      } else {
-        this.disabledSubmit_btn = false;
-      }
-      if (this.firstTeamScore_ngModel < 0) this.firstTeamScore_ngModel = 0;
-      if (this.secondTeamScore_ngModel < 0) this.secondTeamScore_ngModel = 0;
+      this.disabledSubmit_btn = true;
+      return;
+    }
+    if (this.isAdmin) {
       this.disabledRadio_btn = true;
       if (this.match.round !== 1) {
-        if (this.firstTeamScore_ngModel < this.secondTeamScore_ngModel) {
+        if (this.firstTeamScore < this.secondTeamScore) {
           this.isWinner = false;
-        } else if (this.firstTeamScore_ngModel > this.secondTeamScore_ngModel) {
+        } else if (this.firstTeamScore > this.secondTeamScore) {
           this.isWinner = true;
         } else {
           this.disabledRadio_btn = false;
@@ -108,13 +107,13 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
     if (this.disabledSubmit_btn) {
       return;
     }
-    let tournamentId = this.route.snapshot.paramMap.get('id');
+    const tournamentId = this.route.snapshot.paramMap.get('id');
     const data = {
       match_id: match.id,
       user_id: this.auth.currentUser.sub,
       tournament_team_id: [match.firstTeam.firstTournamentTeamId, match.secondTeam.secondTournamentTeamId],
       start_at: form.value.start_at,
-      scorePrediction: [form.value.firstTeamPrediction, form.value.secondTeamPrediction],
+      scorePrediction: [form.value.firstTeamScoreValue, form.value.secondTeamScoreValue],
       winners: [],
       tournament_id: '',
       groupName: Math.ceil(match.round)
@@ -122,19 +121,22 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
 
     let titleBtn = 'predicted';
     let url = [END_POINT.prediction + '/new'];
-    if (this.auth.currentUser.admin) {
+    if (this.isAdmin) {
       titleBtn = 'updated';
       url = [END_POINT.matches + '/update'];
-      data.scorePrediction = [form.value.firstTeamScoreValue, form.value.secondTeamScoreValue];
       data.winners = [this.isWinner, !this.isWinner];
       data.tournament_id = tournamentId;
     }
     this.apiService.post(url, data).subscribe(code => {
       if (code === 200) {
         this.match = match;
-        this.closeModal(match);
+        swal({
+          buttons: [false],
+          text: `You have ${titleBtn} successfully !`,
+          icon: "success",
+          timer: 2000,
+        });
       } else {
-        this.closeModal(match);
         swal({
           buttons: [false],
           text: 'Time out to predict !',
@@ -142,12 +144,10 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
           timer: 2000,
         });
       }
-      swal({
-        buttons: [false],
-        text: `You have ${titleBtn} successfully !`,
-        icon: "success",
-        timer: 2000,
-      });
+    }, err => {
+      console.error(err);
+    }, () => {
+      this.closeModal(match);
     });
   };
 }
