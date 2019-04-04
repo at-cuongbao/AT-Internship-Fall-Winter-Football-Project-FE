@@ -47,7 +47,7 @@ export class PredictionListComponent implements OnInit {
           let groups = Object.keys(group_to_values).map(function (key) {
             return { group: key, data: group_to_values[key] };
           });
-          this.predictions = groups.sort((a, b) => a.group > b.group ? 1 : -1);
+          this.predictions = groups.sort((a, b) => a.group < b.group ? 1 : -1);
         }
         this.showLoadingIndicator = false;
       })
