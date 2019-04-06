@@ -129,7 +129,6 @@ export class ScheduleComponent {
   onSubmit(match: Match) {
     if (match) {
       this.getSchedule();
-      this.getSchedule();
     }
     this.matchData = [];
   }

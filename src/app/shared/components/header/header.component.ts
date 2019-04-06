@@ -22,6 +22,7 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    if (this.auth.currentUser && this.auth.currentUser.admin) return;
     this.getTournaments();
   }
 
@@ -41,6 +42,7 @@ export class HeaderComponent implements OnInit {
     this.isClick = !this.isClick;
   }
 
+  // Get tournament name when click tournament link
   onClick(data) {
     this.grab.send(data);
   }
