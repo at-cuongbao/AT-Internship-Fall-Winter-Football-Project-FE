@@ -54,7 +54,7 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
     if (this.match.secondTeam.winners || (this.match.firstTeam.score < this.match.secondTeam.score)) {
       this.isWinner = false;
     }
-    if (this.match.round !== 1) {
+    if (this.isAdmin && this.match.round !== 1) {
       if (this.firstTeamScore === this.secondTeamScore) {
         this.disabledRadio_btn = false;
       }
@@ -80,8 +80,8 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
       this.disabledSubmit_btn = true;
       return;
     }
+    this.disabledRadio_btn = true;
     if (this.isAdmin) {
-      this.disabledRadio_btn = true;
       if (this.match.round !== 1) {
         if (this.firstTeamScore < this.secondTeamScore) {
           this.isWinner = false;

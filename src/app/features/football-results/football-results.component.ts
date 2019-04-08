@@ -22,8 +22,6 @@ export class FootballResultsComponent implements OnInit {
 
   getTournaments(): void {
     this.tournamentService.get().subscribe(tournamentList => {
-      console.log(tournamentList);
-      
       this.flag 
       ? this.tournamentList = tournamentList.slice(0, 3)
       : this.tournamentList = tournamentList;
