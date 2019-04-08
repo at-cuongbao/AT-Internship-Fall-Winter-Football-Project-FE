@@ -21,7 +21,7 @@
           </a>
         </p>
         <p class="match-team-code w10">
-          {{ match?.firstTeam.code | slice:0:3 | questionMask }} <span *ngIf="match?.firstTeam.score === match?.secondTeam.score && match?.firstTeam.winners && match?.round > 1" style="color: #00afd8">&nbsp;*</span>
+          {{ match?.firstTeam.code | slice:0:3 | questionMask }}<span *ngIf="match?.firstTeam.score === match?.secondTeam.score && match?.firstTeam.winners && match?.round > 1" style="color: #00afd8">&nbsp;*</span>
         </p>
         <p class="match-score w10">
           <ng-container *ngIf="match.firstTeam.score">
