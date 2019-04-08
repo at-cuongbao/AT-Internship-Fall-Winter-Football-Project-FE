@@ -14,7 +14,7 @@
       </ng-template>
     </div>
     <div class="latest-middle clearfix">
-      <a class="latest-team-left">
+      <a routerLink="/team-detail/{{match?.firstTeam.id}}" class="latest-team-left">
         <img *ngIf="match" [src]="match?.firstTeam.logo" alt="Chel">
       </a>
       <div class="latest-versus txt-center">
@@ -28,7 +28,7 @@
         </div>
         <span class="versus-team versus-team-right">{{ match?.secondTeam.code | slice:0:3 }}</span>
       </div>
-      <a class="latest-team-right">
+      <a class="latest-team-right" routerLink="/team-detail/{{match?.secondTeam.id}}">
         <img *ngIf="match" [src]="match?.secondTeam.logo" alt="">
       </a>
     </div>

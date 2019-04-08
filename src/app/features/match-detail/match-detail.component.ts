@@ -37,11 +37,13 @@ export class MatchDetailComponent implements OnInit {
           this.match = new Match(
             new Date(data[0].match_id.start_at).toLocaleString(),
             {
+              id: data[0].tournament_team_id.team_id._id,
               code: data[0].tournament_team_id.team_id.code,
               logo: data[0].tournament_team_id.team_id.logo,
               score: data[0].score || '?',
             },
             {
+              id: data[1].tournament_team_id.team_id._id,
               code: data[1].tournament_team_id.team_id.code,
               logo: data[1].tournament_team_id.team_id.logo,
               score: data[1].score || '?',
