@@ -118,7 +118,7 @@ export class DialogEditMatchComponent implements OnInit, OnChanges {
       tournament_id: '',
       groupName: Math.ceil(match.round)
     };
-
+    
     let titleBtn = 'predicted';
     let url = [END_POINT.prediction + '/new'];
     if (this.isAdmin) {

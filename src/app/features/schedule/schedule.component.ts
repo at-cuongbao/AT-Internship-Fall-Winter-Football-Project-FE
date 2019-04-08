@@ -68,7 +68,7 @@ export class ScheduleComponent {
             }
           });
           this.schedules.push({
-            groupName: group,
+            groupName: `Group ${group}`,
             matches: tables
           });
         });
@@ -98,15 +98,15 @@ export class ScheduleComponent {
 
         this.schedules.push(
           {
-            groupName: 'Quater-final',
+            groupName: 'Quater-finals',
             matches: quarters
           },
           {
-            groupName: 'Semi-final',
+            groupName: 'Semi-finals',
             matches: semis
           },
           {
-            groupName: 'Final',
+            groupName: 'Finals',
             matches: finals
           }
         );
