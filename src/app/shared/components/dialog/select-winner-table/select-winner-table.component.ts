@@ -5,6 +5,8 @@ import { END_POINT } from 'src/app/shared/services/api-registry';
 interface TournamentTeam {
   position: string,
   isKnockoutSet: boolean,
+  goals: string,
+  points: string, 
   tournamentTeamId: {
     position: string,
     groupName: string,
@@ -18,11 +20,15 @@ interface TournamentTeam {
 export class SelectWinnerTableComponent implements OnInit {
   @Input() tableData: TournamentTeam[];
   @Output() close = new EventEmitter();
+
   selectedOption = [];
+  disabledDropdown = [];
   positions = [1, 2, 3, 4];
   isDisabledSubmit_btn = false;
+
   constructor(private apiService: ApiService) {
     for (let index = 0; index < 4; index++) {
+      this.disabledDropdown[index] = true;
       this.selectedOption[index] = index + 1;
     }
   }
@@ -31,6 +37,10 @@ export class SelectWinnerTableComponent implements OnInit {
     this.tableData.map(
       (x, i) => {
         this.selectedOption[i] = x.position;
+        if (i == this.tableData.length - 1) return;
+        if (x.points == this.tableData[i+1].points && x.goals == this.tableData[i+1].goals) {
+          this.disabledDropdown[i] = this.disabledDropdown[i+1] = false;
+        }        
       }
     )
   }
@@ -43,9 +53,9 @@ export class SelectWinnerTableComponent implements OnInit {
 
   onSubmit(form) {
     if (this.tableData.length) {
-      this.tableData.map((x, i) => {
-        x.position = this.selectedOption[i];
-        x.isKnockoutSet = true;
+      this.tableData.map((tournamentTeam, i) => {
+        tournamentTeam.position = this.selectedOption[i];
+        tournamentTeam.isKnockoutSet = true;
       });
     }
     this.tableData.sort((a, b) => +a.position - +b.position);
@@ -87,10 +97,10 @@ export class SelectWinnerTableComponent implements OnInit {
     }
   }
 
-  isValidatedForm(value: number | string): boolean {
+  isValidatedForm(inputPosition: number | string): boolean {
     let count = 0;
-    this.selectedOption.forEach(x => {
-      if (value == x) count++;
+    this.selectedOption.forEach(position => {
+      if (inputPosition == position) count++;
       if (count == 2) return;
     });
     return count != 2;

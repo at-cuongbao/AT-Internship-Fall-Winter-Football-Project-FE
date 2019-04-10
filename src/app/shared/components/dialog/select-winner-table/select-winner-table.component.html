@@ -38,10 +38,12 @@
             {{ item.goals }}
           </p>
           <div class="dropdown-set-knockout w20 border-left">
-            <select [(ngModel)]="selectedOption[i]" name="first{{i}}" (change)="changeSelected($event.target.value)">
-              <option *ngFor="let position of positions" [value]="position">
-                {{position}}
-              </option>
+            <select [(ngModel)]="selectedOption[i]" [disabled]="disabledDropdown[i]" name="first{{i}}" (change)="changeSelected($event.target.value)">
+              <ng-container *ngFor="let position of positions, let i = index">
+                <option [ngStyle]="{'display': disabledDropdown[i] ? 'none' : ''}" [value]="position">
+                  {{position}}
+                </option>
+              </ng-container>
             </select>
           </div>
         </li>
