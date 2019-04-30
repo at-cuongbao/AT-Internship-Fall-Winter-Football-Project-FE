@@ -52,7 +52,7 @@
         <input type="number" name="secondTeamPrediction" [(ngModel)]="secondTeamPrediction">
       </div>
       <div>
-        <input type="submit" class="btn btn-predict txt-bold">
+        <input type="submit" class="btn btn-predict txt-bold" value="Submit" [class.disabled]="!(firstTeamPrediction && secondTeamPrediction)" [disabled]="!(firstTeamPrediction && secondTeamPrediction)">
         <input type="button" class="btn btn-predict txt-bold" value="Cancel" (click)="open()">
       </div>
     </form>

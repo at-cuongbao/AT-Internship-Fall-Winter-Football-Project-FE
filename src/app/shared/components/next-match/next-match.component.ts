@@ -1,4 +1,4 @@
-import { Component, Input, EventEmitter, Output } from '@angular/core';
+import { Component, Input, EventEmitter, Output, OnChanges } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { END_POINT } from 'src/app/shared/services/api-registry';
@@ -10,7 +10,7 @@ import { ApiService } from 'src/app/shared/services/api.service';
   templateUrl: './next-match.component.html',
   styleUrls: ['./next-match.component.scss']
 })
-export class NextMatchComponent {
+export class NextMatchComponent implements OnChanges {
   @Input("match") match: any;
   @Output() updateSchedule = new EventEmitter();
   matchData = [];
@@ -24,6 +24,10 @@ export class NextMatchComponent {
     private apiService: ApiService
   ) {
     this.isOpen = false;
+   }
+
+   ngOnChanges() {
+     this.isOpen = false;
    }
 
   openMatch(match) {
@@ -57,11 +61,7 @@ export class NextMatchComponent {
     };
     
     let url = [END_POINT.prediction + '/new'];
-    // if (this.auth.currentUser.admin) {
-    //   url = [END_POINT.matches + '/update'];
-    //   data.scorePrediction = [form.value.firstTeamScoreValue, form.value.secondTeamScoreValue];
-    //   data.winners = [form.value.firstTeamWinner, form.value.secondTeamWinner];
-    // }
+
     this.apiService.post(url, data).subscribe(code => {
       if (code === 200) {
         swal({
